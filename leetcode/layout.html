@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        .container{
+            height: 100%;
+            display: flex;
+        }
+        .part {
+            margin-right: 10px;
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .content{
+            flex-grow: 1;
+            overflow: auto;
+        }
+        .content-inline {
+            height: 1200px;
+            background: lightgoldenrodyellow;
+        }
+        .footer{
+            background: lightcyan;
+            height: 80px;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .A {
+            height: 80px;
+            background: lightcoral;
+        }
+        .layout-content {
+            flex-grow: 1;
+            display: flex;
+        }
+        .B {
+            width: 200px;
+            background: lightseagreen;
+        }
+        .C {
+            flex-grow: 1;
+        }
+        .D {
+            height: 80px;
+            background: lightpink;
+        }
+
+    </style>
+</head>
+<body>
+<div class="A"></div>
+<div class="layout-content">
+    <div class="B"></div>
+    <div class="C">
+        <div class="container">
+            <div class="part">
+                <div class="content">
+                    <div class="content-inline">
+
+                    </div>
+                </div>
+                <div class="footer"></div>
+            </div>
+            <div class="part">
+                <div class="content">
+                    <div class="content-inline">
+
+                    </div>
+                </div>
+                <div class="footer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="D"></div>
+</body>
+</html>
