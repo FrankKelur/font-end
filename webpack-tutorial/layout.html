@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div class="pa"><h3>header</h3></div>
+    <div class="layout-content">
+        <div class="pb" v-fix-height></div>
+        <div class="pc">
+            <div class="container">
+                <div class="part">
+                    <div class="content"  v-fix-height>
+                        <div class="content-inline">
+
+                        </div>
+                    </div>
+                    <div class="footer"></div>
+                </div>
+                <div class="part">
+                    <div class="content"  v-fix-height="">
+                        <div class="content-inline">
+
+                        </div>
+                    </div>
+                    <div class="footer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pd"><h3>footer</h3></div>
+</div>
+</body>
+<script src="./dist/app.bundle.js"></script>
+<script src="./vue.js"></script>
+<script>
+    function getHeight (el) {
+      console.log('el.height', el.height, el)
+      return 500
+    }
+
+    console.log('test')
+    Vue.directive('fix-height', {
+    // 当绑定元素插入到 DOM 中。
+    inserted: function (el) {
+        var height = getHeight(el)
+        el.style.height = height+'px'
+    }
+  })
+  new Vue({
+    el: '#app',
+    data: {}
+  })
+</script>
+</html>
