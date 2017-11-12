@@ -347,3 +347,158 @@ function phoneNumberCombine (str) {
 }
 console.log('phoneNumberCombine(\'23\')', phoneNumberCombine('23'))
 
+function phoneNumberCombine (str) {
+  console.log('\n\n-------')
+  var map = {
+    '2': ['a', 'b', 'c'],
+    '3': ['d', 'e', 'f'],
+    '4': ['g', 'h', 'i'],
+    '5': ['j', 'k', 'l'],
+    '6': ['m', 'n', 'o'],
+    '7': ['p', 'q', 'r', 's'],
+    '8': ['t', 'u', 'v'],
+    '9': ['w', 'x', 'y', 'z']
+  }
+  var arr = Array.from(str)
+  var matrix = arr.map(i => map[i])
+  return getCombine('', matrix)
+
+  function getCombine (item, matrix) {
+    console.log('item ', item)
+    if (matrix.length === 1) {
+      return matrix[0].map(elm => item + elm)
+    }
+    var res = []
+    for (var j = 0; j < matrix[0].length; j++)
+      res = res.concat(getCombine(matrix[0][j], otherMatrix(0, j, matrix)))
+
+    return res.map(elm => item + elm)
+  }
+
+  function otherMatrix (r, col, matrix) {
+    var res = Object.assign([], matrix)
+    res.splice(r, 1)
+    // res = res.map(row => row.slice(c, 1))
+    return res
+  }
+}
+
+console.log('phoneNumberCombine(\'23\')', phoneNumberCombine('23'))
+
+/*
+
+12. Integer to Roman
+Given an integer, convert it to a roman numeral.
+
+  Input is guaranteed to be within the range from 1 to 3999.
+*/
+
+var map = {
+  '1': 'I',
+  '5': 'V',
+  '10': 'X',
+  '50': 'L',
+  '100': 'C',
+  '500': 'D',
+  '1000': 'M'
+}
+
+function getRoman (num) {
+  var res = []
+  var closest = getClosest(num)
+  if (closest == num) {
+    return [num]
+  }
+  if (num > closest) {
+    res = [closest].concat(getRoman(num - closest))
+  } else {
+    res = getRoman(closest - num)
+    res.push(closest)
+  }
+  return res
+
+  function getClosest (num) {
+    var numList = Object.keys(map)
+    var gap = Infinity, res = num
+    for (var i = 0; i < numList.length; i++) {
+      var item = numList[i]
+      if (Math.abs(num - item) < gap) {
+        gap = Math.abs(num - item)
+        res = item
+      }
+    }
+    return res
+  }
+}
+
+console.log('getRoman(13): ', getRoman(13).map(item => map[item]).join(',').replace(/,/ig, ''))
+console.log('getRoman(14): ', getRoman(14).map(item => map[item]).join(',').replace(/,/ig, ''))
+console.log('getRoman(15): ', getRoman(15).map(item => map[item]).join(',').replace(/,/ig, ''))
+
+var mapReverse = {
+  'I': 1,
+  'V': 5,
+  'X': 10,
+  'L': 50,
+  'C': 100,
+  'D': 500,
+  'M': 1000
+}
+
+function romanToInt (str) {
+  if (str.length == 0) {
+    return 0
+  }
+  if (str.length == 1) {
+    return mapReverse[str]
+  }
+  var {max, left, right} = findFirstMax(str)
+  return max + romanToInt(right) - romanToInt(left)
+
+  function findFirstMax (str) {
+    var romanList = Array.from(str)
+    var intList = romanList.map(elm => mapReverse[elm])
+    var max = intList[0], maxIdx = 0
+    for (var i = 1; i < intList.length; i++) {
+      if (max < intList[i]) {
+        max = intList[i]
+        maxIdx = i
+      }
+    }
+    var left = str.substring(0, maxIdx)
+    var right = str.substring(maxIdx + 1)
+    return {max, left, right}
+  }
+}
+
+console.log('romanToInt(\'XIII\')', romanToInt('XIII'))
+console.log('romanToInt(\'XIV\')', romanToInt('XIV'))
+console.log('romanToInt(\'XV\')', romanToInt('XV'))
+
+/*
+16. 3Sum Closest
+Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
+
+  For example, given array S = {-1 2 1 -4}, and target = 1.
+
+The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+*/
+
+/*
+18. 4Sum
+Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
+
+  Note: The solution set must not contain duplicate quadruplets.
+
+  For example, given array S = [1, 0, -1, 0, -2, 2], and target = 0.
+
+A solution set is:
+  [
+    [-1,  0, 0, 1],
+    [-2, -1, 1, 2],
+    [-2,  0, 0, 2]
+  ]
+*/
+
+// Remove Nth Node From End of List
+
