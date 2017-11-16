@@ -18,12 +18,13 @@ function twoSum (arr, target) {
     var js = i + 1
     for (j in arr) {
       if (left === arr[j])
-      return [i, j]
+        return [i, j]
     }
   }
 }
-var res1  = twoSum([2, 7, 11, 15], 17)
-console.log("1", res1)
+
+var res1 = twoSum([2, 7, 11, 15], 17)
+console.log('1', res1)
 
 /*
 2. Add Two Numbers
@@ -34,45 +35,46 @@ You are given two non-empty linked lists representing two non-negative integers.
 
   Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8*/
-function  addTowNum (a1, a2) {
+function addTowNum (a1, a2) {
   var carry = 0
   var res = []
   for (var i = 0; i < a1.length; i++) {
     var tmp = a1[i] + a2[i] + carry
     res[i] = tmp % 10
-    carry = tmp >= 10? 1 : 0
+    carry = tmp >= 10 ? 1 : 0
   }
   if (carry) {
     res.push(carry)
   }
   return res
 }
-var a1 = [2,4,3]
-var a2 = [5,6,4]
+
+var a1 = [2, 4, 3]
+var a2 = [5, 6, 4]
 var res2 = addTowNum(a1, a2)
-console.log("2", res2)
+console.log('2', res2)
 
-
-
-function longestSubstring(a) {
-  var target = "";
-  for (var i = 0; i < a.length ; i++) {
-    for (var j = i; j< a.length; j++) {
-      var pre = a.substring(i, j);
+function longestSubstring (a) {
+  var target = ''
+  for (var i = 0; i < a.length; i++) {
+    for (var j = i; j < a.length; j++) {
+      var pre = a.substring(i, j)
       if (pre.indexOf(a.charAt(j)) == -1) {
-        if (target.length<pre.length+1) {
-          target = pre+a.charAt(j);
+        if (target.length < pre.length + 1) {
+          target = pre + a.charAt(j)
         }
       } else {
-        break;
+        break
       }
     }
 
   }
-  console.log(target);
+  console.log(target)
   return target
 }
+
 longestSubstring('bbbbb')
+
 /*
 
 4. Median of Two Sorted Arrays
@@ -92,14 +94,15 @@ function findKTh (k, sList, lList) {
   if (k === 1) {
     return Math.min(sList[0], lList[0])
   }
-  var p = Math.min(k/2, sList.length)
+  var p = Math.min(k / 2, sList.length)
   var q = k - p
   if (sList[p] < lList[q]) {
-    findKTh(k - p, sList.slice(p+1), lList.slice(0, q))
+    findKTh(k - p, sList.slice(p + 1), lList.slice(0, q))
   } else {
     findKTh(k - q, sList.slice(q), lList.slice(0, p))
   }
 }
+
 /*
 
 5. Longest Palindromic Substring
@@ -107,7 +110,7 @@ Given a string s, find the longest palindromic substring in s. You may assume th
 */
 function getPalindromicStr (str) {
   var res = ''
-  for (var i = 0 ; i < str.length ; i++) {
+  for (var i = 0; i < str.length; i++) {
     var tmp = getPalindromicStrOfChar(str, i)
     if (tmp.length > res.length) {
       res = tmp
@@ -135,7 +138,7 @@ function getPalindromicStr (str) {
   }
 }
 
-getPalindromicStr("babad")
+getPalindromicStr('babad')
 
 /*
 
@@ -167,31 +170,31 @@ function isMatch (s, p) {
   var pArr = []
   var restP = p
   var j = 0
-  while(true) {
+  while (true) {
     var i = restP.indexOf('*')
     if (i == -1) break
     console.log('restP', restP)
     var tmp = restP.substring(0, i + 1)
     if (tmp.length > 2) {
-      for (var k = 0 ; k < tmp.length -2 ; k++) {
+      for (var k = 0; k < tmp.length - 2; k++) {
         pArr[j++] = tmp.charAt(k)
       }
     }
     pArr[j++] = tmp.substring(i - 1, i + 1)
     restP = restP.substring(i + 1)
   }
-  for (var m = 0 ; m < restP.length ; m++) {
+  for (var m = 0; m < restP.length; m++) {
     pArr[j++] = restP.charAt(m)
   }
   console.log('pArr', pArr)
   var i = 0, j = 0, res = true
-  while(true) {
+  while (true) {
     var target = s.charAt(i)
     var pattern = pArr[j]
     if ((!pattern && target) || (pattern && pattern.length != 2 && !target)) {
       res = false
       break
-    } else if (!pattern || !target){
+    } else if (!pattern || !target) {
       break
     }
     if (equal(target, pattern)) {
@@ -220,7 +223,6 @@ function isMatch (s, p) {
   }
 }
 
-
 // console.log("isMatch(\"aa\",\"a\")", isMatch("aa","a"))
 // console.log("isMatch(\"aa\",\"aa\")", isMatch("aa","aa"))
 // console.log("isMatch(\"aaa\",\"aa\")", isMatch("aaa","aa"))
@@ -228,7 +230,7 @@ function isMatch (s, p) {
 // console.log("isMatch(\"aa\", \".*\")", isMatch("aa", ".*"))
 // console.log("isMatch(\"ab\", \".*\")", isMatch("ab", ".*"))
 // console.log("isMatch(\"aab\", \"c*a*b\")", isMatch("aab", "c*a*b"))
-console.log("isMatch(zhai*peng.*)", isMatch("zhaipengchao", "zhai*peng.*ao"))
+console.log('isMatch(zhai*peng.*)', isMatch('zhaipengchao', 'zhai*peng.*ao'))
 
 /*
 
@@ -241,8 +243,8 @@ Given n non-negative integers a1, a2, ..., an, where each represents a point at 
 
 function getMostWater (n, f) {
   var max = 0
-  for (var k = 0 ; k < n ; k++) {
-    for (var m = k + 1 ; m < n ; m++) {
+  for (var k = 0; k < n; k++) {
+    for (var m = k + 1; m < n; m++) {
       var tmp = (m - k) * Math.min(f[m], f[k])
       if (tmp > max) {
         max = tmp
@@ -251,6 +253,7 @@ function getMostWater (n, f) {
   }
   return max
 }
+
 var n = 5
 var f = [2, 4, 1, 5, 8]
 console.log('getMostWater(n, f): ', getMostWater(n, f))
@@ -271,9 +274,9 @@ Given an array S of n integers, are there elements a, b, c in S such that a + b 
 
 function threeSum (arr) {
   var set = new Set()
-  for (var i = 0 ; i < arr.length ; i++) {
-    for (var j = i + 1 ; j < arr.length ; j++) {
-      for (var k = j + 1 ; k < arr.length ; k++) {
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i + 1; j < arr.length; j++) {
+      for (var k = j + 1; k < arr.length; k++) {
         var target = arr[i] + arr[j] + arr[k]
         if (target === 0) {
           var tmp = [arr[i], arr[j], arr[k]]
@@ -284,6 +287,7 @@ function threeSum (arr) {
       }
     }
   }
+
   function exist (arr, set) {
     var res = false
     set.forEach(list => {
@@ -291,6 +295,7 @@ function threeSum (arr) {
     })
     return res
   }
+
   return set
 }
 
@@ -331,8 +336,8 @@ function phoneNumberCombine (str) {
       return matrix[0].map(elm => item + elm)
     }
     var res = []
-    for (var i = 0 ; i < matrix.length; i++)
-      for (var j = 0 ; j < matrix[i].length; j++)
+    for (var i = 0; i < matrix.length; i++)
+      for (var j = 0; j < matrix[i].length; j++)
         res = res.concat(getCombine(matrix[i][j], otherMatrix(i, j, matrix)))
 
     return res.map(elm => item + elm)
@@ -345,6 +350,7 @@ function phoneNumberCombine (str) {
     return res
   }
 }
+
 console.log('phoneNumberCombine(\'23\')', phoneNumberCombine('23'))
 
 function phoneNumberCombine (str) {
@@ -501,4 +507,66 @@ A solution set is:
 */
 
 // Remove Nth Node From End of List
+function LNode (value) {
+  this.value = value
+}
 
+LNode.prototype.isTail = function () {
+  return this.next === null
+}
+LNode.prototype.setNext = function (next) {
+  this.next = next
+}
+LNode.prototype.toString = function () {
+  return this.value
+}
+
+function removeNthList (list, n) {
+  var header = init(list)
+  console.log('删除前：', iterator(header))
+  var count = 0
+  var i = header
+  while (i) {
+    count++
+    i = i.next
+  }
+  i = header
+  var pre = header
+  var index = 0
+  while (i) {
+    if (index === count - n) {
+      pre.next = i.next
+      break
+    }
+    index++
+    pre = i
+    i = i.next
+  }
+  console.log('删除后：', iterator(header))
+  return i
+
+  function init (arr) {
+    var pre = null, header = null
+    for (var idx = 0 ; idx < arr.length; idx++) {
+      var item = arr[idx]
+      var curr = new LNode(item)
+      idx === 0 && (header = curr)
+      pre && pre.setNext(curr)
+      pre = curr
+    }
+    pre.setNext(null)
+    return header
+  }
+
+  function iterator (header) {
+    var i = header
+    var res = []
+    while (i) {
+      res.push(i.value)
+      i = i.next
+    }
+    return res.join('->')
+  }
+}
+
+console.log('removeNthList', removeNthList([1, 2, 3, 4, 5, 6], 3))
