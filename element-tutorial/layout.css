@@ -8,10 +8,23 @@ html, body {
     display: flex;
     flex-direction: column;
 }
-.header, .footer {
+.headerd, .footer {
     height: 50px;
-    background: lightcoral;
+    /*background: lightcoral;*/
 }
+.header:link {
+	color:blue;
+}
+.header:visited{
+	color: gray;
+}
+.header:hover {
+	color: lightblue;
+}
+.header:active {
+	color: red;
+}
+
 .content {
     flex-grow: 1;
     display: flex;
