@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="198b6c26-99d4-462f-87fb-822b5d94bae1" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+=======
     <list default="true" id="44bb9384-913a-4371-8d75-9664ded1c0ef" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/leetcode/layout.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webpack-tutorial/layout.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/leetcode/1-50.js" afterPath="$PROJECT_DIR$/leetcode/1-50.js" />
+>>>>>>> 8fab0297b913d18b1dc5a761fa21cd4228b318ed
+>>>>>>> ec323a9efddff33cfbb5377564481d6c5f1d1cac
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,7 +27,18 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+=======
+    <leaf>
+<<<<<<< HEAD
+      <file leaf-file-name="layout.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/leetcode/layout.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+=======
+>>>>>>> ec323a9efddff33cfbb5377564481d6c5f1d1cac
       <file leaf-file-name="1-50.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/leetcode/1-50.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -39,8 +62,14 @@
       <file leaf-file-name="layout.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/element-tutorial/layout.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="415">
               <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+=======
+            <state relative-caret-position="228">
+              <caret line="12" column="38" lean-forward="true" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+>>>>>>> 8fab0297b913d18b1dc5a761fa21cd4228b318ed
+>>>>>>> ec323a9efddff33cfbb5377564481d6c5f1d1cac
               <folding />
             </state>
           </provider>
@@ -51,6 +80,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -60,6 +91,7 @@
       </list>
     </option>
   </component>
+>>>>>>> 8fab0297b913d18b1dc5a761fa21cd4228b318ed
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
@@ -67,6 +99,16 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodeModulesDirectoryManager">
+<<<<<<< HEAD
+    <handled-path value="$PROJECT_DIR$/browserify-vue/node_modules" />
+    <handled-path value="$PROJECT_DIR$/webpack-tutorial/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="367" />
+    <option name="y" value="141" />
+    <option name="width" value="1276" />
+    <option name="height" value="808" />
+=======
     <handled-path value="$PROJECT_DIR$/webpack-tutorial/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -74,6 +116,7 @@
     <option name="y" value="30" />
     <option name="width" value="1662" />
     <option name="height" value="1026" />
+>>>>>>> 8fab0297b913d18b1dc5a761fa21cd4228b318ed
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -90,8 +133,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+=======
       <pane id="Scope" />
       <pane id="Scratches" />
+>>>>>>> 8fab0297b913d18b1dc5a761fa21cd4228b318ed
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -113,6 +159,11 @@
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
+      <pane id="Scratches" />
+      <pane id="Scope" />
+=======
+>>>>>>> 8fab0297b913d18b1dc5a761fa21cd4228b318ed
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -120,11 +171,14 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\chaop\WebstormProjects\font-end\leetcode" />
     </key>
   </component>
+>>>>>>> 8fab0297b913d18b1dc5a761fa21cd4228b318ed
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -142,18 +196,52 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
+      <changelist id="198b6c26-99d4-462f-87fb-822b5d94bae1" name="Default" comment="" />
+      <created>1510534535859</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1510534535859</updated>
+      <workItem from="1510534539003" duration="149000" />
+=======
       <changelist id="44bb9384-913a-4371-8d75-9664ded1c0ef" name="Default" comment="" />
       <created>1510458580370</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1510458580370</updated>
+<<<<<<< HEAD
       <workItem from="1510458583113" duration="2857000" />
       <workItem from="1511097315219" duration="631000" />
+=======
+      <workItem from="1510458583113" duration="404000" />
+>>>>>>> 8fab0297b913d18b1dc5a761fa21cd4228b318ed
+>>>>>>> ec323a9efddff33cfbb5377564481d6c5f1d1cac
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="3488000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="149000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16280295" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2624729" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+=======
+    <option name="totallyTimeSpent" value="404000" />
+>>>>>>> ec323a9efddff33cfbb5377564481d6c5f1d1cac
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
@@ -167,6 +255,11 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32891247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+=======
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+>>>>>>> 8fab0297b913d18b1dc5a761fa21cd4228b318ed
+>>>>>>> ec323a9efddff33cfbb5377564481d6c5f1d1cac
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -178,6 +271,14 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+<<<<<<< HEAD
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/browserify-vue/node_modules/karma/config.tpl.js" />
+      </list>
+    </option>
+=======
+>>>>>>> 8fab0297b913d18b1dc5a761fa21cd4228b318ed
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -187,7 +288,17 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/leetcode/1-50.js">
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/leetcode/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+=======
+    <entry file="file://$PROJECT_DIR$/leetcode/index.html">
+>>>>>>> ec323a9efddff33cfbb5377564481d6c5f1d1cac
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -232,8 +343,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/element-tutorial/layout.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="415">
           <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+=======
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> 8fab0297b913d18b1dc5a761fa21cd4228b318ed
+>>>>>>> ec323a9efddff33cfbb5377564481d6c5f1d1cac
           <folding />
         </state>
       </provider>
