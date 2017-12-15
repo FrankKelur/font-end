@@ -31,5 +31,8 @@
     "webpack": "1.x",
     "webpack-dev-server": "1.x"
   },
-  "repository": "ruanyf/webpack-demos"
+  "repository": "ruanyf/webpack-demos",
+  "devDependencies": {
+    "friendly-errors-webpack-plugin": "^1.6.1"
+  }
 }
