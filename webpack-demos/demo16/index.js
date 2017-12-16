@@ -32,15 +32,16 @@ var Dashboard = React.createClass({
   }
 });
 
-var Inbox = React.createClass({
-  render: function () {
-    return (
-      <div>
-        <p>Inbox</p>
-      </div>
-    );
-  }
-});
+// var Inbox = React.createClass({
+//   render: function () {
+//     return (
+//       <div>
+//         <p>Inbox</p>
+//       </div>
+//     );
+//   }
+// });
+import Inbox from './inbox'
 
 var Calendar = React.createClass({
   render: function () {
