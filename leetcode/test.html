@@ -5,7 +5,102 @@
     <title>Title</title>
 </head>
 <body>
-<h4 id="zhai">zhai</h4>
-<script src="1-50.js"></script>
+<!--<h4 id="zhai">zhai</h4>-->
+<style>
+    .container {
+        width: 100%;
+        height: 100%;
+    }
+    .inner {
+        width: 400px;
+        height: 300px;
+        background: lightblue;
+        margin-top: 30px;
+    }
+    h1,h2,h3,h4 {
+        margin-left: 1em;
+    }
+    .span-container {
+        height: 50px;
+    }
+
+    span:nth-child(1) {
+        vertical-align: top;
+        background: lightblue;
+    }
+    span:nth-child(2) {
+        vertical-align: baseline;
+        background: lightcoral;
+    }
+    span:nth-child(3) {
+        vertical-align: middle;
+        background: lightcyan;
+    }
+    span:nth-child(4) {
+        vertical-align: bottom;
+        background: lightgoldenrodyellow;
+    }
+    ul {
+        margin-bottom: 20px;
+    }
+    li {
+        margin-top: 15px;
+        margin-bottom: 25px;
+    }
+    .container{
+        font-size: 10px;
+    }
+    .inner {
+        line-height: 1em;
+    }
+    p {
+        font-size: 40px;
+    }
+
+    .neg {
+        margin: -50px 10px 0 10px;
+        border: 3px solid gray;
+    }
+
+</style>
+<div class="con">
+    <span>this is inline element test this is inline element test this is inline element test this is inline element test this is inline element test this is inline element test this is inline element test vthis is inline element testv </span>
+</div>
+<div style='width:420px;background: silver;padding:10px;margin-top:50px;border:1px solid;'>
+    <div class="neg">
+        A Paragraph
+    </div>
+    A div
+</div>
+<div class="container">
+    <!--<div>line-height</div>-->
+    <ul>
+        <li>first</li>
+        <li>second</li>
+        <li>three</li>
+    </ul>
+    <!--<div class="inner">-->
+        <!--<span>this is wudu</span>-->
+    <!--</div>-->
+    <!--<h1>h1</h1>-->
+    <!--<h2>h2</h2>-->
+    <!--<h3>h3</h3>-->
+    <!--<h4>h4-->
+        <!--this is        my   test</h4>-->
+
+    <!--<div class="span-container">-->
+        <!--<span>11111</span>-->
+        <!--<span>22222</span>-->
+        <!--<span>33333</span>-->
+        <!--<span>44444</span>-->
+    <!--</div>-->
+    <div class="inner">
+        this is div
+        <p>this is p</p>
+        <p>this is p</p>
+        <p>this is p</p>
+    </div>
+</div>
 </body>
+<script src="1-50.js"></script>
 </html>
