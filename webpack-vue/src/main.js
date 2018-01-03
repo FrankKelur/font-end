@@ -23,6 +23,12 @@ new Vue({
       this.show = !this.show
     }
   },
+  computed: {
+    testList () {
+      console.log('main computed')
+      return this.show
+    }
+  },
   beforeCreate () {
     console.log('main beforecreate')
   },
@@ -30,7 +36,7 @@ new Vue({
     console.log('main created')
   },
   beforeMount () {
-    console.log('main mount')
+    console.log('main beforeMount')
   },
   mounted () {
     console.log('main.js mounted!')

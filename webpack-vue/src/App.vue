@@ -24,7 +24,7 @@
     },
     beforeMount () {
       this.$set(this, 'test', {show: true})
-      console.log('app mount')
+      console.log('app beforeMount')
     },
     mounted () {
       console.log('app.js mounted!')
