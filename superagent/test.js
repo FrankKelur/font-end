@@ -27,7 +27,7 @@ test().then(res => {
 
 })
 
-var test = [
+var ruanyifeng = [
   {
     'url': 'http://www.ruanyifeng.com/blog/essays/',
     'name': '散文',
@@ -4230,3 +4230,2397 @@ var test = [
     ]
   }
 ]
+
+var csdn = [
+  {
+    'url': 'https://www.csdn.net//',
+    'name': '推荐',
+    'children': [
+      {
+        'pageName': '\n                            京东京麦交易平台设计与实现                        ',
+        'articleList': [
+          {
+            'title': '\n                            京东京麦交易平台设计与实现                        ',
+            'url': 'http://blog.csdn.net/dev_csdn/article/details/78981674'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Android逆向之旅---Android中分析某短视频的数据请求加密协议(IDA动态调试SO)第二篇                        ',
+        'articleList': [
+          {
+            'title': '\n                            Android逆向之旅---Android中分析某短视频的数据请求加密协议(IDA动态调试SO)第二篇                        ',
+            'url': 'http://blog.csdn.net/jiangwei0910410003/article/details/78967031'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            如何搭建视频通信服务器架构                        ',
+        'articleList': [
+          {
+            'title': '\n                            如何搭建视频通信服务器架构                        ',
+            'url': 'http://blog.csdn.net/wjmnju/article/details/78969475'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            SpringBoot之事务处理机制                        ',
+        'articleList': [
+          {
+            'title': '\n                            SpringBoot之事务处理机制                        ',
+            'url': 'http://blog.csdn.net/smartdt/article/details/78834005'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Java基础语法篇（1）                        ',
+        'articleList': [
+          {
+            'title': '\n                            Java基础语法篇（1）                        ',
+            'url': 'http://blog.csdn.net/u012834152/article/details/78803989'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            这里有几个高手常用的信息渠道                        ',
+        'articleList': [
+          {
+            'title': '\n                            这里有几个高手常用的信息渠道                        ',
+            'url': 'http://blog.csdn.net/IMbRl71u7pt5X29rlEu7/article/details/78976855'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            你该如何打破自己停滞不前的状态？                        ',
+        'articleList': [
+          {
+            'title': '\n                            你该如何打破自己停滞不前的状态？                        ',
+            'url': 'http://blog.csdn.net/IaC743nj0b/article/details/78976654'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            中美将依旧引领2018年区块链潮流？                        ',
+        'articleList': [
+          {
+            'title': '\n                            中美将依旧引领2018年区块链潮流？                        ',
+            'url': 'http://blog.csdn.net/kXYOnA63Ag9zqtXx0/article/details/78976406'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            1月12日，真格基金 X 明星创业公司硅谷招聘会 - 第一波公司名单新鲜出炉！                        ',
+        'articleList': [
+          {
+            'title': '\n                            1月12日，真格基金 X 明星创业公司硅谷招聘会 - 第一波公司名单新鲜出炉！                        ',
+            'url': 'http://blog.csdn.net/kXYOnA63Ag9zqtXx0/article/details/78976404'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            面向对象：如果你刚好喜欢我，而我又喜欢你，那就在一起吧                        ',
+        'articleList': [
+          {
+            'title': '\n                            面向对象：如果你刚好喜欢我，而我又喜欢你，那就在一起吧                        ',
+            'url': 'http://blog.csdn.net/P5dEyT322JACS/article/details/78956424'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            成为优秀程序员的10条黄金法则                        ',
+        'articleList': [
+          {
+            'title': '\n                            成为优秀程序员的10条黄金法则                        ',
+            'url': 'http://blog.csdn.net/EK02114FS/article/details/78948691'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            来硅谷黑科技峰会，看北美最性感科技创新企业                        ',
+        'articleList': [
+          {
+            'title': '\n                            来硅谷黑科技峰会，看北美最性感科技创新企业                        ',
+            'url': 'http://blog.csdn.net/kXYOnA63Ag9zqtXx0/article/details/78976400'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            面向对象：相信让自己更好才会遇到更喜欢的人，但是也相信人生缘分始于足下，我来找你                        ',
+        'articleList': [
+          {
+            'title': '\n                            面向对象：相信让自己更好才会遇到更喜欢的人，但是也相信人生缘分始于足下，我来找你                        ',
+            'url': 'http://blog.csdn.net/VhWfR2u02Q/article/details/78974597'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            十位安卓开发者的 17 年总结                        ',
+        'articleList': [
+          {
+            'title': '\n                            十位安卓开发者的 17 年总结                        ',
+            'url': 'http://blog.csdn.net/D29h1jQy3akVx/article/details/78950096'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            程序员偷偷深爱的 9 个不良编程习惯                        ',
+        'articleList': [
+          {
+            'title': '\n                            程序员偷偷深爱的 9 个不良编程习惯                        ',
+            'url': 'http://blog.csdn.net/UW63ZqpKxwlRL1/article/details/78729612'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            程序员如何培养第二技能？                        ',
+        'articleList': [
+          {
+            'title': '\n                            程序员如何培养第二技能？                        ',
+            'url': 'http://blog.csdn.net/bjweimengshu/article/details/78975522'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            IEEE Spectrum 2017 编程语言排行榜：Python跃居第1，Swift大爆发，Java持续下滑                        ',
+        'articleList': [
+          {
+            'title': '\n                            IEEE Spectrum 2017 编程语言排行榜：Python跃居第1，Swift大爆发，Java持续下滑                        ',
+            'url': 'http://blog.csdn.net/UzV80PX5V412NE/article/details/78950764'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            李彦宏、马化腾、雷军，程序员国服三强中谁的编程能力更胜一筹？                        ',
+        'articleList': [
+          {
+            'title': '\n                            李彦宏、马化腾、雷军，程序员国服三强中谁的编程能力更胜一筹？                        ',
+            'url': 'http://blog.csdn.net/csdnsevenn/article/details/78823757'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Java工程师面试题整理[社招篇]                        ',
+        'articleList': [
+          {
+            'title': '\n                            Java工程师面试题整理[社招篇]                        ',
+            'url': 'http://blog.csdn.net/HD243608836/article/details/78784822'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            为什么有些程序员悄无声息渡过35岁中年危机？                        ',
+        'articleList': [
+          {
+            'title': '\n                            为什么有些程序员悄无声息渡过35岁中年危机？                        ',
+            'url': 'http://blog.csdn.net/tTU1EvLDeLFq5btqiK/article/details/78955436'
+          }
+        ]
+      },
+      {
+        'pageName': '更多专栏', 'articleList': [
+        {'title': '更多专栏', 'url': 'http://blog.csdn.net/column.html'}
+      ]
+      }
+    ]
+  },
+  {
+    'url': 'https://www.csdn.net//nav/news',
+    'name': '资讯',
+    'children': [
+      {
+        'pageName': '\n                            碾压「中国素质教育」，STEM 是个怎样高大上的东西？                        ',
+        'articleList': [
+          {
+            'title': '\n                            碾压「中国素质教育」，STEM 是个怎样高大上的东西？                        ',
+            'url': 'http://blog.csdn.net/GitChat/article/details/78410102'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            迈外迪一口气发布四款产品，从商用Wi-Fi转型智能商业                        ',
+        'articleList': [
+          {
+            'title': '\n                            迈外迪一口气发布四款产品，从商用Wi-Fi转型智能商业                        ',
+            'url': 'http://blog.csdn.net/Dzz2seiN13YV/article/details/78692504'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            敏态和稳态之间不应该有“选择困难症”                        ',
+        'articleList': [
+          {
+            'title': '\n                            敏态和稳态之间不应该有“选择困难症”                        ',
+            'url': 'http://blog.csdn.net/Z1Y492Vn3ZYD9et3B06/article/details/78809131'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            阿里巴巴、腾讯、百度和京东金融落户雄安新区 | 亚马逊加入FB与微软阵营，共同支持开源AI平台ONNX                        ',
+        'articleList': [
+          {
+            'title': '\n                            阿里巴巴、腾讯、百度和京东金融落户雄安新区 | 亚马逊加入FB与微软阵营，共同支持开源AI平台ONNX                        ',
+            'url': 'http://blog.csdn.net/Z1Y492Vn3ZYD9et3B06/article/details/78809130'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            一场巡展搞这么大动静 新华三客户业务发展可见一斑                        ',
+        'articleList': [
+          {
+            'title': '\n                            一场巡展搞这么大动静 新华三客户业务发展可见一斑                        ',
+            'url': 'http://blog.csdn.net/ZPWhPdjl/article/details/78590303'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            【​头条】从超融合市场的探索与创新 看浪潮全面云化时代关键词                        ',
+        'articleList': [
+          {
+            'title': '\n                            【​头条】从超融合市场的探索与创新 看浪潮全面云化时代关键词                        ',
+            'url': 'http://blog.csdn.net/Tf3fC4gsZrGUQX94Oo7/article/details/78464544'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            大数据早报：甲骨文公司投资4300万美元在总部建高中 18项全球互联网领先科技成果公布中国占6成 （12.6）                        ',
+        'articleList': [
+          {
+            'title': '\n                            大数据早报：甲骨文公司投资4300万美元在总部建高中 18项全球互联网领先科技成果公布中国占6成 （12.6）                        ',
+            'url': 'http://blog.csdn.net/op07p6Aaqo9u71/article/details/78728175'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            移动办公OA行业的普及推动力——泛微三季报披露                        ',
+        'articleList': [
+          {
+            'title': '\n                            移动办公OA行业的普及推动力——泛微三季报披露                        ',
+            'url': 'http://blog.csdn.net/ZPWhPdjl/article/details/78400324'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            你写的代码，是别人的噩梦吗？                        ',
+        'articleList': [
+          {
+            'title': '\n                            你写的代码，是别人的噩梦吗？                        ',
+            'url': 'http://blog.csdn.net/b0Q8cpra539haFS7/article/details/78809743'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            支付宝内测版曝光：将很快支持这个功能！                        ',
+        'articleList': [
+          {
+            'title': '\n                            支付宝内测版曝光：将很快支持这个功能！                        ',
+            'url': 'http://blog.csdn.net/M7720EIoSi6oA9/article/details/78612043'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            阿里传奇工程师多隆的程序世界                        ',
+        'articleList': [
+          {
+            'title': '\n                            阿里传奇工程师多隆的程序世界                        ',
+            'url': 'http://blog.csdn.net/b0Q8cpra539haFS7/article/details/78652212'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            余承东炮轰iPhone X：卖点除了贵没剩下什么                        ',
+        'articleList': [
+          {
+            'title': '\n                            余承东炮轰iPhone X：卖点除了贵没剩下什么                        ',
+            'url': 'http://blog.csdn.net/M7720EIoSi6oA9/article/details/78464620'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            大数据早报：第四届世界互联网大会开幕 比特币一度突破11700美元（12.5）                        ',
+        'articleList': [
+          {
+            'title': '\n                            大数据早报：第四届世界互联网大会开幕 比特币一度突破11700美元（12.5）                        ',
+            'url': 'http://blog.csdn.net/op07p6Aaqo9u71/article/details/78717328'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            数据科学工作者(Data Scientist) 的日常工作内容包括什么？                        ',
+        'articleList': [
+          {
+            'title': '\n                            数据科学工作者(Data Scientist) 的日常工作内容包括什么？                        ',
+            'url': 'http://blog.csdn.net/op07p6Aaqo9u71/article/details/78676010'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            深度学习和普通机器学习之间有何区别？                        ',
+        'articleList': [
+          {
+            'title': '\n                            深度学习和普通机器学习之间有何区别？                        ',
+            'url': 'http://blog.csdn.net/op07p6Aaqo9u71/article/details/78717325'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            大数据早报：海量大数据重度孵化器获A+轮融资 阿里自然语言处理技术获突破（11.30）                        ',
+        'articleList': [
+          {
+            'title': '\n                            大数据早报：海量大数据重度孵化器获A+轮融资 阿里自然语言处理技术获突破（11.30）                        ',
+            'url': 'http://blog.csdn.net/op07p6Aaqo9u71/article/details/78676011'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            腾讯《绝地求生》官方手游不止一款？《光荣使命》不限号开测                        ',
+        'articleList': [
+          {
+            'title': '\n                            腾讯《绝地求生》官方手游不止一款？《光荣使命》不限号开测                        ',
+            'url': 'http://blog.csdn.net/Dzz2seiN13YV/article/details/78682768'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            【​头条】EMC：数字化转型，咨询先行                        ',
+        'articleList': [
+          {
+            'title': '\n                            【​头条】EMC：数字化转型，咨询先行                        ',
+            'url': 'http://blog.csdn.net/Tf3fC4gsZrGUQX94Oo7/article/details/78612079'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            赠阅！《阿里巴巴Java开发手册》实体书开启预售！                        ',
+        'articleList': [
+          {
+            'title': '\n                            赠阅！《阿里巴巴Java开发手册》实体书开启预售！                        ',
+            'url': 'http://blog.csdn.net/b0Q8cpra539haFS7/article/details/78839337'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            这一年，边缘计算产业联盟（ECC）竟然做了这么多事！                        ',
+        'articleList': [
+          {
+            'title': '\n                            这一年，边缘计算产业联盟（ECC）竟然做了这么多事！                        ',
+            'url': 'http://blog.csdn.net/ZPWhPdjl/article/details/78757585'
+          }
+        ]
+      }
+    ]
+  },
+  {'url': 'https://www.csdn.net//nav/ai', 'name': '人工智能'},
+  {
+    'url': 'https://www.csdn.net//nav/cloud',
+    'name': '云计算/大数据'
+  },
+  {
+    'url': 'https://www.csdn.net//nav/blockchain',
+    'name': '区块链',
+    'children': [
+      {
+        'pageName': '\n                            支付宝API接口--移动端网页支付（沙箱）                        ',
+        'articleList': [
+          {
+            'title': '\n                            支付宝API接口--移动端网页支付（沙箱）                        ',
+            'url': 'http://blog.csdn.net/swj524152416/article/details/56677486'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            图解区块链：14张图看懂什么是“区块链技术”？                        ',
+        'articleList': [
+          {
+            'title': '\n                            图解区块链：14张图看懂什么是“区块链技术”？                        ',
+            'url': 'http://blog.csdn.net/wo541075754/article/details/54743138'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            重大改革！教育部将Python纳入全国计算机等级考试科目                        ',
+        'articleList': [
+          {
+            'title': '\n                            重大改革！教育部将Python纳入全国计算机等级考试科目                        ',
+            'url': 'http://blog.csdn.net/BF02jgtRS00XKtCx/article/details/78771382'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            首次安装Qt后，创建项目时出现“No valid kits found” 的解决办法                        ',
+        'articleList': [
+          {
+            'title': '\n                            首次安装Qt后，创建项目时出现“No valid kits found” 的解决办法                        ',
+            'url': 'http://blog.csdn.net/aseity/article/details/55095052'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            2018 年，物联网需要关注的重大趋势！                        ',
+        'articleList': [
+          {
+            'title': '\n                            2018 年，物联网需要关注的重大趋势！                        ',
+            'url': 'http://blog.csdn.net/DP29syM41zyGndVF/article/details/78831901'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Visual Studio 2017正式版离线安装及介绍                        ',
+        'articleList': [
+          {
+            'title': '\n                            Visual Studio 2017正式版离线安装及介绍                        ',
+            'url': 'http://blog.csdn.net/tmchongye/article/details/63537341'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Go开发：Mac上安装Go环境和VS Code                        ',
+        'articleList': [
+          {
+            'title': '\n                            Go开发：Mac上安装Go环境和VS Code                        ',
+            'url': 'http://blog.csdn.net/gnhxsk2015/article/details/74137142'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            商城转账到卖家账户的支付宝方案：支付宝单笔转账                        ',
+        'articleList': [
+          {
+            'title': '\n                            商城转账到卖家账户的支付宝方案：支付宝单笔转账                        ',
+            'url': 'http://blog.csdn.net/qq_35703234/article/details/70145929'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            比特币(Bitcoin)伪挖矿教程                        ',
+        'articleList': [
+          {
+            'title': '\n                            比特币(Bitcoin)伪挖矿教程                        ',
+            'url': 'http://blog.csdn.net/a1291985595/article/details/76018296'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            世界国家及中国各省市级地图ArcGIS MXD/SHP/QGIS/JSON/SQL数据文件【免费下载】                        ',
+        'articleList': [
+          {
+            'title': '\n                            世界国家及中国各省市级地图ArcGIS MXD/SHP/QGIS/JSON/SQL数据文件【免费下载】                        ',
+            'url': 'http://blog.csdn.net/sinat_34719507/article/details/70544164'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            面向 Java 开发人员的区块链链代码                        ',
+        'articleList': [
+          {
+            'title': '\n                            面向 Java 开发人员的区块链链代码                        ',
+            'url': 'http://blog.csdn.net/oHaHaChao/article/details/73648299'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            他丢了一亿多美元，被20吨的垃圾山压着……                        ',
+        'articleList': [
+          {
+            'title': '\n                            他丢了一亿多美元，被20吨的垃圾山压着……                        ',
+            'url': 'http://blog.csdn.net/m68FUTKMUrmtj/article/details/78807192'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            使用docker搭建gitlab                        ',
+        'articleList': [
+          {
+            'title': '\n                            使用docker搭建gitlab                        ',
+            'url': 'http://blog.csdn.net/u011704394/article/details/54729921'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            AI 与区块链会碰撞出什么样的火花？要取代传统银行系统！？                        ',
+        'articleList': [
+          {
+            'title': '\n                            AI 与区块链会碰撞出什么样的火花？要取代传统银行系统！？                        ',
+            'url': 'http://blog.csdn.net/DP29syM41zyGndVF/article/details/78831893'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Qt for Mac：配置/搭建开发环境                        ',
+        'articleList': [
+          {
+            'title': '\n                            Qt for Mac：配置/搭建开发环境                        ',
+            'url': 'http://blog.csdn.net/wsj18808050/article/details/70544293'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            苹果公司发力区块链技术，未来系统将可创建和验证时间戳                        ',
+        'articleList': [
+          {
+            'title': '\n                            苹果公司发力区块链技术，未来系统将可创建和验证时间戳                        ',
+            'url': 'http://blog.csdn.net/Ag0JAB/article/details/78787567'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            韩国创业公司Hdac试图通过区块链保障物联网未来                        ',
+        'articleList': [
+          {
+            'title': '\n                            韩国创业公司Hdac试图通过区块链保障物联网未来                        ',
+            'url': 'http://blog.csdn.net/Ag0JAB/article/details/78798343'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            虚拟币开发专题(山寨币现在都有什么矿池在支持)                        ',
+        'articleList': [
+          {
+            'title': '\n                            虚拟币开发专题(山寨币现在都有什么矿池在支持)                        ',
+            'url': 'http://blog.csdn.net/jQQ53016353/article/details/76998607'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            区块链共识算法 PBFT（拜占庭容错）、PAXOS、RAFT简述                        ',
+        'articleList': [
+          {
+            'title': '\n                            区块链共识算法 PBFT（拜占庭容错）、PAXOS、RAFT简述                        ',
+            'url': 'http://blog.csdn.net/jerry81333/article/details/74303194'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            github上开源的优秀android项目                        ',
+        'articleList': [
+          {
+            'title': '\n                            github上开源的优秀android项目                        ',
+            'url': 'http://blog.csdn.net/sinat_25957705/article/details/72369565'
+          }
+        ]
+      }
+    ]
+  },
+  {'url': 'https://www.csdn.net//nav/db', 'name': '数据库'},
+  {
+    'url': 'https://www.csdn.net//nav/career',
+    'name': '程序人生'
+  },
+  {
+    'url': 'https://www.csdn.net//nav/game',
+    'name': '游戏开发',
+    'children': [
+      {
+        'pageName': '\n                            从零开始丨使用Unity3D进行VIVE VR游戏开发                        ',
+        'articleList': [
+          {
+            'title': '\n                            从零开始丨使用Unity3D进行VIVE VR游戏开发                        ',
+            'url': 'http://blog.csdn.net/caodongfang126/article/details/54134121'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            【Python学习】 之 Turtle库                        ',
+        'articleList': [
+          {
+            'title': '\n                            【Python学习】 之 Turtle库                        ',
+            'url': 'http://blog.csdn.net/fanfan4569/article/details/54784143'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            前方高能 | 你写过什么有趣的程序？最后一个笑出猪叫                        ',
+        'articleList': [
+          {
+            'title': '\n                            前方高能 | 你写过什么有趣的程序？最后一个笑出猪叫                        ',
+            'url': 'http://blog.csdn.net/UFv59to8/article/details/78787616'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            【Unity3D】3D模型的使用——FBX的使用与Animation设置                        ',
+        'articleList': [
+          {
+            'title': '\n                            【Unity3D】3D模型的使用——FBX的使用与Animation设置                        ',
+            'url': 'http://blog.csdn.net/yongh701/article/details/73001312'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            十五分钟学会用python编写小游戏                        ',
+        'articleList': [
+          {
+            'title': '\n                            十五分钟学会用python编写小游戏                        ',
+            'url': 'http://blog.csdn.net/T7SFOKzorD1JAYMSFk4/article/details/78758380'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Unity3D 发布成PC端常用设置                        ',
+        'articleList': [
+          {
+            'title': '\n                            Unity3D 发布成PC端常用设置                        ',
+            'url': 'http://blog.csdn.net/qq_24642743/article/details/71747794'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            关注我就能达到大师级水平，这话我终于敢说了                        ',
+        'articleList': [
+          {
+            'title': '\n                            关注我就能达到大师级水平，这话我终于敢说了                        ',
+            'url': 'http://blog.csdn.net/LSpQ35k7O5AJ21l1H9o/article/details/78327345'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            【计算几何】点定位（线段，三角形，多边形）                        ',
+        'articleList': [
+          {
+            'title': '\n                            【计算几何】点定位（线段，三角形，多边形）                        ',
+            'url': 'http://blog.csdn.net/qq_33199236/article/details/57075005'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            麻省理工学院科学家组成的一个团队教导人们通过电影获得情感                        ',
+        'articleList': [
+          {
+            'title': '\n                            麻省理工学院科学家组成的一个团队教导人们通过电影获得情感                        ',
+            'url': 'http://blog.csdn.net/JtNbCOC8N2I9/article/details/78778467'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            UE4 新手常用C++API                        ',
+        'articleList': [
+          {
+            'title': '\n                            UE4 新手常用C++API                        ',
+            'url': 'http://blog.csdn.net/u014532636/article/details/71735282'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            iOS开发常用三方库、插件、知名博客等等（Swift版）                        ',
+        'articleList': [
+          {
+            'title': '\n                            iOS开发常用三方库、插件、知名博客等等（Swift版）                        ',
+            'url': 'http://blog.csdn.net/YLGWHYH/article/details/70853202'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            波士顿Atlas机器人再次完成进化，距人类灭绝又进一步！                        ',
+        'articleList': [
+          {
+            'title': '\n                            波士顿Atlas机器人再次完成进化，距人类灭绝又进一步！                        ',
+            'url': 'http://blog.csdn.net/JtNbCOC8N2I9/article/details/78785336'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            斗地主AI算法——第二章の数据结构                        ',
+        'articleList': [
+          {
+            'title': '\n                            斗地主AI算法——第二章の数据结构                        ',
+            'url': 'http://blog.csdn.net/sm9sun/article/details/70804909'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            opencv3之目标跟踪（单目标、多目标）                        ',
+        'articleList': [
+          {
+            'title': '\n                            opencv3之目标跟踪（单目标、多目标）                        ',
+            'url': 'http://blog.csdn.net/m0_37901643/article/details/72820891'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Unity3d 控制物体transform移动的几种方法                        ',
+        'articleList': [
+          {
+            'title': '\n                            Unity3d 控制物体transform移动的几种方法                        ',
+            'url': 'http://blog.csdn.net/renkai0406/article/details/63800248'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            高通将在骁龙845移动平台上对网易游戏进行优化                        ',
+        'articleList': [
+          {
+            'title': '\n                            高通将在骁龙845移动平台上对网易游戏进行优化                        ',
+            'url': 'http://blog.csdn.net/a2Ni5KFDaIO1E6/article/details/78795609'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            《寻梦环游记》背后：一出“硅谷”遇上“好莱坞”的好戏                        ',
+        'articleList': [
+          {
+            'title': '\n                            《寻梦环游记》背后：一出“硅谷”遇上“好莱坞”的好戏                        ',
+            'url': 'http://blog.csdn.net/kXYOnA63Ag9zqtXx0/article/details/78739862'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            先锋机器人走到目标点和走四方形                        ',
+        'articleList': [
+          {
+            'title': '\n                            先锋机器人走到目标点和走四方形                        ',
+            'url': 'http://blog.csdn.net/qq_35508344/article/details/73909944'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Source Insight 中文注释为乱码解决办法（完美解决，一键搞定）                        ',
+        'articleList': [
+          {
+            'title': '\n                            Source Insight 中文注释为乱码解决办法（完美解决，一键搞定）                        ',
+            'url': 'http://blog.csdn.net/BjarneCpp/article/details/70174752'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Python绘图Turtle库详解                        ',
+        'articleList': [
+          {
+            'title': '\n                            Python绘图Turtle库详解                        ',
+            'url': 'http://blog.csdn.net/zengxiantao1994/article/details/76588580'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    'url': 'https://www.csdn.net//nav/fund',
+    'name': '计算机基础',
+    'children': [
+      {
+        'pageName': '\n                            ARKit从入门到精通（10）-ARKit让飞机绕着你飞起来                        ',
+        'articleList': [
+          {
+            'title': '\n                            ARKit从入门到精通（10）-ARKit让飞机绕着你飞起来                        ',
+            'url': 'http://blog.csdn.net/u013263917/article/details/73161072'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Java 常用工具类 Collections 源码分析                        ',
+        'articleList': [
+          {
+            'title': '\n                            Java 常用工具类 Collections 源码分析                        ',
+            'url': 'http://blog.csdn.net/u011240877/article/details/78348578'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            大家都懂的 JSON 解析器原理（一）简介 & 低配版入门                        ',
+        'articleList': [
+          {
+            'title': '\n                            大家都懂的 JSON 解析器原理（一）简介 & 低配版入门                        ',
+            'url': 'http://blog.csdn.net/zhangxin09/article/details/77132093'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            【C++笔记】变量和基本类型                        ',
+        'articleList': [
+          {
+            'title': '\n                            【C++笔记】变量和基本类型                        ',
+            'url': 'http://blog.csdn.net/u013165921/article/details/78530923'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            【C++笔记】字符串、向量和数组                        ',
+        'articleList': [
+          {
+            'title': '\n                            【C++笔记】字符串、向量和数组                        ',
+            'url': 'http://blog.csdn.net/u013165921/article/details/78570226'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            C语言交换两个变量（不创建临时变量）（位运算简介）                        ',
+        'articleList': [
+          {
+            'title': '\n                            C语言交换两个变量（不创建临时变量）（位运算简介）                        ',
+            'url': 'http://blog.csdn.net/AuZeonFung/article/details/76123282'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            数据结构顺序表的增删查改                        ',
+        'articleList': [
+          {
+            'title': '\n                            数据结构顺序表的增删查改                        ',
+            'url': 'http://blog.csdn.net/qq_39056803/article/details/73033406'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            【OpenCV】轮廓与凸包                        ',
+        'articleList': [
+          {
+            'title': '\n                            【OpenCV】轮廓与凸包                        ',
+            'url': 'http://blog.csdn.net/u013165921/article/details/78549330'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            c语言实现求最大公约数的三种方法                        ',
+        'articleList': [
+          {
+            'title': '\n                            c语言实现求最大公约数的三种方法                        ',
+            'url': 'http://blog.csdn.net/Landscape_/article/details/64941031'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            C++连接CTP接口实现简单量化交易（行情、交易、k线、策略）                        ',
+        'articleList': [
+          {
+            'title': '\n                            C++连接CTP接口实现简单量化交易（行情、交易、k线、策略）                        ',
+            'url': 'http://blog.csdn.net/u012234115/article/details/70195889'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            基于C语言的学生成绩管理系统                        ',
+        'articleList': [
+          {
+            'title': '\n                            基于C语言的学生成绩管理系统                        ',
+            'url': 'http://blog.csdn.net/qq_33735635/article/details/73605336'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            C语言位运算应用一：求一个数的二进制表示中1的个数                        ',
+        'articleList': [
+          {
+            'title': '\n                            C语言位运算应用一：求一个数的二进制表示中1的个数                        ',
+            'url': 'http://blog.csdn.net/AuZeonFung/article/details/76131370'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            学会一种数据结构一：队列                        ',
+        'articleList': [
+          {
+            'title': '\n                            学会一种数据结构一：队列                        ',
+            'url': 'http://blog.csdn.net/u010173095/article/details/78622694'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            python中用xpath解析网页的基本方法                        ',
+        'articleList': [
+          {
+            'title': '\n                            python中用xpath解析网页的基本方法                        ',
+            'url': 'http://blog.csdn.net/zwq912318834/article/details/78178316'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            C# WinForm开发系列之c# 通过.net自带的chart控件绘制饼图,柱形图和折线图的基础使用和扩展                        ',
+        'articleList': [
+          {
+            'title': '\n                            C# WinForm开发系列之c# 通过.net自带的chart控件绘制饼图,柱形图和折线图的基础使用和扩展                        ',
+            'url': 'http://blog.csdn.net/DannyIsCoder/article/details/70225163'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            js的DOM节点操作：创建 ，插入，删除，复制，查找节点                        ',
+        'articleList': [
+          {
+            'title': '\n                            js的DOM节点操作：创建 ，插入，删除，复制，查找节点                        ',
+            'url': 'http://blog.csdn.net/Torrex/article/details/54376633'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            ACM竞赛路上亲爱的坑们                        ',
+        'articleList': [
+          {
+            'title': '\n                            ACM竞赛路上亲爱的坑们                        ',
+            'url': 'http://blog.csdn.net/calabash_boy/article/details/76576666'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            二叉树的先、中、后序遍历及层次遍历的迭代版算法                        ',
+        'articleList': [
+          {
+            'title': '\n                            二叉树的先、中、后序遍历及层次遍历的迭代版算法                        ',
+            'url': 'http://blog.csdn.net/qq_24034545/article/details/62228417'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            glibc malloc和free                        ',
+        'articleList': [
+          {
+            'title': '\n                            glibc malloc和free                        ',
+            'url': 'http://blog.csdn.net/W952622442/article/details/78712699'
+          }
+        ]
+      }
+    ]
+  },
+  {'url': 'https://www.csdn.net//nav/engineering', 'name': '研发管理'},
+  {
+    'url': 'https://www.csdn.net//nav/web',
+    'name': '前端'
+  },
+  {
+    'url': 'https://www.csdn.net//nav/mobile',
+    'name': '移动开发',
+    'children': [
+      {
+        'pageName': '\n                            Android：你要的WebView与 JS 交互方式 都在这里了                        ',
+        'articleList': [
+          {
+            'title': '\n                            Android：你要的WebView与 JS 交互方式 都在这里了                        ',
+            'url': 'http://blog.csdn.net/carson_ho/article/details/64904691'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            我为什么放弃java学习Kotlin？                        ',
+        'articleList': [
+          {
+            'title': '\n                            我为什么放弃java学习Kotlin？                        ',
+            'url': 'http://blog.csdn.net/sw950729/article/details/72566523'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            OkHttp之发起Http请求过程概述                        ',
+        'articleList': [
+          {
+            'title': '\n                            OkHttp之发起Http请求过程概述                        ',
+            'url': 'http://blog.csdn.net/chunqiuwei/article/details/76913352'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            一个强悍而优美的Android视频播放器                        ',
+        'articleList': [
+          {
+            'title': '\n                            一个强悍而优美的Android视频播放器                        ',
+            'url': 'http://blog.csdn.net/androidstarjack/article/details/69526279'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Android Studio 中的调试技巧                        ',
+        'articleList': [
+          {
+            'title': '\n                            Android Studio 中的调试技巧                        ',
+            'url': 'http://blog.csdn.net/c6E5UlI1N/article/details/78708440'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Kotlin 踩坑日记（五）aapt2 编译 bug                        ',
+        'articleList': [
+          {
+            'title': '\n                            Kotlin 踩坑日记（五）aapt2 编译 bug                        ',
+            'url': 'http://blog.csdn.net/soslinken/article/details/72828495'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            打造自己的框架之使用注解制作IOC组件                        ',
+        'articleList': [
+          {
+            'title': '\n                            打造自己的框架之使用注解制作IOC组件                        ',
+            'url': 'http://blog.csdn.net/c6E5UlI1N/article/details/78708441'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Android Studio 3.0全新时代：带来的一些新功能                        ',
+        'articleList': [
+          {
+            'title': '\n                            Android Studio 3.0全新时代：带来的一些新功能                        ',
+            'url': 'http://blog.csdn.net/guolipeng_network/article/details/74596265'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            android全屏／沉浸式状态栏下，各种键盘挡住输入框解决办法                        ',
+        'articleList': [
+          {
+            'title': '\n                            android全屏／沉浸式状态栏下，各种键盘挡住输入框解决办法                        ',
+            'url': 'http://blog.csdn.net/smileiam/article/details/69055963'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Nginx源码阅读（模块）                        ',
+        'articleList': [
+          {
+            'title': '\n                            Nginx源码阅读（模块）                        ',
+            'url': 'http://blog.csdn.net/hz5034/article/details/54647276'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Android 开源热库汇总-基本库                        ',
+        'articleList': [
+          {
+            'title': '\n                            Android 开源热库汇总-基本库                        ',
+            'url': 'http://blog.csdn.net/Yuequnchen/article/details/70799728'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            钉钉极速打卡与自动打卡只有一步之遥，然而这一步我们实现了                        ',
+        'articleList': [
+          {
+            'title': '\n                            钉钉极速打卡与自动打卡只有一步之遥，然而这一步我们实现了                        ',
+            'url': 'http://blog.csdn.net/github_2011/article/details/72953762'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            微信公众号 授权登录 JAVA                        ',
+        'articleList': [
+          {
+            'title': '\n                            微信公众号 授权登录 JAVA                        ',
+            'url': 'http://blog.csdn.net/qq_36020545/article/details/56011311'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            支付宝APP支付——支付流程说明及示例                        ',
+        'articleList': [
+          {
+            'title': '\n                            支付宝APP支付——支付流程说明及示例                        ',
+            'url': 'http://blog.csdn.net/flygoa/article/details/54891473'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            微信小程序支付，微信支付【小白专用】                        ',
+        'articleList': [
+          {
+            'title': '\n                            微信小程序支付，微信支付【小白专用】                        ',
+            'url': 'http://blog.csdn.net/xieshunhai/article/details/72829232'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Android Studio 2.3、3.0 升级后问题解决                        ',
+        'articleList': [
+          {
+            'title': '\n                            Android Studio 2.3、3.0 升级后问题解决                        ',
+            'url': 'http://blog.csdn.net/ww897532167/article/details/54617087'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Android性能优化-过度绘制解决方案                        ',
+        'articleList': [
+          {
+            'title': '\n                            Android性能优化-过度绘制解决方案                        ',
+            'url': 'http://blog.csdn.net/c6E5UlI1N/article/details/78663946'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            微信小程序填坑：上传头像；wx.chooseImage，wx.uploadFile                        ',
+        'articleList': [
+          {
+            'title': '\n                            微信小程序填坑：上传头像；wx.chooseImage，wx.uploadFile                        ',
+            'url': 'http://blog.csdn.net/sinat_17775997/article/details/62247880'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            小项目-Java开发简单的计算器                        ',
+        'articleList': [
+          {
+            'title': '\n                            小项目-Java开发简单的计算器                        ',
+            'url': 'http://blog.csdn.net/dancheren/article/details/54577036'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            微信订阅号点击菜单栏获取用户信息                        ',
+        'articleList': [
+          {
+            'title': '\n                            微信订阅号点击菜单栏获取用户信息                        ',
+            'url': 'http://blog.csdn.net/u014520797/article/details/54705716'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    'url': 'https://www.csdn.net//nav/lang',
+    'name': '编程语言',
+    'children': [
+      {
+        'pageName': '\n                            各大公司Java后端开发面试题总结                        ',
+        'articleList': [
+          {
+            'title': '\n                            各大公司Java后端开发面试题总结                        ',
+            'url': 'http://blog.csdn.net/sinat_35512245/article/details/59056120'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Java实现图片上传到服务器，并把上传的图片读取出来                        ',
+        'articleList': [
+          {
+            'title': '\n                            Java实现图片上传到服务器，并把上传的图片读取出来                        ',
+            'url': 'http://blog.csdn.net/weixin_36380516/article/details/58594664'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            史上最难的一道Java面试题 (分析篇)                        ',
+        'articleList': [
+          {
+            'title': '\n                            史上最难的一道Java面试题 (分析篇)                        ',
+            'url': 'http://blog.csdn.net/lirenzuo/article/details/78253481'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Pycharm无法import自己安装的第三方module                        ',
+        'articleList': [
+          {
+            'title': '\n                            Pycharm无法import自己安装的第三方module                        ',
+            'url': 'http://blog.csdn.net/zhujianing1993/article/details/67029852'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            竞价排名Demo - after insert / after update更新记录（防止递归）                        ',
+        'articleList': [
+          {
+            'title': '\n                            竞价排名Demo - after insert / after update更新记录（防止递归）                        ',
+            'url': 'http://blog.csdn.net/itsme_web/article/details/73650543'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            OCR图像识别技术的JAVA实现（一）                        ',
+        'articleList': [
+          {
+            'title': '\n                            OCR图像识别技术的JAVA实现（一）                        ',
+            'url': 'http://blog.csdn.net/weistin/article/details/78839804'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            【常用函数使用总结】php                        ',
+        'articleList': [
+          {
+            'title': '\n                            【常用函数使用总结】php                        ',
+            'url': 'http://blog.csdn.net/qq_33862644/article/details/78445573'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Java 基础 积累-不断更新                        ',
+        'articleList': [
+          {
+            'title': '\n                            Java 基础 积累-不断更新                        ',
+            'url': 'http://blog.csdn.net/bestcxx/article/details/74937365'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            java简单的人机猜拳小游戏                        ',
+        'articleList': [
+          {
+            'title': '\n                            java简单的人机猜拳小游戏                        ',
+            'url': 'http://blog.csdn.net/jayzym/article/details/56019384'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            selenium+python京东自动登录及秒杀                        ',
+        'articleList': [
+          {
+            'title': '\n                            selenium+python京东自动登录及秒杀                        ',
+            'url': 'http://blog.csdn.net/u013042248/article/details/53966185'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            SpringMVC自动注入空指针                        ',
+        'articleList': [
+          {
+            'title': '\n                            SpringMVC自动注入空指针                        ',
+            'url': 'http://blog.csdn.net/rixingbeioul46364/article/details/76190184'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            JavaScript高级程序设计（第六章）——读书笔记                        ',
+        'articleList': [
+          {
+            'title': '\n                            JavaScript高级程序设计（第六章）——读书笔记                        ',
+            'url': 'http://blog.csdn.net/douyabb/article/details/78835673'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            利用anaconda搞定所有Python问题，各种安装包                        ',
+        'articleList': [
+          {
+            'title': '\n                            利用anaconda搞定所有Python问题，各种安装包                        ',
+            'url': 'http://blog.csdn.net/Errors_In_Life/article/details/65936133'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            python中使用xlrd、xlwt操作excel表格详解                        ',
+        'articleList': [
+          {
+            'title': '\n                            python中使用xlrd、xlwt操作excel表格详解                        ',
+            'url': 'http://blog.csdn.net/chengxuyuanyonghu/article/details/54951399'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Excel导出                        ',
+        'articleList': [
+          {
+            'title': '\n                            Excel导出                        ',
+            'url': 'http://blog.csdn.net/shi750989074/article/details/78394273'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            windows下多版本python安装与pip安装和pip使用   吐血总结                        ',
+        'articleList': [
+          {
+            'title': '\n                            windows下多版本python安装与pip安装和pip使用   吐血总结                        ',
+            'url': 'http://blog.csdn.net/silence2015/article/details/56483892'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Spring MVC 实现文件的上传和下载                        ',
+        'articleList': [
+          {
+            'title': '\n                            Spring MVC 实现文件的上传和下载                        ',
+            'url': 'http://blog.csdn.net/qian_ch/article/details/69258465'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            完美解决SpringMVC中静态资源无法找到（No mapping found for HTTP request with URI）问题                        ',
+        'articleList': [
+          {
+            'title': '\n                            完美解决SpringMVC中静态资源无法找到（No mapping found for HTTP request with URI）问题                        ',
+            'url': 'http://blog.csdn.net/jdjdndhj/article/details/54907891'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            python中文字符串居中/中文居中python/python汉字字符串居中：手撕比方法好用                        ',
+        'articleList': [
+          {
+            'title': '\n                            python中文字符串居中/中文居中python/python汉字字符串居中：手撕比方法好用                        ',
+            'url': 'http://blog.csdn.net/PlusChang/article/details/72997037'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            利用反射实现子类继承父类的值                        ',
+        'articleList': [
+          {
+            'title': '\n                            利用反射实现子类继承父类的值                        ',
+            'url': 'http://blog.csdn.net/woshiyidaocai/article/details/78833252'
+          }
+        ]
+      }
+    ]
+  },
+  {'url': 'https://www.csdn.net//nav/arch', 'name': '架构'},
+  {
+    'url': 'https://www.csdn.net//nav/ops',
+    'name': '运维',
+    'children': [
+      {
+        'pageName': '\n                            java搭建阿里云服务器环境（java环境+mysql+tomcat）和部署 JavaWeb 项目到云服务器（十分详细）                        ',
+        'articleList': [
+          {
+            'title': '\n                            java搭建阿里云服务器环境（java环境+mysql+tomcat）和部署 JavaWeb 项目到云服务器（十分详细）                        ',
+            'url': 'http://blog.csdn.net/sihai12345/article/details/73381151'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Windows中实现不依赖账户登录的开机启动程序                        ',
+        'articleList': [
+          {
+            'title': '\n                            Windows中实现不依赖账户登录的开机启动程序                        ',
+            'url': 'http://blog.csdn.net/CJF_iceKing/article/details/71725935'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            CentOS配置本地yum源/阿里云yum源/163yuan源，并配置yum源的优先级                        ',
+        'articleList': [
+          {
+            'title': '\n                            CentOS配置本地yum源/阿里云yum源/163yuan源，并配置yum源的优先级                        ',
+            'url': 'http://blog.csdn.net/kangvcar/article/details/73477730'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            CentOS7网络配置(ping不同的原因及解决方法)                        ',
+        'articleList': [
+          {
+            'title': '\n                            CentOS7网络配置(ping不同的原因及解决方法)                        ',
+            'url': 'http://blog.csdn.net/r8l8q8/article/details/73330296'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            网盘不靠谱 那就自己搭建256TB的网盘呗 — Nextcloud搭建过程                        ',
+        'articleList': [
+          {
+            'title': '\n                            网盘不靠谱 那就自己搭建256TB的网盘呗 — Nextcloud搭建过程                        ',
+            'url': 'http://blog.csdn.net/zhywbp/article/details/73268158'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            使用Api分析器与Windows兼容包来编写智能的跨平台.NET Core应用                        ',
+        'articleList': [
+          {
+            'title': '\n                            使用Api分析器与Windows兼容包来编写智能的跨平台.NET Core应用                        ',
+            'url': 'http://blog.csdn.net/sD7O95O/article/details/78801781'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            如何清理 Linux 系统开机启动项？                        ',
+        'articleList': [
+          {
+            'title': '\n                            如何清理 Linux 系统开机启动项？                        ',
+            'url': 'http://blog.csdn.net/Ki8Qzvka6Gz4n450m/article/details/78750627'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            超简单的卸载vs2015总结(亲测可用)                        ',
+        'articleList': [
+          {
+            'title': '\n                            超简单的卸载vs2015总结(亲测可用)                        ',
+            'url': 'http://blog.csdn.net/YaoDeBiAn/article/details/74315632'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            shell脚本（一）基础知识                        ',
+        'articleList': [
+          {
+            'title': '\n                            shell脚本（一）基础知识                        ',
+            'url': 'http://blog.csdn.net/lasoup/article/details/78785198'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Linux下使用shadowsocks（以ubuntu16.04为例，非服务器）                        ',
+        'articleList': [
+          {
+            'title': '\n                            Linux下使用shadowsocks（以ubuntu16.04为例，非服务器）                        ',
+            'url': 'http://blog.csdn.net/superbfly/article/details/54950451'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            彻底找到 Tomcat 启动速度慢的元凶                        ',
+        'articleList': [
+          {
+            'title': '\n                            彻底找到 Tomcat 启动速度慢的元凶                        ',
+            'url': 'http://blog.csdn.net/u013939884/article/details/72860358'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            vue嵌套路由-query传递参数（三）                        ',
+        'articleList': [
+          {
+            'title': '\n                            vue嵌套路由-query传递参数（三）                        ',
+            'url': 'http://blog.csdn.net/k491022087/article/details/70214664'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            更改Jupyter Notebook起始目录的4种方法                        ',
+        'articleList': [
+          {
+            'title': '\n                            更改Jupyter Notebook起始目录的4种方法                        ',
+            'url': 'http://blog.csdn.net/qq_33039859/article/details/54604533'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            完全激活win server 2012的方法（亲测可行！）                        ',
+        'articleList': [
+          {
+            'title': '\n                            完全激活win server 2012的方法（亲测可行！）                        ',
+            'url': 'http://blog.csdn.net/oqqHuTu12345678/article/details/70260052'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            OpenCV3.2.0+VS2017环境配置与常见问题（巨细坑爹版）                        ',
+        'articleList': [
+          {
+            'title': '\n                            OpenCV3.2.0+VS2017环境配置与常见问题（巨细坑爹版）                        ',
+            'url': 'http://blog.csdn.net/qq_36285879/article/details/71909067'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Linux 运维工程师学习成长路线上要经历哪四个阶段？                        ',
+        'articleList': [
+          {
+            'title': '\n                            Linux 运维工程师学习成长路线上要经历哪四个阶段？                        ',
+            'url': 'http://blog.csdn.net/Ki8Qzvka6Gz4n450m/article/details/78764267'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Mac下kernel_task进程cpu占用率久高不下解决记录                        ',
+        'articleList': [
+          {
+            'title': '\n                            Mac下kernel_task进程cpu占用率久高不下解决记录                        ',
+            'url': 'http://blog.csdn.net/github_36186488/article/details/72725783'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Linux文件系统的硬链接与软链接                        ',
+        'articleList': [
+          {
+            'title': '\n                            Linux文件系统的硬链接与软链接                        ',
+            'url': 'http://blog.csdn.net/DP29syM41zyGndVF/article/details/78771228'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Linux运维之ntpdate同步网络时间                        ',
+        'articleList': [
+          {
+            'title': '\n                            Linux运维之ntpdate同步网络时间                        ',
+            'url': 'http://blog.csdn.net/Ki8Qzvka6Gz4n450m/article/details/78709285'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            关于idea在运行web项目时部署的位置                        ',
+        'articleList': [
+          {
+            'title': '\n                            关于idea在运行web项目时部署的位置                        ',
+            'url': 'http://blog.csdn.net/joenqc/article/details/58044953'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    'url': 'https://www.csdn.net//nav/iot',
+    'name': '物联网',
+    'children': [
+      {
+        'pageName': '\n                            NB-IoT移远BC95调试笔记 02 CoAP协议                        ',
+        'articleList': [
+          {
+            'title': '\n                            NB-IoT移远BC95调试笔记 02 CoAP协议                        ',
+            'url': 'http://blog.csdn.net/iotisan/article/details/78277135'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            业界最小封装SOT23-6单芯片I2C转PWM                        ',
+        'articleList': [
+          {
+            'title': '\n                            业界最小封装SOT23-6单芯片I2C转PWM                        ',
+            'url': 'http://blog.csdn.net/fgh00000/article/details/78797378'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            lorawan在嵌入式系统中的实现--节点端(一)--SX1278介绍                        ',
+        'articleList': [
+          {
+            'title': '\n                            lorawan在嵌入式系统中的实现--节点端(一)--SX1278介绍                        ',
+            'url': 'http://blog.csdn.net/gaojn/article/details/76695169'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Linux内核笔记(1)                        ',
+        'articleList': [
+          {
+            'title': '\n                            Linux内核笔记(1)                        ',
+            'url': 'http://blog.csdn.net/gwx123wan/article/details/78449313'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Intel正式发布银牌奔腾和两款赛扬：新一代6W的超低功耗平台CPU                        ',
+        'articleList': [
+          {
+            'title': '\n                            Intel正式发布银牌奔腾和两款赛扬：新一代6W的超低功耗平台CPU                        ',
+            'url': 'http://blog.csdn.net/Dzz2seiN13YV/article/details/78790814'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            PLC 上位机 算法 源代码 方案 品牌 历经十年升级改造 数代更新 梯形图算法全部公开 梯形图转指令表的算法源代码                        ',
+        'articleList': [
+          {
+            'title': '\n                            PLC 上位机 算法 源代码 方案 品牌 历经十年升级改造 数代更新 梯形图算法全部公开 梯形图转指令表的算法源代码                        ',
+            'url': 'http://blog.csdn.net/yunhaiC/article/details/74518176'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            基于RISC-V架构的开源处理器及SoC研究综述（二）                        ',
+        'articleList': [
+          {
+            'title': '\n                            基于RISC-V架构的开源处理器及SoC研究综述（二）                        ',
+            'url': 'http://blog.csdn.net/leishangwen/article/details/55006804'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            虚拟化技术kvm,xen,vmware比较                        ',
+        'articleList': [
+          {
+            'title': '\n                            虚拟化技术kvm,xen,vmware比较                        ',
+            'url': 'http://blog.csdn.net/Gavinlib/article/details/72421852'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Google工程师：教你用树莓派+Arduino+TensorFlow搭建图像识别小车                        ',
+        'articleList': [
+          {
+            'title': '\n                            Google工程师：教你用树莓派+Arduino+TensorFlow搭建图像识别小车                        ',
+            'url': 'http://blog.csdn.net/x32sky/article/details/69526137'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            微软“出轨”高通，英特尔“正室”地位会受到影响吗？                        ',
+        'articleList': [
+          {
+            'title': '\n                            微软“出轨”高通，英特尔“正室”地位会受到影响吗？                        ',
+            'url': 'http://blog.csdn.net/Dzz2seiN13YV/article/details/78795160'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            别再只关注骁龙845的性能了，因为它真正重要的是这些                        ',
+        'articleList': [
+          {
+            'title': '\n                            别再只关注骁龙845的性能了，因为它真正重要的是这些                        ',
+            'url': 'http://blog.csdn.net/Dzz2seiN13YV/article/details/78795194'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            重大改变！Python或将取代VBA，成为Excel官方脚本语言！                        ',
+        'articleList': [
+          {
+            'title': '\n                            重大改变！Python或将取代VBA，成为Excel官方脚本语言！                        ',
+            'url': 'http://blog.csdn.net/DP29syM41zyGndVF/article/details/78841421'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            手机插到电脑上后adb查不到连接（只教你最后一招）                        ',
+        'articleList': [
+          {
+            'title': '\n                            手机插到电脑上后adb查不到连接（只教你最后一招）                        ',
+            'url': 'http://blog.csdn.net/huajuanaini/article/details/64444892'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            如何利用树莓派打造一款机器人                        ',
+        'articleList': [
+          {
+            'title': '\n                            如何利用树莓派打造一款机器人                        ',
+            'url': 'http://blog.csdn.net/p23onzq/article/details/78758576'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            明天，这样的嵌入式工程师将秒杀普通程序员？                        ',
+        'articleList': [
+          {
+            'title': '\n                            明天，这样的嵌入式工程师将秒杀普通程序员？                        ',
+            'url': 'http://blog.csdn.net/p23onzq/article/details/78758577'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            马斯克首次证实特斯拉正在研发AI芯片：用途不限于自动驾驶                        ',
+        'articleList': [
+          {
+            'title': '\n                            马斯克首次证实特斯拉正在研发AI芯片：用途不限于自动驾驶                        ',
+            'url': 'http://blog.csdn.net/Uwr44UOuQcNsUQb60zk2/article/details/78794586'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            【重磅来袭：系列二】史上最全NB-IoT技术方面的系列问题和联盟答案                        ',
+        'articleList': [
+          {
+            'title': '\n                            【重磅来袭：系列二】史上最全NB-IoT技术方面的系列问题和联盟答案                        ',
+            'url': 'http://blog.csdn.net/NBIoT/article/details/54906465'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            2017年的Linux内核防护依然脆弱                        ',
+        'articleList': [
+          {
+            'title': '\n                            2017年的Linux内核防护依然脆弱                        ',
+            'url': 'http://blog.csdn.net/a26r2kF967hGAi/article/details/78798116'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            stm32不小心把SWD和JTAG都给关了，程序下载不进去，解决办法                        ',
+        'articleList': [
+          {
+            'title': '\n                            stm32不小心把SWD和JTAG都给关了，程序下载不进去，解决办法                        ',
+            'url': 'http://blog.csdn.net/Ace_Shiyuan/article/details/60139865'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            在Linux中，如何找到并杀掉僵尸进程？                        ',
+        'articleList': [
+          {
+            'title': '\n                            在Linux中，如何找到并杀掉僵尸进程？                        ',
+            'url': 'http://blog.csdn.net/DP29syM41zyGndVF/article/details/78831897'
+          }
+        ]
+      }
+    ]
+  },
+  {'url': 'https://www.csdn.net//nav/avi', 'name': '音视频开发'},
+  {
+    'url': 'https://www.csdn.net//nav/sec',
+    'name': '安全'
+  },
+  {
+    'url': 'https://www.csdn.net//nav/other',
+    'name': '其他',
+    'children': [
+      {
+        'pageName': '\n                            Amazon Alexa系列介绍(1)--综述                        ',
+        'articleList': [
+          {
+            'title': '\n                            Amazon Alexa系列介绍(1)--综述                        ',
+            'url': 'http://blog.csdn.net/gybseu/article/details/54564997'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            全球首款NB-IoT模块推出 适用于水表                        ',
+        'articleList': [
+          {
+            'title': '\n                            全球首款NB-IoT模块推出 适用于水表                        ',
+            'url': 'http://blog.csdn.net/NBIoT/article/details/54943718'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            Intellij Idea安装主题包                        ',
+        'articleList': [
+          {
+            'title': '\n                            Intellij Idea安装主题包                        ',
+            'url': 'http://blog.csdn.net/laiwenqiang/article/details/72456496'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            马云说双十一不挣钱 原来4亿亏在这里！                        ',
+        'articleList': [
+          {
+            'title': '\n                            马云说双十一不挣钱 原来4亿亏在这里！                        ',
+            'url': 'http://blog.csdn.net/e848lip6R/article/details/78540258'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            聊聊淘宝天猫个性化推荐技术演进史                        ',
+        'articleList': [
+          {
+            'title': '\n                            聊聊淘宝天猫个性化推荐技术演进史                        ',
+            'url': 'http://blog.csdn.net/bystarlight/article/details/71522191'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            <辨析>-06-日语学习“が”和“は”的区别                        ',
+        'articleList': [
+          {
+            'title': '\n                            <辨析>-06-日语学习“が”和“は”的区别                        ',
+            'url': 'http://blog.csdn.net/y7_lucky/article/details/78917244'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            大数据24小时：百度发布大数据产品“百度数说”，国内首个媒体人工智能平台宣布上线                        ',
+        'articleList': [
+          {
+            'title': '\n                            大数据24小时：百度发布大数据产品“百度数说”，国内首个媒体人工智能平台宣布上线                        ',
+            'url': 'http://blog.csdn.net/YMPzUELX3AIAp7Q/article/details/78919539'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            数据猿荣获2017 ECI Festival国际数字商业创新节“最佳大数据媒体奖”                        ',
+        'articleList': [
+          {
+            'title': '\n                            数据猿荣获2017 ECI Festival国际数字商业创新节“最佳大数据媒体奖”                        ',
+            'url': 'http://blog.csdn.net/YMPzUELX3AIAp7Q/article/details/78919536'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            你看不惯的千禧一代，马云和马化腾都要捧着！                        ',
+        'articleList': [
+          {
+            'title': '\n                            你看不惯的千禧一代，马云和马化腾都要捧着！                        ',
+            'url': 'http://blog.csdn.net/cindycinderella/article/details/73838604'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            投资逻辑：是追风口，还是等待技术溢出？                        ',
+        'articleList': [
+          {
+            'title': '\n                            投资逻辑：是追风口，还是等待技术溢出？                        ',
+            'url': 'http://blog.csdn.net/YMPzUELX3AIAp7Q/article/details/78919591'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            全国首个NB-IoT规模化商用 - BC95模块                        ',
+        'articleList': [
+          {
+            'title': '\n                            全国首个NB-IoT规模化商用 - BC95模块                        ',
+            'url': 'http://blog.csdn.net/NBIoT/article/details/54893464'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            英伟达惹怒诸多客户只为“十一倍收益” ？                        ',
+        'articleList': [
+          {
+            'title': '\n                            英伟达惹怒诸多客户只为“十一倍收益” ？                        ',
+            'url': 'http://blog.csdn.net/q1ZG4Sw/article/details/78919689'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            您的网站是响应式网站吗？                        ',
+        'articleList': [
+          {
+            'title': '\n                            您的网站是响应式网站吗？                        ',
+            'url': 'http://blog.csdn.net/freestyleone/article/details/78711282'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            亏损数亿，阿里也要强推99元白菜价智能音箱！背后逻辑到底是啥？                        ',
+        'articleList': [
+          {
+            'title': '\n                            亏损数亿，阿里也要强推99元白菜价智能音箱！背后逻辑到底是啥？                        ',
+            'url': 'http://blog.csdn.net/dQCFKyQDXYm3F8rB0/article/details/78631399'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            中国省市列表的JSON数据                        ',
+        'articleList': [
+          {
+            'title': '\n                            中国省市列表的JSON数据                        ',
+            'url': 'http://blog.csdn.net/qq_33613696/article/details/70847041'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            从事GIS开发多年,2017年对GIS行业的心得,尤其对三维GIS的理解                        ',
+        'articleList': [
+          {
+            'title': '\n                            从事GIS开发多年,2017年对GIS行业的心得,尤其对三维GIS的理解                        ',
+            'url': 'http://blog.csdn.net/happyduoduo1/article/details/55051626'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            win10专业版激活（试试水）                        ',
+        'articleList': [
+          {
+            'title': '\n                            win10专业版激活（试试水）                        ',
+            'url': 'http://blog.csdn.net/qq_38628659/article/details/78616486'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            <基础>-02-日语中为何会有体言用言？                        ',
+        'articleList': [
+          {
+            'title': '\n                            <基础>-02-日语中为何会有体言用言？                        ',
+            'url': 'http://blog.csdn.net/y7_lucky/article/details/78916954'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            斯诺登给普通人开发了个「反监控」的 App                        ',
+        'articleList': [
+          {
+            'title': '\n                            斯诺登给普通人开发了个「反监控」的 App                        ',
+            'url': 'http://blog.csdn.net/po86BHac10C4/article/details/78915273'
+          }
+        ]
+      },
+      {
+        'pageName': '\n                            世界主要国家和地区及中国天气气象CSV/JSON/KML数据【免费下载】                        ',
+        'articleList': [
+          {
+            'title': '\n                            世界主要国家和地区及中国天气气象CSV/JSON/KML数据【免费下载】                        ',
+            'url': 'http://blog.csdn.net/sinat_34719507/article/details/70567974'
+          }
+        ]
+      }
+    ]
+  }
+]
+
+var page = {
+  'title': '   \n         \n\n    \n        \n        Android逆向之旅---Android中分析某短视频的数据请求加密协议(IDA动态调试SO)第二篇        \n           \n        \n        \n\n         \n    \n',
+  'content': [
+    {'type': 'h2', 'text': ''},
+    {'type': 'h2', 'text': '一、逆向分析'},
+    {
+      'type': 'p',
+      'text': '年前必须搞定短视频四小龙，之前已经搞定前面一个某短视频，不了解的同学可以点击这里：分析某短视频的数据请求加密协议第一篇，那么今天继续来搞下一个，在之前一篇文章中已经详细分析了某短视频的数据请求加密协议，通过IDA动态调试so来解决一些问题，本文我们继续来看另外一个短视频的数据请求加密协议，这个就是传说中的某拍视频，不多说，找到突破口还是抓包：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108134349948?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {
+      'type': 'p',
+      'text': '我们通过下拉一次数据，看到这个请求url，发现请求中的参数信息没有携带签名信息，但是返回的数据确实加密的字节数组了。所以得先搞定这个字节数组了。直接用Jadx打开应用，然后全局搜索url字符串信息：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108134541920?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '很容易就找到了这个，直接点击进入即可：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108143116083?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '这里看到调用一个方法之后拿到字符串就开始直接解析json了，看看这个返回字符串方法：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108143154189?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '看到，Jadx中解析失败，不过没关系，还是smali代码，大致能看懂，继续往下看：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108143233201?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {
+      'type': 'p',
+      'text': '这里需要你用过okhttp框架了，一看就知道这里用到这个框架，而且最终通过bytes来获取字节数组，我们看到这里又调用了一个方法，然后直接返回字符串了，去查看这个方法实现：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108143336204?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '继续往下看，应该是个解密方法：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108143359598?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {
+      'type': 'p',
+      'text': '看到，这里依然把加密工作放到了native层了，我们操作依然很简单，直接把这个libte.so拷贝到我们的demo工程中，然后构造这个native类，直接调用native方法进行解密即可：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108143516621?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '我们通过之前抓包看到，他的请求参数都是一些常规的信息，没有签名信息，为了简单，这里直接把这些参数拷贝出来写死利用okhttp框架进行数据请求：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108143623926?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '当然这些参数后续肯定需要优化，实现动态获取最靠谱：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108143649452?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '拿到请求之后的字节数据之后，然后调用native方法进行解密，我们直接运行看看日志信息：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108143840272?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '可惜的是，发现了尽然解密失败。那么就要怀疑so中是否有判断逻辑了，直接使用IDA打开so查看：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108144247322?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '直接F5查看对应的C代码，看到一个tinydecode函数的返回值，然后有一个判断，进入这个函数看看：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108144505005?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {
+      'type': 'p',
+      'text': '这里调用了strstr系统函数，这个函数主要用来判断第二个参数是不是第一个参数的字串，如果是就返回字串的指针，如果不是就返回空指针NULL；看到这里有个包名字段，感觉应该和包名有关系，双击这个g_packagename字段，然后点击X键，查看调用的地方：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108144650696?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '在JNI_OnLoad中进行赋值的，依然查看JNI_OnLoad函数代码：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108144923760?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '这里开始进行赋值了，看看上面这里的sub_43B0函数怎么获取字符串信息的：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108144955388?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {
+      'type': 'p',
+      'text': '好吧，尽然是通过读取系统的这个文件来获取包名值，而不是通过全局的Context变量了。这个文件是很奇特的，只要在本应用中读这个文件就是当前应用包名，而是用命令行去查看这个文件是没任何内容的。这个知识点大家就记住一下就好了。'
+    },
+    {'type': 'p', 'text': ''},
+    {'type': 'p', 'text': '那么这个到底用当前应用包名和哪个包名进行比较呢？看上面的strstr函数的第二个参数是：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108145306630?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '依然双击这个变量，然后点击X键查看赋值地方：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108145338299?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '还是在JNI_OnLoad函数中，点击进入赋值代码：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108145610735?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {
+      'type': 'p',
+      'text': '看到一个特别的字符串信息和一个循环指令，可以猜想应该是通过这个字符串信息来获取最后的信息赋值给g_me变量，其实这里我们可以才想到这个值应该是应用的的包名：com.yixia.xxxx；这样就可以理解为只有当前应用的包名正确才能正确调用逻辑，这个是一层简单的防护而已。就是为了防止自己的so文件被其他恶意程序调用的。'
+    },
+    {'type': 'p', 'text': ''},
+    {'type': 'h2', 'text': '二、IDA调试so'},
+    {
+      'type': 'p',
+      'text': '不过这里都是猜想，为了验证，可以动态调试so来验证。而调试so步骤也不想在多说了，在上一篇文章已经很详细介绍了，这里直接上手操作：'
+    },
+    {'type': 'p', 'text': '第一步：运行android_server开始监听'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108151034538?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': ''},
+    {'type': 'p', 'text': '第二步：端口转发，以debug模式启动应用'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108151056983?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': ''},
+    {'type': 'p', 'text': '第三步：打开IDA进行进程附加，记得勾选上JNI_OnLoad函数挂起状态'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108151116680?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': ''},
+    {'type': 'p', 'text': '第四步：使用DDMS查看调试端口，然后启动调试器链接'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108151206447?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '一定要记得正确的端口号，不然链接失败报错的：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108151300495?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': ''},
+    {'type': 'p', 'text': '第五步：IDA中点击运行开始调试'},
+    {
+      'type': 'p',
+      'text': '不过这里为了保险起见，在运行之前，再去查看有么有成功挂起JNI_OnLoad函数设置：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108151751044?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '如果没有，就在此勾选上：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108151813824?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '然后在点击运行，当然也可以直接使用F9键：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108151619224?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': ''},
+    {'type': 'p', 'text': '运行成功之后，会发现，jdb也连接成功：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108151654842?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '而且DDMS中的红色小蜘蛛变成绿色的了：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108151713934?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': ''},
+    {
+      'type': 'p',
+      'text': '运行成功之后，因为程序会家在很多系统的so文件，而我们又在JNI_OnLoad挂起了，所以会弹出很多确定对话框，都不用管直接点击OK即可，直到把系统so文件全部加载完毕：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108151936266?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '然后，这时候就会出现我们demo中的按钮界面了，我们直接点击按钮进行加载libte.so文件：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108150455178?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '点击运行，加载需要调试的so文件，然后在右侧栏找到JNI_OnLoad和解密函数下断点：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108152047159?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '先找到指定so文件，然后双击在查找函数：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108152115432?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '点击进入函数处下断点：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108152131722?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '接着给加密函数下断点：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108152146363?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '点击进入函数代码处即可：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108152207491?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {
+      'type': 'p',
+      'text': '然后这时候，就可以开始运行了，运行到断点处，依次往下走，这里发现JNI_OnLoad中并没有反调试逻辑，直接略过，来到解密函数，F7单步往下走，来到了tinydecode函数处，下个断点：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108152748449?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '然后进入函数，之前静态分析这个函数，他内部有一个字符串字串判断函数：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108152441275?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '一般都会在CMP处下个断点，继续往下走，来到strstr函数内部，看看两个字符串比较的值是多少：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108152902682?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '看到，获取到本应用的包名就是我们的demo应用，继续看另外一个字符串信息：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108153022597?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {
+      'type': 'p',
+      'text': '看到了，这个包名的确是该应用的：com.yixia.xxxx值，因为再之前下了CMP判断断点，现在明显不是字串，返回NULL了，所以寄存器中的值肯定是0了，为了后续能在正确的逻辑，直接修改寄存器值：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108153201772?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '修改寄存器值很简单，直接在右侧栏右击进行修改即可。修改成非0值即可，一般就修改成1了，走了正确的逻辑了，可惜的是，在日志中看到解密还是失败的。'},
+    {
+      'type': 'p',
+      'text': ''
+    },
+    {'type': 'h2', 'text': '三、修改指令'},
+    {
+      'type': 'p',
+      'text': '但是到这里，我们已经可以确认一件事就是so中的解密函数逻辑有一层防护就是判断当前调用so的应用包名是否为正确的视频包名，如果不是就不走正确的解密逻辑了。所以这里我们需要修改一下so指令，让这个判断无效。修改指令其实很简单，我们看到他通过判断strstr函数返回的NULL值，也就是对应 CMP R0,#0 指令值，然后后面有一个BEQ跳转指令，这里我们可以这么改，他不是和0判断吗？其实0就是NULL值，我们把他改成和1比较，这样strstr函数返回了NULL值也就是0，和1比较不相等。那就正确的逻辑了。这个思路大家要搞清楚，其实也没这么复杂，反正就一个目的，不要走后面的BEQ逻辑就对了。和1比较肯定就不会走BEQ逻辑了。好了下面就来开始修改指令了，这个网上有一个工具可以修改，但是这里发现了一个在线修改地址：http://armconverter.com/；网站打开有点慢，等待一下即可，我们为了验证这个网站准确，我们先输入 CMP R0,#0 指令，看看对应的十六进制值和so中的值是否对应：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108154322932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '看到这里有很多架构的对应这个指令的值，先不着急，我们去IDA中查看这条指令对应的值：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108154405917?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '这里为了后面修改指令方便，借助010Editor工具进行操作：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108154426660?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '010Editor工具有两个常用的快捷键，一个是Ctrl+F全局查找十六进制值，一个是Ctrl+G跳转到指定的地址。这里我们跳转到5BB0地址处：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108154524639?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {
+      'type': 'p',
+      'text': '看到这里的值是：000050E3值，和上面的转化的arm架构值对应的。那么下面就来修改指令，比较简单，直接修改为：CMP R0,#0 ==> CMP R0,#1'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108154803223?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '对应的十六进制值就是010050E3了，直接去010Editor工具中进行修改：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108154831532?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '就这样修改成功了，然后保存，再次用IDA打开修改之后的so文件，看看是否修改成功了：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108155052146?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '这时候，我们在用F5键查看他的代码：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108155108357?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {
+      'type': 'p',
+      'text': '看到，的确有效果了，这时候strstr返回NULL了，和1进行比较显然不相等就开始走下面的正确解密逻辑了。修改成功了，到这里有的同学好奇，是否可以直接修改后面的BEQ指令为BNE呢？当然是可以的，这个方式后面继续介绍，因为我写文章的目的就在于能介绍技术都给介绍，多条路始终是好事。'
+    },
+    {'type': 'p', 'text': ''},
+    {'type': 'h2', 'text': '四、逆向分析签名信息'},
+    {
+      'type': 'p',
+      'text': '然后我们把修改之后的so文件拷贝到工程中，再次运行，其实这个结果还是不可以的，因为我们在上面的调试及时过了CMP也是不行的，所以这时候就要猜想了还要哪里有问题呢？当然找问题还得去那块请求数据的smali代码处：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108160051631?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '开始的分析okhttp请求代码处忽略了这个地方，去查看这个类：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108160122961?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '到了这个内部类中发现了很多关键信息，最重要的莫过于这个UA，请求头信息。而这里有很多信息，还包括了签名信息，继续往下看：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108160222349?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '好吧，这下已经肯定就是把签名信息放到了请求头中了，这招也是够狠的，一般人还很难发现，再回到Fiddler抓包看看请求头中的具体信息：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108160321572?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {
+      'type': 'p',
+      'text': '果然在头部中有这几个信息，通过分析可以发现，除了sign字段其他的值可以暂时写死，都是表示唯一的，后续需要搞定那个sessionid值。这里先不管写死。然后就来关键看看sign签名字段值怎么来的：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108160708115?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '依然调用上面的native方法的，这里为了搞清楚参数值，直接启动hook大法打印参数值即可，没必要分析代码了：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108160745833?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {
+      'type': 'p',
+      'text': '需要注意的是，应用进行拆包了，所以为了确保hook成功，先hook系统的Application类的attach方法拿到正确的类加载器，这个方法已经在很多文章中都介绍了，这里不多说了，直接运行看日志：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108161140440?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '看到参数再结合上面的代码可以看到，大致是应用版本号、UUID、时间戳、请求url的path值。这里我们可以把前两个值写死，后面两个值获取即可：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108161541018?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '这里的URL就是请求视频列表数据的：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108161604501?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '然后我们把上面的头部信息设置到okhttp中即可：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108161753714?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '然后运行看看效果，抓包看到头部信息已经设置成功了，看看返回的数据：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108162209601?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '看到的确有结果了，但是貌似是错误信息，直接去转码这个Unicode值：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108162236708?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '看到，提示是签名校验失败，也就是上面的头部信息中的签名值是错误的。说明那个native函数签名有问题，继续用IDA打开so文件进行查看即可：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108163153971?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '这里依然有一个sign函数，获取v18值，到下面进行比较逻辑，进入sign函数看看：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108163233853?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': ''},
+    {'type': 'h2', 'text': '五、最终解决方案'},
+    {
+      'type': 'p',
+      'text': '果然这里还是进行判断当前应用是否为正确的包名，所以我们需要修改指令了，这一次不修改该CMP比较的值了，而是修改跳转指令，直接把BEQ改成BNE即可，BEQ是等于跳转，BNE是不等于跳转。这样改了之后，就不在乎上面的CMP指令了，修改指令还是很值钱一样：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108163426196?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '然后去010Editor中进行查看十六进制值：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108163447284?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '然后再去上面的那个转化网站查看：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108163502890?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '可以看到BEQ的十六进制值最后两位是0A，那么改成BNE之后是多少：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108163607596?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '变化的就是0A变成了1A值，那么简单了，直接修改010Editor中的0A值即可：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108163636239?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '其他的地方都不要动，保存即可，然后再用IDA打开修改之后的so文件，确认是否修改成功：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108164039835?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '看到了，果然把BEQ修改成了BNE了，查看代码：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108164046096?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {
+      'type': 'p',
+      'text': '这样就可以了，strstr返回的肯定是NULL也就是0，那么非0就是true了，走了下面的解密逻辑了。好了，把修改之后的so文件拷贝到我们的demo工程中，再次运行：'
+    },
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108164049023?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '这样终于有结果了，我们把这json格式化看看：'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171108164051932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd3ZWkwOTEwNDEwMDAz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '好了到这里，我们就成功的拿到了视频的数据了。这里遇到的问题和上一篇的某音可以说完全不一样，虽然都有签名信息。下面就来总结一下。'},
+    {
+      'type': 'p',
+      'text': ''
+    },
+    {'type': 'h2', 'text': '六、知识点总结'},
+    {
+      'type': 'p',
+      'text': '本文分析了视频获取信息的加密协议，可以看到其实遇到的问题不算难，但是我们依然可以了解到很多技术和知识：'
+    },
+    {
+      'type': 'p',
+      'text': '第一、签名信息永远都不过时，可以放在请求字段中，也可以尝试放到请求头中。第二、对于so防止被别人恶意调用，可以判断是否为当前正确的应用包名信息。第三、在native层可以直接读取系统文件/proc/self/cmdline值获取应用包名。第四、在native层遇到判断逻辑，修改一般就两种方案：一种是直接修改BEQ指令为BNE，一种是修改CMP指令比较的值，一般是把0改成1即可。'
+    },
+    {'type': 'p', 'text': '可以看到应用的so防护比之前的某音查了一点，至少加点签名校验，反调试等基础判断，然而并没有。'},
+    {'type': 'p', 'text': ''},
+    {
+      'type': 'p',
+      'text': ''
+    },
+    {'type': 'p', 'text': '严重声明'},
+    {
+      'type': 'p',
+      'text': '本文的意图只有一个就是通过分析app学习更多的逆向技术，如果有人利用本文知识和技术进行非法操作进行牟利，带来的任何法律责任都将由操作者本人承担，和本文作者无任何关系，最终还是希望大家能够秉着学习的心态阅读此文。鉴于安全问题，样本和源码都去编码美丽小密圈自取！'
+    },
+    {'type': 'p', 'text': ''},
+    {'type': 'h2', 'text': '七、总结'},
+    {
+      'type': 'p',
+      'text': '本文在上一篇分析完某音和某闪视频协议解密之后，在此分析某拍视频的，之前我说过这次一定要搞定短视频四小龙，那么下一个大家应该猜到是谁了。当然大家也很好奇为什么我非要死磕短视频呢？因为我有一个大大的计划和项目要启动。等下一篇搞定最后一个短视频协议之后，就告诉大家我到底要干嘛？本文虽然难度低了，但是为了讲解详细，给大家带来更多的知识，截取了很多图片注释，很累很累的。所以大家看完文章之后觉得有收获就点赞分享吧！'
+    },
+    {'type': 'p', 'text': ''},
+    {'type': 'p', 'text': ''},
+    {'type': 'h2', 'text': ''},
+    {
+      'type': 'p',
+      'text': '《Android应用安全防护和逆向分析》点击立即购买：京东  天猫'
+    },
+    {'type': 'img', 'src': 'http://img.blog.csdn.net/20171218164959450'},
+    {'type': 'p', 'text': ''},
+    {
+      'type': 'p',
+      'text': '更多内容：点击这里'
+    },
+    {'type': 'p', 'text': ''},
+    {'type': 'p', 'text': '关注微信公众号，最新技术干货实时推送'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20160822091821005?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': '编码美丽技术圈'},
+    {'type': 'p', 'text': '微信扫一扫进入我的"技术圈"世界'},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20171030170749085'
+    },
+    {'type': 'p', 'text': ''},
+    {
+      'type': 'img',
+      'src': 'http://img.blog.csdn.net/20161122092433577?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center'
+    },
+    {'type': 'p', 'text': ''}
+  ]
+}
