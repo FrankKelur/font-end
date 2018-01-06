@@ -547,7 +547,7 @@ function removeNthList (list, n) {
 
   function init (arr) {
     var pre = null, header = null
-    for (var idx = 0 ; idx < arr.length; idx++) {
+    for (var idx = 0; idx < arr.length; idx++) {
       var item = arr[idx]
       var curr = new LNode(item)
       idx === 0 && (header = curr)
@@ -570,3 +570,57 @@ function removeNthList (list, n) {
 }
 
 console.log('removeNthList', removeNthList([1, 2, 3, 4, 5, 6], 3))
+
+// 22. Generate Parentheses
+//
+// Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+// For example, given n = 3, a solution set is:
+
+function isValid (arr) {
+  return true
+}
+
+function isExist (arr, matrix) {
+  var res = matrix.some(arrItem =>  {
+    console.log('arrItem', arrItem)
+    return arrItem.every((item, idx) => {
+      console.log('every', item, idx, arr[idx])
+      return arr[idx] === item
+    })
+  })
+  console.log('isExist', res)
+  return res
+}
+console.log('permutation', permutation(2))
+function permutation (n) {
+  var arr = new Array(n).fill('(').concat(new Array(n).fill(')')) // 得到 '(', '(', '(', ')', ')', ')'
+  var matrix = getPermutation(arr)
+  return matrix.filter(isValid)
+}
+
+function getOther (idx, arr) {
+  var res = arr.slice()
+  res.splice(idx, 1)
+  return res
+}
+
+function joinMatrix (elm, matrix) {
+  return matrix.map(arr => {
+    arr.unshift(elm)
+    return arr
+  })
+}
+
+function getPermutation (arr) {
+  if (arr.length === 1) {
+    return [arr]
+  }
+  var res = []
+  arr.forEach((elm, idx) => {
+    var newLine = joinMatrix(elm, getPermutation(getOther(idx, arr)))
+    if (!isExist(newLine, res)) {
+      res = res.concat(newLine)
+    }
+  })
+  return res
+}

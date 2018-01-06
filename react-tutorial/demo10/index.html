@@ -27,6 +27,7 @@
           }.bind(this), 100)
         },
         render () {
+          console.log('this.state', this.state)
           return <div style={{opacity: this.state.opacity}}>
             Hello {this.props.name}
           </div>

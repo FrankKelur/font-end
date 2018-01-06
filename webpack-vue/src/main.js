@@ -10,9 +10,47 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  template: '<App/>',
-  components: { App },
+  template: '<div><button @click="toggle">toggle</button><br/><App v-if="show"/></div>',
+  components: {App},
+  data () {
+    console.log('main data init')
+    return {
+      show: true
+    }
+  },
+  methods: {
+    toggle () {
+      this.show = !this.show
+    }
+  },
+  computed: {
+    testList () {
+      console.log('main computed')
+      return this.show
+    }
+  },
+  beforeCreate () {
+    console.log('main beforecreate')
+  },
+  created () {
+    console.log('main created')
+  },
+  beforeMount () {
+    console.log('main beforeMount')
+  },
   mounted () {
     console.log('main.js mounted!')
+  },
+  beforeUpdate () {
+    console.log('main beforeUpdate')
+  },
+  updated () {
+    console.log('main updated')
+  },
+  beforeDestroy () {
+    console.log('main beforeDestory')
+  },
+  destroyed () {
+    console.log('main destroyed')
   }
 })
