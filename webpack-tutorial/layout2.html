@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+    <link rel="stylesheet/less" href="style.less" type="text/css">
+    <!--<link rel="stylesheet" href="../element-tutorial/layout.css">-->
+    <script>
+        // Opera 8.0+
+        // var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0
+
+        // Firefox 1.0+
+        var isFirefox = typeof InstallTrigger !== 'undefined'
+
+        // Safari 3.0+ "[object HTMLElementConstructor]"
+        /* eslint-disable */
+        var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === '[object SafariRemoteNotification]' })(!window['safari'] || safari.pushNotification)
+
+        // Internet Explorer 6-11
+        var isIE = /* @cc_on!@ */false || !!document.documentMode
+
+        // Edge 20+
+        var isEdge = !isIE && !!window.StyleMedia
+
+        // Chrome 1+
+        var isChrome = !!window.chrome && !!window.chrome.webstore
+
+        // Blink engine detection
+        // var isBlink = (isChrome || isOpera) && !!window.CSS
+
+        var doc = document.getElementsByTagName('html')[0]
+        if (isChrome) {
+            doc.setAttribute('browser', 'chrome')
+        } else if (isFirefox) {
+            doc.setAttribute('browser', 'firefox')
+        } else if (isSafari) {
+            doc.setAttribute('browser', 'safari')
+        } else if (isEdge) {
+            doc.setAttribute('browser', 'edge')
+        } else if (isIE) {
+            doc.setAttribute('browser', 'ie')
+        }
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="header"><a class="header" href="#">header</a></div>
+    <div class="content">
+        <div class="left">
+            <div class="inline"></div>
+            <div>zhai peng chao bottom</div>
+        </div>
+        <div class="right">
+            <div class="part">
+                <div class="part-content">
+                    <div class="inline"></div>
+                </div>
+                <div class="inline-footer"></div>
+            </div>
+            <div class="part">
+                <div class="part-content">
+                    <div class="inline"></div>
+                </div>
+                <div class="inline-footer"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
+<script src="dist/layout.bundle.js"></script>
+</body>
+</html>

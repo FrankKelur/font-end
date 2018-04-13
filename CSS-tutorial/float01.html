@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            float: right;
+        }
+        @media screen and (max-width: 1000px) {
+            p {
+                background: gray;
+            }
+        }
+        @media screen and (min-width: 1000px) {
+            p {
+                background: green;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>Test</h1>
+<p>
+    This is paragraph text, but you knew that, Within the content of the paragraph is an image that's been floated
+    <img src="im1.jpg" alt="this is picture for volunteer activity">
+    This containing block for floated image is the paragraph.
+</p>
+</body>
+</html>
