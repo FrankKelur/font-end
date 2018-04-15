@@ -2,6 +2,9 @@
   <div id="app">
     <img src="assets/logo.png" :id='test.show'>
     <router-view/>
+    <div>
+      {{message}}
+    </div>
   </div>
 </template>
 
@@ -12,6 +15,7 @@
     data () {
       console.log('APP data init')
       return {
+        message: '',
         show: true,
         test: null
       }
@@ -27,6 +31,7 @@
       console.log('app beforeMount')
     },
     mounted () {
+      this.message = window.localStorage.getItem('message')
       console.log('app.js mounted!')
     },
     beforeUpdate () {

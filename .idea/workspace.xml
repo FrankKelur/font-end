@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4819647-34cb-4d35-8885-fc3ee4ae0ce4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/font-end.iml" afterPath="$PROJECT_DIR$/.idea/font-end.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/leetcode/1-50.js" afterPath="$PROJECT_DIR$/leetcode/1-50.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/leetcode/1-50.js" afterPath="$PROJECT_DIR$/leetcode/1-50.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack-vue/index.html" afterPath="$PROJECT_DIR$/webpack-vue/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack-vue/src/App.vue" afterPath="$PROJECT_DIR$/webpack-vue/src/App.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,142 +19,40 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leetcode/test.html">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpack-vue/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="133">
+              <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="1-50.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/leetcode/1-50.js">
+      <file leaf-file-name="App.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webpack-vue/src/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="679" column="0" lean-forward="false" selection-start-line="679" selection-start-column="0" selection-end-line="707" selection-end-column="67" />
-              <folding>
-                <element signature="n#!!block;n#twoSum#0" expanded="false" />
-                <element signature="e#407#570#0" expanded="false" />
-                <element signature="e#490#564#0" expanded="false" />
-                <element signature="e#636#1035#0" expanded="false" />
-                <element signature="n#!!block;n#addTowNum#0" expanded="false" />
-                <element signature="e#1140#1247#0" expanded="false" />
-                <element signature="e#1263#1294#0" expanded="false" />
-                <element signature="n#!!block;n#longestSubstring#0" expanded="false" />
-                <element signature="e#1494#1823#0" expanded="false" />
-                <element signature="e#1539#1816#0" expanded="false" />
-                <element signature="e#1629#1763#0" expanded="false" />
-                <element signature="e#1683#1749#0" expanded="false" />
-                <element signature="e#1769#1806#0" expanded="false" />
-                <element signature="e#1896#2105#0" expanded="false" />
-                <element signature="n#!!block;n#findKTh#0" expanded="false" />
-                <element signature="e#2197#2268#0" expanded="false" />
-                <element signature="e#2288#2319#0" expanded="false" />
-                <element signature="e#2337#2388#0" expanded="false" />
-                <element signature="e#2478#2547#0" expanded="false" />
-                <element signature="e#2553#2618#0" expanded="false" />
-                <element signature="e#2622#2777#0" expanded="false" />
-                <element signature="n#!!block;n#getPalindromicStr#0" expanded="false" />
-                <element signature="e#2870#2998#0" expanded="false" />
-                <element signature="e#2959#2992#0" expanded="false" />
-                <element signature="n#!!block;n#getPalindromicStrOfChar#0;n#!!block;n#getPalindromicStr#0" expanded="false" />
-                <element signature="e#3129#3581#0" expanded="false" />
-                <element signature="e#3394#3536#0" expanded="false" />
-                <element signature="e#3445#3500#0" expanded="false" />
-                <element signature="e#3638#4189#0" expanded="false" />
-                <element signature="n#!!block;n#isMatch#0" expanded="false" />
-                <element signature="e#4232#4303#0" expanded="false" />
-                <element signature="e#4371#4758#0" expanded="false" />
-                <element signature="e#4543#4665#0" expanded="false" />
-                <element signature="e#4598#4655#0" expanded="false" />
-                <element signature="e#4802#4845#0" expanded="false" />
-                <element signature="e#4926#5505#0" expanded="false" />
-                <element signature="e#5072#5125#0" expanded="false" />
-                <element signature="e#5156#5185#0" expanded="false" />
-                <element signature="e#5222#5330#0" expanded="false" />
-                <element signature="e#5277#5320#0" expanded="false" />
-                <element signature="e#5336#5499#0" expanded="false" />
-                <element signature="e#5375#5448#0" expanded="false" />
-                <element signature="e#5454#5489#0" expanded="false" />
-                <element signature="n#!!block;n#equal#0;n#!!block;n#isMatch#0" expanded="false" />
-                <element signature="e#5634#5669#0" expanded="false" />
-                <element signature="e#5700#5758#0" expanded="false" />
-                <element signature="e#6222#6623#0" expanded="false" />
-                <element signature="n#!!block;n#getMostWater#0" expanded="false" />
-                <element signature="e#6703#6884#0" expanded="false" />
-                <element signature="e#6745#6878#0" expanded="false" />
-                <element signature="e#6827#6868#0" expanded="false" />
-                <element signature="e#6994#7335#0" expanded="false" />
-                <element signature="n#!!block;n#threeSum#0" expanded="false" />
-                <element signature="e#7427#7830#0" expanded="false" />
-                <element signature="e#7478#7824#0" expanded="false" />
-                <element signature="e#7533#7814#0" expanded="false" />
-                <element signature="e#7623#7800#0" expanded="false" />
-                <element signature="e#7722#7782#0" expanded="false" />
-                <element signature="n#!!block;n#exist#0;n#!!block;n#threeSum#0" expanded="false" />
-                <element signature="e#8121#8549#0" expanded="false" />
-                <element signature="n#!!block;n#phoneNumberCombine#0" expanded="false" />
-                <element signature="e#8631#8887#0" expanded="false" />
-                <element signature="n#!!block;n#getCombine#0;n#!!block;n#phoneNumberCombine#0" expanded="false" />
-                <element signature="e#9101#9174#0" expanded="false" />
-                <element signature="n#!!block;n#otherMatrix#0;n#!!block;n#phoneNumberCombine#0" expanded="false" />
-                <element signature="n#!!block;n#phoneNumberCombine#1" expanded="false" />
-                <element signature="e#9779#10035#0" expanded="false" />
-                <element signature="n#!!block;n#getCombine#0;n#!!block;n#phoneNumberCombine#1" expanded="false" />
-                <element signature="e#10249#10322#0" expanded="false" />
-                <element signature="n#!!block;n#otherMatrix#0;n#!!block;n#phoneNumberCombine#1" expanded="false" />
-                <element signature="e#10791#10929#0" expanded="false" />
-                <element signature="e#10941#11050#0" expanded="false" />
-                <element signature="n#!!block;n#getRoman#0" expanded="false" />
-                <element signature="e#11152#11180#0" expanded="false" />
-                <element signature="e#11204#11267#0" expanded="false" />
-                <element signature="e#11273#11344#0" expanded="false" />
-                <element signature="n#!!block;n#getClosest#0;n#!!block;n#getRoman#0" expanded="false" />
-                <element signature="e#11518#11693#0" expanded="false" />
-                <element signature="e#11598#11683#0" expanded="false" />
-                <element signature="e#12034#12129#0" expanded="false" />
-                <element signature="n#!!block;n#romanToInt#0" expanded="false" />
-                <element signature="e#12183#12207#0" expanded="false" />
-                <element signature="e#12233#12271#0" expanded="false" />
-                <element signature="n#!!block;n#findFirstMax#0;n#!!block;n#romanToInt#0" expanded="false" />
-                <element signature="e#12603#12724#0" expanded="false" />
-                <element signature="e#12639#12714#0" expanded="false" />
-                <element signature="e#13021#13382#0" expanded="false" />
-                <element signature="e#13384#13798#0" expanded="false" />
-                <element signature="n#!!block;n#LNode#0" expanded="false" />
-                <element signature="e#13923#13956#0" expanded="false" />
-                <element signature="e#13999#14023#0" expanded="false" />
-                <element signature="e#14063#14088#0" expanded="false" />
-                <element signature="n#!!block;n#removeNthList#0" expanded="false" />
-                <element signature="e#14245#14287#0" expanded="false" />
-                <element signature="e#14356#14507#0" expanded="false" />
-                <element signature="e#14391#14450#0" expanded="false" />
-                <element signature="n#!!block;n#init#0;n#!!block;n#removeNthList#0" expanded="false" />
-                <element signature="e#14678#14861#0" expanded="false" />
-                <element signature="n#!!block;n#iterator#0;n#!!block;n#removeNthList#0" expanded="false" />
-                <element signature="e#15011#15075#0" expanded="false" />
-                <element signature="e#15183#15210#0" expanded="false" />
-                <element signature="n#!!block;n#isValid#0" expanded="false" />
-                <element signature="n#!!block;n#isExist#0" expanded="false" />
-                <element signature="e#15483#15500#0" expanded="false" />
-                <element signature="e#15566#15583#0" expanded="false" />
-                <element signature="n#!!block;n#permutation#0" expanded="false" />
-                <element signature="n#!!block;n#getOther#0" expanded="false" />
-                <element signature="n#!!block;n#joinMatrix#0" expanded="false" />
-                <element signature="e#16112#16125#0" expanded="false" />
-                <element signature="n#!!block;n#getPermutation#0" expanded="false" />
-                <element signature="e#16217#16245#0" expanded="false" />
-                <element signature="e#16294#16381#0" expanded="false" />
-                <element signature="e#16415#16456#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="285">
+              <caret line="35" column="6" lean-forward="false" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>getPermutation</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -163,19 +61,32 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/leetcode/1-50.js" />
+        <option value="$PROJECT_DIR$/leetcode/cache.html" />
+        <option value="$PROJECT_DIR$/webpack-vue/index.html" />
+        <option value="$PROJECT_DIR$/webpack-vue/src/App.vue" />
       </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/BlogApp/node_modules" />
+    <handled-path value="$PROJECT_DIR$/node_modules" />
     <handled-path value="$PROJECT_DIR$/superagent/node_modules" />
+    <handled-path value="$PROJECT_DIR$/webpack-demos/node_modules" />
     <handled-path value="$PROJECT_DIR$/webpack-tutorial/node_modules" />
+    <handled-path value="$PROJECT_DIR$/webpack-vue/node_modules" />
     <handled-path value="$PROJECT_DIR$/webpack3x-demos/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -183,6 +94,9 @@
     <option name="y" value="20" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -199,6 +113,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -207,22 +122,21 @@
               <item name="font-end" type="b2602c69:ProjectViewProjectNode" />
               <item name="font-end" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="font-end" type="b2602c69:ProjectViewProjectNode" />
-              <item name="font-end" type="462c0819:PsiDirectoryNode" />
-              <item name="leetcode" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+    <property name="JavaScriptPreferStrict" value="false" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -250,32 +164,36 @@
       <option name="presentableId" value="Default" />
       <updated>1515747402156</updated>
       <workItem from="1515747406878" duration="3878000" />
+      <workItem from="1515772862681" duration="1852000" />
+      <workItem from="1515774752787" duration="2561000" />
+      <workItem from="1521877832535" duration="2262000" />
+      <workItem from="1523110924135" duration="1048000" />
+      <workItem from="1523788757322" duration="154000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3878000" />
+    <option name="totallyTimeSpent" value="11755000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2386617" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32493368" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -286,11 +204,29 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/leetcode/test.html">
+    <entry file="file://$PROJECT_DIR$/webpack-vue/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="35" column="6" lean-forward="true" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -298,125 +234,135 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/leetcode/1-50.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
+        <state relative-caret-position="12198">
+          <caret line="642" column="0" lean-forward="false" selection-start-line="642" selection-start-column="0" selection-end-line="664" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/1-50.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12046">
+          <caret line="634" column="1" lean-forward="false" selection-start-line="634" selection-start-column="1" selection-end-line="634" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/1-50.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2774">
           <caret line="679" column="0" lean-forward="false" selection-start-line="679" selection-start-column="0" selection-end-line="707" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/1-50.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="651" column="14" lean-forward="true" selection-start-line="651" selection-start-column="14" selection-end-line="651" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/cache.html" />
+    <entry file="file://$PROJECT_DIR$/browserify-vue/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/browserify-vue/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-tutorial/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-tutorial/greeting.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-tutorial/vue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#twoSum#0" expanded="false" />
-            <element signature="e#407#570#0" expanded="false" />
-            <element signature="e#490#564#0" expanded="false" />
-            <element signature="e#636#1035#0" expanded="false" />
-            <element signature="n#!!block;n#addTowNum#0" expanded="false" />
-            <element signature="e#1140#1247#0" expanded="false" />
-            <element signature="e#1263#1294#0" expanded="false" />
-            <element signature="n#!!block;n#longestSubstring#0" expanded="false" />
-            <element signature="e#1494#1823#0" expanded="false" />
-            <element signature="e#1539#1816#0" expanded="false" />
-            <element signature="e#1629#1763#0" expanded="false" />
-            <element signature="e#1683#1749#0" expanded="false" />
-            <element signature="e#1769#1806#0" expanded="false" />
-            <element signature="e#1896#2105#0" expanded="false" />
-            <element signature="n#!!block;n#findKTh#0" expanded="false" />
-            <element signature="e#2197#2268#0" expanded="false" />
-            <element signature="e#2288#2319#0" expanded="false" />
-            <element signature="e#2337#2388#0" expanded="false" />
-            <element signature="e#2478#2547#0" expanded="false" />
-            <element signature="e#2553#2618#0" expanded="false" />
-            <element signature="e#2622#2777#0" expanded="false" />
-            <element signature="n#!!block;n#getPalindromicStr#0" expanded="false" />
-            <element signature="e#2870#2998#0" expanded="false" />
-            <element signature="e#2959#2992#0" expanded="false" />
-            <element signature="n#!!block;n#getPalindromicStrOfChar#0;n#!!block;n#getPalindromicStr#0" expanded="false" />
-            <element signature="e#3129#3581#0" expanded="false" />
-            <element signature="e#3394#3536#0" expanded="false" />
-            <element signature="e#3445#3500#0" expanded="false" />
-            <element signature="e#3638#4189#0" expanded="false" />
-            <element signature="n#!!block;n#isMatch#0" expanded="false" />
-            <element signature="e#4232#4303#0" expanded="false" />
-            <element signature="e#4371#4758#0" expanded="false" />
-            <element signature="e#4543#4665#0" expanded="false" />
-            <element signature="e#4598#4655#0" expanded="false" />
-            <element signature="e#4802#4845#0" expanded="false" />
-            <element signature="e#4926#5505#0" expanded="false" />
-            <element signature="e#5072#5125#0" expanded="false" />
-            <element signature="e#5156#5185#0" expanded="false" />
-            <element signature="e#5222#5330#0" expanded="false" />
-            <element signature="e#5277#5320#0" expanded="false" />
-            <element signature="e#5336#5499#0" expanded="false" />
-            <element signature="e#5375#5448#0" expanded="false" />
-            <element signature="e#5454#5489#0" expanded="false" />
-            <element signature="n#!!block;n#equal#0;n#!!block;n#isMatch#0" expanded="false" />
-            <element signature="e#5634#5669#0" expanded="false" />
-            <element signature="e#5700#5758#0" expanded="false" />
-            <element signature="e#6222#6623#0" expanded="false" />
-            <element signature="n#!!block;n#getMostWater#0" expanded="false" />
-            <element signature="e#6703#6884#0" expanded="false" />
-            <element signature="e#6745#6878#0" expanded="false" />
-            <element signature="e#6827#6868#0" expanded="false" />
-            <element signature="e#6994#7335#0" expanded="false" />
-            <element signature="n#!!block;n#threeSum#0" expanded="false" />
-            <element signature="e#7427#7830#0" expanded="false" />
-            <element signature="e#7478#7824#0" expanded="false" />
-            <element signature="e#7533#7814#0" expanded="false" />
-            <element signature="e#7623#7800#0" expanded="false" />
-            <element signature="e#7722#7782#0" expanded="false" />
-            <element signature="n#!!block;n#exist#0;n#!!block;n#threeSum#0" expanded="false" />
-            <element signature="e#8121#8549#0" expanded="false" />
-            <element signature="n#!!block;n#phoneNumberCombine#0" expanded="false" />
-            <element signature="e#8631#8887#0" expanded="false" />
-            <element signature="n#!!block;n#getCombine#0;n#!!block;n#phoneNumberCombine#0" expanded="false" />
-            <element signature="e#9101#9174#0" expanded="false" />
-            <element signature="n#!!block;n#otherMatrix#0;n#!!block;n#phoneNumberCombine#0" expanded="false" />
-            <element signature="n#!!block;n#phoneNumberCombine#1" expanded="false" />
-            <element signature="e#9779#10035#0" expanded="false" />
-            <element signature="n#!!block;n#getCombine#0;n#!!block;n#phoneNumberCombine#1" expanded="false" />
-            <element signature="e#10249#10322#0" expanded="false" />
-            <element signature="n#!!block;n#otherMatrix#0;n#!!block;n#phoneNumberCombine#1" expanded="false" />
-            <element signature="e#10791#10929#0" expanded="false" />
-            <element signature="e#10941#11050#0" expanded="false" />
-            <element signature="n#!!block;n#getRoman#0" expanded="false" />
-            <element signature="e#11152#11180#0" expanded="false" />
-            <element signature="e#11204#11267#0" expanded="false" />
-            <element signature="e#11273#11344#0" expanded="false" />
-            <element signature="n#!!block;n#getClosest#0;n#!!block;n#getRoman#0" expanded="false" />
-            <element signature="e#11518#11693#0" expanded="false" />
-            <element signature="e#11598#11683#0" expanded="false" />
-            <element signature="e#12034#12129#0" expanded="false" />
-            <element signature="n#!!block;n#romanToInt#0" expanded="false" />
-            <element signature="e#12183#12207#0" expanded="false" />
-            <element signature="e#12233#12271#0" expanded="false" />
-            <element signature="n#!!block;n#findFirstMax#0;n#!!block;n#romanToInt#0" expanded="false" />
-            <element signature="e#12603#12724#0" expanded="false" />
-            <element signature="e#12639#12714#0" expanded="false" />
-            <element signature="e#13021#13382#0" expanded="false" />
-            <element signature="e#13384#13798#0" expanded="false" />
-            <element signature="n#!!block;n#LNode#0" expanded="false" />
-            <element signature="e#13923#13956#0" expanded="false" />
-            <element signature="e#13999#14023#0" expanded="false" />
-            <element signature="e#14063#14088#0" expanded="false" />
-            <element signature="n#!!block;n#removeNthList#0" expanded="false" />
-            <element signature="e#14245#14287#0" expanded="false" />
-            <element signature="e#14356#14507#0" expanded="false" />
-            <element signature="e#14391#14450#0" expanded="false" />
-            <element signature="n#!!block;n#init#0;n#!!block;n#removeNthList#0" expanded="false" />
-            <element signature="e#14678#14861#0" expanded="false" />
-            <element signature="n#!!block;n#iterator#0;n#!!block;n#removeNthList#0" expanded="false" />
-            <element signature="e#15011#15075#0" expanded="false" />
-            <element signature="e#15183#15210#0" expanded="false" />
-            <element signature="n#!!block;n#isValid#0" expanded="false" />
-            <element signature="n#!!block;n#isExist#0" expanded="false" />
-            <element signature="e#15483#15500#0" expanded="false" />
-            <element signature="e#15566#15583#0" expanded="false" />
-            <element signature="n#!!block;n#permutation#0" expanded="false" />
-            <element signature="n#!!block;n#getOther#0" expanded="false" />
-            <element signature="n#!!block;n#joinMatrix#0" expanded="false" />
-            <element signature="e#16112#16125#0" expanded="false" />
-            <element signature="n#!!block;n#getPermutation#0" expanded="false" />
-            <element signature="e#16217#16245#0" expanded="false" />
-            <element signature="e#16294#16381#0" expanded="false" />
-            <element signature="e#16415#16456#0" expanded="false" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-tutorial/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="35" column="6" lean-forward="false" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
