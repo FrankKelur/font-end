@@ -29,7 +29,8 @@
     "style-loader": "0.x",
     "url-loader": "~0.5.6",
     "webpack": "1.x",
-    "webpack-dev-server": "1.x"
+    "webpack-dev-server": "1.x",
+    "zhaihuoxing": "^2.0.2"
   },
   "repository": "ruanyf/webpack-demos",
   "devDependencies": {

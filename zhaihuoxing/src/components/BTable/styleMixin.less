@@ -1,0 +1,59 @@
+@lightenD18: lighten(@D, 18%);
+@lightenD12: lighten(@D, 12%);
+@lightenA10: lighten(@A, 10%);
+@darkenC15: darken(@C, 15%);
+@H: @H;
+@C: @C;
+@D: @D;
+deleteFlag
+.b-table .el-table__body-wrapper {
+  background: @H;
+}
+.el-table th{
+  //font-size: 14px !important;
+  background-color: @lightenD18 !important;
+  white-space: nowrap;
+  //border-bottom: 1px solid @lightenD12!important;
+}
+.b-table .el-table__header-wrapper {
+  font-size: 14px !important;
+}
+.b-table .el-table__body-wrapper {
+  font-size: 12px !important;
+}
+.b-table .el-table tr{
+  //font-size: 12px !important;
+  background-color: @H !important;
+  border-bottom: 1px solid @lightenD12 !important;
+}
+.b-table .el-table tr:last-child {
+  border-bottom: 2px solid @lightenD12 !important;
+}
+.expand-row{
+  background-color: @lightenD18 !important;
+}
+.expand-row:hover{
+  background-color: @lightenD18 !important;
+}
+.b-table .el-table__row td{
+  border-bottom: 0!important;
+}
+.b-table .el-table tr:hover td, .b-table .el-table__header-wrapper thead div:hover{
+  background-color: @lightenD18 !important;
+}
+.b-table .el-table__header-wrapper thead div{
+  color: @C !important;
+}
+.el-table__empty-block .el-table__empty-text {
+  color: @C !important;
+}
+.el-table--fit {
+  border-right: 1px solid;
+  border-color: @lightenD12!important;
+}
+.b-table .el-table__header .sort-caret {
+  color: @darkenC15 !important;
+}
+.b-table .el-table__header .sort-caret:hover {
+  color: @lightenA10 !important;
+}

@@ -1,0 +1,21 @@
+
+html(lang=renderData.broker_setting.lang)
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale= 1,minimum-scale=1,maximum-scale=1,user-scalable=no" )
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(rel="shortcut icon" href=renderData.broker_setting.favicon_url type="image/x-icon")
+    script.
+      window.manifest = !{JSON.stringify(manifest)}
+
+    each css in manifest.cssList
+      link(href=css rel="stylesheet")
+    title=renderData.page_info.title
+
+  body.theme-color-C
+    block content
+    div#loading()
+    script.
+      window.renderData = !{JSON.stringify(renderData)}
+    each js in manifest.jsList
+      script(src=js)

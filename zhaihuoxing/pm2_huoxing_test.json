@@ -1,0 +1,14 @@
+{
+  "name": "huoxing-test",
+  "script": "build/dev-server.js",
+  "cwd": "./",
+  "args": "",
+  "env": {
+    "NODE_ENV": "testing",
+    "PORT": "6789"
+  },
+  "log_date_format": "YYYY-MM-DD HH:mm Z",
+  "error_file": "/var/logs/huoxing/error.log",
+  "out_file": "/var/logs/huoxing/out.log",
+  "autorestart": true
+}

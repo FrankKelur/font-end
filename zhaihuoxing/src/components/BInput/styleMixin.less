@@ -1,0 +1,55 @@
+@lightenC32: lighten(@C, 32%);
+@lightenD12: lighten(@D, %12);
+@darkenD35: darken(@D, %35);
+@H: @H;
+@D: @D;
+@A: @A;
+@C: @C;
+@G: @G;
+deleteFlag
+.el-input__inner, .el-textarea__inner{
+  color: @C!important;
+  background: @H!important;
+  border: 1px solid @lightenD12;
+}
+.el-input-group__append{
+  background-color: @lightenD12!important;
+}
+.el-input__inner:hover, .el-textarea__inner:hover {
+  border-color: @D!important;
+}
+.el-input__inner:focus, .el-input__inner:active{
+  border: 1px solid @A!important;
+}
+.el-input.is-focus .el-input__inner {
+  border: 1px solid @A!important;
+}
+.el-textarea__inner::-webkit-input-placeholder{
+  color: @lightenC32!important;
+}
+.el-textarea__inner:-moz-placeholder{
+  color: @lightenC32!important;
+}
+.el-textarea__inner::-moz-placeholder{
+  color: @lightenC32!important;
+}
+.el-textarea__inner:-ms-input-placeholder{
+  color: @lightenC32 !important;
+}
+.el-textarea__inner{
+  color: @C !important;
+  background: @H !important;
+  border: 1px solid @lightenD12;
+}
+.el-textarea__inner:hover {
+  border: 1px solid @D!important;
+}
+.el-textarea__inner:focus {
+  border: 1px solid @A;
+}
+.el-input.is-focus .el-textarea__inner {
+  border: 1px solid @A!important;
+}
+.is-error .el-input__inner{
+  border: 1px solid @G!important;
+}

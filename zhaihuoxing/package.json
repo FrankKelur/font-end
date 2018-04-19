@@ -1,0 +1,85 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "zhaihuoxing",
+        "scope": null,
+        "escapedName": "zhaihuoxing",
+        "name": "zhaihuoxing",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\zhai\\workspace\\out"
+    ]
+  ],
+  "_from": "zhaihuoxing",
+  "_id": "zhaihuoxing@2.0.2",
+  "_inBundle": false,
+  "_inCache": true,
+  "_integrity": "sha512-jRL8DQrOho1r1kXfqJN9u9UbvsKQGBxVMrz58rGxjmQDeEQIKyyBXLPY18Z1pYA7/VIkhKK23vdGu82LMtc0KA==",
+  "_location": "/zhaihuoxing",
+  "_nodeVersion": "6.11.2",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/zhaihuoxing-1.0.0.tgz_1510585944919_0.11565722990781069"
+  },
+  "_npmUser": {
+    "name": "zhaipengchao",
+    "email": "chaopengzhai@163.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "zhaihuoxing",
+    "name": "zhaihuoxing",
+    "escapedName": "zhaihuoxing",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/zhaihuoxing/-/zhaihuoxing-2.0.2.tgz",
+  "_shasum": "a8172bbb54efa841342ed813dce48bedb3f8c3d7",
+  "_shrinkwrap": null,
+  "_spec": "zhaihuoxing",
+  "_where": "C:\\Users\\chaop\\WebstormProjects\\font-end\\webpack-demos",
+  "author": {
+    "name": "zhaipengchao"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "> A Vue.js project",
+  "devDependencies": {},
+  "directories": {
+    "test": "test"
+  },
+  "dist": {
+    "shasum": "2a247ae3fd66e43b2155d9bd7f9be905d5a051b5",
+    "tarball": "https://registry.npmjs.org/zhaihuoxing/-/zhaihuoxing-1.0.0.tgz"
+  },
+  "keywords": [
+    "zhaihuoxing",
+    "testzhai"
+  ],
+  "license": "ISC",
+  "main": ".eslintrc.js",
+  "maintainers": [
+    {
+      "name": "zhaipengchao",
+      "email": "chaopengzhai@163.com"
+    }
+  ],
+  "name": "zhaihuoxing",
+  "optionalDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "2.0.2"
+}
