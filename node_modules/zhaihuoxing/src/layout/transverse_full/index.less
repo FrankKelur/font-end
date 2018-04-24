@@ -1,0 +1,62 @@
+html{
+  height: 100%;
+  body{
+    height: 100%;
+  }
+}
+#app{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  #main-content{
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-grow:1;
+    display: flex;
+    flex-direction: row;
+    #B,#C{
+      flex-grow:1;
+      width: 0;
+      min-width: 440px;
+      #greeting{
+        position: relative;
+        top: 50%;
+        margin: auto;
+        transform: translate(0,-65%);
+        -ms-transform: translate(0,-65%);
+        -moz-transform: translate(0,-65%);
+        -webkit-transform: translate(0,-65%);
+        -o-transform: translate(0,-65%);
+      }
+      #login,#forget-password{
+        position: relative;
+        top: 50%;
+        margin: auto;
+        margin-left: 61.5px;
+        transform: translate(0,-65%);
+        -ms-transform: translate(0,-65%);
+        -moz-transform: translate(0,-65%);
+        -webkit-transform: translate(0,-65%);
+        -o-transform: translate(0,-65%);
+      }
+      @media screen and  (min-width: 1250px) {
+        #login,#forget-password {
+          width: 486px;
+        }
+        #greeting {
+          width: 440px;
+          margin-right: 140px;
+        }
+      }
+      @media screen and (max-width: 1250px) {
+        #login,#forget-password {
+          width: 426px;
+        }
+        #greeting {
+          width: 390px;
+          margin-right: 30px;
+        }
+      }
+    }
+  }
+}
