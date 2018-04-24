@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4819647-34cb-4d35-8885-fc3ee4ae0ce4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/main.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/public/tmp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/publisher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webpack-demos/layout-3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webpack-vue/src/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webpack-vue/src/main1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webpack-vue/src/main2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webpack-vue/src/shared.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webpack-vue/src/work.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/zhaihuoxing/package-1.json" afterPath="$PROJECT_DIR$/zhaihuoxing/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/zhaihuoxing/package.json" afterPath="$PROJECT_DIR$/zhaihuoxing/package-npm.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack-vue/build/webpack.prod.conf.js" afterPath="$PROJECT_DIR$/webpack-vue/build/webpack.prod.conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack-vue/src/router/index.js" afterPath="$PROJECT_DIR$/webpack-vue/src/router/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zhaihuoxing/build/check-versions.js" afterPath="$PROJECT_DIR$/zhaihuoxing/build/check-versions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/f8app" afterPath="$PROJECT_DIR$/f8app" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -361,12 +344,12 @@
       <workItem from="1524296234579" duration="4096000" />
       <workItem from="1524316097706" duration="341000" />
       <workItem from="1524362738593" duration="12868000" />
-      <workItem from="1524495245017" duration="5424000" />
+      <workItem from="1524495245017" duration="5834000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47085000" />
+    <option name="totallyTimeSpent" value="47495000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
