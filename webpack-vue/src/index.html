@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" placeholder="请输入" id="first"/>
+</body>
+<script>
+  var myWorker = new Worker('./work.js')
+  window.first.onchange = function () {
+    myWorker.postMessage(window.first.value)
+  }
+  myWorker.onmessage = function (e) {
+    alert("work result" + e.data)
+  }
+</script>
+</html>

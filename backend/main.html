@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>利用storage事件实时监视Web Storage中的数据</title>
+</head>
+<body>
+<script type="text/javascript">
+
+  //利用storage事件实时监视wev Storage中的数据
+  window.addEventListener('storage',function (e) {//e只是一个传参
+    //获取被修改的键值
+    if (e.key == 'test') {
+      //获取将要被添加内容的元素
+      var output = document.getElementById('output');
+      //将获取到的修改值在元素中输出
+      output.innerHTML = '原有值：' + e.oldValue;
+      output.innerHTML += '<br />新值:' + e.newValue;
+      output.innerHTML += '<br />变动页面地址：' + utf8_decode(unescape(e.url));
+
+      //分别打印会发现内容一致
+      console.log(e.storageArea);
+      console.log(localStorage);
+      //此行代码只在Chrome浏览器中有效
+      console.log(e.storageArea === localStorage);//输出true
+
+    }
+  },false);
+  function utf8_decode (utftext) {
+    var string = '';
+    var i = c = c1 = c2 = 0;
+    //获取URL所有字符
+    while (i < utftext.length) {
+      //获取URL并将URL中所有 Unicode 编码获取
+      c = utftext.charCodeAt(i);
+      //对 Unicode 编码进行处理转化成字符串
+      if (c < 128) {
+        string += String.fromCharCode(c);
+        i++;
+      }
+      else if ((c < 191) && (c < 224)) {
+        c2 = utftext.charCodeAt(i + 1);
+        string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+        i += 2;
+      }
+      else {
+        c2 = utftext.charCodeAt(i + 1);
+        c3 = utftext.charCodeAt(i + 2);
+        string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+        i += 3;
+      }
+    }
+    return string;
+  }
+</script>
+<output id="output"></output>
+</body>
+</html>

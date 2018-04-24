@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>用于修改localStorage 中数据的页面的代码</title>
+</head>
+<body>
+<script type="text/javascript">
+  function setLocalStorage () {
+    //设置test键值下的内容等于input框中的内容
+    localStorage.test = document.getElementById('text1').value;
+  }
+</script>
+请输入一些值：<input type="text" id="text1" />
+<button onclick="setLocalStorage()">设置</button>
+</body>
+</html>
