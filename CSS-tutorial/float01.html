@@ -7,11 +7,13 @@
         img {
             float: right;
         }
+
         @media screen and (max-width: 1000px) {
             p {
                 background: gray;
             }
         }
+
         @media screen and (min-width: 1000px) {
             p {
                 background: green;
@@ -20,11 +22,27 @@
     </style>
 </head>
 <body>
-<h1>Test</h1>
+<h1 id="main">Test</h1>
 <p>
     This is paragraph text, but you knew that, Within the content of the paragraph is an image that's been floated
     <img src="im1.jpg" alt="this is picture for volunteer activity">
     This containing block for floated image is the paragraph.
 </p>
 </body>
+<script>
+  var start = null
+  var element = document.getElementById('main')
+  element.style.position = 'absolute'
+
+  function step (timestamp) {
+    if (!start) start = timestamp
+    var progress = timestamp - start
+    element.style.left = Math.min(progress / 10, 200) + 'px'
+    if (progress < 2000) {
+      window.requestAnimationFrame(step)
+    }
+  }
+
+  window.requestAnimationFrame(step)
+</script>
 </html>

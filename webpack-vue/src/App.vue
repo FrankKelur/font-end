@@ -28,6 +28,14 @@
     },
     mounted () {
       console.log('app.js mounted!')
+      function readonly (target, name, descriptor) {
+        descriptor.writable = false;
+        retrun descriptor
+      }
+      class example {
+        @readonly
+        a () {}
+      }
     },
     beforeUpdate () {
       console.log('app beforeUpdate')
