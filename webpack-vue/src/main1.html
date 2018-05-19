@@ -29,7 +29,7 @@
     worker.port.postMessage('get')
   }, false)
 
-  var url = 'http://localhost:3000/api'
+  var url = 'http://localhost:3000/api/test'
   var xhr = new XMLHttpRequest()
   xhr.open('GET', url, true)
   xhr.onreadystatechange = function () {console.log(...arguments)}

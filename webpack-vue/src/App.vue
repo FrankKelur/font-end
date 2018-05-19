@@ -32,6 +32,11 @@
     },
     mounted () {
       this.message = window.localStorage.getItem('message')
+      var url = '/api/get'
+      var params = {}
+      window.fetch(url, params).then(res => {
+        console.log('res', ...arguments)
+      })
       console.log('app.js mounted!')
     },
     beforeUpdate () {
