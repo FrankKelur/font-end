@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>webpack-vue this is test</title>
+  </head>
+  <body>
+    <!-- built files will be auto injected -->
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    function message(template) {
+      var el = document.createElement('div')
+      el.id = 'app'
+      document.body.appendChild(el)
+      return new Vue({
+        el: '#app',
+        template: template,
+        data: {
+          message: 'Hello Vue!'
+        },
+        methods: {
+          destroy () {
+            this.$destroy()
+            this.$el.remove()
+          }
+        }
+      })
+    }
+    window.Message = message('<h2>{{message}}</h2>')
+
+  </script>
+</html>

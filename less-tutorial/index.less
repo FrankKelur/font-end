@@ -1,0 +1,13 @@
+#bundle {
+  .button {
+    color: green;
+    background-color: blueviolet;
+  }
+}
+.test {
+  #bundle > .button;
+  .my-fun(126px)
+}
+.my-fun (@count) {
+  font-size: length(@count)
+}
