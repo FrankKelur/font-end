@@ -1,9 +1,15 @@
 <template lang="pug">
   .user_setting_component.theme-border-lightenD12.component
     b-title(:title="renderData.userSetting")
+<<<<<<< HEAD
     el-col(:span="14")
       .title.theme-color-darkenC15.ellipsis-title {{renderData.basicSetting}}
       el-form(ref="basicForm", :rules="basicRules", :model="userSetting", label-width="150px")
+=======
+    el-col.align-with-title(:span="14")
+      .title.theme-color-darkenC15.ellipsis-title {{renderData.basicSetting}}
+      el-form(ref="basicForm", :rules="basicRules", :model="userSetting", label-width="140px", labelPosition='left')
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         el-form-item(:label="renderData.uidRule", prop="user_re")
           b-select(:placeholder="renderData.pleaseSelect", :model.sync="userSetting.user_re")
             el-option(v-for="(rule, idx) in uidRuleList", :key="idx", :value="rule.regex", :label="rule.label")
@@ -11,8 +17,15 @@
           b-select(:placeholder="renderData.pleaseSelect", :model.sync="userSetting.password_re")
             el-option(v-for="(rule, idx) in pwdRuleList", :key="idx", :value="rule.regex", :label="rule.label")
         el-form-item(label=" ")
+<<<<<<< HEAD
           b-icon.icon-position(iconName="info", :title="renderData.askUserInfo")
           b-checkbox.ellipsis-title(:model.sync="userSetting.ask_user_change_pwd",:title="renderData.askUserChangePwd") {{renderData.askUserChangePwd}}
+=======
+          b-checkbox.ellipsis-title(:model.sync="userSetting.ask_user_change_pwd",:title="renderData.askUserChangePwd") {{renderData.askUserChangePwd}}
+          el-tooltip(class="item" effect="dark", :content="renderData.askUserInfo" placement="top")
+            b-icon.theme-color-A-hover.theme-color-lightenD10(iconName='info')
+          //b-icon.theme-color-A-hover.theme-color-lightenD10.icon-position(iconName="info", :title="renderData.askUserInfo")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         el-form-item(:label="renderData.userStatus")
           b-button.user_setting_component_tag(v-for="(item, $idx) in userSetting.status", :key="$idx", size="small")
             | {{item.label}}
@@ -21,7 +34,11 @@
 
         el-form-item.new-status-form-item(v-if="userStatusModShow", prop="newUserStatus", label=" ")
           b-input(:placeholder="renderData.pleaseEnter", :model.sync="newUserStatus")
+<<<<<<< HEAD
           b-icon.theme-color-C.theme-color-G-hover(iconName='message_failure', @click.native="closeUserInput")
+=======
+          b-icon.theme-color-C.theme-color-G-hover.delete(iconName='message_failure', @click.native="closeUserInput")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           b-icon.theme-color-C.theme-color-E-hover(iconName='message_success', @click.native="addUserStatus")
 
         el-form-item(:label="renderData.emailStatus")
@@ -35,8 +52,14 @@
           b-icon.theme-color-C.theme-color-G-hover(iconName='delete', @click.native="closeEmailInput")
           b-icon.theme-color-C.theme-color-E-hover(iconName='message_success', @click.native="addEmailStatus")
         .title.theme-color-darkenC15.ellipsis-title
+<<<<<<< HEAD
           b-icon.info-icon(iconName="info", :title="renderData.initialStatusInfo")
           span {{renderData.initialStatusSetting}}
+=======
+          span {{renderData.initialStatusSetting}}
+          el-tooltip(class="item" effect="dark", :content="renderData.initialStatusInfo" placement="top")
+            b-icon.theme-color-A-hover.theme-color-lightenD10.info-icon(iconName='info')
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         el-form-item(:label="renderData.registerUser", prop="register_user_status")
           b-select(:model.sync="userSetting.register_user_status", :placeholder='renderData.pleaseSelect')
             el-option(v-for="(status, key) in userSetting.status", :key="key", :value="key", :label="status.label")
@@ -364,8 +387,16 @@
   .user_setting_component {
     height: 100%;
     position: relative;
+<<<<<<< HEAD
     .info-icon {
       margin-right: 10px;
+=======
+    .align-with-title {
+      padding-left: 19px;
+    }
+    .info-icon {
+      margin-left: 10px;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
     .delete-icon {
       margin-left: 14px;
@@ -382,10 +413,17 @@
         width: 40%;
       }
     }
+<<<<<<< HEAD
+=======
+    .delete{
+      font-size: 12px;
+    }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     .add-btn{
       border: 0px!important;
       height: 32px;
     }
+<<<<<<< HEAD
     .el-checkbox {
       margin-left: 10px;
     }
@@ -396,6 +434,16 @@
       }
       label{
         width: 65%!important;
+=======
+    .el-form-item__content{
+      .icon-position{
+        position: relative;
+        top: -3px;
+        left: 3px;
+      }
+      label{
+        width: 50%!important;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     }
     .el-button--small{
@@ -411,10 +459,15 @@
       width: 600px;
     }
     .footer {
+<<<<<<< HEAD
       background-color: white;
       padding-top: @footerMarginTop;
       padding-bottom: @footerMarginBottom;
       padding-left: 1.2%;
+=======
+      padding-top: @footerMarginTop;
+      padding-bottom: @footerMarginBottom;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
     .user_setting_component_tag{
       margin-left: 0 !important;

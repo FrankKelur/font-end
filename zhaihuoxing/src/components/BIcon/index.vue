@@ -2,7 +2,11 @@
   span.b-icon(:title="title", @click='clickHandler' v-if="iconName&&iconName.url")
     img(:style="{width: size, height: size}", :src="iconName.url")
   span.b-icon(:title="title", @click='clickHandler', v-else)
+<<<<<<< HEAD
     svg.icon(aria-hidden="true", v-bind:style="'font-size:'+this.size")
+=======
+    svg.icon(aria-hidden="true", v-bind:style="'font-size:'+this.size", :class="{'disabled': disabled}")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       use(v-bind:xlink:href="`#icon-${iconName}`")
 
 </template>
@@ -20,7 +24,13 @@
     },
     methods: {
       clickHandler (e) {
+<<<<<<< HEAD
         this.$emit('click', e)
+=======
+        if (!this.disabled) {
+          this.$emit('click', e)
+        }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     props: {
@@ -37,6 +47,13 @@
       size: {
         type: String,
         default: '16px'
+<<<<<<< HEAD
+=======
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     mounted () {
@@ -52,7 +69,10 @@
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
+<<<<<<< HEAD
     cursor: pointer;
+=======
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     display: inline-block;
   }
 </style>

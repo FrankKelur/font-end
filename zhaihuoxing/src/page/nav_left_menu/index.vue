@@ -1,5 +1,9 @@
 <template lang="pug">
+<<<<<<< HEAD
   b-side-nav(:nav-tree="this.navTree", :collapse="isCollapse", :default-active="activeIdx", :default-opened="openIdx")
+=======
+  b-side-nav(:nav-tree="this.navTree", :collapse.sync="isCollapse", :default-active="defaultActive", :default-openeds="defaultOpeneds")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </template>
 
 <script>
@@ -14,15 +18,48 @@
       return {
         isCollapse: false,
         navTree: [],
+<<<<<<< HEAD
         activeIdx: '',
         openIdx: ''
       }
     },
     methods: {
+=======
+        defaultActive: '',
+        defaultOpeneds: []
+      }
+    },
+    methods: {
+      getDefaultOpends (navTree) {
+        var url = window.location.pathname
+        for (var i = 0; i < navTree.length; i++) {
+          var firstItem = navTree[i]
+          if (firstItem.url === url) {
+            return []
+          }
+          var secondList = firstItem.children || []
+          for (var j = 0; j < secondList.length; j++) {
+            var secondItem = secondList[j]
+            if (secondItem.url === url) {
+              return [i + '']
+            }
+            var thirdList = secondItem.children || []
+            for (var k = 0; k < thirdList.length; k++) {
+              var thirdItem = thirdList[k]
+              if (thirdItem.url === url) {
+                return [i + '', i + '-' + j]
+              }
+            }
+          }
+        }
+        return []
+      },
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       getPageList () {
         var params = {}
         return service.getPageList(params).then(({data}) => {
           this.navTree = data
+<<<<<<< HEAD
           var pageUrl = window.location.pathname
           var _this = this
           var first = 0
@@ -57,6 +94,10 @@
           } else {
             _this.activeIdx = infirst.toString()
           }
+=======
+          this.defaultOpeneds = this.getDefaultOpends(data)
+          console.log('this.defaultOpeneds', this.defaultOpeneds)
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         })
       }
     },
@@ -71,7 +112,10 @@
 //        this.$refs['sideNav'].style.width = '60px'
       }
       window.addEventListener('resize', (e) => {
+<<<<<<< HEAD
         console.log(this.$el.clientWidth)
+=======
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         if (window.document.body.clientWidth > 1250) {
           this.isCollapse = false
         }

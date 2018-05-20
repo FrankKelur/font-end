@@ -7,7 +7,11 @@
           template(slot="content")
             b-icon(iconName="user_manage")
             .name {{user.user_name}}
+<<<<<<< HEAD
     el-tabs(v-model="activeTab", type="card")
+=======
+    el-tabs(v-model="activeTab", type="card" v-if="renderData.audit_set_add_user_list&&renderData.audit_set_add_user_list.headerCols.length")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       el-tab-pane(:label="renderData.audit_set_add_user_list.addUserSearchAddUser", name="1", v-if="renderData.audit_set_add_user_list")
         b-search-table(:render-data="tableRenderData", :url="searchUserUrl", ref="table", :selectedRows="selectedUserList", @selection-change="selectionChange", valueKey="user_name")
           template(slot="batchOperate", slot-scope="props")
@@ -68,7 +72,15 @@
           userVar: this.userVar,
           users: this.selectedUserList.map(item => item.user_name)
         }
+<<<<<<< HEAD
         service.saveUsers(params, this.saveSelectedUserUrl)
+=======
+        service.saveUsers(params, this.saveSelectedUserUrl).then(res => {
+          if (res.re === '200') {
+            this.cancel()
+          }
+        })
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       },
       saveVariable () {
         var params = {
@@ -99,6 +111,13 @@
         type: Object,
         required: true
       },
+<<<<<<< HEAD
+=======
+      permit: {
+        type: Object,
+        required: true
+      },
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       currRow: {
         type: Object,
         required: true
@@ -124,7 +143,11 @@
       BButton
     },
     async mounted () {
+<<<<<<< HEAD
       await this.getSelectedUserList(this.getSelectedUserUrl)
+=======
+      await this.getSelectedUserList()
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
   }
 </script>

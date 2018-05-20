@@ -1,9 +1,14 @@
 <template lang="pug">
+<<<<<<< HEAD
   el-form.basic-info-newUser.amt-more-left-in(:model='newUser', ref='createForm', :rules='createForm.rules', label-width="130px")
+=======
+  el-form.basic-info-newUser.amt-more-left-in(:model='newUser', ref='createForm', :rules='createForm.rules', label-width="140px", label-position="left")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     el-row(:gutter="40")
       el-col(:span="10")
         el-form-item(prop="user_name")
           template(slot="label")
+<<<<<<< HEAD
             span.theme-color-C(v-text="renderData.userName")
           b-input(:placeholder="renderData.pleaseEnter", :model.sync="newUser.user_name")
         el-form-item(prop="password", :required="true")
@@ -13,20 +18,40 @@
         el-form-item(prop="confirmPassword", :required="true")
           template(slot="label")
             span.theme-color-C(v-text="renderData.confirmPassword")
+=======
+            span.theme-color-C.inline-label(v-text="renderData.userName", v-ellipsis-title="")
+          b-input(:placeholder="renderData.pleaseEnter", :model.sync="newUser.user_name")
+        el-form-item(prop="password", :required="true")
+          template(slot="label")
+            span.theme-color-C.inline-label(v-text="renderData.password", v-ellipsis-title="")
+          b-input(type='password', :placeholder="renderData.pleaseEnter", :model.sync="newUser.password")
+        el-form-item(prop="confirmPassword", :required="true")
+          template(slot="label")
+            span.theme-color-C.inline-label(v-text="renderData.confirmPassword", v-ellipsis-title="")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           b-input(type='password', :placeholder="renderData.pleaseEnter", :model.sync="newUser.confirmPassword")
       el-col(:span="10")
         el-form-item(prop="email")
           template(slot="label")
+<<<<<<< HEAD
             span.theme-color-C(v-text="renderData.email")
           b-input(:placeholder="renderData.pleaseEnter", :model.sync="newUser.email")
         el-form-item(prop="user_type")
           template(slot="label")
             span.theme-color-C(v-text="renderData.userType")
+=======
+            span.theme-color-C.inline-label(v-text="renderData.email", v-ellipsis-title="")
+          b-input(:placeholder="renderData.pleaseEnter", :model.sync="newUser.email")
+        el-form-item(prop="user_type")
+          template(slot="label")
+            span.theme-color-C.inline-label(v-text="renderData.userType", v-ellipsis-title="")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           b-select(:placeholder="renderData.pleaseSelect", :model.sync="newUser.user_type")
             el-option(v-for="type in createForm.userTypeList", :key="type.key", :value="type.key", :label="type.val")
 
     el-row(:gutter="40")
       el-col(:span="10")
+<<<<<<< HEAD
         el-form-item(label-width="130px", prop="tempGroup")
           template(slot="label")
             span.theme-color-C(v-text="renderData.userGroup")
@@ -41,17 +66,43 @@
                 span.theme-color-A.ellipsis-title(v-text='group.group_name', :title='group.group_name')
                 b-icon.theme-color-A.delete-icon(@click="deleteGroup(group, newUser.groups)", iconName="delete")
         el-form-item(label-width="137px")
+=======
+        el-form-item(label-width="140px", prop="tempGroup")
+          template(slot="label")
+            span.theme-color-C.inline-label(v-text="renderData.userGroup", v-ellipsis-title="")
+          b-input(v-show="inputShow", :model.sync="newUser.tempGroup")
+          span.blank1(v-if="blank1") 无
+          el-row.addGroup1
+            el-col(:span="7" v-for="group in newUser.groups", :key="group.group_name")
+              b-button(size="small")
+                span.group-item(v-ellipsis-title="") {{group.group_name}}
+                b-icon.group-item-icon(iconName="delete", size="12px", @click.native='deleteGroup(group, newUser.groups)')
+              //.group-item.el-button
+                span.theme-color-A.ellipsis-title(v-text='group.group_name', :title='group.group_name')
+                b-icon.theme-color-A.delete-icon(@click="deleteGroup(group, newUser.groups)", iconName="delete")
+        el-form-item(label-width="140px")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           b-button(type="primary", @click='addGroupModal') {{renderData.add}}
     .footer
       b-button(@click="toList") {{renderData.back}}
       b-button(type="primary", @click="saveNewUser") {{renderData.save}}
 
     b-dialog.add-group(:show.sync='dialogVisible', width="38%", :title="renderData.addToGroup", :show-close="true", :before-close="beforeClose")
+<<<<<<< HEAD
       el-form(label-width="80px", :model="createForm", :rules="rules", ref="editGroupForm")
         el-form-item(:label='renderData.userGroup', prop="newGroupId")
           b-select(:model.sync="createForm.newGroupId", :placeholder="renderData.pleaseSelect")
             el-option(v-for="group in notSelectedGroups", :key="group.gid", :value="group.gid", :label="group.group_name",style={  width: '100%' })
               span(v-ellipsis-title='',v-text='group.group_name',style={ display:'inline-block', width: '100%' })
+=======
+      el-form(label-width="140px", :model="createForm", :rules="rules", ref="editGroupForm", label-position="left")
+        el-form-item(prop="newGroupId")
+          template(slot="label")
+            span.theme-color-C.inline-label(v-text="renderData.userGroup", v-ellipsis-title="")
+          b-select(:model.sync="createForm.newGroupId", :placeholder="renderData.pleaseSelect")
+            el-option(v-for="group in notSelectedGroups", :key="group.gid", :value="group.gid", :label="group.group_name",style={width: '100%'})
+              span(v-ellipsis-title='',v-text='group.group_name',style={display: 'inline-block', width: '100%'})
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       template(slot="footer")
         b-button(@click="hideModal") {{renderData.cancel}}
         b-button(@click="addGroup", type="primary") {{renderData.confirm}}
@@ -102,6 +153,7 @@
           passwordType: 'password',
           userTypeList: [],
           rules: {
+<<<<<<< HEAD
             user_name: [{
               required: true,
               message: this.renderData.pleaseEnter,
@@ -133,11 +185,52 @@
               validator: utils.validator.validate,
               trigger: ['blur', 'change']
             }],
+=======
+            user_name: [
+              {
+                required: true,
+                message: this.renderData.pleaseEnter,
+                trigger: 'blur'
+              },
+              {
+                regex: utils.constants.uidReg,
+                message: _this.renderData.errorNameRule,
+                validator: utils.validator.validate,
+                trigger: 'blur'
+              },
+              {
+                message: _this.renderData.errorNameExist,
+                validator: utils.validator.validate,
+                test: function (value) {
+                  var params = {
+                    field: 'user_name',
+                    value: value
+                  }
+                  return utils.checkUnique(params)
+                },
+                trigger: 'blur'
+              }
+            ],
+            password: [
+              {
+                required: true,
+                message: _this.renderData.pleaseEnter,
+                trigger: 'blur, change'
+              },
+              {
+                regex: '',
+                message: '',
+                validator: utils.validator.validate,
+                trigger: 'blur, change'
+              }
+            ],
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 //            tempGroup: [{
 //              required: true,
 //              message: _this.renderData.pleaseEnter,
 //              trigger: 'blur'
 //            }],
+<<<<<<< HEAD
             email: [{
               required: true,
               message: _this.renderData.pleaseEnter,
@@ -181,6 +274,57 @@
               required: true,
               trigger: 'change'
             }]
+=======
+            email: [
+              {
+                required: true,
+                message: _this.renderData.pleaseEnter,
+                trigger: 'blur'
+              },
+              {
+                regex: utils.constants.emailReg,
+                message: _this.renderData.errorEmailRule,
+                validator: utils.validator.validate,
+                trigger: 'blur'
+              },
+              {
+                message: _this.renderData.errorEmailExist,
+                validator: utils.validator.validate,
+                test: function (value) {
+                  console.log('user_name', _this.newUser.user_name)
+                  var params = {
+                    field: 'email',
+                    value: value
+                  }
+                  return utils.checkUnique(params)
+                },
+                trigger: 'blur'
+              }
+            ],
+            confirmPassword: [
+              {
+                required: true,
+                message: _this.renderData.pleaseEnter,
+                trigger: 'blur, change'
+              },
+              {
+                test: function (value) {
+                  console.log('password valid')
+                  return value === _this.newUser.password
+                },
+                validator: utils.validator.validate,
+                message: _this.renderData.confirmPasswordErrorRule,
+                trigger: 'blur, change'
+              }
+            ],
+            user_type: [
+              {
+                required: true,
+                message: _this.renderData.pleaseSelect,
+                trigger: 'change'
+              }
+            ]
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           }
         }
       }
@@ -267,7 +411,12 @@
               'user_group': userGroup
             }
             Object.assign(params, this.newUser)
+<<<<<<< HEAD
             service.addUser(params).then(res => {})
+=======
+            service.addUser(params).then(res => {
+            })
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           }
         })
       },
@@ -303,10 +452,17 @@
       }
     },
     async mounted () {
+<<<<<<< HEAD
       console.log('renderData', this.renderData)
       this.getAllGroups()
       await this.getUserTypeSelect()
       await this.getPwdExp()
+=======
+      await this.getPwdExp()
+      console.log('renderData', this.renderData)
+      this.getAllGroups()
+      await this.getUserTypeSelect()
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     },
     components: {
       BButton,
@@ -321,7 +477,11 @@
 
 <style lang="less">
   .basic-info-newUser {
+<<<<<<< HEAD
     margin-left: -32px;
+=======
+    margin-left: 1.2%;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     margin-top: 20px;
     margin-bottom: 25px;
     .delete-icon {
@@ -341,6 +501,7 @@
     .footer {
       margin-top: 45px;
       margin-bottom: 40px;
+<<<<<<< HEAD
       margin-left: 1.2%;
     }
     .el-option{
@@ -351,6 +512,17 @@
       width: 100%;
     }
     .el-form-item__content{
+=======
+    }
+    .el-option {
+      width: 200px;
+    }
+    .el-option span {
+      display: inline-block;
+      width: 100%;
+    }
+    .el-form-item__content {
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       margin-bottom: 15px !important;
     }
 
@@ -361,24 +533,42 @@
       width: 51%;
       margin-bottom: 10px;
     }
+<<<<<<< HEAD
     .addGroup1{
+=======
+    .addGroup1 {
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       margin-left: 1px !important;
       .b-button {
         width: 100%;
       }
     }
+<<<<<<< HEAD
     .blank1{
       display: inline-block;
       width: 200px;
       margin-left: 17px;
+=======
+    .blank1 {
+      display: inline-block;
+      width: 200px;
+      margin-left: 10px;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
     }
     .el-input__inner {
       margin-left: 0;
     }
+<<<<<<< HEAD
     .footer {
       margin-left: 65px !important;
     }
 
+=======
+    .el-form-item__error {
+      padding-bottom: 6px;
+      position: relative;
+    }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 </style>

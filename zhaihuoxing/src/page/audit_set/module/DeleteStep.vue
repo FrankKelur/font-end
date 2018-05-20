@@ -40,7 +40,12 @@
     methods: {
       deleteStep () {
         var params = {
+<<<<<<< HEAD
           'uuid': this.currRow.uuid
+=======
+          'uuid': this.currRow.uuid,
+          'key': this.currRow.currStep.name.key
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
         service.deleteStep(params).then(res => {
           this.visible.dialog = null

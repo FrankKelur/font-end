@@ -4,7 +4,11 @@
     slot
     div(slot="title", v-if="!title").title
       slot(name="title")
+<<<<<<< HEAD
     .dialog-footer.theme-border-lightenD12(slot="footer")
+=======
+    .dialog-footer(slot="footer")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       slot(name="footer")
 </template>
 
@@ -83,11 +87,14 @@
       line-height: 38px;
       display: inline-block;
     }
+<<<<<<< HEAD
     .dialog-footer {
       border-top-width: 1px;
       border-style: solid;
       padding-top: 15px
     }
+=======
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 
 </style>

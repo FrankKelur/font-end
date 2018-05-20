@@ -27,6 +27,14 @@ export default {
     //   })
     // })
   },
+<<<<<<< HEAD
+=======
+  getStatus (params) {
+    var url = '/api/resource/header/get_basic_display_set'
+    console.log(url, params)
+    return fetch(url, params)
+  },
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   getMessages (params) {
     var url = '/api/resource/header/get_messages'
     console.log(url, params)
@@ -63,7 +71,11 @@ export default {
     //   })
     // })
   },
+<<<<<<< HEAD
   toActivate (params) {
+=======
+  toActivate (params = {}) {
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     var url = '/api/resource/header/to_activate'
     console.log(url, params)
     return fetch(url, params)

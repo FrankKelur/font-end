@@ -1,9 +1,18 @@
 <template lang="pug">
   b-dialog.add-action(:show.sync='dialogVisible', :title="renderData.addAction", :show-close="true", width="38%", :before-close="beforeClose")
+<<<<<<< HEAD
     el-form(:model="action", ref="addAction", :rules="rules", label-width="80px")
       //el-form-item(:label="renderData.fieldName", prop="name.label")
         b-input(:model.sync="action.name", :placeholder="renderData.pleaseInput")
       el-form-item(prop="key", :label="renderData.inputType")
+=======
+    el-form(:model="action", ref="addAction", :rules="rules", label-width="140px", label-position="left")
+      //el-form-item(:label="renderData.fieldName", prop="name.label")
+        b-input(:model.sync="action.name", :placeholder="renderData.pleaseInput")
+      el-form-item(prop="key")
+        template(slot="label")
+          span.theme-color-C.inline-label(v-text="renderData.inputType", v-ellipsis-title="")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         b-select(:model.sync="action.key", :placeholder="renderData.pleaseSelect", @change="actionKeyChange")
           el-option(v-for="(item, idx) in typeList", :key="idx", :label="item.label", :value="item.key")
       form-item-set(:item="action", :renderData="renderData", ref="formItemSet" v-show="action.key")
@@ -12,9 +21,12 @@
       b-button(@click="addAction", type="primary") {{renderData.confirm}}
 </template>
 
+<<<<<<< HEAD
 // z todo 其他里面的信息添加 货币
 // z todo 其他里面的信息 每个字段添加权限
 // z todo 交易账号，入金方式，入金金额，三个搜索框，在不同的audit_type下不一样
+=======
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 <script>
   import BDialog from 'components/BDialog'
   import BButton from 'components/BButton'

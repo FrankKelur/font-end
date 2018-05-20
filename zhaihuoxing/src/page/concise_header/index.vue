@@ -1,14 +1,25 @@
 <template lang="pug">
   #concise_header.clear-float.theme-bg-J
+<<<<<<< HEAD
     .logo
       img(:src="brokerSetting.header_logo_url" v-if="brokerSetting.header_logo_url")
+=======
+    //.logo(v-show="status")
+    .logo
+      img(:src="brokerSetting.header_logo_url" v-if="brokerSetting.header_logo_url && header.concise_header_logo")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     .drop-down-grop
       b-nav-drop.nav-item(v-if="renderData.concise_header_language")
         b-icon(:iconName="currLang.icon" slot="nav-item").nav-item-icon.theme-color-H
         ul(slot="drop-item").drop-menu
           li.pointer(@click="chooseLang(item)", v-for="(item, $index) in langList", :key="$index")
             b-icon(:iconName="item.icon" slot="nav-item").item-icon
+<<<<<<< HEAD
             | {{item.text}}
+=======
+            | {{item.label}}
+      //b-nav-drop.nav-item(v-if="renderData.concise_header_contact_information", v-show="status_contact")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       b-nav-drop.nav-item(v-if="renderData.concise_header_contact_information")
         b-icon(iconName="contact" slot="nav-item").nav-item-icon.theme-color-H
         ul(slot="drop-item").drop-menu
@@ -43,6 +54,10 @@
   import componentMixin from 'common/js/componentMixin'
   import service from './service'
   import cookie from 'cookie'
+<<<<<<< HEAD
+=======
+  import { constants } from 'common/js/Utils'
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
   export default {
     name: 'concise_header',
@@ -53,13 +68,20 @@
       var renderData = Object.assign({}, header, header.concise_header_auth)
       var langList = []
       if (renderData.concise_header_language) {
+<<<<<<< HEAD
         langList = renderData.concise_header_language.langList.filter(item => {
           return setting.own_langs.find(elm => {
             return elm.lang_key === item.lang
+=======
+        langList = constants.langList.filter(item => {
+          return setting.own_langs.find(elm => {
+            return elm.lang_key === item.key
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           })
         })
       }
       var lang = cookie.get('lang')
+<<<<<<< HEAD
       var currLang = langList[0]
       if (lang) {
         currLang = renderData.concise_header_language.langList.filter(item => {
@@ -70,6 +92,32 @@
         renderData: renderData,
         currLang: currLang,
         messageList: [],
+=======
+      var currLang = null
+      var hasDefaultLang = false
+      // 取默认语言
+      langList.forEach(function (val) {
+        if (val.key === setting.default_lang) {
+          hasDefaultLang = true
+          currLang = val
+        }
+      })
+      if (!hasDefaultLang) {
+        currLang = langList[0]
+      }
+      if (lang) {
+        currLang = constants.langList.filter(item => {
+          return item.key === lang
+        })[0]
+      }
+      return {
+        header: header,
+        renderData: renderData,
+        currLang: currLang,
+        messageList: [],
+        status: false,
+        status_contact: false,
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         userInfo: {
           name: '',
           status: {
@@ -97,19 +145,50 @@
       }
     },
     methods: {
+<<<<<<< HEAD
+=======
+      getStatus () {
+//        let params = {}
+//        service.getStatus(params).then(data => {
+//          if (data.logoDisplay === 1) {
+//            this.status = true
+//          } else {
+//            this.status = false
+//          }
+//          if (data.contactDisplay === 1) {
+//            this.status_contact = true
+//          } else {
+//            this.status_contact = false
+//          }
+//        })
+      },
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       chooseLang (lang) {
         if (this.currLang === lang) {
         } else {
           this.currLang = lang
+<<<<<<< HEAD
           cookie.set('lang', lang.lang)
+=======
+          cookie.set('lang', lang.key)
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           window.location.reload()
         }
       },
       signOut () {
+<<<<<<< HEAD
         service.signOut({})
       },
       toActivate () {
         service.toActivate({})
+=======
+        service.signOut({}).then(res => {})
+        localStorage.setItem('promptAlreadyOrActive', false)
+        cookie.remove('token')
+      },
+      toActivate () {
+        service.toActivate()
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       },
       clickMore () {
         service.clickMore({})
@@ -128,16 +207,35 @@
       },
       getUserInfo () {
         var params = {}
+<<<<<<< HEAD
         return service.getUserInfo(params).then(({data}) => {
           this.userInfo = data
+=======
+        return service.getUserInfo(params).then(({re, data}) => {
+          if (re !== '403') {
+            this.userInfo = data
+          }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         })
       }
     },
     computed: {
       computedContactList () {
+<<<<<<< HEAD
         return this.contactList.filter(item => {
           return this.brokerInfo.contactMethods.indexOf(item.name)
         })
+=======
+        let obj = this.brokerInfo.contactMethods
+        console.log(obj)
+        if (JSON.stringify(obj) === '{}') {
+          return []
+        } else {
+          return this.contactList.filter(item => {
+            return this.brokerInfo.contactMethods.indexOf(item.name)
+          })
+        }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     async mounted () {
@@ -151,6 +249,10 @@
       if (header.concise_header_message_center) {
         await this.getMessages()
       }
+<<<<<<< HEAD
+=======
+      await this.getStatus()
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     },
     components: {
       BNavDrop,
@@ -173,7 +275,11 @@
       /*overflow: hidden;*/
       width: 300px;
       display: inline-block;
+<<<<<<< HEAD
       >img{
+=======
+      > img {
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         height: 100%;
         max-width: 100%;
       }
@@ -204,8 +310,13 @@
     .link {
       cursor: pointer;
     }
+<<<<<<< HEAD
     .link:hover{
       text-decoration: underline!important;
+=======
+    .link:hover {
+      text-decoration: underline !important;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
     padding: 0px 11px;
     .wrap-li {

@@ -2,6 +2,7 @@
   #trade-account-apply
     h1.theme-color-darkenC15 {{renderData.account_apply}}
     .split-line.theme-bg-D
+<<<<<<< HEAD
     el-form(:model="form" label-width="96px", ref="form", :rules="rules").form
       el-form-item(label-width="96px", prop="account_type")
         h4(v-text="renderData.apply_mt4")
@@ -12,6 +13,24 @@
         b-select(:model.sync="temp", :placeholder="renderData.pleaseSelect", @change="tempChange")
           el-option(:value="item.key", :label="item.val", v-for="item in currencyList", :key="item.key")
       el-form-item(:label="renderData.leverage", prop="leverage").select-box
+=======
+    el-form(:model="form" label-width="140px", ref="form", :rules="rules", label-position="left").form
+      el-form-item(prop="account_type")
+        h4(v-text="renderData.apply_mt4")
+      el-form-item(prop="account_type").select-box
+        template(slot="label")
+          span.theme-color-C.inline-label(v-text="renderData.accountType", v-ellipsis-title="")
+        b-select(:model.sync="form.account_type", :placeholder="renderData.pleaseSelect")
+          el-option(:value="item.key", :label="item.val", v-for="item in accountTypeList", :key="item.key")
+      el-form-item(prop="currency").select-box
+        template(slot="label")
+          span.theme-color-C.inline-label(v-text="renderData.currency", v-ellipsis-title="")
+        b-select(:model.sync="temp", :placeholder="renderData.pleaseSelect", @change="tempChange")
+          el-option(:value="item.key", :label="item.val", v-for="item in currencyList", :key="item.key")
+      el-form-item(prop="leverage").select-box
+        template(slot="label")
+          span.theme-color-C.inline-label(v-text="renderData.leverage", v-ellipsis-title="")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         b-select(:model.sync="form.leverage", :placeholder="renderData.pleaseSelect")
           el-option(:value="item.key", :label="item.val", v-for="item in leverageList", :key="item.key")
       .button-box

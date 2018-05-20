@@ -1,9 +1,16 @@
 <template lang="pug">
   div.b-password(v-if="type==='password'")
+<<<<<<< HEAD
     el-input.b-input(:value="model", :placeholder='placeholder', @input="changeHandle", :class="inputCls", :type='computedType', :disabled="disabled", :size="size")
 
     //b-icon.icon(icon-name="preview" , @click="togglePassword" , :class="{'theme-color-A':inputStatus , 'theme-color-D':!inputStatus }")
   el-input.b-input(:value="model", :placeholder='placeholder', :class="inputCls", v-else, :rows="rows", :type="cType", :disabled="disabled", @input='changeHandle', :size="size")
+=======
+    el-input.b-input(:value="model", :placeholder='placeholder', @input="changeHandle", :class="inputCls", :type='computedType', :disabled="disabled", :size="size", @blur="only", :clearable="clearable")
+
+    //b-icon.icon(icon-name="preview" , @click="togglePassword" , :class="{'theme-color-A':inputStatus , 'theme-color-D':!inputStatus }")
+  el-input.b-input(:value="model", :placeholder='placeholder', :class="inputCls", v-else, :rows="rows", :type="cType", :disabled="disabled", @input='changeHandle', @blur="only", :size="size", :clearable="clearable")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
 </template>
 
@@ -46,9 +53,22 @@
       disabled: {
         type: Boolean,
         default: false
+<<<<<<< HEAD
       }
     },
     methods: {
+=======
+      },
+      clearable: {
+        type: Boolean,
+        default: false
+      }
+    },
+    methods: {
+      only () {
+        this.$emit('blur')
+      },
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       changeHandle (value) {
         console.log('input changeHandle')
 //        this.$emit('update:model', value || '')
@@ -74,7 +94,11 @@
       },
       inputCls () {
         return {
+<<<<<<< HEAD
           'theme-color-lightenC32 theme-border-D theme-border-lightenC32-hover theme-border-A-active': true,
+=======
+          'theme-color-C': true,
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           'input-status': this.type === 'password' && this.inputStatus
         }
       }

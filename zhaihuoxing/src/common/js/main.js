@@ -13,6 +13,10 @@ import 'expose-loader?$store!@/store'
 import '../styleSheet/font/iconfont.css'
 import 'common/js/ie-polyfill'
 import 'common/js/theme-color'
+<<<<<<< HEAD
+=======
+import 'common/js/checkUserStatus.js'
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
 // handle loading
 console.log('window.$store', window.$store)

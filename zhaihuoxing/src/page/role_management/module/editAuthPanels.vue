@@ -32,14 +32,49 @@
                         el-dropdown-item
                           b-checkbox.theme-color-C(:model.sync="secondPermit.enabled", :disabled="!secondPermit.checked || !editable") {{renderData.enableOperate}}
 
+<<<<<<< HEAD
     //el-tab-pane(:label="renderData.resourceAuth", name="2")
       el-collapse(v-model="editAuthPanels.activeResource")
         el-collapse-item(:name="resource.name", v-for="resource in resourceList", :key="resource.name", :title="resource.label")
           resource-item(:resource="resource", :render-data="generateRenderData(resource)")
+=======
+    el-tab-pane(name="2")
+      span.theme-color-A(slot="label") 资源访问权限
+      el-collapse.ziyuan(v-model="activeName")
+        el-collapse-item(v-for="item in ziyuanData", :key="item.comName", :name="item.comName", :title="item.comName")
+          .box-left
+            .radio-box
+              el-radio(v-model="item.visitType" label="all") 访问全部资源
+            .radio-box
+              el-radio(v-model="item.visitType" label="one") 访问特定资源
+            .search-box(v-if="item.visitType==='one'")
+              .search-type(v-for="searchChild in item.searchArr")
+                el-form(label-width="140px" label-position='left' ref="form", :model="item")
+                  el-form-item(label="赛选条件")
+                    b-select.input-long-type1(placeholder="请选择", :model.sync="searchChild.type")
+                      el-option(v-for="arr in tiaojianArr", :key="arr.type", :label="arr.label", :value="arr.type")
+
+                    b-select.input-long-type1(placeholder="请选择", :model.sync="searchChild.data" v-if="searchChild.type!=='' && searchChild.optType==='select'")
+                      el-option(v-for="data in searchChild.source", :key="data", :label="data", :value="data")
+
+                    el-date-picker(v-model="searchChild.data" align="right" type="datetimerange" start-placeholder="开始日期" end-placeholder="结束日期", :picker-options="searchChild.disabledTime" v-if="searchChild.type!=='' && searchChild.optType==='dataPicker'")
+              .search-btn
+                el-button(type="primary", @click="addSearch(item)") 添加赛选条件
+          .box-right
+            .radio-box
+              el-radio(v-model="item.checkType" label="all") 查看全部资源
+            .radio-box
+              el-radio(v-model="item.checkType" label="one") 查看特定资源
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </template>
 
 <script>
   import Vue from 'vue'
+<<<<<<< HEAD
+=======
+  import BSelect from 'components/BSelect'
+  import BInput from 'components/BInput'
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   import service from '../service'
   import ResourceItem from './ResourceItem'
   import BCheckbox from 'components/BCheckbox'
@@ -54,7 +89,82 @@
         editAuthPanels: {
           activeTab: '1',
           activeComponents: []
+<<<<<<< HEAD
         }
+=======
+        },
+        activeName: 'role',
+        ziyuanData: [
+          {
+            comName: 'user',
+            visitType: 'all',
+            searchArr: [],
+            checkType: 'all'
+          },
+          {
+            comName: 'role',
+            visitType: 'one',
+            searchArr: [
+              {
+                type: 'time',
+                data: ['2018-03-07', '2018-03-21'],
+                optType: 'dataPicker',
+                disabledTime: {
+                  disabledDate (time) {
+                    console.log('时间禁用区间')
+                    console.log(time.getTime())
+                    console.log(Date.now())
+                    return ((time.getTime() > (Date.now() + 4000008524)))
+                  }
+                }
+              },
+              {
+                type: 'userType',
+                data: '钻石用户',
+                optType: 'select',
+                source: [
+                  'vip1', 'vip2', 'vip3', 'vip4', 'vip5', '钻石用户'
+                ]
+              },
+              {
+                type: 'country',
+                data: '中国',
+                optType: 'select',
+                source: [
+                  '中国', '韩国', '美国', '日本', '意大利', '法国', '英国'
+                ]
+              },
+              {
+                type: 'status',
+                data: '激活',
+                optType: 'select',
+                source: [
+                  '激活', '未激活', '等待中', '处理中', '冻结前', '已冻结', '销毁'
+                ]
+              }
+            ],
+            checkType: 'one'
+          }
+        ],
+        tiaojianArr: [
+          {
+            type: 'time',
+            label: '创建/注册时间'
+          },
+          {
+            type: 'userType',
+            label: '用户类型'
+          },
+          {
+            type: 'country',
+            label: '国籍'
+          },
+          {
+            type: 'status',
+            label: '状态'
+          }
+        ]
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     props: {
@@ -238,6 +348,10 @@
         return service.getAllAuth(params).then(res => {
           console.log('res', res)
           this.componentsAuth = res
+<<<<<<< HEAD
+=======
+          console.log('test init 1', this.componentsAuth.length)
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         })
       },
       getResourceList () {
@@ -248,8 +362,17 @@
         })
       },
       async init () {
+<<<<<<< HEAD
         await this.getAllAuth()
         this.editAuthPanels.activeComponents = this.componentsAuth.map(comp => comp.auth)
+=======
+        console.log('test init 0')
+        await this.getAllAuth()
+        console.log('test init 2', this.componentsAuth.length)
+        if (this.componentsAuth.length) {
+          this.editAuthPanels.activeComponents = this.componentsAuth.map(comp => comp.auth)
+        }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         // 生成 authMap 添加beDependentAuths
         this.authMap = new Map()
         this.componentsAuth.forEach(comp => {
@@ -275,9 +398,33 @@
         })
         this.renderByRoleInfo()
         // await this.getResourceList() // z todo 资源管理暂时不做
+<<<<<<< HEAD
       }
     },
     components: {BCheckbox, ResourceItem},
+=======
+      },
+      addSearch (item) {
+        let targetData = item.searchArr
+        if (targetData.length === 0) {
+          item.searchArr.push({
+            type: '',
+            data: ''
+          })
+          return
+        }
+        if (targetData[targetData.length - 1].type === '' || targetData[targetData.length - 1].data === '') {
+          this.$message('请选择完成最后一项')
+          return
+        }
+        item.searchArr.push({
+          type: '',
+          data: ''
+        })
+      }
+    },
+    components: {BCheckbox, ResourceItem, BSelect, BInput},
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     mounted () {
 //      this.init()
     }
@@ -288,8 +435,17 @@
   .edit-auth-panel {
     .el-collapse-item__header {
       margin-left: 3px;
+<<<<<<< HEAD
     }
     .el-collapse-item__content {
+=======
+      .el-checkbox {
+        margin-top: 10px;
+      }
+    }
+    .el-collapse-item__content {
+      padding-bottom: 0px!important;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       .el-table {
         .permit-item {
           margin-bottom: 8px;
@@ -298,8 +454,27 @@
       }
     }
     .el-table--fit{
+<<<<<<< HEAD
       border-bottom: 0 !important;
       border-right: 0 !important;
+=======
+      background-color: inherit;
+      tr {
+        background-color: inherit;
+      }
+    }
+    .ziyuan{
+      .box-left{
+        float: left;
+        width: 70%;
+        border: 1px solid #ccc;
+      }
+      .box-right{
+        float: left;
+        width: 30%;
+        border: 1px solid #ccc;
+      }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
   }
 </style>

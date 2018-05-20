@@ -4,7 +4,12 @@
       el-col(:span="3", :offset='18')
         b-button(@click='back') {{renderData.back}}
       el-col(:span="3")
+<<<<<<< HEAD
         b-button(@click='saveEnable') {{renderData.saveEnable}}
+=======
+        b-button(@click='saveEnable')
+          span.block-text(v-ellipsis-title="") {{renderData.saveEnable}}
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     .content
       .left.draggable-item-container.theme-bg-I
         .title.theme-color-A {{renderData.controlBase}}
@@ -12,16 +17,27 @@
           b-icon.template-icon(:iconName="temp.icon")
           span {{temp.label}}
       .middle
+<<<<<<< HEAD
         el-form.middle-container(label-width="100px", :model="tempForm", ref="tempForm")
           .title {{auditInfo.name}}
           .item(v-for="(item, $index) in formItemList", :key="$index", :idx="$index",  v-dropable="handler", @click="currItem=item")
+=======
+        el-form.middle-container(label-width="140px", :model="tempForm", ref="tempForm", label-position="left")
+          .title {{auditInfo.name}}
+          .item(v-for="(item, $index) in formItemList", :key="item.key", :idx="$index",  v-dropable="handler", @click="currItem=item")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             .operate-menu
               .icon-conatainer(v-draggable="handler", :idx="$index", origin='middle')
                 b-icon(iconName='move')
               .icon-conatainer
                 b-icon(iconName='delete', @click.native="deleteFormItem($index)")
             el-form-item(:prop="item.key")
+<<<<<<< HEAD
               span(slot="label", :class="{'theme-color-A': currItem===item}") {{item.label}}
+=======
+              template(slot="label")
+                span.theme-color-C.inline-label(v-text="item.label", v-ellipsis-title="", :class="{'theme-color-A': currItem===item}")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
               b-form-item(:model.sync='tempForm[item.key]', :item='item')
           .blank-item(v-dropable="handler", :idx="formItemList.length")
             .line
@@ -30,16 +46,34 @@
       .right.theme-bg-I
         el-tabs(v-model='activePane', type="card")
           el-tab-pane(name="1", :label="renderData.workflowInfo")
+<<<<<<< HEAD
             el-form(ref="auditInfoForm", :rules="rules", label-width="80px", :model="auditInfo")
               el-form-item(:label="renderData.workflowName", prop="name")
+=======
+            el-form(ref="auditInfoForm", :rules="rules", label-width="140px", :model="auditInfo", label-position="left")
+              el-form-item(prop="name")
+                template(slot="label")
+                  span.theme-color-C.inline-label(v-text="renderData.workflowName", v-ellipsis-title="")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
                 b-input(:model.sync="auditInfo.name", :placeholder="renderData.pleaseInput")
               //el-form-item(:label="renderData.taskType", prop="taskType")
                 b-input(:model.sync="auditInfo.task_type", :placeholder="renderData.pleaseInput")
               template(v-if="visible.page!=='auditPageEdit'")
+<<<<<<< HEAD
                 el-form-item(:label="renderData.description", prop="description.label")
                   b-input(:model.sync="auditInfo.description.label", :placeholder="renderData.pleaseInput", :rows="3")
                 el-form-item(:label="renderData.auditIcon")
                   el-row(v-show="!auditInfo.icon.url")
+=======
+                el-form-item(prop="description.label")
+                  template(slot="label")
+                    span.theme-color-C.inline-label(v-text="renderData.description", v-ellipsis-title="")
+                  b-input(:model.sync="auditInfo.description.label", :placeholder="renderData.pleaseInput", :rows="3")
+                el-form-item
+                  template(slot="label")
+                    span.theme-color-C.inline-label(v-text="renderData.auditIcon", v-ellipsis-title="")
+                  el-row(v-if="!auditInfo.icon.url")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
                     .icon-item(v-for="icon in iconList", :key="icon", :class="{'theme-border-A':auditInfo.icon.icon===icon, 'theme-border-C':auditInfo.icon.icon!==icon}")
                       b-icon(:iconName='icon', @click.native="toggleIcon(icon)", size="26px")
                   el-row(v-show="!auditInfo.icon.icon")
@@ -48,7 +82,11 @@
                       .el-upload__text {{renderData.clickUpload}}
                       .el-upload__tip(slot="tip") {{renderData.formatRestrictionsNarrow}}
           el-tab-pane(name="2", :label="renderData.controlSet")
+<<<<<<< HEAD
             form-item-set(v-for="(item, $index) in formItemList",:key='$index', v-show="currItem==item", :item="item", :renderData="renderData", @rule-change="ruleChange", :allFormItems="formItemList", ref="formItemSet")
+=======
+            form-item-set(v-for="(item, $index) in formItemList",:key='$index', v-show="currItem==item", :item="item", :renderData="renderData", :allFormItems="formItemList", ref="formItemSet")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
 </template>
 
@@ -62,16 +100,23 @@
   import BFormItem from 'components/BFormItem'
   import FormItemSet from './FormItemSet'
 
+<<<<<<< HEAD
   // z todo 1 从左边拖放，位置不太对
   // z todo 2 提示没有正常显示
 
+=======
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   export default {
     name: 'form-set',
     data () {
       var _this = this
       return {
         formSet: {},
+<<<<<<< HEAD
         currItem: {},
+=======
+        currItem: null,
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         auditInfo: {
           name: '',
 //          task_type: '',
@@ -94,9 +139,15 @@
               trigger: 'blur'
             },
             {
+<<<<<<< HEAD
               regex: constants.text0To10Reg,
               validator: validator.validate,
               message: this.renderData.text0To10Limit,
+=======
+              regex: constants.text0To30Reg,
+              validator: validator.validate,
+              message: this.renderData.text0To30Limit,
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
               trigger: 'blur'
             },
             {
@@ -145,7 +196,11 @@
               }
             } else {
               // 添加到target下
+<<<<<<< HEAD
               var template = _this.templateList[sourceIdx]
+=======
+              var template = JSON.parse(JSON.stringify(_this.templateList[sourceIdx])) // 深拷贝
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
               var newItem = Object.assign({
                 label: '',
                 placeholder: '',
@@ -263,6 +318,7 @@
         required: true
       }
     },
+<<<<<<< HEAD
 //    computed: {
 //      cRules () {
 //        var cRules = {}
@@ -280,6 +336,15 @@
       ruleChange () {
         // 暂时预览这边儿不做验证了
 //        this.$refs['tempForm'].reset()
+=======
+    methods: {
+      backWithoutValidate () {
+        if (this.visible.page === 'auditPageEdit') {
+          this.visible.page = 'audit_set_flow_people_set'
+        } else {
+          this.visible.page = 'audit_set_form_set'
+        }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       },
       back () {
         // z todo 判断信息是否发生变化，然后弹框
@@ -288,11 +353,15 @@
           cancelButtonText: this.renderData.cancel,
           type: 'warning'
         }).then(() => {
+<<<<<<< HEAD
           if (this.visible.page === 'auditPageEdit') {
             this.visible.page = 'audit_set_flow_people_set'
           } else {
             this.visible.page = 'audit_set_form_set'
           }
+=======
+          this.backWithoutValidate()
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         })
       },
       fileTypeNotRight () {
@@ -306,6 +375,7 @@
       uploadCDN (file) {
         // 如果文件有改动，则上传至CDN， 然后把url，name让如file中
         var uploadParams = {}
+<<<<<<< HEAD
         uploadParams = {originPath: file.url}
         return service.uploadCDN(uploadParams)
       },
@@ -314,10 +384,21 @@
         console.log('saveEnable')
         this.$refs['auditInfoForm'].validate(res => {
           valid = res
+=======
+        uploadParams = {originPath: file.filename}
+        return service.uploadCDN(uploadParams)
+      },
+      async saveEnable () {
+        var valid = true
+        console.log('saveEnable')
+        this.$refs['auditInfoForm'].validate(res => {
+          valid = res && valid
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           if (!valid) {
             this.activePane = '1'
           }
         })
+<<<<<<< HEAD
         this.$refs['formItemSet'].forEach((form, idx) => {
           console.log('formItemSet', form, form.validate)
           form.validate(res => {
@@ -329,6 +410,19 @@
             }
           })
         })
+=======
+        if (this.$refs['formItemSet']) {
+          this.$refs['formItemSet'].forEach((form, idx) => {
+            form.validate(res => {
+              valid = res && valid
+              if (!res) {
+                this.activePane = '2'
+                this.currItem = this.formItemList[idx]
+              }
+            })
+          })
+        }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
         if (valid) {
           var params = {
@@ -337,7 +431,15 @@
           }
           params.data.dataSource = this.formItemList
           if (this.visible.page === 'auditPageEdit') {
+<<<<<<< HEAD
             service.editAuditForm(params)
+=======
+            service.editAuditForm(params).then(res => {
+              if (res.re === '200') {
+                this.backWithoutValidate()
+              }
+            })
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           } else {
             if (this.auditInfo.icon.changed) {
               var {url} = await this.uploadCDN(this.auditInfo.icon)
@@ -345,6 +447,7 @@
               delete this.auditInfo.icon.changed
             }
             if (this.auditInfo.key) {
+<<<<<<< HEAD
               service.editEnable(params)
             } else {
               service.saveEnable(params)
@@ -352,18 +455,40 @@
           }
         } else {
           this.activePane = '1'
+=======
+              service.editEnable(params).then(res => {
+                if (res.re === '200') {
+                  this.backWithoutValidate()
+                }
+              })
+            } else {
+              service.saveEnable(params).then(res => {
+                if (res.re === '200') {
+                  this.backWithoutValidate()
+                }
+              })
+            }
+          }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
       },
       toggleIcon (icon) {
         if (this.auditInfo.icon.icon === icon) {
+<<<<<<< HEAD
           this.auditInfo.icon.icon = ''
         } else {
           this.auditInfo.icon.icon = icon
+=======
+          this.$set(this.auditInfo.icon, 'icon', '')
+        } else {
+          this.$set(this.auditInfo.icon, 'icon', icon)
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
       },
       deleteFormItem (idx) {
         this.formItemList.splice(idx, 1)
       }
+<<<<<<< HEAD
 //      getFormItemList () {
 //        var params = {}
 //        return service.getFormItemList(params).then(({data}) => {
@@ -377,6 +502,8 @@
 //          this.formItemList = res.
 //        })
 //      }
+=======
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     },
     async mounted () {
       console.log('mounted formset')
@@ -398,7 +525,10 @@
 
 <style lang="less" scoped>
   .form-set {
+<<<<<<< HEAD
     min-width: 1153px;
+=======
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     overflow-x: auto;
     overflow-y: hidden;
     .oper-container {
@@ -408,6 +538,15 @@
       border-left-width: 0;
       border-right-width: 0;
       padding-bottom: 12px;
+<<<<<<< HEAD
+=======
+      .el-col:nth-child(1) {
+        padding-right: 5px;
+      }
+      .el-col:nth-child(2) {
+        padding-left: 5px;
+      }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
     .content {
       display: flex;
@@ -419,6 +558,10 @@
         display: inline-block;
         vertical-align: top;
         width: 13%;
+<<<<<<< HEAD
+=======
+        min-width: 165px;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         .title {
           font-size: 16px;
           letter-spacing: 0;

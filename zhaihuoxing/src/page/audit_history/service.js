@@ -2,7 +2,11 @@ import { fetch } from 'common/js/Utils'
 
 export default {
   getCustomizedAudit (params) {
+<<<<<<< HEAD
     var url = '/api/resource/audit_process/get_customized_audit'
+=======
+    var url = '/api/resource/audit_history/get_customized_audit'
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     console.log('params', url, params)
     return fetch(url, params)
     // return new Promise((resolve, reject) => {

@@ -2,6 +2,9 @@
   <div id="app">
     <img src="assets/logo.png" :id='test.show'>
     <router-view/>
+    <div>
+      {{message}}
+    </div>
   </div>
 </template>
 
@@ -12,6 +15,7 @@
     data () {
       console.log('APP data init')
       return {
+        message: '',
         show: true,
         test: null
       }
@@ -27,6 +31,12 @@
       console.log('app beforeMount')
     },
     mounted () {
+      this.message = window.localStorage.getItem('message')
+      var url = '/api/get'
+      var params = {}
+      window.fetch(url, params).then(res => {
+        console.log('res', ...arguments)
+      })
       console.log('app.js mounted!')
       function readonly (target, name, descriptor) {
         descriptor.writable = false;

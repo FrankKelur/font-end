@@ -52,7 +52,11 @@
     },
     computed: {
       users () {
+<<<<<<< HEAD
         return this.userList.join(' ')
+=======
+        return this.userList.join(this.renderData.comma)
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     async mounted () {

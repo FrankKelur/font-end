@@ -6,7 +6,11 @@ export default {
     return fetch(url, params)
   },
   signUp (params) {
+<<<<<<< HEAD
     var url = '/api/signin/signup'
+=======
+    var url = '/api/resource/user/user_sign_up'
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     return fetch(url, params)
   },
   getFormFieldMap (params) {
@@ -98,5 +102,36 @@ export default {
     //     })
     //   }, 1000)
     // })
+<<<<<<< HEAD
+=======
+  },
+  getUserTypeList (params) {
+    var url = '/api/resource/user/get_user_type_list'
+    return fetch(url, params)
+  },
+  getSignupResource (params) {
+    var url = '/api/resource/user/get_signup_resource'
+    return fetch(url, params)
+  },
+  getImproveInfo (params) {
+    var url = '/api/resource/user/get_improve_info'
+    return fetch(url, params)
+  },
+  returnSignIn (params) {
+    var url = '/api/resource/user/return_sign_in'
+    return fetch(url, params)
+  },
+  getUsernameRule (params) {
+    var url = '/api/resource/user/get_username_rule'
+    return fetch(url, params)
+  },
+  checkMatch (params) {
+    var url = '/api/resource/user/check_match'
+    return fetch(url, params)
+  },
+  getTradeAccountSelect (params) {
+    var url = '/api/resource/account/get_tradeAccount_select'
+    return fetch(url, params)
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 }

@@ -1,4 +1,5 @@
 <template lang="pug">
+<<<<<<< HEAD
   b-dialog.trade-sys-pass-dialog(:show='true', :title="itemData.channel_name", width="38%", :show-close="true", :before-close="beforeClose")
     el-form(label-width="130px" label-position='left' ref="form", :model="itemData.data", :rules="rules")
       el-form-item(:label="renderData.mt4ServerName" prop="mt4ServerName")
@@ -10,6 +11,33 @@
       el-form-item(:label="renderData.managerLogin" prop="managerLogin")
         b-input(:model.sync="itemData.data.managerLogin", :placeholder="renderData.pleaseEnter")
       el-form-item(:label="renderData.managerPassword" prop="managerPassword")
+=======
+  b-dialog.trade-sys-pass-dialog(:show='true', :title="renderData.channelEdit", width="38%", :show-close="true", :before-close="beforeClose")
+    el-form(label-width="140px" label-position='left' ref="form", :model="itemData.data", :rules="rules")
+      el-form-item(prop="channelName.label", :rules="rules.channelName")
+        template(slot="label")
+          span.theme-color-C.inline-label(v-text="renderData.channelName", v-ellipsis-title="")
+        b-input(:model.sync="itemData.data.channelName.label", :placeholder="renderData.pleaseEnter")
+      el-form-item(prop="mt4ServerName")
+        template(slot="label")
+          span.theme-color-C.inline-label(v-text="renderData.mt4ServerName", v-ellipsis-title="")
+        b-input(:model.sync="itemData.data.mt4ServerName", :placeholder="renderData.pleaseEnter", :disabled="optType==='edit'")
+      el-form-item(prop="ip")
+        template(slot="label")
+          span.theme-color-C.inline-label(v-text="renderData.ip", v-ellipsis-title="")
+        b-input(:model.sync="itemData.data.ip", :placeholder="renderData.pleaseEnter")
+      el-form-item(prop="port")
+        template(slot="label")
+          span.theme-color-C.inline-label(v-text="renderData.port", v-ellipsis-title="")
+        b-input(:model.sync="itemData.data.port", :placeholder="renderData.pleaseEnter")
+      el-form-item(prop="managerLogin")
+        template(slot="label")
+          span.theme-color-C.inline-label(v-text="renderData.managerLogin", v-ellipsis-title="")
+        b-input(:model.sync="itemData.data.managerLogin", :placeholder="renderData.pleaseEnter")
+      el-form-item(prop="managerPassword")
+        template(slot="label")
+          span.theme-color-C.inline-label(v-text="renderData.managerPassword", v-ellipsis-title="")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         b-input(:model.sync="itemData.data.managerPassword", :placeholder="renderData.pleaseEnter")
     template(slot="footer")
       b-button(@click="cancelForm") {{renderData.cancel}}
@@ -29,6 +57,20 @@
       var vm = this
       return {
         rules: {
+<<<<<<< HEAD
+=======
+          channelName: [
+            { required: true, message: vm.renderData.pleaseEnterChannelName, trigger: 'blur' },
+            {
+              validator: utils.validator.validate,
+              test (val) {
+                return val.trim() === val
+              },
+              message: vm.renderData.qianhouNoSpace,
+              trigger: 'blur'
+            }
+          ],
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           mt4ServerName: [
             { required: true, message: vm.renderData.pleaseEnterMt4ServerName, trigger: 'blur' },
             {
@@ -111,6 +153,12 @@
       itemData: {
         type: Object,
         required: true
+<<<<<<< HEAD
+=======
+      },
+      optType: {
+        type: String
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     methods: {
@@ -167,7 +215,10 @@
       }
     },
     mounted () {
+<<<<<<< HEAD
       console.log('传入的数据', this.itemData)
+=======
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     },
     components: {
       BDialog,
@@ -179,6 +230,13 @@
 
 <style lang="less">
   .trade-sys-pass-dialog{
+<<<<<<< HEAD
+=======
+    .el-dialog .el-dialog__body {
+      max-height: 50%!important;
+      overflow-y: auto!important;
+    }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     .el-form-item:last-child{
       margin-bottom: 0 !important;
     }

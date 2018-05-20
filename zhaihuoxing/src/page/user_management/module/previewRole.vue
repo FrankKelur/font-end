@@ -1,5 +1,9 @@
 <template lang="pug">
+<<<<<<< HEAD
   el-form.preview-role(label-width="120px")
+=======
+  el-form.preview-role(label-width="140px")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     .body-container
       el-row(:gutter="80")
         el-col(:span="6", class="roleName1")

@@ -1,7 +1,14 @@
 <template lang="pug">
   b-dialog.copy-type(:show='true', :title="renderData.copyUserType", width="38%", :show-close="true", :before-close="beforeClose")
+<<<<<<< HEAD
     el-form(label-width="100px", :model="copyForm", ref="copyForm", :rules="rules")
       el-form-item(prop="userType", :label="renderData.userType")
+=======
+    el-form(label-width="140px", :model="copyForm", ref="copyForm", :rules="rules", label-position='left')
+      el-form-item(prop="userType")
+        template(slot="label")
+          span.theme-color-C.inline-label(v-text="renderData.userType", v-ellipsis-title="")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         b-input(:placeholder="renderData.pleaseEnter", :model.sync="copyForm.userType")
     template(slot="footer")
       b-button(@click="visible.dialog=null") {{renderData.cancel}}
@@ -43,6 +50,21 @@
               },
               validator: validator.validate,
               trigger: 'blur'
+<<<<<<< HEAD
+=======
+            },
+            {
+              test (val) {
+                var params = {
+                  name: val,
+                  uuid: ''
+                }
+                return service.checkTypeName(params).then(({re}) => re)
+              },
+              validator: validator.validate,
+              message: renderData.userTypeExist,
+              trigger: 'input'
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             }
           ]
         }
@@ -81,7 +103,11 @@
           service.saveType(params).then(resp => {
             if (resp.re === '200') {
               this.visible.dialog = null
+<<<<<<< HEAD
               this.$emit('refresh-type-list', resp.data.uuid)
+=======
+              this.$emit('refresh-type-list', 'last')
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             }
           })
         })

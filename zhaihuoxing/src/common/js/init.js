@@ -149,7 +149,10 @@ var langMap = {
 Vue.directive('ellipsis-title', {
   bind (el, binding, vnode) {
     el.classList.add('ellipsis-title')
+<<<<<<< HEAD
     // z todo 换成在binding的时候，添加title，或者在添加完title之后，去除 onmouseenter事件
+=======
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     el.onmouseenter = function () {
       // console.log('onmouseenter', el)
       // console.log('el.innerHTML', el.innerHTML)

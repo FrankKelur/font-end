@@ -118,7 +118,11 @@ const parse = (colorList, additionalStr) => {
   if (additionalStr) {
     lessStr = additionalStr
   } else {
+<<<<<<< HEAD
     lessStr = getLessStr(['@A', '@darkenA10', '@lightenA10', '@lightenA32', '@B', '@darkenB10', '@lightenB10', '@C', '@lightenC32', '@darkenC15', '@D', '@lightenD10', '@lightenD18', '@lightenD15', '@lightenD32', '@lightenD12', '@E', '@F', '@G', '@H', '@lightenH32', '@I', '@J'])
+=======
+    lessStr = getLessStr(['@A', '@darkenA10', '@lightenA10', '@lightenA32', '@B', '@darkenB10', '@lightenB10', '@C', '@lightenC32', '@darkenC15', '@D', '@lightenD10', '@lightenD18', '@lightenD15', '@darkenC10', '@lightenD32', '@lightenD12', '@E', '@F', '@G', '@H', '@lightenH32', '@lighten12D', '@fadeA2', '@I', '@J'])
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
   lessStr = replace(lessStr, colorList)
   for (let f of handler) {

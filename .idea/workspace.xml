@@ -160,7 +160,7 @@
       <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/page-editor/src/pages/editor/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="-1006">
               <caret line="65" column="25" lean-forward="true" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
               <folding>
                 <element signature="e#3491#3522#0" expanded="true" />
@@ -2084,12 +2084,12 @@
       <workItem from="1526384661858" duration="1741000" />
       <workItem from="1526449079091" duration="5527000" />
       <workItem from="1526613027417" duration="2224000" />
-      <workItem from="1526660550513" duration="4315000" />
+      <workItem from="1526660550513" duration="6380000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90499000" />
+    <option name="totallyTimeSpent" value="92564000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2102,9 +2102,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16842847" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16842847" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329927" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5021075" side_tool="true" weight="0.35032538" />
@@ -2112,7 +2111,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32917705" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.329927" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49789253" visible="true" weight="0.32668328" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49789253" visible="true" weight="0.32668328" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
@@ -3826,7 +3825,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/page-editor/src/pages/editor/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="-1006">
           <caret line="65" column="25" lean-forward="true" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
           <folding>
             <element signature="e#3491#3522#0" expanded="true" />

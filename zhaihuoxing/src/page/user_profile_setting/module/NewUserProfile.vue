@@ -1,6 +1,10 @@
 <template lang="pug">
   b-dialog.new-profile(:show='true', :title="renderData.newUserProfile", width="38%", :show-close="true", :before-close="beforeClose")
+<<<<<<< HEAD
     el-form(label-width="100px", :model="newProfile", ref="newProfile", :rules="rules")
+=======
+    el-form(label-width="100px", :model="newProfile", ref="newProfile", :rules="rules", label-position='left')
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       el-form-item(prop="name", :label="renderData.profileName")
         b-input(:placeholder="renderData.pleaseEnter", :model.sync="newProfile.name")
     template(slot="footer")

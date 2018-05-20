@@ -28,11 +28,16 @@
             //  b-icon.theme-color-C.theme-color-G-hover(iconName='message_failure', @click.native="addingItem=null")
             //  b-icon.theme-color-C.theme-color-E-hover(iconName='message_success', @click.native="addResource(classItem, idxClass)")
           .class-item
+<<<<<<< HEAD
             b-button(size="small", @click.native="addCustomResourceMod('addCls')", type="primary" v-if="addingItem!='addCls'") {{renderData.addDiyCategory}}
+=======
+            b-button(@click.native="addCustomResourceMod('addCls')", type="primary" v-if="addingItem!='addCls'") {{renderData.addDiyCategory}}
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             el-form-item.newResource-status-form-item(v-if="addingItem=='addCls'", prop="newResource")
               b-input(:placeholder="renderData.pleaseEnter", :model.sync="customList.newResource")
               b-icon.theme-color-C.theme-color-G-hover.empty-icon(iconName='message_failure', @click.native="addingItem=null")
               b-icon.theme-color-C.theme-color-E-hover(iconName='message_success', @click.native="addResource()")
+<<<<<<< HEAD
           .operation-container
             b-button(size="small", @click.native="backProfileSetting") {{renderData.backToUserProfile}}
       .right.theme-bg-I
@@ -47,6 +52,30 @@
           .footer
             b-button(type="primary" ,@click="saveResource") {{renderData.save}}
 
+=======
+        .operation-container
+          b-button(@click.native="backProfileSetting") {{renderData.backToUserProfile}}
+      .right.theme-bg-I
+        template(v-if="!resourceInfo.empty")
+          .right_one(v-if="!isFile")
+            el-form(:model="resourceInfo", ref="resourceInfo", :rules="rules", label-width="140px", label-position="left")
+              //el-form-item(prop="key", :label="renderData.diyField")
+                b-input(:model.sync="resourceInfo.key", :placeholder="renderData.pleaseEnter")
+              el-form-item(prop="type")
+                template(slot="label")
+                  span.theme-color-C.inline-label(v-text="renderData.diyFieldType", v-ellipsis-title="")
+                b-select(:model.sync="resourceInfo.type", :placeholder="renderData.pleaseSelect", @change="resourceTypeChange")
+                  el-option(v-for="(item, idx) in typeList", :key="idx", :label="item.label", :value="item.key")
+            form-item-set(:item="resourceInfo", :renderData="renderData", ref="formItemSet")
+          .right_two(v-else)
+            el-form(:model="resourceInfo", ref="resourceInfo", :rules="rules", label-width="140px", label-positon="left")
+              el-form-item(prop="label")
+                template(slot="label")
+                  span.theme-color-C.inline-label(v-text="renderData.diyFieldType", v-ellipsis-title="")
+                b-input(:model.sync="resourceInfo.label", :placeholder="renderData.pleaseEnter")
+          .footer
+            b-button(type="primary" ,@click="saveResource") {{renderData.save}}
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </template>
 
 <script>
@@ -58,7 +87,10 @@
   import FormItemSet from '@/page/audit_set/module/FormItemSet'
   import DeleteDiySetting from './DeleteDiySetting.vue'
   import { constants, validator } from 'common/js/Utils'
+<<<<<<< HEAD
   import Bus from 'common/js/bus'
+=======
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
   export default {
     name: 'diy-setting',
@@ -66,12 +98,16 @@
       var _this = this
       var resInfo = _this.initResource()
       return {
+<<<<<<< HEAD
         childValidRes: Boolean,
+=======
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         leftForm: {},
         rules: {
           type: [
             {
               required: true,
+<<<<<<< HEAD
               message: _this.renderData.pleaseSelect,
               trigger: 'blur'
             },
@@ -86,6 +122,25 @@
               message: _this.renderData.length30Limit,
               validator: validator.validate,
               trigger: 'blur'
+=======
+              message: _this.renderData.pleaseSelectDiyFieldType,
+              trigger: 'blur,change'
+            }
+          ],
+          label: [
+            {
+              required: true,
+              message: _this.renderData.pleaseEnter,
+              trigger: 'blur,change'
+            },
+            {
+              test (val) {
+                return val.trim() === val
+              },
+              message: this.renderData.qianhouNoSpace,
+              validator: validator.validate,
+              trigger: 'blur,change'
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             }
           ]
         },
@@ -189,6 +244,15 @@
         this.addingItem = resource
         this.addingIdx = idxClass
         this.resourceInfo = this.initResource()
+<<<<<<< HEAD
+=======
+//        this.isShow = true
+//        this.isShow1 = false
+//        if (this.addingItem.key === 'files') {
+//          this.isShow = false
+//          this.isShow1 = true
+//        }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       },
       // z todo 编辑分组
       editCls (classItem) {
@@ -237,7 +301,11 @@
             cancelButtonText: this.renderData.cancel,
             type: 'warning'
           }
+<<<<<<< HEAD
         ).then(({ value }) => {
+=======
+        ).then(({value}) => {
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           var path = [cls.key]
           if (resource === cls) {
             path = []
@@ -276,6 +344,7 @@
         this.resourceInfo = Object.assign(tmp, resource)
         this.resourceInfo.parent = cls
 //        this.resourceInfo.empty = false
+<<<<<<< HEAD
       },
       async saveResource () {
         Bus.$emit('checkForm', 'checkFormItemSet')
@@ -283,6 +352,27 @@
         this.$refs['resourceInfo'].validate(valid => { this.childValidRes = this.childValidRes && valid })
         this.$refs['formItemSet'].validate(valid => { this.childValidRes = this.childValidRes && valid })
         if (this.childValidRes) {
+=======
+//        if (this.isShow1) {
+//          this.isShow1 = false
+//          this.isShow = true
+//        }
+        this.$refs['resourceInfo'].clearValidate()
+//        if (this.resourceInfo.parent.key === 'files') {
+//          this.isShow = false
+//          this.isShow1 = true
+//        }
+      },
+      async saveResource () {
+//        Bus.$emit('checkForm', 'checkFormItemSet')
+        var res = true
+        console.log('resourceInfo', this.resourceInfo)
+        this.$refs['resourceInfo'].validate(valid => { res = res && valid })
+        if (!this.isFile) {
+          this.$refs['formItemSet'].validate(valid => { res = res && valid })
+        }
+        if (res) {
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           var params = this.profileInfo
           if (this.addingIdx >= 0) {
             params.key = this.addingItem.key
@@ -296,6 +386,12 @@
             resourceInfo.file.url = url
             console.log('re, url', re, url)
           }
+<<<<<<< HEAD
+=======
+          if (this.isFile) {
+            resourceInfo.type = 'upload'
+          }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           delete resourceInfo['parent']
           if (resourceInfo['type'] === 'input' || resourceInfo['type'] === 'textarea' || resourceInfo['type'] === 'text') {
             delete resourceInfo['dataSource']
@@ -340,7 +436,11 @@
       uploadCDN (resourceInfo) {
         // 如果文件有改动，则上传至CDN， 然后把url，name让如file中
         var uploadParams = {}
+<<<<<<< HEAD
         uploadParams = {originPath: resourceInfo.file.url}
+=======
+        uploadParams = {originPath: resourceInfo.file.filename}
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         delete resourceInfo.file['changed']
         return service.uploadCDN(uploadParams)
       },
@@ -415,12 +515,20 @@
     },
     mounted () {
       this.getCustomizedSetting()
+<<<<<<< HEAD
       var vm = this
       Bus.$on('checkResult', function (val) {
         vm.childValidRes = val
       })
     },
     computed: {
+=======
+    },
+    computed: {
+      isFile () {
+        return (this.addingItem && this.addingItem.key === 'files') || (this.resourceInfo && this.resourceInfo.parent && this.resourceInfo.parent.key === 'files')
+      },
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       leftRules () {
         if (this.addingItem || this.editingItem) {
           return {
@@ -442,7 +550,11 @@
                 },
                 validator: validator.validate,
                 message: this.renderData.textLength30,
+<<<<<<< HEAD
                 trigger: ['change', 'blur']
+=======
+                trigger: 'blur, change'
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
               }
             ]
           }
@@ -466,14 +578,23 @@
     width: 100%;
     top: 74px;
     bottom: 0;
+<<<<<<< HEAD
     .content{
+=======
+    .content {
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       position: relative;
       height: 100%;
       .title {
         font-size: 16px;
         padding: 20px 0;
+<<<<<<< HEAD
         .amend svg{
           font-size: 14px!important;
+=======
+        .amend svg {
+          font-size: 14px !important;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
         span:nth-child(1) {
           width: 80%;
@@ -495,18 +616,33 @@
       flex-grow: 1;
       display: flex;
       .left {
+<<<<<<< HEAD
+=======
+        margin-bottom: 0;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         width: 32%;
         top: 0;
         bottom: 0;
         position: absolute;
+<<<<<<< HEAD
+=======
+        display: flex;
+        flex-direction: column;
+         margin-top: 0px;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         /*overflow: auto;*/
         .customize-class {
           padding-left: 12%;
           line-height: 40px;
           margin: 12px 0;
         }
+<<<<<<< HEAD
         .add-icon svg{
           font-size: 14px!important;
+=======
+        .add-icon svg {
+          font-size: 14px !important;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
         .margin-add-icon {
           margin-left: 5px;
@@ -519,16 +655,25 @@
             display: inline-block;
             text-align: center;
           }
+<<<<<<< HEAD
           .empty-icon svg{
             font-size: 12px!important;
+=======
+          .empty-icon svg {
+            font-size: 12px !important;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           }
           .b-input {
             width: 80%;
           }
         }
         .el-form {
+<<<<<<< HEAD
           /*height: 85%;*/
           height: 100%;
+=======
+          flex-grow: 1;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           overflow: auto;
         }
         .resource-item {
@@ -563,7 +708,12 @@
           marign-right: 10px;
         }
         .operation-container {
+<<<<<<< HEAD
           margin-top: 60px;
+=======
+          margin-top: 10px;
+          margin-bottom: 10px;
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
       }
       .right {
@@ -576,6 +726,7 @@
         overflow-y: auto;
         display: flex;
         flex-direction: column;
+<<<<<<< HEAD
         /*padding-left: 4%;*/
         padding: 4%;
       }
@@ -585,4 +736,16 @@
     }
   }
 
+=======
+        padding: 4%;
+        .footer {
+          padding-left: 0;
+        }
+        .el-form-item__label {
+          text-align: left !important;
+        }
+      }
+    }
+  }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </style>

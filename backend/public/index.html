@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="getData()">click</button>
+<script>
+  function getData () {
+    setCookie('first', 'zhai')
+    fetch('/set', {credentials: 'include'}).then(res => {
+      console.log('res', res)
+      fetch('/api/get?time' + new Date(), {credentials: 'include'})
+    })
+  }
+
+  function setCookie (c_name, value, expiredays) {
+    var exdate = new Date()
+    exdate.setDate(exdate.getDate() + expiredays)
+    document.cookie = c_name + '=' + escape(value) +
+      ((expiredays == null) ? '' : ';expires=' + exdate.toGMTString())
+  }
+</script>
+</body>
+</html>

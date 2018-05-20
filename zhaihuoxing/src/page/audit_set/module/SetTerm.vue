@@ -1,9 +1,16 @@
 <template lang="pug">
   b-dialog.set-term(:show.sync='dialogVisible', :title="renderData.termSet", :show-close="true", width="38%", :before-close="beforeClose")
+<<<<<<< HEAD
     el-form(:rules="rules", ref="setTerm", :model="setTerm", label-width="80px")
       el-form-item.is-required
         template(slot="label")
           | {{renderData.auditTerm}}
+=======
+    el-form(:rules="rules", ref="setTerm", :model="setTerm", label-width="140px", label-position="left")
+      el-form-item.is-required
+        template(slot="label")
+          span.theme-color-C.inline-label(v-text="renderData.auditTerm", v-ellipsis-title="")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         b-select(:model.sync="setTerm.dataSource", :multiple='true', :placeholder="renderData.pleaseSelect", valueKey="key")
           el-option(v-for="(field, idx) in allDataSource", :key="idx", :label="field.label", :value="field")
     template(slot="footer")

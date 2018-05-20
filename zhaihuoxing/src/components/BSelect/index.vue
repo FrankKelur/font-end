@@ -1,5 +1,9 @@
 <template lang="pug">
+<<<<<<< HEAD
   el-select.b-select(v-model="tmpModel", :placeholder='placeholder', @change="changeHandle", :class="selectCls", :multiple="multiple", :disabled="disabled", :valueKey="valueKey")
+=======
+  el-select.b-select(v-model="tmpModel", :placeholder='currPlaceholder', @change="changeHandle", @blur="blurFun" , @focus="focusFun" , :class="selectCls", :multiple="multiple", :disabled="disabled", :valueKey="valueKey", :filterable="filterable", :clearable="clearable")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     slot
 </template>
 
@@ -17,9 +21,17 @@
     data () {
       return {
         tmpModel: this.model,
+<<<<<<< HEAD
         styleMixinLess: styleMixinLess,
         selectCls: {
           'theme-color-C theme-border-lightenD12 theme-border-lightenD12-hover theme-border-A-active theme-color-H-active': true
+=======
+        currPlaceholder: this.placeholder, // focus的时候placeholder 要求变化
+        styleMixinLess: styleMixinLess,
+        selectCls: {
+          'theme-color-lightenC32 theme-bg-H theme-border-lightenD12 theme-border-lightenD-hover theme-border-A-active': !this.disabled,
+          'theme-color-lightenC32 theme-bg-lightenD18 theme-border-lightenD12 theme-color-lightenC32-active theme-bg-lightenD18-active theme-border-lightenD12-active theme-color-lightenC32-hover theme-bg-lightenD18-hover theme-border-lightenD12-hover': this.disabled
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
       }
     },
@@ -38,9 +50,26 @@
       placeholder: {
         type: String
       },
+<<<<<<< HEAD
       valueKey: {
         type: String,
         default: 'value'
+=======
+      focusPlaceholder: {
+        type: String
+      },
+      valueKey: {
+        type: String,
+        default: 'value'
+      },
+      filterable: {
+        type: Boolean,
+        default: false
+      },
+      clearable: {
+        type: Boolean,
+        default: false
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     methods: {
@@ -48,6 +77,19 @@
         console.log('select changeHandle', arguments)
         this.$emit('update:model', this.tmpModel)
         this.$emit('change', value)
+<<<<<<< HEAD
+=======
+      },
+      focusFun (data) {
+        this.$emit('focus')
+        if (this.focusPlaceholder) {
+          this.currPlaceholder = this.focusPlaceholder
+        }
+      },
+      blurFun (data) {
+        this.$emit('blur')
+        this.currPlaceholder = this.placeholder
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     watch: {
@@ -62,9 +104,12 @@
 </script>
 
 <style lang="less" scoped>
+<<<<<<< HEAD
   .el-dialog__body{
     padding-top: 20px
   }
+=======
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   .el-select {
     width: 100%;
   }

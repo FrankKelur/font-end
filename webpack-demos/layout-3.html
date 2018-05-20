@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+            display: flex;
+            height: 200px;
+        }
+        .container .item:nth-child(1) {
+            width: 200px;
+            background: greenyellow;
+        }
+        .container .item:nth-child(3) {
+            width: 200px;
+            background: greenyellow;
+        }
+        .container .item:nth-child(2) {
+            background: lightcyan;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+</div>
+<section class="float">
+    <style>
+        .float article *{
+            height: 200px;
+        }
+        .float .left{
+            background-color: #3b99fc;
+            float: left;
+            width: 200px;
+        }
+        .float .center{
+            background-color: lightcyan;
+        }
+        .float .right{
+            background-color: #3b99fc;
+            float: right;
+            width: 200px;
+        }
+    </style>
+    <h1>三栏布局</h1>
+    <article>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center">
+            这是浮动解决三栏布局的方案
+        </div>
+    </article>
+</section>
+<section class="position">
+    <style>
+        .position {
+            position: relative;
+            height: 200px;
+        }
+        .position * {
+            background-color: #3b99fc;
+        }
+        .position .left{
+            height: 200px;
+            position: absolute;
+            width: 200px;
+            left: 0;
+        }
+        .position .center{
+            height: 200px;
+            position: absolute;
+            left: 200px;
+            right: 200px;
+            background-color: darkgray;
+        }
+        .position .right{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            right: 0;
+        }
+    </style>
+    <h1>三栏布局</h1>
+    <div class="left"></div>
+    <div class="center">定位解决三栏布局</div>
+    <div class="right"></div>
+</section>
+<section class="table">
+    <style>
+        .table {
+            display: table;
+            height: 200px;
+            width: 100%;
+        }
+        .table .container div{
+            display: table-cell;
+        }
+        .table .left {
+            background-color: #3b99fc;
+            width: 200px;
+            height: 200px;
+        }
+        .table .center {
+            background-color: gray;
+            height: 200px;
+        }
+        .table .right {
+            background-color: #3b99fc;
+            width: 200px;
+            height: 200px;
+        }
+        .table .container {
+            display: table;
+            width: 100%;
+        }
+    </style>
+    <article>
+        <h1>三栏布局</h1>
+        <div class="container">
+            <div class="left"></div>
+            <div class="center">table布局方案</div>
+            <div class="right"></div>
+        </div>
+    </article>
+</section>
+<style>
+    .vh {
+        width: 10vmax;
+        height: 10vmax;
+        background-color: red;
+        margin: 0 auto;
+    }
+</style>
+<div class="vh"></div>
+</body>
+<script src="http://localhost:3000/static/test.js"></script>
+</html>

@@ -428,6 +428,28 @@ export default {
     //     'last_name': '' // string LastName
     //   })
     // })
+<<<<<<< HEAD
+=======
+  },
+  toggleUserStatus (params = {}, url = '/api/rbac/user/toggle_user_status') {
+    return fetch(url, params)
+    // return new Promise((resolve, reject) => {
+    //   resolve({
+    //     re: '200'
+    //   })
+    // })
+  },
+  changeEmail (params = {}, url = '/api/rbac/user/change_email') {
+    return fetch(url, params)
+    // return new Promise((resolve, reject) => {
+    //   resolve({
+    //     re: '200'
+    //   })
+    // })
+  },
+  emailUnique (params = {}, url = '/api/public/check_unique') {
+    return fetch(url, params)
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 }
 

@@ -11,7 +11,11 @@
         .switch-show(style="display:none")
           b-button {{renderData.switchMode}}
         .tree-model
+<<<<<<< HEAD
           b-tree(:data="listData", :props="defaultProps" node-key="gid", :render-content="renderContent", :node-expand='expandHandler', :node-collapse='collapseHandler')
+=======
+          b-tree(:data="listData", :props="defaultProps" node-key="gid", :render-content="renderContent", :node-expand='expandHandler', :node-collapse='collapseHandler', :search-placeholder="searchPlaceholder", :search-key="searchKey")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         ul.popover(:style="`left:${popover.left};top:${popover.top}`" v-show="popover.isShow", @mouseleave = "closePopover", @mouseover="showPopover(false)")
           template(v-for="(operateOpt,index) in renderData.operateOpts")
             li(@click="showDialog(operateOpt.auth)", :class="{'disabled': operateOpt.authStatus==='disabled', 'theme-bg-lightenD10-hover': operateOpt.authStatus!=='disabled'}") {{operateOpt.label}}
@@ -100,7 +104,13 @@
         modalRenderData: {},
         new_subgroup: {
           input: ''
+<<<<<<< HEAD
         }
+=======
+        },
+        searchPlaceholder: R.searchPlaceholder,
+        searchKey: 'group_name'
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     methods: {
@@ -298,8 +308,11 @@
 
 <style lang="less">
   .group_management {
+<<<<<<< HEAD
     /*border-style: solid;*/
     /*border-width: 1px;*/
+=======
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     .new-group {
       margin-top: 18px;
     }
@@ -419,6 +432,7 @@
       width: 13px;
       height: 13px;
     }
+<<<<<<< HEAD
     /*.el-col-12 {*/
       /*min-width: 350px;*/
       /*.el-form-item {*/
@@ -428,4 +442,16 @@
       /*}*/
     /*}*/
   }
+=======
+    .list-group .icon {
+      display: inline-block;
+      margin-left: 10px;
+    }
+    .list-group .b-tree .el-tree-node__content .el-tree-node__expand-icon {
+      margin-bottom: 15px !important;
+      margin-left: 11px;
+    }
+  }
+
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </style>

@@ -72,6 +72,10 @@ app.use(hotMiddleware)
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
+<<<<<<< HEAD
+=======
+// app.use('/tmp-preview', express.static('./tmp'))
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 app.set('views', path.join(process.cwd(), '/src/layout/'))
 app.set('view engine', 'pug')
 app.set('view cache', false)

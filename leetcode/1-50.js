@@ -12,15 +12,15 @@
   return [0, 1].
  */
 
-function twoSum(arr, target) {
-    for (var i in arr) {
-        var left = target - arr[i]
-        var js = i + 1
-        for (j in arr) {
-            if (left === arr[j])
-                return [i, j]
-        }
+function twoSum (arr, target) {
+  for (var i in arr) {
+    var left = target - arr[i]
+    var js = i + 1
+    for (j in arr) {
+      if (left === arr[j])
+        return [i, j]
     }
+  }
 }
 
 var res1 = twoSum([2, 7, 11, 15], 17)
@@ -35,18 +35,18 @@ You are given two non-empty linked lists representing two non-negative integers.
 
   Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8*/
-function addTowNum(a1, a2) {
-    var carry = 0
-    var res = []
-    for (var i = 0; i < a1.length; i++) {
-        var tmp = a1[i] + a2[i] + carry
-        res[i] = tmp % 10
-        carry = tmp >= 10 ? 1 : 0
-    }
-    if (carry) {
-        res.push(carry)
-    }
-    return res
+function addTowNum (a1, a2) {
+  var carry = 0
+  var res = []
+  for (var i = 0; i < a1.length; i++) {
+    var tmp = a1[i] + a2[i] + carry
+    res[i] = tmp % 10
+    carry = tmp >= 10 ? 1 : 0
+  }
+  if (carry) {
+    res.push(carry)
+  }
+  return res
 }
 
 var a1 = [2, 4, 3]
@@ -54,23 +54,23 @@ var a2 = [5, 6, 4]
 var res2 = addTowNum(a1, a2)
 console.log('2', res2)
 
-function longestSubstring(a) {
-    var target = ''
-    for (var i = 0; i < a.length; i++) {
-        for (var j = i; j < a.length; j++) {
-            var pre = a.substring(i, j)
-            if (pre.indexOf(a.charAt(j)) == -1) {
-                if (target.length < pre.length + 1) {
-                    target = pre + a.charAt(j)
-                }
-            } else {
-                break
-            }
+function longestSubstring (a) {
+  var target = ''
+  for (var i = 0; i < a.length; i++) {
+    for (var j = i; j < a.length; j++) {
+      var pre = a.substring(i, j)
+      if (pre.indexOf(a.charAt(j)) == -1) {
+        if (target.length < pre.length + 1) {
+          target = pre + a.charAt(j)
         }
-
+      } else {
+        break
+      }
     }
-    console.log(target)
-    return target
+
+  }
+  console.log(target)
+  return target
 }
 
 longestSubstring('bbbbb')
@@ -81,26 +81,26 @@ longestSubstring('bbbbb')
 There are two sorted arrays nums1 and nums2 of size m and n respectively.
 Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
 */
-function findKTh(k, sList, lList) {
-    var temp = []
-    if (sList.length > lList.length) {
-        temp = sList
-        sList = lList
-        lList = temp
-    }
-    if (sList < 1) {
-        return lList[k]
-    }
-    if (k === 1) {
-        return Math.min(sList[0], lList[0])
-    }
-    var p = Math.min(k / 2, sList.length)
-    var q = k - p
-    if (sList[p] < lList[q]) {
-        findKTh(k - p, sList.slice(p + 1), lList.slice(0, q))
-    } else {
-        findKTh(k - q, sList.slice(q), lList.slice(0, p))
-    }
+function findKTh (k, sList, lList) {
+  var temp = []
+  if (sList.length > lList.length) {
+    temp = sList
+    sList = lList
+    lList = temp
+  }
+  if (sList < 1) {
+    return lList[k]
+  }
+  if (k === 1) {
+    return Math.min(sList[0], lList[0])
+  }
+  var p = Math.min(k / 2, sList.length)
+  var q = k - p
+  if (sList[p] < lList[q]) {
+    findKTh(k - p, sList.slice(p + 1), lList.slice(0, q))
+  } else {
+    findKTh(k - q, sList.slice(q), lList.slice(0, p))
+  }
 }
 
 /*
@@ -108,34 +108,34 @@ function findKTh(k, sList, lList) {
 5. Longest Palindromic Substring
 Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
 */
-function getPalindromicStr(str) {
-    var res = ''
-    for (var i = 0; i < str.length; i++) {
-        var tmp = getPalindromicStrOfChar(str, i)
-        if (tmp.length > res.length) {
-            res = tmp
+function getPalindromicStr (str) {
+  var res = ''
+  for (var i = 0; i < str.length; i++) {
+    var tmp = getPalindromicStrOfChar(str, i)
+    if (tmp.length > res.length) {
+      res = tmp
+    }
+  }
+  return res
+
+  function getPalindromicStrOfChar (str, idx) {
+    var res = str.charAt(idx)
+    for (var i = 1; ; i++) {
+      var preIdx = idx - i
+      var nextIdx = idx + i
+      var pre = str.charAt(preIdx)
+      var next = str.charAt(nextIdx)
+      var curr = str.charAt(idx)
+      if (preIdx === -1 || nextIdx === str.length || pre !== next) {
+        if (res === pre || res === next) {
+          res = res + res
         }
+        break
+      }
+      res = pre + res + next
     }
     return res
-
-    function getPalindromicStrOfChar(str, idx) {
-        var res = str.charAt(idx)
-        for (var i = 1; ; i++) {
-            var preIdx = idx - i
-            var nextIdx = idx + i
-            var pre = str.charAt(preIdx)
-            var next = str.charAt(nextIdx)
-            var curr = str.charAt(idx)
-            if (preIdx === -1 || nextIdx === str.length || pre !== next) {
-                if (res === pre || res === next) {
-                    res = res + res
-                }
-                break
-            }
-            res = pre + res + next
-        }
-        return res
-    }
+  }
 }
 
 getPalindromicStr('babad')
@@ -163,64 +163,64 @@ isMatch("aa", ".*") → true
 isMatch("ab", ".*") → true
 isMatch("aab", "c*a*b") → true
 */
-function isMatch(s, p) {
-    if (s == '') {
-        return (p.length == 2 && p.charAt(1) === '*') || p == s
+function isMatch (s, p) {
+  if (s == '') {
+    return (p.length == 2 && p.charAt(1) === '*') || p == s
+  }
+  var pArr = []
+  var restP = p
+  var j = 0
+  while (true) {
+    var i = restP.indexOf('*')
+    if (i == -1) break
+    console.log('restP', restP)
+    var tmp = restP.substring(0, i + 1)
+    if (tmp.length > 2) {
+      for (var k = 0; k < tmp.length - 2; k++) {
+        pArr[j++] = tmp.charAt(k)
+      }
     }
-    var pArr = []
-    var restP = p
-    var j = 0
-    while (true) {
-        var i = restP.indexOf('*')
-        if (i == -1) break
-        console.log('restP', restP)
-        var tmp = restP.substring(0, i + 1)
-        if (tmp.length > 2) {
-            for (var k = 0; k < tmp.length - 2; k++) {
-                pArr[j++] = tmp.charAt(k)
-            }
-        }
-        pArr[j++] = tmp.substring(i - 1, i + 1)
-        restP = restP.substring(i + 1)
+    pArr[j++] = tmp.substring(i - 1, i + 1)
+    restP = restP.substring(i + 1)
+  }
+  for (var m = 0; m < restP.length; m++) {
+    pArr[j++] = restP.charAt(m)
+  }
+  console.log('pArr', pArr)
+  var i = 0, j = 0, res = true
+  while (true) {
+    var target = s.charAt(i)
+    var pattern = pArr[j]
+    if ((!pattern && target) || (pattern && pattern.length != 2 && !target)) {
+      res = false
+      break
+    } else if (!pattern || !target) {
+      break
     }
-    for (var m = 0; m < restP.length; m++) {
-        pArr[j++] = restP.charAt(m)
+    if (equal(target, pattern)) {
+      i++
+      if (pattern.length == 1) { // 不包括*
+        j++
+      }
+    } else {
+      if (pattern.length == 1) { // 不包括*
+        res = false
+        break
+      } else {
+        j++
+      }
     }
-    console.log('pArr', pArr)
-    var i = 0, j = 0, res = true
-    while (true) {
-        var target = s.charAt(i)
-        var pattern = pArr[j]
-        if ((!pattern && target) || (pattern && pattern.length != 2 && !target)) {
-            res = false
-            break
-        } else if (!pattern || !target) {
-            break
-        }
-        if (equal(target, pattern)) {
-            i++
-            if (pattern.length == 1) { // 不包括*
-                j++
-            }
-        } else {
-            if (pattern.length == 1) { // 不包括*
-                res = false
-                break
-            } else {
-                j++
-            }
-        }
-    }
+  }
 
-    return res
+  return res
 
-    function equal(target, pattern) {
-        var c = pattern.charAt(0)
-        if (c === '.' || c === target) {
-            return true
-        }
-        return false
+  function equal (target, pattern) {
+    var c = pattern.charAt(0)
+    if (c === '.' || c === target) {
+      return true
     }
+    return false
+  }
 }
 
 // console.log("isMatch(\"aa\",\"a\")", isMatch("aa","a"))
@@ -241,17 +241,17 @@ Given n non-negative integers a1, a2, ..., an, where each represents a point at 
   Note: You may not slant the container and n is at least 2.
 */
 
-function getMostWater(n, f) {
-    var max = 0
-    for (var k = 0; k < n; k++) {
-        for (var m = k + 1; m < n; m++) {
-            var tmp = (m - k) * Math.min(f[m], f[k])
-            if (tmp > max) {
-                max = tmp
-            }
-        }
+function getMostWater (n, f) {
+  var max = 0
+  for (var k = 0; k < n; k++) {
+    for (var m = k + 1; m < n; m++) {
+      var tmp = (m - k) * Math.min(f[m], f[k])
+      if (tmp > max) {
+        max = tmp
+      }
     }
-    return max
+  }
+  return max
 }
 
 var n = 5
@@ -272,31 +272,31 @@ Given an array S of n integers, are there elements a, b, c in S such that a + b 
   ]
 */
 
-function threeSum(arr) {
-    var set = new Set()
-    for (var i = 0; i < arr.length; i++) {
-        for (var j = i + 1; j < arr.length; j++) {
-            for (var k = j + 1; k < arr.length; k++) {
-                var target = arr[i] + arr[j] + arr[k]
-                if (target === 0) {
-                    var tmp = [arr[i], arr[j], arr[k]]
-                    if (!exist(tmp, set)) {
-                        set.add(tmp)
-                    }
-                }
-            }
+function threeSum (arr) {
+  var set = new Set()
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i + 1; j < arr.length; j++) {
+      for (var k = j + 1; k < arr.length; k++) {
+        var target = arr[i] + arr[j] + arr[k]
+        if (target === 0) {
+          var tmp = [arr[i], arr[j], arr[k]]
+          if (!exist(tmp, set)) {
+            set.add(tmp)
+          }
         }
+      }
     }
+  }
 
-    function exist(arr, set) {
-        var res = false
-        set.forEach(list = > {
-        !res && (res = list.includes(arr[0]) && list.includes(arr[1]))
-    })
-        return res
-    }
+  function exist (arr, set) {
+    var res = false
+    set.forEach(list = > {
+    !res && (res = list.includes(arr[0]) && list.includes(arr[1]))
+  })
+    return res
+  }
 
-    return set
+  return set
 }
 
 console.log('threeSum([-1, 0, 1, 2, -1, -4])', threeSum([-1, 0, 1, 2, -1, -4]))
@@ -314,85 +314,85 @@ Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
   Note: Although the above answer is in lexicographical order, your answer could be in any order you want.
 */
 
-function phoneNumberCombine(str) {
-    console.log('\n\n-------')
-    var map = {
-        '2': ['a', 'b', 'c'],
-        '3': ['d', 'e', 'f'],
-        '4': ['g', 'h', 'i'],
-        '5': ['j', 'k', 'l'],
-        '6': ['m', 'n', 'o'],
-        '7': ['p', 'q', 'r', 's'],
-        '8': ['t', 'u', 'v'],
-        '9': ['w', 'x', 'y', 'z']
-    }
-    var arr = Array.from(str)
-    var matrix = arr.map(i = > map[i]
+function phoneNumberCombine (str) {
+  console.log('\n\n-------')
+  var map = {
+    '2': ['a', 'b', 'c'],
+    '3': ['d', 'e', 'f'],
+    '4': ['g', 'h', 'i'],
+    '5': ['j', 'k', 'l'],
+    '6': ['m', 'n', 'o'],
+    '7': ['p', 'q', 'r', 's'],
+    '8': ['t', 'u', 'v'],
+    '9': ['w', 'x', 'y', 'z']
+  }
+  var arr = Array.from(str)
+  var matrix = arr.map(i = > map[i]
 )
-    return getCombine('', matrix)
+  return getCombine('', matrix)
 
-    function getCombine(item, matrix) {
-        console.log('item ', item)
-        if (matrix.length === 1) {
-            return matrix[0].map(elm = > item + elm
-        )
-        }
-        var res = []
-        for (var i = 0; i < matrix.length; i++)
-            for (var j = 0; j < matrix[i].length; j++)
-                res = res.concat(getCombine(matrix[i][j], otherMatrix(i, j, matrix)))
-
-        return res.map(elm = > item + elm
+  function getCombine (item, matrix) {
+    console.log('item ', item)
+    if (matrix.length === 1) {
+      return matrix[0].map(elm = > item + elm
     )
     }
+    var res = []
+    for (var i = 0; i < matrix.length; i++)
+      for (var j = 0; j < matrix[i].length; j++)
+        res = res.concat(getCombine(matrix[i][j], otherMatrix(i, j, matrix)))
 
-    function otherMatrix(r, col, matrix) {
-        var res = Object.assign([], matrix)
-        res.splice(r, 1)
-        // res = res.map(row => row.slice(c, 1))
-        return res
-    }
+    return res.map(elm = > item + elm
+  )
+  }
+
+  function otherMatrix (r, col, matrix) {
+    var res = Object.assign([], matrix)
+    res.splice(r, 1)
+    // res = res.map(row => row.slice(c, 1))
+    return res
+  }
 }
 
 console.log('phoneNumberCombine(\'23\')', phoneNumberCombine('23'))
 
-function phoneNumberCombine(str) {
-    console.log('\n\n-------')
-    var map = {
-        '2': ['a', 'b', 'c'],
-        '3': ['d', 'e', 'f'],
-        '4': ['g', 'h', 'i'],
-        '5': ['j', 'k', 'l'],
-        '6': ['m', 'n', 'o'],
-        '7': ['p', 'q', 'r', 's'],
-        '8': ['t', 'u', 'v'],
-        '9': ['w', 'x', 'y', 'z']
-    }
-    var arr = Array.from(str)
-    var matrix = arr.map(i = > map[i]
+function phoneNumberCombine (str) {
+  console.log('\n\n-------')
+  var map = {
+    '2': ['a', 'b', 'c'],
+    '3': ['d', 'e', 'f'],
+    '4': ['g', 'h', 'i'],
+    '5': ['j', 'k', 'l'],
+    '6': ['m', 'n', 'o'],
+    '7': ['p', 'q', 'r', 's'],
+    '8': ['t', 'u', 'v'],
+    '9': ['w', 'x', 'y', 'z']
+  }
+  var arr = Array.from(str)
+  var matrix = arr.map(i = > map[i]
 )
-    return getCombine('', matrix)
+  return getCombine('', matrix)
 
-    function getCombine(item, matrix) {
-        console.log('item ', item)
-        if (matrix.length === 1) {
-            return matrix[0].map(elm = > item + elm
-        )
-        }
-        var res = []
-        for (var j = 0; j < matrix[0].length; j++)
-            res = res.concat(getCombine(matrix[0][j], otherMatrix(0, j, matrix)))
-
-        return res.map(elm = > item + elm
+  function getCombine (item, matrix) {
+    console.log('item ', item)
+    if (matrix.length === 1) {
+      return matrix[0].map(elm = > item + elm
     )
     }
+    var res = []
+    for (var j = 0; j < matrix[0].length; j++)
+      res = res.concat(getCombine(matrix[0][j], otherMatrix(0, j, matrix)))
 
-    function otherMatrix(r, col, matrix) {
-        var res = Object.assign([], matrix)
-        res.splice(r, 1)
-        // res = res.map(row => row.slice(c, 1))
-        return res
-    }
+    return res.map(elm = > item + elm
+  )
+  }
+
+  function otherMatrix (r, col, matrix) {
+    var res = Object.assign([], matrix)
+    res.splice(r, 1)
+    // res = res.map(row => row.slice(c, 1))
+    return res
+  }
 }
 
 console.log('phoneNumberCombine(\'23\')', phoneNumberCombine('23'))
@@ -406,41 +406,41 @@ Given an integer, convert it to a roman numeral.
 */
 
 var map = {
-    '1': 'I',
-    '5': 'V',
-    '10': 'X',
-    '50': 'L',
-    '100': 'C',
-    '500': 'D',
-    '1000': 'M'
+  '1': 'I',
+  '5': 'V',
+  '10': 'X',
+  '50': 'L',
+  '100': 'C',
+  '500': 'D',
+  '1000': 'M'
 }
 
-function getRoman(num) {
-    var res = []
-    var closest = getClosest(num)
-    if (closest == num) {
-        return [num]
-    }
-    if (num > closest) {
-        res = [closest].concat(getRoman(num - closest))
-    } else {
-        res = getRoman(closest - num)
-        res.push(closest)
+function getRoman (num) {
+  var res = []
+  var closest = getClosest(num)
+  if (closest == num) {
+    return [num]
+  }
+  if (num > closest) {
+    res = [closest].concat(getRoman(num - closest))
+  } else {
+    res = getRoman(closest - num)
+    res.push(closest)
+  }
+  return res
+
+  function getClosest (num) {
+    var numList = Object.keys(map)
+    var gap = Infinity, res = num
+    for (var i = 0; i < numList.length; i++) {
+      var item = numList[i]
+      if (Math.abs(num - item) < gap) {
+        gap = Math.abs(num - item)
+        res = item
+      }
     }
     return res
-
-    function getClosest(num) {
-        var numList = Object.keys(map)
-        var gap = Infinity, res = num
-        for (var i = 0; i < numList.length; i++) {
-            var item = numList[i]
-            if (Math.abs(num - item) < gap) {
-                gap = Math.abs(num - item)
-                res = item
-            }
-        }
-        return res
-    }
+  }
 }
 
 console.log('getRoman(13): ', getRoman(13).map(item = > map[item]).join(',').replace(/,/ig, '')
@@ -451,40 +451,40 @@ console.log('getRoman(15): ', getRoman(15).map(item = > map[item]).join(',').rep
 )
 
 var mapReverse = {
-    'I': 1,
-    'V': 5,
-    'X': 10,
-    'L': 50,
-    'C': 100,
-    'D': 500,
-    'M': 1000
+  'I': 1,
+  'V': 5,
+  'X': 10,
+  'L': 50,
+  'C': 100,
+  'D': 500,
+  'M': 1000
 }
 
-function romanToInt(str) {
-    if (str.length == 0) {
-        return 0
-    }
-    if (str.length == 1) {
-        return mapReverse[str]
-    }
-    var {max, left, right} = findFirstMax(str)
-    return max + romanToInt(right) - romanToInt(left)
+function romanToInt (str) {
+  if (str.length == 0) {
+    return 0
+  }
+  if (str.length == 1) {
+    return mapReverse[str]
+  }
+  var {max, left, right} = findFirstMax(str)
+  return max + romanToInt(right) - romanToInt(left)
 
-    function findFirstMax(str) {
-        var romanList = Array.from(str)
-        var intList = romanList.map(elm = > mapReverse[elm]
-    )
-        var max = intList[0], maxIdx = 0
-        for (var i = 1; i < intList.length; i++) {
-            if (max < intList[i]) {
-                max = intList[i]
-                maxIdx = i
-            }
-        }
-        var left = str.substring(0, maxIdx)
-        var right = str.substring(maxIdx + 1)
-        return {max, left, right}
+  function findFirstMax (str) {
+    var romanList = Array.from(str)
+    var intList = romanList.map(elm = > mapReverse[elm]
+  )
+    var max = intList[0], maxIdx = 0
+    for (var i = 1; i < intList.length; i++) {
+      if (max < intList[i]) {
+        max = intList[i]
+        maxIdx = i
+      }
     }
+    var left = str.substring(0, maxIdx)
+    var right = str.substring(maxIdx + 1)
+    return {max, left, right}
+  }
 }
 
 console.log('romanToInt(\'XIII\')', romanToInt('XIII'))
@@ -517,66 +517,66 @@ A solution set is:
 */
 
 // Remove Nth Node From End of List
-function LNode(value) {
-    this.value = value
+function LNode (value) {
+  this.value = value
 }
 
 LNode.prototype.isTail = function () {
-    return this.next === null
+  return this.next === null
 }
 LNode.prototype.setNext = function (next) {
-    this.next = next
+  this.next = next
 }
 LNode.prototype.toString = function () {
-    return this.value
+  return this.value
 }
 
-function removeNthList(list, n) {
-    var header = init(list)
-    console.log('删除前：', iterator(header))
-    var count = 0
+function removeNthList (list, n) {
+  var header = init(list)
+  console.log('删除前：', iterator(header))
+  var count = 0
+  var i = header
+  while (i) {
+    count++
+    i = i.next
+  }
+  i = header
+  var pre = header
+  var index = 0
+  while (i) {
+    if (index === count - n) {
+      pre.next = i.next
+      break
+    }
+    index++
+    pre = i
+    i = i.next
+  }
+  console.log('删除后：', iterator(header))
+  return i
+
+  function init (arr) {
+    var pre = null, header = null
+    for (var idx = 0; idx < arr.length; idx++) {
+      var item = arr[idx]
+      var curr = new LNode(item)
+      idx === 0 && (header = curr)
+      pre && pre.setNext(curr)
+      pre = curr
+    }
+    pre.setNext(null)
+    return header
+  }
+
+  function iterator (header) {
     var i = header
+    var res = []
     while (i) {
-        count++
-        i = i.next
+      res.push(i.value)
+      i = i.next
     }
-    i = header
-    var pre = header
-    var index = 0
-    while (i) {
-        if (index === count - n) {
-            pre.next = i.next
-            break
-        }
-        index++
-        pre = i
-        i = i.next
-    }
-    console.log('删除后：', iterator(header))
-    return i
-
-    function init(arr) {
-        var pre = null, header = null
-        for (var idx = 0; idx < arr.length; idx++) {
-            var item = arr[idx]
-            var curr = new LNode(item)
-            idx === 0 && (header = curr)
-            pre && pre.setNext(curr)
-            pre = curr
-        }
-        pre.setNext(null)
-        return header
-    }
-
-    function iterator(header) {
-        var i = header
-        var res = []
-        while (i) {
-            res.push(i.value)
-            i = i.next
-        }
-        return res.join('->')
-    }
+    return res.join('->')
+  }
 }
 
 console.log('removeNthList', removeNthList([1, 2, 3, 4, 5, 6], 3))
@@ -586,123 +586,112 @@ console.log('removeNthList', removeNthList([1, 2, 3, 4, 5, 6], 3))
 // Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
 // For example, given n = 3, a solution set is:
 
-function isValid(arr) {
-    return true
+function isValid (arr) {
+  return true
 }
 
-function isExist(arr, matrix) {
-    var res = matrix.some(arrItem = > {
-        console.log('arrItem', arrItem)
-    return arrItem.every((item, idx) = > {
-        console.log('every', item, idx, arr[idx])
-    return arr[idx] === item
+function isExist (arr, matrix) {
+  var res = matrix.some(arrItem = > {
+    console.log('arrItem', arrItem)
+  return arrItem.every((item, idx) = > {
+    console.log('every', item, idx, arr[idx])
+  return arr[idx] === item
 })
 })
-    console.log('isExist', res)
-    return res
+  console.log('isExist', res)
+  return res
 }
 
 console.log('permutation', permutation(2))
 
-function permutation(n) {
-    var arr = new Array(n).fill('(').concat(new Array(n).fill(')')) // 得到 '(', '(', '(', ')', ')', ')'
-    var matrix = getPermutation(arr)
-    return matrix.filter(isValid)
+function permutation (n) {
+  var arr = new Array(n).fill('(').concat(new Array(n).fill(')')) // 得到 '(', '(', '(', ')', ')', ')'
+  var matrix = getPermutation(arr)
+  return matrix.filter(isValid)
 }
 
-function getOther(idx, arr) {
-    var res = arr.slice()
-    res.splice(idx, 1)
-    return res
+function getOther (idx, arr) {
+  var res = arr.slice()
+  res.splice(idx, 1)
+  return res
 }
 
-function joinMatrix(elm, matrix) {
-    return matrix.map(arr = > {
-        arr.unshift(elm)
-    return arr
+function joinMatrix (elm, matrix) {
+  return matrix.map(arr = > {
+    arr.unshift(elm)
+  return arr
 })
 }
 
-function getPermutation(arr) {
-    if (arr.length === 1) {
-        return [arr]
-    }
-    var res = []
-    arr.forEach((elm, idx) = > {
-        var newLine = joinMatrix(elm, getPermutation(getOther(idx, arr)))
-        if(
-    !isExist(newLine, res)
+function getPermutation (arr) {
+  if (arr.length === 1) {
+    return [arr]
+  }
+  var res = []
+  arr.forEach((elm, idx) = > {
+    var newLine = joinMatrix(elm, getPermutation(getOther(idx, arr)))
+    if (
+  !isExist(newLine, res)
 )
-    {
-        res = res.concat(newLine)
-    }
+  {
+    res = res.concat(newLine)
+  }
 })
+  return res
+}
+
+function minDistancesPoints (arr) {
+  if (arr.length === 0 || arr.length === 1) {
+    return Infinity
+  }
+  if (arr.length === 2) {
+    return Math.abs(arr[1] - arr[0])
+  }
+  var middle = arr.reduce((res, item ) => {
+    res += item
     return res
+  }, 0)/arr.length
+  var leftD = minDistancesPoints(arr.filter(item => item < middle))
+  var rightD = minDistancesPoints(arr.filter(item => item >= middle))
+  var d = Math.min(leftD, rightD)
+  var p1 = arr.find(item => item <= middle && item > middle - d)
+  var p2 = arr.find(item => item <= middle + d && item > middle)
+  if (typeof p1 != 'undefined' && typeof p2 != 'undefined') {
+    d = Math.min(d, p2 - p1)
+  }
+  return d
 }
 
+minDistancesPoints([1, 4, 44, 5, 6, 76, 7, 78, 8, 89, 9, 900, 0, 20, 3, 82])
 
-function minDistancesPoints() {
-    var arr = [1, 4, 44, 5, 6, 76, 7, 78, 8, 89, 9, 900, 0, 20, 3, 82]
-    // var
-}
-
-function quickSort(array) {
-    function sort(prev, numsize) {
-        var nonius = prev;
-        var j = numsize - 1;
-        var flag = array[prev];
-        if ((numsize - prev) > 1) {
-            while (nonius < j) {
-                for (; nonius < j; j--) {
-                    if (array[j] < flag) {
-                        array[nonius++] = array[j];　//a[i] = a[j]; i += 1;
-                        break;
-                    }
-                    ;
-                }
-                for (; nonius < j; nonius++) {
-                    if (array[nonius] > flag) {
-                        array[j--] = array[nonius];
-                        break;
-                    }
-                }
-            }
-            array[nonius] = flag;
-            sort(0, nonius);
-            sort(nonius + 1, numsize);
-        }
+function quickSort (a) {
+  if (a.length === 1 || a.length === 0) {
+    return a
+  }
+  if (a.length === 2) {
+    return a[1] > a[0] ? a : [a[1], a[0]]
+  }
+  var l = 0, h = a.length - 1
+  while (l < h) {
+    for (; a[h] >= a[l] && l < h; h--) ; // 循环h--，直到a[h] < a[l]
+    if (l < h) {
+      var t = a[l] // 交换 a[l] 与 a[h]
+      a[l] = a[h]
+      a[h] = t
+      l++
     }
-
-    sort(0, array.length);
-    return array;
-}
-
-function quickSort(a) {
-    if (a.length === 1) {
-        return a
+    for (; a[h] >= a[l] && l < h; l++) ;  //循环l++, 直到 a[l] > a[h]
+    if (l < h) {
+      t = a[l] // 交换 a[l] 与 a[h]
+      a[l] = a[h]
+      a[h] = t
+      h--
     }
-    var l, h
-    l = 0, h = a.length - 1
-    while (l < h) {
-        for (; a[h] >= a[l] && l < h; h--) ; // 循环h--，直到a[h] < a[l]
-        if(l < h) {
-            var t = a[l] // 交换 a[l] 与 a[h]
-            a[l] = a[h]
-            a[h] = t
-            l++
-        }
-        for (; a[h] >= a[l] && l < h; l++) ;  //循环l++, 直到 a[l] > a[h]
-        if (l < h) {
-            t = a[l] // 交换 a[l] 与 a[h]
-            a[l] = a[h]
-            a[h] = t
-            h--
-        }
-    }
-    var lowArr = quickSort(a.slice(0, l))
-    var highArr = quickSort(a.slice(l + 1, a.length))
-    lowArr.push(a[l])
-    return lowArr.concat(highArr)
+  }
+  var lowArr = quickSort(a.slice(0, l))
+  var highArr = quickSort(a.slice(l + 1, a.length))
+  lowArr.push(a[l])
+  return lowArr.concat(highArr)
 }
 
 quickSort([1, 4, 44, 5, 6, 76, 7, 78, 8, 89, 9, 900, 0, 20, 3, 82])

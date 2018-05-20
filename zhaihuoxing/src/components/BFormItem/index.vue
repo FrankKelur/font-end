@@ -1,5 +1,6 @@
 <template lang="pug">
   .b-form-item
+<<<<<<< HEAD
     b-input(v-if='item.type==="input"', :model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder')
     b-input(v-if='item.type==="textarea"', :model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder', :rows="2")
     b-range(v-if='item.type==="range"', :model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder')
@@ -9,12 +10,35 @@
     b-button(v-if='item.type==="button"', :type='item.styleType') {{item.value}}
     .b-text(v-if='item.type==="text"', :type='item.styleType') {{item.placeholder}}
     b-upload(v-if='item.type==="upload"' action="/upload", v-model="tmpModel")
+=======
+    b-input(v-if='item.type==="input"', :model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder', :disabled="disabled", :clearable="clearable")
+    b-input(v-if='item.type==="textarea"', :model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder', :rows="2", :disabled="disabled", :clearable="clearable")
+    b-range(v-if='item.type==="range"', :model.sync="tmpModel", @change='changeHandler', :startPlaceholder='item.placeholder', :endPlaceholder='item.placeholder', :disabled="disabled", :clearable="clearable")
+    b-select(v-if='item.type==="select"', :model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder', :multiple="item.multiple", :disabled="disabled", :clearable="clearable")
+      el-option(v-for="opt in opts", :key='opt.key', :label='opt.val||opt.label',  :value='opt.key', :class="optionCls")
+    b-select(v-if='item.type==="multiple-select"', :model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder', :multiple="true", :disabled="disabled", :clearable="clearable")
+      el-option(v-for="opt in opts", :key='opt.key', :label='opt.val||opt.label',  :value='opt.key', :class="optionCls")
+    b-datepicker(v-if='item.type==="datetimerange"', :model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder',
+    :type="cType", :hasInterval="item.hasInterval", :disabled="disabled", :dayText="renderData.day", :hourText="renderData.hour", :clearable="clearable")
+    b-button(v-if='item.type==="button"', :type='item.styleType') {{item.value}}
+    .b-text(v-if='item.type==="text"', :type='item.styleType') {{item.placeholder}}
+    .b-clause(v-if='item.type==="clause"&&item.file')
+      b-checkbox(:model.sync="tmpModel")
+        span {{item.label}}
+        a(:href="item.file.url+'?name='+item.file.name") {{item.file.name}}
+    b-upload(v-if='item.type==="upload"' action="/upload", v-model="tmpModel", :disabled="disabled", :uploadFileConfig="uploadFileConfig")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       i.el-icon-upload
       .el-upload__text {{item.placeholder}}
       .el-upload__tip(slot="tip") {{item.tooltip}}
     .cascade-select(v-if='item.type==="cascadeSelect"')
+<<<<<<< HEAD
       b-select(:model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder')
         el-option(v-for="opt in opts", :key='opt.key', :label='opt.val||opt.label',  :value='opt.key', :class="optionCls")
+=======
+      b-select(:model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder', :disabled="disabled")
+        el-option(v-for="opt in opts", :key='opt.key', :label='opt.val||opt.label',  :value='opt.key', :class="optionCls", :clearable="clearable")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       .sub-info(v-for="(field, idx) in cFields")
         span {{field.label + '  ' + field.key}}
 
@@ -23,6 +47,10 @@
 
 <script>
   import BButton from 'components/BButton'
+<<<<<<< HEAD
+=======
+  import BCheckbox from 'components/BCheckbox'
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   import BRange from 'components/BRange'
   import BSelect from 'components/BSelect'
   import BUpload from 'components/BUpload'
@@ -51,6 +79,10 @@
       BSelect,
       BUpload,
       BRange,
+<<<<<<< HEAD
+=======
+      BCheckbox,
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       BButton
     },
     methods: {
@@ -59,6 +91,7 @@
         this.$emit('update:model', value || '')
         this.$emit('change', this.item, this.tmpModel)
       },
+<<<<<<< HEAD
       getOpts (url) {
         var params = {}
         Object.assign(params, this.item.params, this.params)
@@ -80,14 +113,66 @@
         }
         return utils.getOptionList(params, url).then(res => {
           this.opts = res.data || []
+=======
+      getOpts (url, setting) {
+        var params = {}
+        Object.assign(params, this.item.params, this.params)
+        console.log('params', ...arguments)
+        return utils.getOptionList(params, url).then(({re, data}) => {
+          if (setting.valueField && data instanceof Array) {             // 后台需要 特定字段作为搜索值时
+            data.forEach(function (val) {
+              val.key = val[setting.valueField]
+            })
+          }
+//          if (setting.initField) {                                        // 初始化某个表单项值 - - - 暂时废弃
+//            data.forEach(function (val) {
+//              if (val[setting.initField]) {
+//                vm.tmpModel = val.key
+//              }
+//            })
+//          }
+          this.opts = data || []
+          if (re === '500') {
+            this.opts = []
+          }
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         })
       }
     },
     props: {
+<<<<<<< HEAD
+=======
+      clearable: {
+        type: Boolean,
+        default: false
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       item: {
         type: Object,
         required: true
       },
+<<<<<<< HEAD
+=======
+      renderData: {
+        type: Object,
+        default () {
+          return {}
+        }
+      },
+      uploadFileConfig: {
+        type: Object,
+        default () {
+          return {
+            type: ['png', 'jpg', 'jpeg'],
+            maxSize: 500000 // 500K
+          }
+        }
+      },
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       model: {
         required: true
       },
@@ -111,8 +196,13 @@
         handler () {
           console.log('item.params handler')
           var item = this.item
+<<<<<<< HEAD
           if ((item.type === 'select' && typeof item.dataSource === 'string' && item.dataSource) || item.type === 'cascadeSelect') {
             this.getOpts(item.dataSource)
+=======
+          if (((item.type === 'select' || item.type === 'multiple-select') && typeof item.dataSource === 'string' && item.dataSource) || item.type === 'cascadeSelect') {
+            this.getOpts(item.dataSource, item)
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           }
         },
         deep: true
@@ -121,7 +211,11 @@
     computed: {
       cType () {
         if (this.item.format === 'yyyy-MM-dd') {
+<<<<<<< HEAD
           return 'date'
+=======
+          return 'daterange'
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
         return 'datetimerange'
       },
@@ -134,10 +228,17 @@
       }
     },
     mounted () {
+<<<<<<< HEAD
       if (this.item.type === 'select' && typeof this.item.dataSource === 'object') {
         this.opts = this.item.dataSource
       } else if ((this.item.type === 'select' || this.item.type === 'cascadeSelect') && this.item.dataSource) {
         this.getOpts(this.item.dataSource)
+=======
+      if ((this.item.type === 'select' || this.item.type === 'multiple-select') && typeof this.item.dataSource === 'object') {
+        this.opts = this.item.dataSource
+      } else if ((this.item.type === 'select' || this.item.type === 'multiple-select' || this.item.type === 'cascadeSelect') && this.item.dataSource) {
+        this.getOpts(this.item.dataSource, this.item)
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     }
   }

@@ -3,6 +3,7 @@ const request = require('request').defaults({jar: true})
 const express = require('express')
 const logger = require('../logger/')
 var multer = require('multer')
+<<<<<<< HEAD
 var fs = require('fs')
 var uploadDir = 'tmp/'
 var bodyParser = require('body-parser')
@@ -12,6 +13,26 @@ let router = express.Router()
 
 function getPageConfig (originReq, cb) {
   var url = originReq.url
+=======
+var storage = multer.diskStorage({
+  destination (req, file, cb) {
+    cb(null, 'tmp')
+  },
+  filename (req, file, cb) {
+    var name = file.originalname
+    var suffix = name.substr(name.lastIndexOf('.'))
+    cb(null, file.fieldname + Date.now() + suffix)
+  }
+})
+var fs = require('fs')
+var bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
+const upload = multer({'storage': storage})
+let router = express.Router()
+
+function getPageConfig (originReq, cb) {
+  var url = originReq.url.split('?')[0]
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   var config = originReq.app.get('config')
   var backendUrl = config['proxyTable']['/api']['target']
   // 根据url，token，获取页面配置
@@ -160,6 +181,22 @@ router.get('/pages/*', function (req, res) {
   })
 })
 
+<<<<<<< HEAD
+=======
+router.post('/upload-cdn-batch', jsonParser, function (req, res) {
+  var filenames = req.body.originPath
+  var config = req.app.get('config')
+  console.log('req.body', req.body)
+  filenames.forEach((filename, idx) => {
+    uploadCDN(filename, config, function () {
+      if (idx === filenames.length - 1) {
+        res.json({re: 200})
+      }
+    })
+  })
+})
+
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 router.post('/upload-cdn', jsonParser, function (req, res) {
   var filename = req.body.originPath
   var config = req.app.get('config')
@@ -177,6 +214,10 @@ router.post('/upload', upload.single('file'), function (req, res) {
   res.json({re: 200, filename: req.file.filename})
 })
 
+<<<<<<< HEAD
+=======
+// 上传到配置中心
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 function uploadCDN (fileName, config, cb) {
   var formData = {
     fileName: fileName,
@@ -207,6 +248,7 @@ function setFileExpired (filePath, time) {
 
 router.get('/preview/*', function (req, res, next) {
   var config = req.app.get('config')
+<<<<<<< HEAD
   res.redirect(config.env.configCenterUrl + req.url)
 })
 
@@ -215,12 +257,37 @@ router.get('/tmp-preview/*', function (req, res, next) {
   var path = req.url.substr('/tmp-preview'.length)
   var options = {
     root: path.join(__dirname, '..', folder),
+=======
+  var urlObj = urlFormat(req.url)
+  if (fs.existsSync(Path.resolve(__dirname, '../../tmp/', urlObj.filename))) {
+    viewFile(urlObj.filename, res)
+    return
+  }
+  var ws = fs.createWriteStream(Path.resolve(__dirname, '..', '..', 'tmp', urlObj.filename))
+  request.get(config.env.configCenterUrl + req.url).pipe(ws)
+  ws.on('close', function () {
+    var filePath = './tmp/' + urlObj.filename
+    setFileExpired(filePath, 3 * 60 * 1000) // 定时删除
+    viewFile(urlObj.filename, res)
+  })
+})
+
+router.get('/tmp-preview/*', function (req, res, next) {
+  var urlObj = urlFormat(req.url)
+  viewFile(urlObj.filename, res)
+})
+
+function viewFile (filename, res) {
+  var options = {
+    root: Path.join(__dirname, '..', '..', 'tmp'),
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     dotfiles: 'deny',
     headers: {
       'x-timestamp': Date.now(),
       'x-sent': true
     }
   }
+<<<<<<< HEAD
   res.sendFile(path, options, function (err) {
     if (err) {
       // console.log(err);
@@ -230,5 +297,32 @@ router.get('/tmp-preview/*', function (req, res, next) {
     }
   })
 })
+=======
+  res.sendFile('/' + filename, options, function (err) {
+    if (err) {
+      res.json({re: 500, err: err})
+    } else {
+      console.log('预览文件： ', filename)
+    }
+  })
+}
+
+function urlFormat (url) {
+  var [prefix, paramsStr] = url.split('?')
+  var filename = prefix.substr(prefix.lastIndexOf('/') + 1)
+  var search = (paramsStr || '').split('&').reduce((res, item) => {
+    var [key, val] = item.split('=')
+    if (key) {
+      res[key] = val
+    }
+    return res
+  }, {})
+  return {
+    url: url,
+    filename: filename,
+    search: search
+  }
+}
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
 module.exports = router

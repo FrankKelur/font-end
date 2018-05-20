@@ -1,29 +1,49 @@
 <template lang="pug">
   #edit-group
+<<<<<<< HEAD
     el-form.form(:model="form" label-width="100px", :rules="rules", :inline="true", ref="form")
+=======
+    el-form.form(:model="form" label-width="140px", :rules="rules", :inline="true", ref="form",label-position="left")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       template(v-if="renderData.group_management_edit_group")
         el-row(:gutter="20")
           el-col(:span="12")
             el-form-item(prop='group_name')
               template(slot="label")
+<<<<<<< HEAD
                 span.theme-color-C(v-text="renderData.group_management_edit_group.groupName")
+=======
+                span.theme-color-C.inline-label(v-text="renderData.group_management_edit_group.groupName", v-ellipsis-title="")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
               b-input(:model.sync="form.group_name", :placeholder="renderData.group_management_edit_group.pleaseEnter", :disabled="form.isSelf")
           el-col(:span="12")
             el-form-item
               template(slot="label")
+<<<<<<< HEAD
                 span.theme-color-C(v-text="renderData.group_management_edit_group.creator")
+=======
+                span.theme-color-C.inline-label(v-text="renderData.group_management_edit_group.creator", v-ellipsis-title="")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
               span.theme-color-C {{form.creator}}
         el-row(:gutter="20")
           el-col(:span="24")
             el-form-item(prop='description')
               template(slot="label")
+<<<<<<< HEAD
                 span.theme-color-C(v-text="renderData.group_management_edit_group.description")
+=======
+                span.theme-color-C.inline-label(v-text="renderData.group_management_edit_group.description", v-ellipsis-title="")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
               b-input(:model.sync="form.description", :placeholder="renderData.group_management_edit_group.pleaseEnter", class="descriptionInput", :disabled="form.isSelf")
       el-row(:gutter="20")
         el-col(:span="12")
           el-form-item(v-if="renderData.group_management_edit_role &&  !form.isSelf")
             template(slot="label")
+<<<<<<< HEAD
               span.theme-color-C(v-text="renderData.group_management_edit_role.groupManagementEditRole")
+=======
+              span.theme-color-C.inline-label(v-text="renderData.group_management_edit_role.groupManagementEditRole", v-ellipsis-title="")
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             span.theme-color-C {{formatList(form.group_role) || '-'}}
             b-icon(iconName="edit", @click="editRoleFun").icon
         //el-col(:span="12")
@@ -301,5 +321,14 @@
       display: -webkit-box;
       word-break: break-all;
     }
+<<<<<<< HEAD
   }
+=======
+    .el-table--fit {
+      border-left: 1px solid;
+      border-top: 1px solid;
+    }
+  }
+
+>>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </style>
