@@ -1,14 +1,8 @@
 <template lang="pug">
   .b-range.theme-border-D.theme-border-lightenC32-hover.theme-border-A-active
-<<<<<<< HEAD
-    b-input(:model.sync="fromModel", @change='changeHandler', :placeholder='placeholder')
-    .inline-split -
-    b-input(:model.sync="toModel", @change='changeHandler', :placeholder='placeholder')
-=======
     b-input(:model.sync="fromModel", @change='changeHandler', :placeholder='startPlaceholder', :disabled="disabled", :clearable="clearable")
     .theme-bg-H.inline-split -
     b-input(:model.sync="toModel", @change='changeHandler', :placeholder='endPlaceholder', :disabled="disabled", :clearable="clearable")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
 </template>
 
@@ -29,8 +23,6 @@
       }
     },
     props: {
-<<<<<<< HEAD
-=======
       disabled: {
         type: Boolean,
         default: false
@@ -39,20 +31,15 @@
         type: Boolean,
         default: false
       },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       model: {
         type: String,
         required: true
       },
-<<<<<<< HEAD
-      placeholder: {
-=======
       startPlaceholder: {
         type: String,
         required: true
       },
       endPlaceholder: {
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         type: String,
         required: true
       }
@@ -87,10 +74,7 @@
       .el-input__inner {
         border-width: 0 !important;
         height: 38px;
-<<<<<<< HEAD
-=======
         text-align: center;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     }
     .inline-split {

@@ -1,9 +1,5 @@
 <template lang="pug">
-<<<<<<< HEAD
-  div#translate
-=======
   div#translate.component
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     .title
       b-title.amt-more-left-in(:title='cTitle')
     .select-bar

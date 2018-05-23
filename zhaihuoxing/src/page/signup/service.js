@@ -6,11 +6,7 @@ export default {
     return fetch(url, params)
   },
   signUp (params) {
-<<<<<<< HEAD
-    var url = '/api/signin/signup'
-=======
     var url = '/api/resource/user/user_sign_up'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     return fetch(url, params)
   },
   getFormFieldMap (params) {
@@ -102,8 +98,6 @@ export default {
     //     })
     //   }, 1000)
     // })
-<<<<<<< HEAD
-=======
   },
   getUserTypeList (params) {
     var url = '/api/resource/user/get_user_type_list'
@@ -132,6 +126,5 @@ export default {
   getTradeAccountSelect (params) {
     var url = '/api/resource/account/get_tradeAccount_select'
     return fetch(url, params)
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 }

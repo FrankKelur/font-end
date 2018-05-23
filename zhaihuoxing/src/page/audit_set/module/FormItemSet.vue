@@ -1,56 +1,4 @@
 <template lang="pug">
-<<<<<<< HEAD
-  el-form.form-item-set(:model="item", :rules="cRules", ref="itemForm")
-    el-form-item(:label="renderData.title", label-width="80px", prop="label")
-      b-input(:model.sync="item.label", :placeholder="renderData.inputTitle")
-    el-form-item(:label="renderData.promptText", label-width="80px", prop="placeholder")
-      b-input(:model.sync="item.placeholder", :placeholder="renderData.inputPromptText")
-    el-form-item(:label="renderData.verification", label-width="80px", v-show="item.type!='text' && computedRegexList && computedRegexList.length")
-      b-select(:model.sync="item.rules", :placeholder="renderData.inputPromptText", :multiple='true', @change="ruleChange")
-        el-option(:label="item.label", :value="item.name", v-for="item in computedRegexList", :key="item.name")
-
-    template(v-if="item.type==='datetimerange'")
-      el-form-item(:label="renderData.dateType", label-width="80px", prop="format")
-        el-radio-group(v-model="item.format")
-          b-radio(label="yyyy-MM-dd mm:ss") {{renderData.yMDTM}}
-          b-radio(label="yyyy-MM-dd") {{renderData.yMD}}
-      el-form-item(:label="renderData.verification", label-width="80px")
-        b-checkbox(:model.sync="item.hasInterval") {{renderData.enable}}
-
-    template(v-if="item.type==='select' || item.type==='multiple-select'")
-      el-form-item.clear-margin-b(:label="renderData.selectTerm", label-width="80px", :rules="[{required: true}]")
-        el-row
-          el-col(:span="20")
-            span {{renderData.limit200MoreTerm40Character}}
-      el-form-item.op-group(prop="dataSource")
-          b-button.tag-group(size="small" v-for="(opt, $idx) in item.dataSource", :key="opt.key")
-            span.tag-group-txt(v-ellipsis-title="") {{opt.label}}
-            b-icon(iconName="delete", size="12px", @click.native='deleteOption($idx)')
-          b-button(v-if="!addFlag" size="small", type="primary", @click="addFlag=true, initNewOption") {{renderData.add}}
-      el-form-item.addOption-form-item(v-if="addFlag", prop="newOption", :rules="dataSourceRule")
-        b-input(:placeholder="renderData.pleaseEnter", :model.sync="newOption.label")
-        b-icon.theme-color-C.theme-color-G-hover(iconName='message_failure', @click.native="addFlag=false, initNewOption")
-        b-icon.theme-color-C.theme-color-E-hover(iconName='message_success', @click.native="addOption")
-
-    template(v-if="item.type==='clause'")
-      el-form-item(:label="renderData.file", label-width="80px")
-        b-upload(action="/upload", v-model="item.file", :uploadFileConfig="uploadFileConfig", @fileTypeNotRight="fileTypeNotRight")
-          i.el-icon-upload
-          .el-upload__text
-            | {{renderData.dragClickUploadPrefix}}
-            em {{renderData.dragClickUploadSuffix}}
-          .el-upload__tip(slot="tip") {{renderData.formatRestrictionsNarrow}}
-
-    template(v-if="item.type==='cascadeSelect'")
-      el-form-item(:label="renderData.followField", label-width="80px", prop="follow")
-        b-select(:model.sync="item.follow", :placeholder="renderData.pleaseSelect", :multiple="true")
-          el-option(v-for="(op, idx) in allFormItems", :key="idx", :label="op.label", :value="op.key")
-      el-form-item(:label="renderData.optionSource", label-width="80px", prop="dataSource")
-        b-select(:model.sync="item.dataSource", :placeholder="renderData.pleaseSelect")
-          el-option(v-for="(source, idx) in sourceList", :key="idx", :label="source.label", :value="source.key")
-
-
-=======
   .form-item-set
     el-form(:model="item", :rules="cRules", ref="itemForm", label-width="140px", label-position="left")
       el-form-item(prop="label")
@@ -121,7 +69,6 @@
         b-icon.theme-color-C.theme-color-G-hover(iconName='message_failure', @click.native="addFlag=false")
         b-icon.theme-color-C.theme-color-E-hover(iconName='message_success', @click.native="addOption")
 
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </template>
 
 <script>
@@ -135,41 +82,11 @@
   import BUpload from 'components/BUpload'
   import BSelect from 'components/BSelect'
   import BFormItem from 'components/BFormItem'
-<<<<<<< HEAD
-  import Bus from 'common/js/bus'
-  import ElOption from '../../../../node_modules/element-ui/packages/select/src/option.vue'
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
   export default {
     name: 'form-item-set',
     data () {
       var _this = this
-<<<<<<< HEAD
-      return {
-//        tmpRules: this.item.rules.map(rule => rule.name),
-        dataSourceRule: [
-          {
-            required: true,
-            message: _this.renderData.pleaseEnter,
-            trigger: 'blur'
-          },
-          {
-            regex: constants.qianhouNoSpace,
-            message: _this.renderData.qianhouNoSpace,
-            validator: validator.validate,
-            trigger: 'blur'
-          },
-          {
-            regex: constants.text0To40Reg,
-            message: _this.renderData.text0To40Limit,
-            validator: validator.validate,
-            trigger: 'blur'
-          }
-        ],
-        uploadFileConfig: {
-          type: ['pdf', 'msword', 'wordprocessingml.document', 'ms-excel'],
-=======
       var basicRules = {
         label: [
           {
@@ -276,7 +193,6 @@
         },
         uploadFileConfig: {
           type: ['pdf', 'doc', 'docx', 'xls', 'xlsx'],
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           maxSize: 500000 // 500K
         },
         newOption: {
@@ -358,82 +274,14 @@
     computed: {
       computedRegexList () {
         var reg = this.regexObj
-<<<<<<< HEAD
-        if (this.item.type === 'input' || this.item.type === 'textarea') {
-          return [reg.required, reg.longText, reg.number]
-=======
         if (this.item.type === 'input') {
           return [reg.required, reg.longText, reg.number]
         } else if (this.item.type === 'textarea') {
           return [reg.required, reg.longText]
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         } else if (this.item.type === 'cascadeSelect') {
           return [reg.required, reg.longText, reg.number, reg['/api/audit_start/user_name_exist_validate']]
         }
         return [reg.required]
-<<<<<<< HEAD
-      },
-      cRules () {
-        var basicRules = {
-          label: [
-            {
-              required: true,
-              message: this.renderData.pleaseEnter,
-              trigger: 'blur'
-            },
-            {
-              regex: constants.qianhouNoSpace,
-              message: this.renderData.qianhouNoSpace,
-              validator: validator.validate,
-              trigger: 'blur'
-            }
-          ],
-          format: [
-            {
-              required: true,
-              message: this.renderData.pleaseSelect,
-              trigger: 'change'
-            }
-          ],
-          placeholder: [
-            {
-              regex: constants.text0To10Reg,
-              message: this.renderData.text0To10Limit,
-              validator: validator.validate,
-              trigger: 'blur'
-            }
-          ],
-          dataSource: [],
-          follow: [
-            {
-              required: true,
-              message: this.renderData.pleaseSelect,
-              trigger: 'change'
-            }
-          ]
-        }
-        if (this.item.type === 'datetimerange' || this.item.type === 'input' || this.item.type === 'textarea') {
-          basicRules.placeholder.push({
-            required: true,
-            message: this.renderData.pleaseEnter,
-            trigger: 'blur'
-          })
-        } else if (this.item.type === 'cascadeSelect') {
-          basicRules.dataSource.push({
-            required: true,
-            message: this.renderData.pleaseSelect,
-            trigger: 'change'
-          })
-        } else if (this.item.type === 'select' || this.item.type === 'multiple-select') {
-          basicRules.dataSource.push({
-            required: true,
-            message: this.renderData.pleaseEnter,
-            trigger: 'change, blur'
-          })
-        }
-        return basicRules
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     methods: {
@@ -464,10 +312,6 @@
       }
     },
     components: {
-<<<<<<< HEAD
-      ElOption,
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       BCheckbox,
       BRadio,
       BButton,
@@ -489,32 +333,18 @@
 //        this.item.rules = rules
 //      }
     },
-<<<<<<< HEAD
-    mounted () {
-      var vm = this
-      Bus.$on('checkForm', function (data) {
-        vm.$refs['itemForm'].validate(valid => {
-          Bus.$emit('checkResult', valid)
-        })
-      })
-    }
-=======
     mounted () {}
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 </script>
 
 <style lang="less">
   .form-item-set {
-<<<<<<< HEAD
-=======
     .padding-top-10 {
       padding-top: 10px;
     }
     .el-form-item__label{
       text-align: left!important;
     }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     .el-radio-group {
       line-height: 36px !important;
     }
@@ -530,29 +360,14 @@
       top: 10px;
       left: 10px;
     }
-<<<<<<< HEAD
-    .op-group {
-      margin-left: 80px;
-    }
-    .addOption-form-item {
-      width: 300px;
-      margin-left: 80px;
-      .b-input {
-        width: 220px;
-=======
     .addOption-form-item {
       .b-input {
         width: 80%;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
       .b-icon {
         width: 8%;
         text-align: center;
         display: inline-block;
-<<<<<<< HEAD
-        text-align: center;
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     }
 

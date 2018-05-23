@@ -1,9 +1,5 @@
 <template lang="pug">
-<<<<<<< HEAD
-  el-button.b-button(@click="handleClick", :class="btnCls", :disabled="disabled", :size="size")
-=======
   el-button.b-button(@click="handleClick", :class="btnCls", :disabled="disabled", :size="size", :type="type")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     slot
 </template>
 
@@ -41,15 +37,6 @@
     computed: {
       btnCls () {
         if (!this.disabled && this.type === 'primary') {
-<<<<<<< HEAD
-          return 'theme-bg-A  theme-bg-darkenA10-active theme-color-H'
-        }
-        if (!this.disabled && this.type === 'secondary') {
-          return 'theme-bg-B theme-bg-lightenB10-hover theme-bg-darkenB10-active theme-color-H'
-        }
-        if (!this.disabled && this.type === 'default') {
-          return 'theme-bg-H theme-color-C theme-border-D theme-color-A-hover theme-border-A-hover theme-color-darken10-A-active theme-border-darken10-D-active'
-=======
           return 'theme-bg-A theme-border-A theme-bg-lightenA10-hover theme-border-lightenA10-hover theme-bg-darkenA10-active theme-border-darkenA10-active theme-color-H'
         }
         if (!this.disabled && this.type === 'secondary') {
@@ -60,7 +47,6 @@
         }
         if (!this.disabled && this.type === 'text') {
           return 'theme-color-A theme-color-lightenA10-hover theme-color-darkenA10-active'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
         if (this.disabled) {
           return 'theme-bg-H theme-color-lightenC32 theme-border-lightenD12'
@@ -77,9 +63,6 @@
 
 <style lang="less">
   .el-button:hover {
-<<<<<<< HEAD
-    border-color: #71DAF9;
-=======
     /*border-color: #71DAF9;*/
   }
   .b-button.el-button {
@@ -87,6 +70,5 @@
       display: inline-block;
       width: 100%;
     }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 </style>

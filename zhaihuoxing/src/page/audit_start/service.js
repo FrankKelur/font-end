@@ -20,50 +20,6 @@ export default {
     //   })
     // })
   },
-<<<<<<< HEAD
-  getFormItemList (params) {
-    var url = '/api/resource/audit_start/get_form_item_list'
-    console.log(url, params)
-    // return fetch(url, params)
-    var arr1 = [{
-      'label': '用户名',
-      'placeholder': '请输入',
-      'key': '_1513324788169',
-      'rules': ['required'],
-      'type': 'input',
-      'icon': 'inputbox'
-    }, {
-      'label': 'mt4',
-      'placeholder': '请输入',
-      'key': '_1513324817712',
-      'rules': ['required'],
-      'type': 'cascadeSelect',
-      'icon': 'Group',
-      'follow': ['_1513324788169'],
-      'dataSource': '/api/resource/audit_start/get_mt4_by_user_name'
-    }, {
-      'label': '姓名',
-      'placeholder': '请输入',
-      'key': '_1513325098424',
-      'rules': ['required', 'number'],
-      'type': 'input',
-      'icon': 'inputbox'
-    }, {
-      'label': '入金银行名称',
-      'placeholder': '请输入',
-      'key': '_1513325114460',
-      'rules': ['required'],
-      'type': 'input',
-      'icon': 'inputbox'
-    }, {
-      'label': '入金金额',
-      'placeholder': '请输入',
-      'key': '_1513325120141',
-      'rules': ['required', 'number'],
-      'type': 'input',
-      'icon': 'inputbox'
-    }]
-=======
   getAccountByUsername (params = {}, url = '/api/resource/audit_start/get_account_list') {
     return fetch(url, params)
     // return new Promise((resolve, reject) => {
@@ -140,7 +96,6 @@ export default {
     //   'icon': 'inputbox',
     //   'value': ''
     // }]
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     // var arr2 = [
     //   {
     //     label: '用户名',
@@ -180,21 +135,12 @@ export default {
     //     key: 'A10014'
     //   }
     // ]
-<<<<<<< HEAD
-    return new Promise((resolve, reject) => {
-      resolve({
-        re: '200',
-        data: arr1
-      })
-    })
-=======
     // return new Promise((resolve, reject) => {
     //   resolve({
     //     re: '200',
     //     data: arr1
     //   })
     // })
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     // return new Promise((resolve, reject) => {
     //   resolve({
     //     re: '200',

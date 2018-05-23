@@ -1,13 +1,9 @@
 <template lang="pug">
   b-dialog.sort-audits(:show='true', :title="renderData.order", width="38%", :show-close="true", :before-close="beforeClose")
     #sort-audit-container
-<<<<<<< HEAD
-      .theme-color-A-hover(v-for="(item, $index) in this.auditList", :key="$index", v-draggable="handler", v-dropable="handler", :idx="$index") {{item.label}}
-=======
       .theme-color-A-hover(v-for="(item, $index) in this.auditList", :key="$index", v-draggable="handler", v-dropable="handler", :idx="$index")
         i.icon.iconfont.icon-yidong
         span {{item.label}}
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     template(slot="footer")
       b-button(@click="visible.dialog=null") {{renderData.cancel}}
       b-button(@click="save", type="primary") {{renderData.save}}
@@ -35,11 +31,8 @@
             } else {
               _this.auditList.splice(sourceIdx + 1, 1)
             }
-<<<<<<< HEAD
-=======
             var el = event.target
             try { el.className = el.className.replace(/dragenter/g, '').replace(/theme\\-border\\-D/g, '') } catch (ex) {}
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           },
           dragstart (event) {
             event.dataTransfer.setData('sourceIdx', event.target.getAttribute('idx'))
@@ -59,13 +52,10 @@
       auditList: {
         type: Array,
         required: true
-<<<<<<< HEAD
-=======
       },
       origin: {
         type: String,
         default: 'audit_process'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     methods: {
@@ -73,16 +63,10 @@
         var params = {
           sorted_audit_list: this.auditList
         }
-<<<<<<< HEAD
-        service.sortAudit(params).then(({re}) => {
-          if (re === '200') {
-            this.visible.dialog = null
-=======
         var url = this.origin === 'audit_history' ? '/api/resource/audit_history/sort_audit' : '/api/resource/audit_process/sort_audit'
         service.sortAudit(params, url).then(({re}) => {
           if (re === '200') {
             location.reload()
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           }
         })
       },
@@ -104,8 +88,6 @@
   .sort-audits {
     .draggable-item {
       line-height: 30px;
-<<<<<<< HEAD
-=======
       .icon-yidong {
         visibility: hidden;
       }
@@ -114,7 +96,6 @@
       .icon-yidong {
         visibility: visible;
       }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
   }
 </style>

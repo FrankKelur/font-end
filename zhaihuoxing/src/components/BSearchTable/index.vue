@@ -3,21 +3,12 @@
     .search-container
       b-search-form(:search-fields="renderData.searchObj.searchFields", :search-data="searchData", :params="params", @search='search', @reset='reset', :render-data="searchRenderData")
     .table.form-area
-<<<<<<< HEAD
-      b-table(:search-data="searchData", :render-data="tableRenderData", ref="table", :url="url", :params="params", :opt-handler="optHandler",
-      :opts-filter="optsFilter", :tableType="tableType", :selectedRows="selectedRows", @selection-change="selectionChange", :valueKey="valueKey", :getRowClass="getRowClass")
-        template(slot="batchOperate", slot-scope="props")
-          slot(name="batchOperate", :total="props.total")
-        template(slot="expand", slot-scope="props")
-          slot(name="expand", :row="props.row", :otherCols="props.otherCols", :computedOpts="props.computedOpts", :computedHeaderCols="props.computedHeaderCols")
-=======
       b-table.theme-bg-H(:search-data="searchData", :render-data="tableRenderData", ref="table", :url="url", :params="params", :opt-handler="optHandler", :initSearch="initSearch",
       :opts-filter="optsFilter", :tableType="tableType", :selectedRows="selectedRows", @selection-change="selectionChange", :valueKey="valueKey", :getRowClass="getRowClass", :uid="uid")
         template(slot="batchOperate", slot-scope="props")
           slot(name="batchOperate", :total="props.total")
         template(slot="expand", slot-scope="props")
           slot(name="expand", :row="props.row", :otherCols="props.otherCols", :computedOpts="props.computedOpts", :computedHeaderCols="props.computedHeaderCols", :operateOpts="props.operateOpts")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     .clear
 </template>
 
@@ -46,12 +37,9 @@
       }
     },
     props: {
-<<<<<<< HEAD
-=======
       uid: {
         type: String
       },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       params: {
         type: Object,
         default: function () {
@@ -83,12 +71,9 @@
       },
       tableType: {
         type: Object
-<<<<<<< HEAD
-=======
       },
       initSearch: {
         type: Object
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     methods: {
@@ -96,11 +81,7 @@
         this.$emit('selection-change', ...arguments)
       },
       search () {
-<<<<<<< HEAD
-        console.log('changeHandle ', this.searchData)
-=======
         console.log('searchData ', this.searchData)
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         this.$refs.table.search()
       },
       reset () {
@@ -108,12 +89,9 @@
         for (var key in this.searchData) {
           this.searchData[key] = ''
         }
-<<<<<<< HEAD
-=======
         for (var o in this.initSearch) {
           this.initSearch[o] = ''
         }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     components: {
@@ -128,10 +106,7 @@
     margin-top: 20px;
     margin-bottom: 50px;
   }
-<<<<<<< HEAD
-=======
   .el-table--fit {
     border-left: 1px solid;
   }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </style>

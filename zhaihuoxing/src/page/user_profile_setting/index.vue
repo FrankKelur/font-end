@@ -2,18 +2,10 @@
   .user_profile_setting_component.theme-border-lightenD12.component
     b-title(:title="cTitle")
     .content(v-if="!visible.page")
-<<<<<<< HEAD
-      .left
-        .operation.theme-border-lightenD12.theme-bg-H
-          b-button(@click="redirect('diy_setting')") {{renderData.diyField}}
-        .blank
-        .profile-item.theme-bg-lightenC32-hover(v-for="(item, idx) in profileList", :key="idx", :class="{'theme-bg-I': profileInfo.uuid==item.uuid}", @click="editProfileItem(item, idx)")
-=======
       .operation.theme-border-lightenD12
         b-button(@click="redirect('diy_setting')") {{renderData.diyField}}
       .left
         .profile-item.theme-bg-lightenD18-hover(v-for="(item, idx) in profileList", :key="idx", :class="{'theme-bg-I': profileInfo.uuid==item.uuid}", @click="editProfileItem(item, idx)")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           span(v-ellipsis-title="") {{item.name}}
           //b-icon.theme-color-darkenC15.theme-color-lightenA10-hover.theme-color-darkenA10-active(iconName="edit", @click.native="editProfileItem(item)")
           b-icon.theme-color-darkenC15.theme-color-lightenA10-hover.theme-color-darkenA10-active(iconName="delete1", @click.stop.native="deleteProfileItem(item, idx)")
@@ -23,30 +15,14 @@
       .right.theme-bg-I(v-loading="loading1")
         template(v-if="!profileInfo.empty")
           .body
-<<<<<<< HEAD
-            el-form(ref="profileInfo", :rules="profileInfoRules", :model="profileInfo" label-width="100px", labelPosition='left')
-              el-form-item.perfile-name(:label="renderData.profileName", prop="name")
-=======
             el-form(ref="profileInfo", :rules="profileInfoRules", :model="profileInfo" label-width="140px", labelPosition='left')
               el-form-item.perfile-name(prop="name")
                 template(slot="label")
                   span.theme-color-C.inline-label(v-text="renderData.profileName", v-ellipsis-title="")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
                 b-input(:model.sync="profileInfo.name", :placeholder="renderData.pleaseEnter")
               resource-item(v-for="(classItem, idx) in profileInfo.classList", :classItem="classItem", :renderData='renderData', :visible='visible', :key="idx", :profileInfo="profileInfo", @refreshInfo="getProfileInfo")
               .file.clear(v-if="renderData.user_profile_setting_file")
                 .title.theme-color-darkenC15 {{renderData.userProfileFile}}
-<<<<<<< HEAD
-                el-col.margin-other(:span="12", v-for="(file, idx) in cFileList", :key="idx")
-                  b-checkbox.theme-color-darkenC15(:model.sync="file.checked") {{file.label}}
-              template(v-if="fileStatus")
-                el-row.margin-other.title.clear
-                  b-checkbox.theme-color-darkenC15(:model.sync="fileStatus.checked") {{fileStatus.label}}
-                el-form-item(:label="renderData.option")
-                  b-button.tag-group(size="small" v-for="(item, idx) in fileStatus.dataSource", :key="idx")
-                    span.tag-group-txt(v-ellipsis-title="") {{item.label}}
-                    b-icon.theme-color-C.theme-color-G-hover(iconName="delete", size="12px", @click.native='deleteFileResource(item, fileStatus)')
-=======
                 el-row.margin-other(v-for="(file, idx) in cFileList", :key="idx")
                   b-checkbox.theme-color-darkenC15(:model.sync="file.checked") {{file.label}}
                   b-switch.switch-required(:model.sync="file.show_on_register", :width='switchWidth', @change="updateReg(idx)")
@@ -61,7 +37,6 @@
                   b-button.tag-group(size="small" v-for="(item, idx) in fileStatus.dataSource", :key="idx")
                     span.tag-group-txt(v-ellipsis-title="") {{item.label}}
                     b-icon(iconName="delete", size="12px", @click.native='deleteFileResource(item, fileStatus)')
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
                   b-button.add-btn(size="small" style="border:0px;" type="primary", @click="addFileResourceMod(fileStatus)") {{renderData.add}}
           .footer
             b-button(type="primary", @click="saveUserProfile") {{renderData.save}}
@@ -87,13 +62,8 @@
   import DiySetting from './module/DiySetting.vue'
   import DeleteProfile from './module/DeleteProfile.vue'
   import utils from 'common/js/Utils'
-<<<<<<< HEAD
-
-  // z todo 把控制台的warn，error去掉
-=======
   import BSwitch from 'components/BSwitch'
 
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   export default {
     name: 'user_profile_setting',
     mixins: [componentMixin],
@@ -128,11 +98,7 @@
                 return val.trim() === val
               },
               message: renderData.qianhouNoSpace,
-<<<<<<< HEAD
-              trigger: 'blur'
-=======
               trigger: 'blur, change'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             },
             {
               message: renderData.nameExist,
@@ -156,12 +122,8 @@
         },
         optIdx: 0,
         profileList: [], // 用户profile 列表
-<<<<<<< HEAD
-        renderData: renderData
-=======
         renderData: renderData,
         switchWidth: 45
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     computed: {
@@ -180,25 +142,14 @@
       }
     },
     methods: {
-<<<<<<< HEAD
-=======
       updateReg (idx) {
         this.cFileList[idx].show_on_register = !this.cFileList[idx].show_on_register
       },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       addFileResourceMod (resource) {
         this.visible.dialog = 'add_resource'
         this.profileInfo.path = ['files', resource.key]
       },
       deleteFileResource (target, resource) {
-<<<<<<< HEAD
-        console.log('这里是文件选项的删除')
-        console.log('target')
-        console.log(target)
-        console.log('resource')
-        console.log(resource)
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         var params = this.profileInfo
         params.key = target.key
         params.label = target.label
@@ -260,10 +211,7 @@
               this.editProfileItem(this.profileList[0], locateIdx)
             }
           }
-<<<<<<< HEAD
-=======
           this.loading1 = false
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         })
       },
       getProfileInfo (profile) {
@@ -325,12 +273,8 @@
       BInput,
       BSelect,
       BIcon,
-<<<<<<< HEAD
-      BButton
-=======
       BButton,
       BSwitch
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
   }
 </script>
@@ -396,11 +340,7 @@
           border: 0px!important;
           height: 32px;
           position: relative;
-<<<<<<< HEAD
-          top: -1px;
-=======
           /*top: -1px;*/
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
         .body {
           padding-top: 42px;
@@ -419,12 +359,6 @@
             width: 40%;
           }
         }
-<<<<<<< HEAD
-        .el-button--small{
-          font-size: 14px!important;
-        }
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         .tag-group {
           margin: 1px 8px 6px 0!important;
           .b-icon {
@@ -460,13 +394,6 @@
       padding-left: 4%;
       margin-top: 40px;
     }
-<<<<<<< HEAD
-    .blank {
-      width: 100%;
-      height: 40px;
-    }
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
   .user_profile_setting_component .content .left .operation {
     position: absolute !important;
@@ -480,8 +407,6 @@
   .user_profile_setting_component .content .left {
     margin-bottom: 40px;
   }
-<<<<<<< HEAD
-=======
   .operation {
     position: absolute;
     right: 68%;
@@ -492,5 +417,4 @@
     margin-top: 50px;
   }
 
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </style>

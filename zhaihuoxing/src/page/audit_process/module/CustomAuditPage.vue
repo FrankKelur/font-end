@@ -1,28 +1,5 @@
 <template lang="pug">
   .custom-audit-page
-<<<<<<< HEAD
-    .top
-      .left
-        .info-group.theme-border-D(v-for="group in auditInfo.data", :key="group.key")
-          .title {{group.label}}
-          .info-item(v-for="item in group.dataSource", :key="item.key")
-            | {{item.label + '  ' + item.value}}
-      .right
-        .title {{auditType}}
-        el-form(:rules="cRules", :model="tempForm", ref="tempForm")
-          .item(v-for="(item, $index) in formItemList", :key="$index")
-            el-form-item(label-width="80px", :prop="item.field", :label="item.label")
-              b-form-item(:model.sync='tempForm[item.field]', :item='item')
-    .footer.el-form-item.is-required
-      label.el-form-item__label {{renderData.auditResult}}
-      b-select(:model.sync="auditInfo.result", :placeholder="renderData.pleaseSelect")
-      b-icon.theme-color-darkenC15.theme-color-lightenA10-hover.theme-color-darkenA10-active(iconName="operation", @click.native="showOperation")
-      b-button.right(type="primary", @click="submit") {{renderData.submit}}
-      b-button.right(type="primary", @click="save", :disabled="!auditInfo.result.value") {{renderData.save}}
-      b-button.right(@click="back") {{renderData.back}}
-      span.link.right.pointer.theme-color-A.theme-color-lightA10-hover.theme-color-darkenA10-active(@click="cancelTask") {{renderData.cancelTask}}
-
-=======
     text-template.top(:auditInfo="auditInfo", :auditType="auditType", :activeTabLabel="activeTabLabel", :renderData="renderData", v-if="auditInfo.template == '0'", ref="template", :disabled="disabled")
     doc-template.top(:auditInfo="auditInfo", :auditType="auditType",  :activeTabLabel="activeTabLabel", :renderData="renderData", v-else-if="auditInfo.template == '1'", ref="template", :disabled="disabled")
     table-template.top(:auditInfo="auditInfo", :auditType="auditType",  :activeTabLabel="activeTabLabel", :renderData="renderData", v-else-if="auditInfo.template == '2'", ref="template", :disabled="disabled", :params="params")
@@ -35,16 +12,11 @@
       b-button.right(type="primary", @click="save", :disabled="!auditInfo.result.value.audit_result"  v-if="!disabled") {{renderData.save}}
       b-button.right(@click="back") {{renderData.back}}
       span.link.right.pointer.theme-color-A.theme-color-lightA10-hover.theme-color-darkenA10-active(@click="cancelTask"  v-if="!disabled") {{renderData.cancelTask}}
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
 </template>
 
 <script>
   import service from '../service'
-<<<<<<< HEAD
-  import { constants } from 'common/js/Utils'
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   import BFormItem from 'components/BFormItem'
   import BButton from 'components/BButton'
   import BIcon from 'components/BIcon'
@@ -52,23 +24,13 @@
   import BSelect from 'components/BSelect'
   import BTable from 'components/BTable'
   import BDialog from 'components/BDialog'
-<<<<<<< HEAD
-=======
   import TextTemplate from './TextTemplate'
   import DocTemplate from './DocTemplate'
   import TableTemplate from './TableTemplate'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
   export default {
     name: 'custom-audit-page',
     data () {
-<<<<<<< HEAD
-//      var _this = this
-      return {
-        tempForm: {},
-        formItemList: [],
-        auditInfo: {}
-=======
       return {
         params: {
           progress_id: this.currRow.progress_id.val,
@@ -86,7 +48,6 @@
             dataSource: []
           }
         }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     props: {
@@ -105,72 +66,14 @@
       auditType: {
         type: String,
         required: true
-<<<<<<< HEAD
-      }
-    },
-    computed: {
-      cRules () {
-        var cRules = {}
-        var messageMap = {
-          number: this.renderData.numberMessage,
-          longText: this.renderData.longTextMessage,
-          required: this.renderData.requiredMessage
-        }
-        this.formItemList.forEach(item => {
-          this.$set(this.tempForm, item.field, '')
-          if (item.type === 'upload') {
-            this.$set(this.tempForm, item.field, {})
-          }
-          cRules[item.field] = item.rules.map(rule => {
-            var item = constants.ruleMap[rule]
-            item.message = messageMap[item.name]
-            return item
-          })
-        })
-        return cRules
-=======
       },
       activeTabLabel: {
         type: String,
         required: true
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     methods: {
       showOperation () {
-<<<<<<< HEAD
-        this.visible.dialog = 'CustomOperate'
-        this.$set(this.currRow, 'currAction', this.auditInfo.result)
-      },
-      cancelTask () {
-        var params = {}
-        service.cancelTask(params)
-      },
-      save () {
-        var params = {}
-        service.saveCustomAudit(params)
-      },
-      submit () {
-        var params = {}
-        service.submitCustomAudit(params)
-      },
-      back () {
-        this.visible.page = null
-      },
-      getAuditInfo () {
-        return service.getAuditInfo().then(res => {
-          Object.assign(this.auditInfo, res)
-          this.$set(this.auditInfo.result, 'value', '')
-          this.$set(this.currRow, 'currStep', {
-            name: res.stepName
-          })
-          this.formItemList = res.formItemList
-        })
-      }
-    },
-    async mounted () {
-      console.log('renderData', this.renderData)
-=======
         var res = this.auditInfo.result.dataSource.find(item => item.key === this.auditInfo.result.value.audit_result)
         this.$set(this.currRow, 'currResult', res)
         this.visible.dialog = 'CustomOperate'
@@ -273,7 +176,6 @@
       }
     },
     async beforeMount () {
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       await this.getAuditInfo()
     },
     components: {
@@ -283,60 +185,22 @@
       BInput,
       BSelect,
       BDialog,
-<<<<<<< HEAD
-      BTable
-=======
       BTable,
       TextTemplate,
       TableTemplate,
       DocTemplate
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
   }
 </script>
 
 <style lang="less">
   .custom-audit-page {
-<<<<<<< HEAD
-=======
     height: 100%;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     display: flex;
     flex-direction: column;
     .top {
       flex-grow: 1;
       display: flex;
-<<<<<<< HEAD
-      .left {
-        width: 44%;
-        .info-group {
-          border-bottom: 1px solid;
-          .title {
-            font-weight: bold;
-            margin: 20px 0;
-          }
-          .info-item {
-            white-space: pre;
-            line-height: 20px;
-          }
-          padding-bottom: 20px;
-        }
-        .info-group:last-child{
-          border-bottom-width: 0;
-        }
-      }
-      .right{
-        width: 54%;
-        overflow: auto;
-        margin-left: 2%;
-        .title {
-          margin: 20px 0;
-          font-weight: bold;
-          font-size: 18px;
-        }
-      }
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
     .footer {
       line-height: 36px;

@@ -109,11 +109,6 @@
 <style lang="less">
   .role_management {
     position: relative;
-<<<<<<< HEAD
-    /*border-style: solid;*/
-    /*border-width: 1px;*/
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     .oper-container {
       .el-col {
         .el-button {
@@ -122,11 +117,8 @@
       }
       padding-bottom: 12px;
     }
-<<<<<<< HEAD
-=======
     .tabPopover1 {
       top: 4px;
     }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 </style>

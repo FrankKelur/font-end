@@ -33,12 +33,6 @@
               message: _this.renderData.pleaseEnter
             },
             {
-<<<<<<< HEAD
-              regex: constants.qianhouNoSpace,
-              message: _this.renderData.qianhouNoSpace,
-              validator: validator.validate,
-              trigger: 'blur'
-=======
               test (val) {
                 return val.trim() === val
               },
@@ -51,7 +45,6 @@
               message: this.renderData.textLengthErrorShort,
               validator: validator.validate,
               trigger: 'blur'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             }
           ]
         }

@@ -1,10 +1,6 @@
 <template lang="pug">
   .link-role
-<<<<<<< HEAD
-    el-form(label-width="120px", v-if="visible.page===config.linkRoleAuth")
-=======
     el-form(label-width="140px", v-if="visible.page===config.linkRoleAuth", label-position="left")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       .body-container
         el-form-item(v-if="config.showForm")
           template(slot="label")
@@ -131,14 +127,7 @@
         })
       },
       handleChange (value, direction, moveKeys) {
-<<<<<<< HEAD
-        console.log(1)
-        console.log(value)
-        console.log(direction)
-        console.log(moveKeys)
-=======
         console.log(arguments)
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         var params = {
           uid: this.rowDetail.uid,
           user_role: moveKeys
@@ -150,20 +139,14 @@
         if (direction === 'left') { // 取消关联
           service.disconnectRole(params, this.config.origin).then(res => {
             this.pageLoading = false
-<<<<<<< HEAD
-=======
           }).then(res => {
             this.getUserInfo()
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           })
         } else {
           service.linkRole(params, this.config.origin).then(res => {
             this.pageLoading = false
-<<<<<<< HEAD
-=======
           }).then(res => {
             this.getUserInfo()
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           })
         }
       },
@@ -233,8 +216,6 @@
     .el-transfer {
       .el-transfer-panel .el-transfer-panel__header .el-checkbox .el-checkbox__label {
         line-height: 40px;
-<<<<<<< HEAD
-=======
         color: inherit;
         span {
           color: inherit;
@@ -242,7 +223,6 @@
       }
       .el-checkbox {
         color: inherit;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
       .el-transfer-panel__item {
         width: 100%;
@@ -271,11 +251,8 @@
       .el-transfer__buttons {
         float: right;
         margin-top: 80px;
-<<<<<<< HEAD
-=======
         margin-left: 10px;
         margin-right: 10px;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         width: 57px;
         padding: 0 !important;
         button{
@@ -305,32 +282,18 @@
 
     .el-col-18 {
       width: 75%;
-<<<<<<< HEAD
-      margin-left: -128px;
-    }
-    .el-form-item__label {
-      margin-left: -20px;
-=======
       margin-left: -5%;
     }
     .el-form-item__label {
       //margin-left: -20px;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
     .linkName1{
       margin-left: -20px;
     }
     .fixed-footer {
-<<<<<<< HEAD
-      background-color: white;
-      padding-top: 40px;
-      padding-bottom: 45px;
-      padding-left: 1.2%;
-=======
       padding-top: 40px;
       padding-bottom: 45px;
       padding-left: 10px;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
     .el-transfer-panel__header{
       color: inherit;
@@ -341,11 +304,8 @@
     .el-transfer-panel .el-transfer-panel__footer .el-checkbox {
       color: inherit;
     }
-<<<<<<< HEAD
-=======
     .el-transfer-panel__filter .el-input__inner {
       border-radius: 4px;
     }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 </style>

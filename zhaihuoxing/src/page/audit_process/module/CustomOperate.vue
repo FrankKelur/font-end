@@ -1,13 +1,5 @@
 <template lang="pug">
   b-dialog.custom-operate(:show='true', width="38%", :show-close="true", :before-close="beforeClose")
-<<<<<<< HEAD
-    el-form(:rules="cRules", :model="action", ref="action")
-      el-form-item(label-width="80px", :prop="action.field", :label="action.label")
-        b-form-item(:model.sync='action.value', :item='action')
-    template(slot="footer")
-      b-button(@click="visible.dialog=null") {{renderData.cancel}}
-      b-button(@click="saveResult", type="primary") {{renderData.save}}
-=======
     el-form.margin-top(:rules="cRules", :model="action", ref="action", label-width="140px", label-position="left")
       el-form-item(prop="value")
         template(slot="label")
@@ -16,7 +8,6 @@
     template(slot="footer")
       b-button(@click="visible.dialog=null") {{renderData.cancel}}
       b-button(@click="saveResult", type="primary", v-if="!disabled") {{renderData.save}}
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </template>
 
 <script>
@@ -32,9 +23,6 @@
       var _this = this
       return {
         action: {
-<<<<<<< HEAD
-          label: ''
-=======
           dataSource: [],
           dateType: '',
           file: {},
@@ -48,7 +36,6 @@
           rules: [],
           type: '',
           value: ''
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         },
         cRules: {},
         regexObj: {
@@ -101,14 +88,11 @@
         required: true
       }
     },
-<<<<<<< HEAD
-=======
     computed: {
       disabled () {
         return this.currRow.origin === 'audit_history' || this.currRow.origin === 'audit_history_component'
       }
     },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     methods: {
       beforeClose (done) {
         this.visible.dialog = null
@@ -122,13 +106,6 @@
         })
       }
     },
-<<<<<<< HEAD
-    mounted () {
-      Object.assign(this.action, this.currRow.currAction)
-      Object.assign(this.cRules, {
-        'value': this.action.rules.map(ruleName => this.regexObj[ruleName].rule)
-      })
-=======
     watch: {
       action: {
         handler () {
@@ -142,7 +119,6 @@
       this.cRules = {
         'value': (this.action.rules || []).map(ruleName => this.regexObj[ruleName].rule)
       }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     },
     components: {
       BFormItem,
@@ -153,15 +129,10 @@
   }
 </script>
 
-<<<<<<< HEAD
-<style lang="less">
-  .custom-operate {
-=======
 <style lang="less" scoped>
   .custom-operate {
     .margin-top {
       margin-top: 30px;
     }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 </style>

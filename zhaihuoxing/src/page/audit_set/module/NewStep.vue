@@ -1,18 +1,4 @@
 <template lang="pug">
-<<<<<<< HEAD
-  el-form.new-step(:model="stepInfo", ref="stepInfo", :rules="rules", label-width="80px")
-    .basic-info.theme-border-D
-      .title {{renderData.auditInfoSet}}
-      el-form-item(prop="name.label", :label="renderData.stepName")
-        b-input(:model.sync="stepInfo.name.label", :placeholder="renderData.pleaseInput")
-      el-form-item.is-required(prop="parent")
-        template(slot="label")
-          | {{renderData.stepDad}}
-        b-select(:model.sync="stepInfo.parent", :placeholder="renderData.pleaseSelect", :multiple='true', @change="parentChange", valueKey="key")
-          el-option(v-for="item in parentStepList", :label="item.label", :value="item", :key="item.key")
-        b-icon.margin-left(iconName="info", :title="renderData.decisionWorkflow")
-      el-form-item(prop="description.label", :label="renderData.stepDescription")
-=======
   el-form.new-step(:model="stepInfo", ref="stepInfo", :rules="rules", label-width="140px", label-position="left")
     .basic-info.theme-border-D
       .title {{renderData.auditInfoSet}}
@@ -29,7 +15,6 @@
       el-form-item(prop="description.label")
         template(slot="label")
           span.theme-color-C.inline-label(v-text="renderData.stepDescription", v-ellipsis-title="")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         b-input(:model.sync="stepInfo.description.label", :placeholder="renderData.pleaseInput")
     .condition-info.theme-border-D
       .title
@@ -37,13 +22,9 @@
         b-icon.margin-left(iconName="info", :title="renderData.auditConditionSetDescription")
       .dad-step(v-for="(dad, idx) in stepInfo.parent", :key="idx")
         .title {{dad.label}}
-<<<<<<< HEAD
-        el-form-item(:label="cond.label" v-for="(cond, idx) in dad.condition", :key="idx")
-=======
         el-form-item(v-for="(cond, idx) in dad.condition", :key="idx")
           template(slot="label")
             span.theme-color-C.inline-label(v-text="cond.label", v-ellipsis-title="")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           b-select(:model.sync="cond.dataSource", :placeholder="renderData.pleaseSelect", v-if="cond.type==='select'", valueKey="key", :multiple="true")
             el-option(v-for="(opt, idx) in getFieldDataSource(dad, cond)", :key="idx", :label="opt.label", :value="opt")
           .time-range(v-if="cond.type=='datetimerange'")
@@ -61,15 +42,6 @@
       .title
         | {{renderData.auditContentSet}}
         b-icon.margin-left(iconName="info", :title="renderData.contentMustSet")
-<<<<<<< HEAD
-      el-form-item(:label="renderData.auditTemplate", prop="audit_page.key")
-        b-select(:model.sync="stepInfo.audit_page", :placeholder="renderData.pleaseSelect", valueKey="key")
-          el-option(:label="item.label", :value="item", v-for="item in templateList", :key="item.key")
-      el-form-item(v-for="(target, idx) in stepInfo.audit_target", :key="idx", :prop="'audit_target.'+ idx + '.key'" , :rules="auditObjRule")
-        span(slot="label") {{idx!='0'?' ':renderData.auditObject}}
-        b-select(:model.sync="target.key", :placeholder="renderData.pleaseSelect", @change="changeTarget(target)")
-          el-option(v-for="(obj, idx) in auditTargetList", :key="idx", :label="obj.label", :value="obj.key")
-=======
       el-form-item(prop="audit_page.key")
         template(slot="label")
           span.theme-color-C.inline-label(v-text="renderData.auditTemplate", v-ellipsis-title="")
@@ -81,7 +53,6 @@
         b-select(:model.sync="target.key", :placeholder="renderData.pleaseSelect")
           el-option(v-for="(obj, idx) in auditTargetMap[stepInfo.audit_page.key]", :key="idx", :label="obj.label", :value="obj.key" v-show="!hidden(obj, target)")
         b-icon.pointer.theme-color-A.theme-color-lightA10-hover.theme-color-darkenA10-active.margin-left(iconName="message_failure", @click="deleteAuditTarget(idx)")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         el-radio-group.margin-left(v-model="target.all")
           b-radio(:label="true") {{renderData.checkAll}}
           b-radio(:label="false") {{renderData.checkPart}}
@@ -133,9 +104,6 @@
           parent: [],
           description: {key: '', label: ''},
           audit_page: {key: '', label: ''},
-<<<<<<< HEAD
-          audit_target: [],
-=======
           audit_target: [
             {
               'key': '',
@@ -143,7 +111,6 @@
               'dataSource': []
             }
           ],
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           result: []
         },
         auditObjRule: [
@@ -156,31 +123,13 @@
         templateList: [],
         parentStepList: [],
         rules: {
-<<<<<<< HEAD
-          'name.label': [
-=======
           'name': [
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             {
               required: true,
               message: _this.renderData.pleaseInput,
               trigger: 'blur'
             },
             {
-<<<<<<< HEAD
-              regex: constants.text0To128Limit,
-              validator: validator.validate,
-              message: _this.renderData.textLength128,
-              trigger: 'blur'
-            },
-            {
-              test (val) {
-                return val.trim() === val
-              },
-              validator: validator.validate,
-              message: _this.renderData.noAllowSpace,
-              trigger: 'blur'
-=======
               validator (rule, name, cb) {
                 console.log('rule, name, cb', rule, name, cb)
                 var label = name.label || ''
@@ -195,7 +144,6 @@
                 }
               },
               trigger: 'blur,change'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             }
           ],
           'parent': [
@@ -253,20 +201,6 @@
         required: true
       }
     },
-<<<<<<< HEAD
-    computed: {
-      auditTargetList () {
-        console.log('auditTargetMap', this.auditTargetMap, this.stepInfo.audit_page.key)
-        // 去除已经选中的那些项
-        var res = this.auditTargetMap[this.stepInfo.audit_page.key] || []
-        return res.filter(item => !this.stepInfo.audit_target.find(ele => ele.key === item.key))
-      }
-    },
-    methods: {
-      changeTarget (target) {
-        // z todo 选中target, label没有切换
-        target = this.auditTargetList.find(el => el.key === target.key)
-=======
     methods: {
       hidden (item, curr) {
         // 已经选中的那些项隐藏, 保留当前选中的
@@ -274,7 +208,6 @@
           return this.stepInfo.audit_target.find(ele => ele.key === item.key) && curr.key !== item.key
         }
         return false
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       },
       showInput () {
         this.addingRes = true
@@ -283,12 +216,9 @@
       closeInput () {
         this.addingRes = false
       },
-<<<<<<< HEAD
-=======
       deleteAuditTarget (idx) {
         this.stepInfo.audit_target.splice(idx, 1)
       },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       addResult () {
         // z todo 验证，result
         this.stepInfo.result.push({
@@ -339,11 +269,7 @@
       addAuditObject () {
         var target = {
           'key': '',
-<<<<<<< HEAD
-          'all': false,
-=======
           'all': true,
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           'dataSource': []
         }
         this.stepInfo.audit_target.push(target)

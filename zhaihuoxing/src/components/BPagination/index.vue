@@ -1,10 +1,5 @@
 <template lang="pug">
-<<<<<<< HEAD
-  .pagination1
-    el-pagination.b-pagination(@size-change="handleSizeChange", @current-change='handleCurrentChange', :current-page='pagination.currPage', :page-sizes='pagination.pageSizes', :page-size='pagination.pageSize', :layout="layout", :total='pagination.total')
-=======
   el-pagination.b-pagination(@size-change="handleSizeChange", @current-change='handleCurrentChange', :current-page='pagination.currPage', :page-sizes='pagination.pageSizes', :page-size='pagination.pageSize', :layout="layout", :total='pagination.total')
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </template>
 
 <script>
@@ -63,16 +58,6 @@
 </script>
 
 <style lang="less" >
-<<<<<<< HEAD
-  .pagination1{
-    .b-pagination {
-      display: inline-block;
-      .el-pagination__editor.el-input .el-input__inner {
-        height: 26px;
-        border-width: 0;
-        padding-bottom: 0px !important;
-      }
-=======
   .b-pagination {
     display: inline-block;
     .el-pagination__total {
@@ -86,7 +71,6 @@
     }
     .btn-prev {
       margin-left: 20px !important;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
     input.el-input__inner {
       padding-bottom: 4px !important;

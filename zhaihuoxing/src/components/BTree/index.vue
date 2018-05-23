@@ -1,15 +1,10 @@
 <template lang="pug">
-<<<<<<< HEAD
-  .b-tree-box(:style="`height:${height};overflow:auto`")
-    el-tree(:data="data" ,:props="props", node-key="nodeKey", :render-content="renderContent", :expand-on-click-node="false", @node-expand="nodeExpand", @node-collapse="nodeCollapse").b-tree
-=======
   .b-tree-box(:style="`height:${height};overflow:auto`" v-if="searchKey")
     el-input(placeholder="输入关键字进行过滤" v-model="filterText")
     el-tree(:data="data" ,:props="props", node-key="nodeKey", :render-content="renderContent", :expand-on-click-node="false", @node-expand="nodeExpand", @node-collapse="nodeCollapse", :filter-node-method="filterNode", ref="treeSelf").b-tree
   .b-tree-box(:style="`height:${height};overflow:auto`" v-else)
     el-tree(:data="data" ,:props="props", node-key="nodeKey", :render-content="renderContent", :expand-on-click-node="false", @node-expand="nodeExpand", @node-collapse="nodeCollapse",ref="treeSelf").b-tree
 
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </template>
 
 <script>
@@ -28,12 +23,8 @@
     data () {
       return {
         // maxin less style string
-<<<<<<< HEAD
-        styleMixinLess: styleMixinLess
-=======
         styleMixinLess: styleMixinLess,
         filterText: ''
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     props: {
@@ -68,8 +59,6 @@
       height: {
         type: String,
         default: '760px'
-<<<<<<< HEAD
-=======
       },
       searchPlaceholder: {
         type: String,
@@ -78,14 +67,11 @@
       searchKey: {
         type: String,
         default: ''
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     mounted () {
 
     },
-<<<<<<< HEAD
-=======
     watch: {
       filterText (val) {
         this.$refs.treeSelf.filter(val)
@@ -98,7 +84,6 @@
         return data[this.searchKey].indexOf(value) !== -1
       }
     },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     components: {
       BIcon
     }
@@ -107,12 +92,9 @@
 
 <style lang="less">
   .b-tree-box {
-<<<<<<< HEAD
-=======
     .el-input {
       margin-bottom: 15px;
     }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     .el-tree{
       /*overflow-x: scroll;*/
     }

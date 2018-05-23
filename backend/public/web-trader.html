@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/dist/trader.css">
+    <link rel="stylesheet" href="/static/font/iconfont.css">
+</head>
+<body>
+    <div id="test4">
+
+    </div>
+    <div id="chart">
+        <div id="test"></div>
+        <div id="test2"></div>
+    </div>
+
+
+    <div id="test3"></div>
+    <script src="/static/dist/vue.min.js" charset="utf-8"></script>
+    <!-- <script type='text/javascript' src='../node_modules/socket.io-client/dist/socket.io.min.js'></script> -->
+    <script src="/static/dist/rocket-trader.js" charset="utf-8"></script>
+    <script>
+    window.onload = function(){
+        Vue.config.devtools = true;
+        new Engine({
+            element: 'test',
+            toolBarElement:'test4',
+            operationtElement:'test2',
+            tardeInfoElement:'test3',
+            candlePeriod: 'm1',
+            currency: 'GBPUSD',
+            chartType: 'candle',
+            // width: 600,
+            // height: 300,
+            chartBackground: '#fff',
+            lang:'cn',
+            userName :'1002',
+            userToken:'461d9e09985b2ca82061200bfdf7b99e',
+            tokenErrorCb:function(){
+                console.log(1)
+            }
+        })
+    }
+    </script>
+</body>
+</html>

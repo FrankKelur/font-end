@@ -1,15 +1,5 @@
 <template lang="pug">
   div.hei-100
-<<<<<<< HEAD
-    signin-part(v-if="visible.page === 'signin'", :visible="visible")
-    forget-password(v-if="visible.page === 'forget_password'", :visible="visible")
-</template>
-
-<script>
-  import SigninPart from './module/signin'
-  import ForgetPassword from './module/forgetPassword'
-  import componentMixin from 'common/js/componentMixin'
-=======
     signin-part(v-if="visible.page === 'signin'", :visible="visible", :render-data="renderData", :form="signForm")
     forget-password(v-if="visible.page === 'forget_password'", :visible="visible", :render-data="renderData", :form="forgetForm")
     component(v-if="visible.dialog === 'verified_attention'", :is="visible.dialog", :render-data="renderData", :visible="visible", :user-name="signForm.user_name", :vcode="signForm.vcode", :vcode-key="signForm.vcode_key")
@@ -29,7 +19,6 @@
   import verifiedSend from './module/verifiedSendAgain'
   import componentMixin from 'common/js/componentMixin'
   import service from './service'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   import Vue from 'vue'
   import { Form, FormItem } from 'element-ui'
 
@@ -40,17 +29,6 @@
     mixins: [componentMixin],
     data () {
       return {
-<<<<<<< HEAD
-        visible: {
-          page: 'signin'
-        }
-      }
-    },
-    methods: {},
-    components: {
-      SigninPart,
-      ForgetPassword
-=======
         renderData: renderData,
         visible: {
           page: 'signin',
@@ -121,7 +99,6 @@
         this.verifyEmail()
         console.log('search obj: ', this.searchObj)
       }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
   }
 </script>

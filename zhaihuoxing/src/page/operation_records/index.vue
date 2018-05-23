@@ -4,21 +4,13 @@
       b-title.amt-more-left-in(:title="pageTitle")
     .amt-more-left-in
       el-tabs(v-model="whichTab" type="card")
-<<<<<<< HEAD
-        el-tab-pane(:label="renderData.resourceModification" name="sourceMod")
-=======
         el-tab-pane(:label="renderData.resourceModification" name="sourceMod" v-if="tableRenderData.listObj.headerCols.length !== 0")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           b-search-table(:render-data="tableRenderData", url="/api/resource/records/get_oss_record_list", ref="table", :tableType="tableType", :getRowClass="getRowClass")
             template(slot="expand", slot-scope="props")
               div.expand-row(v-for="(item, index) in props.row.brother", :key='index')
                 td
                 td(v-for="col in props.computedHeaderCols", :key='col.field')
-<<<<<<< HEAD
-                  div.cell.show-eplice(v-text='getLabel(item[col.field]).toString()' v-ellipsis-title='getLabel(item[col.field])')
-=======
                   span.cell.show-eplice(v-text='getLabel(item[col.field]).toString()' v-ellipsis-title='getLabel(item[col.field])')
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         el-tab-pane(:label="renderData.settingModification" name="settingMod")
           | {{renderData.settingModification}}
 </template>
@@ -95,10 +87,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-<<<<<<< HEAD
-=======
         display: inherit;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
       > td:first-child {
         box-sizing: border-box;

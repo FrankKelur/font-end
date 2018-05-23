@@ -1,16 +1,9 @@
 <template lang="pug">
   b-dialog.add-condition(:show.sync='dialogVisible', :title="renderData.addCondition", :show-close="true", width="38%", :before-close="beforeClose")
-<<<<<<< HEAD
-    el-form(:rules="rules", ref="setCondition", :model="setCondition", label-width="80px")
-      el-form-item.is-required
-        template(slot="label")
-          | {{renderData.condition}}
-=======
     el-form(:rules="rules", ref="setCondition", :model="setCondition", label-width="140px", label-position="left")
       el-form-item.is-required
         template(slot="label")
           span.theme-color-C.inline-label(v-text="renderData.condition", v-ellipsis-title="")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         b-select(:model.sync="setCondition.condition", :placeholder="renderData.pleaseSelect", valueKey="key")
           el-option(v-for="(field, idx) in allDataSource", :key="idx", :label="field.label", :value="field")
     template(slot="footer")

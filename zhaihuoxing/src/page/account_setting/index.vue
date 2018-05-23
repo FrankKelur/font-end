@@ -1,38 +1,6 @@
 <template lang="pug">
   .account_setting.theme-border-lightenD12.component#account_setting
     .kongdiv1
-<<<<<<< HEAD
-      b-title.amt-more-left-in(title="账号设置")
-
-    el-collapse.amt-more-left-in(v-model="activeName")
-      el-collapse-item(title="MT4通道1" name="mt4")
-        //.no-data.theme-color-C(v-if="searchData.length===0")
-        //  | 暂无数据
-        .box-content
-          el-form(label-width="130px" label-position='left' ref="form")
-            el-form-item(label="杠杆")
-              .list-item
-                b-button.tag-group(size="small" v-for="(item, index) in [1,2,3]", :key="index")
-                  span.tag-group-txt(v-ellipsis-title="") 44
-                  b-icon.theme-color-C.theme-color-G-hover(iconName="delete", size="12px", @click.native='deleteResource')
-                b-button.add-btn(size="small", type="primary") 添加
-            el-form-item(label="货币")
-              .list-item
-                b-button.tag-group(size="small" v-for="(item, index) in [1,2,3]", :key="index")
-                  span.tag-group-txt(v-ellipsis-title="") 44
-                  b-icon.theme-color-C.theme-color-G-hover(iconName="delete", size="12px", @click.native='deleteResource')
-                b-button.add-btn(size="small", type="primary") 添加
-            el-form-item(label="账号种类")
-              .list-item
-                .list-item-left 种类名称
-                .list-item-right 起始账号
-              .list-item(v-for="item in [1,2,3,4,5]")
-                .list-item-left
-                  b-checkbox.theme-color-darkenC15() 交易账号
-                  i.el-icon-info
-                .list-item-right
-                  b-input(:model.sync="profileInfo")
-=======
       b-title.amt-more-left-in(:title="renderData.accountSetting")
         template(slot="icon")
           el-tooltip(class="item" effect="dark", :content="renderData.accountSettingInfo" placement="top")
@@ -91,7 +59,6 @@
                       b-input(:model.sync="accountItem.start_No", :disabled="accountItem.checked===false", :placeholder="renderData.pleaseEnter")
 
           b-button(type="primary", @click.native='saveData(item, parIndex)') {{renderData.save}}
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </template>
 
 <script>
@@ -100,35 +67,15 @@
   import BIcon from 'components/BIcon'
   import BCheckbox from 'components/BCheckbox'
   import BInput from 'components/BInput'
-<<<<<<< HEAD
-  import componentMixin from 'common/js/componentMixin'
-  import service from './service'
-=======
   import BSelect from 'components/BSelect'
   import componentMixin from 'common/js/componentMixin'
   import service from './service'
   import utils from 'common/js/Utils'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
   export default {
     name: 'account_setting',
     mixins: [componentMixin],
     data () {
-<<<<<<< HEAD
-      return {
-        profileInfo: '',
-        activeName: ['mt4'],
-        searchData: []
-      }
-    },
-    methods: {
-      deleteResource () {
-        alert('删除')
-      },
-      getAllLeverage () {
-        service.getAllLeverage({}).then(data => {
-          console.log('杠杆集合', data)
-=======
       var comAuth = window.renderData.components.account_setting
       var renderData = Object.assign({}, comAuth.account_setting_auth, comAuth.account_setting_default)
       return {
@@ -353,19 +300,10 @@
       getAllLeverage () {
         service.getAllLeverage({}).then(data => {
           this.leverageList = data
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         })
       },
       getAllCurrency () {
         service.getAllCurrency({}).then(data => {
-<<<<<<< HEAD
-          console.log('货币集合', data)
-        })
-      },
-      getAccountSettingList () {
-        service.getAccountSettingList({}).then(data => {
-          console.log('账号设置列表', data)
-=======
           this.currencyList = data
         })
       },
@@ -474,7 +412,6 @@
               })
             }
           })
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         })
       }
     },
@@ -483,14 +420,6 @@
       BButton,
       BIcon,
       BCheckbox,
-<<<<<<< HEAD
-      BInput
-    },
-    mounted () {
-      this.getAllLeverage()
-      this.getAllCurrency()
-      this.getAccountSettingList()
-=======
       BSelect,
       BInput
     },
@@ -503,7 +432,6 @@
           vm.getAccountSettingList()
         }, 500)
       }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
   }
 </script>
@@ -511,40 +439,26 @@
 <style lang="less">
   .account_setting {
     position: relative;
-<<<<<<< HEAD
-    .box-content{
-=======
     .b-title{
       margin-bottom: 5px !important;
     }
     .box-content{
       padding: 15px 1.2% 27px;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       .list-item{
         .list-item-left{
           display: inline-block;
           width: 180px;
-<<<<<<< HEAD
-          height: 42px;
-          line-height: 42px;
-          vertical-align: middle;
-=======
           vertical-align: top;
           .el-checkbox{
             margin-top: 10px;
           }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
         .list-item-right{
           display: inline-block;
           width: 250px;
-<<<<<<< HEAD
-          height: 42px;
-=======
           .el-form-item__error{
             position: relative;
           }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
         .tag-group {
           margin: 0 8px 6px 0!important;
@@ -559,8 +473,6 @@
             font-size: 14px!important;
           }
         }
-<<<<<<< HEAD
-=======
         .el-button+.el-button {
           margin-left: 0;
         }
@@ -590,7 +502,6 @@
       }
       .is-error .el-input__inner:focus{
         border-color: inherit;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     }
   }

@@ -8,15 +8,6 @@
             b-button(@click='sortAudit') {{renderData.order}}
       el-tabs(v-model="activeTab", type="card")
         el-tab-pane(v-for='tab in auditTabs', :name="tab.name", :key="tab.name", :label="tab.label")
-<<<<<<< HEAD
-          b-search-table(:ref="tab.name + '_table'", :optHandler='optHandler', :render-data="getTableRenderData(tab)",
-          :url="tableUrl", :params="getTableParams(tab)", v-if="activeTab===tab.name", :tableType="tableType", :getRowClass="getRowClass")
-            template(slot="expand", slot-scope="props")
-              div.expand-row(v-for="(item, index) in props.row.brother", :key='index')
-                td
-                td(v-for="col in props.computedHeaderCols", :key='col.field')
-                  .cell.show-eplice(v-text='getLabel(item[col.field])' v-ellipsis-title='getLabel(item[col.field])')
-=======
           b-search-table(:ref="tab.name + '_table'", :optHandler='optHandler', :render-data="getTableRenderData(tab)", :opts-filter="optsFilter",
           :url="tableUrl", :params="getTableParams(tab)", v-if="activeTab===tab.name", :tableType="tableType", :getRowClass="getRowClass")
             template(slot="expand", slot-scope="props")
@@ -25,7 +16,6 @@
                 td(v-for="col in props.computedHeaderCols", :key='col.field')
                   .cell
                     .show-ellipsis(v-text='getLabel(item[col.field])' v-ellipsis-title='')
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
                 td(v-if="props.otherCols.length")
                   .cell.top-padding
                     el-popover.theme-border-lightenD12.theme-color-H(trigger="click" placement="bottom" ref="popoverMore")
@@ -39,12 +29,6 @@
                             .left(v-text='col.fieldTextMap[key]' v-ellipsis-title="")
                             .right(v-text='getLabel(item)' v-ellipsis-title="")
                       b-icon.pointer.theme-color-lightenC32.theme-color-lightenA10-hover.theme-color-darkenA10-active(iconName="more", slot="reference")
-<<<<<<< HEAD
-                td(v-if="props.computedOpts.length")
-    component(:is="visible.page", :render-data="modalRenderData", :visible="visible", :curr-row="currRow", :auditType="activeTab")
-
-    component(:is="visible.dialog", :render-data="modalRenderData", :curr-row="currRow", :visible="visible", :auditType="activeTab", :auditList="customizedAudits")
-=======
                 td.text-center(v-if="props.operateOpts.length")
                   .cell
                     a.show-ellipsis.link.theme-color-A.pointer(v-if="getCheckPermit(props.operateOpts)", @click="check(item, props.operateOpts)") {{getCheckPermit(props.operateOpts).label}}
@@ -52,7 +36,6 @@
     component(:is="visible.page", :render-data="modalRenderData", :visible="visible", :curr-row="currRow", :auditType="activeTab", :activeTabLabel="activeTabLabel")
 
     component(:is="visible.dialog", :render-data="modalRenderData", :curr-row="currRow", :visible="visible", :auditType="activeTab", :auditList="customizedAudits", :activeTabLabel="activeTabLabel" origin="audit_history")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
 </template>
 
@@ -65,10 +48,7 @@
   import SorAudits from 'page/audit_process/module/sortAudits'
   import SetPriority from 'page/audit_process/module/setPriority'
   import CustomAuditPage from 'page/audit_process/module/CustomAuditPage'
-<<<<<<< HEAD
-=======
   import CustomOperate from 'page/audit_process/module/CustomOperate'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   import service from './service'
   import commonMixin from 'common/js/commonMixin'
   import componentMixin from 'common/js/componentMixin'
@@ -94,11 +74,8 @@
           _this.currRow = row
           _this.modalRenderData = renderData
           _this.visible.page = 'CustomAuditPage'
-<<<<<<< HEAD
-=======
           _this.$set(_this.currRow, 'origin', 'audit_history_component')
           _this.$set(_this.currRow, 'currHistory', row)
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         },
         audit_history_list_deposit_priority_set (row, renderData) {
           _this.currRow = row
@@ -108,13 +85,8 @@
       }
       optHandler.audit_history_list_withdraw_see_more = optHandler.audit_history_list_deposit_see_more
       optHandler.audit_history_list_withdraw_priority_set = optHandler.audit_history_list_deposit_priority_set
-<<<<<<< HEAD
-      optHandler.audit_history_list_custom_see_more = optHandler.audit_history_list_deposit_see_more
-      optHandler.audit_history_list_custom_priority_set = optHandler.audit_history_list_deposit_priority_set
-=======
       optHandler.audit_history_custom_see_more = optHandler.audit_history_list_deposit_see_more
       optHandler.audit_history_custom_priority_set = optHandler.audit_history_list_deposit_priority_set
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       var auditTabs = []
       if (renderData.audit_history_list_withdraw_audit) {
         auditTabs.push({
@@ -161,13 +133,10 @@
       await this.appendCustomizedAudit()
     },
     computed: {
-<<<<<<< HEAD
-=======
       activeTabLabel () {
         var currTab = this.auditTabs.find(tab => tab.name === this.activeTab) || {}
         return currTab.label
       },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       pageTitle () {
         if (!this.visible.page) {
           return this.renderData.auditHistory
@@ -182,8 +151,6 @@
       }
     },
     methods: {
-<<<<<<< HEAD
-=======
       check (row, allPermits) {
         var renderData = Object.assign({}, this.renderData, this.getCheckPermit(allPermits))
         this.optHandler.audit_history_list_deposit_see_more(row, renderData)
@@ -194,7 +161,6 @@
       optsFilter (handlers, currRow) {
         return handlers.filter(opt => !['audit_history_list_withdraw_see_more', 'audit_history_list_deposit_see_more', 'audit_history_custom_see_more'].includes(opt.auth))
       },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       getLabel (field) {
         return (field && field.label) || field
       },
@@ -204,13 +170,10 @@
         var _this = this
         var popover = Popover
         tableRenderData = JSON.parse(JSON.stringify(tableRenderData))
-<<<<<<< HEAD
-=======
         // 用_headerCols而不是headerCols, 因为配置中心生成权限
         tableRenderData.listObj.headerCols = tableRenderData.listObj.headerCols || tableRenderData.listObj._headerCols
         tableRenderData.listObj.operateOpts = tableRenderData.listObj.operateOpts || tableRenderData.listObj._operateOpts
         tableRenderData.searchObj.searchFields = tableRenderData.searchObj.searchFields || tableRenderData.searchObj._searchFields
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         var headerCols = tableRenderData.listObj.headerCols
         tableRenderData.searchObj.searchFields.forEach(item => {
           if (item.field === 'audit_user') {
@@ -280,24 +243,15 @@
         }
       },
       getRowClass ({row, rowIndex}) {
-<<<<<<< HEAD
-        return row.brother && row.brother.length ? '' : 'hide-expand'
-=======
         return row.history && row.history.length ? '' : 'hide-expand'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     watch: {
       visible: {
         handler: function (val, oldVal) {
-<<<<<<< HEAD
-          if (val.modal !== oldVal.modal && !val.modal) {
-            this.$refs[this.activeTab + '_table'].search()
-=======
           console.log('refresh', val, oldVal)
           if (!val.dialog) {
             this.$refs[this.activeTab + '_table'][0].search()
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           }
         },
         deep: true
@@ -314,10 +268,7 @@
       BIcon,
       BTitle,
       CustomAuditPage,
-<<<<<<< HEAD
-=======
       CustomOperate,
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       'audit_history_list_deposit_priority_set': SetPriority,
       SorAudits,
       BSearchTable
@@ -340,11 +291,7 @@
     }
     .el-tabs__header {
       .el-badge__content.is-fixed {
-<<<<<<< HEAD
-        right: 0px;
-=======
         right: 15px;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         top: 10px;
       }
       .el-icon-arrow-left:before, .el-icon-arrow-right:before {
@@ -361,18 +308,11 @@
       .top-padding {
         padding-top: 12px;
       }
-<<<<<<< HEAD
-      .show-eplice {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-=======
       .show-ellipsis {
         width: 100%;
       }
       .text-center {
         text-align: center;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
       > td:first-child {
         box-sizing: border-box;

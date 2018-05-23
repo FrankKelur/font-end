@@ -13,11 +13,6 @@ export default {
     var url = '/api/resource/user/sign_in'
     return fetch(url, params)
   },
-<<<<<<< HEAD
-  sendEmail (params) {
-    var url = '/api/password/send_forget_email'
-    return fetch(url, params)
-=======
   checkMatch (params) {
     var url = '/api/resource/user/check_match'
     return fetch(url, params)
@@ -41,6 +36,5 @@ export default {
   returnSignIn (params) {
     var url = '/api/resource/user/return_sign_in'
     return fetch(url, params)
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 }

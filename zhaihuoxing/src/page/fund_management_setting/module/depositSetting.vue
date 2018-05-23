@@ -51,8 +51,8 @@
   import BButton from 'components/BButton'
   import BInput from 'components/BInput'
   import BIcon from 'components/BIcon'
-  import AddCustom from './AddCustom.vue'
-  import EditCustom from './EditCustom.vue'
+  import AddCustom from '../module/AddCustom.vue'
+  import EditCustom from '../module/EditCustom.vue'
   import service from '../service'
   import { constants, validator } from 'common/js/Utils'
 

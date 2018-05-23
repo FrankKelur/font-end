@@ -14,18 +14,11 @@
   export default {
     name: 'audit-history',
     data () {
-<<<<<<< HEAD
-      var tableRenderData = this.renderData
-      tableRenderData.listObj = Object.assign({}, tableRenderData)
-      tableRenderData.listObj.operateOpts = [{
-        label: this.renderData.check,
-=======
       var _this = this
       var tableRenderData = this.renderData
       tableRenderData.listObj = Object.assign({}, tableRenderData)
       tableRenderData.listObj.operateOpts = [{
         label: this.renderData.auditSee,
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         auth: 'check',
         check: {}
       }]
@@ -44,16 +37,10 @@
         },
         tableRenderData: tableRenderData,
         optHandler: {
-<<<<<<< HEAD
-          check () {
-            console.log('check 查看')
-            // z todo 查看， 跳转到和处理任务一样的页面
-=======
           check (row) {
             _this.visible.page = 'CustomAuditPage'
             _this.$set(_this.currRow, 'origin', 'audit_history')
             _this.$set(_this.currRow, 'currHistory', row)
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           }
         }
       }

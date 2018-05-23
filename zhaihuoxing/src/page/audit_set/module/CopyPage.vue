@@ -1,11 +1,5 @@
 <template lang="pug">
   b-dialog.copy-page(:show.sync='dialogVisible', :title="renderData.copyPage", :show-close="true", width="38%", :before-close="beforeClose")
-<<<<<<< HEAD
-    el-form(:rules="rules", ref="copyPage", :model="copyPageInfo", label-width="80px")
-      el-form-item(:label="renderData.auditPageName", prop="name")
-        b-input(:model.sync="copyPageInfo.name", :placeholder="renderData.pleaseInput")
-      el-form-item(:label="renderData.description", prop="description.label")
-=======
     el-form(:rules="rules", ref="copyPage", :model="copyPageInfo", label-width="140px", label-position="left")
       el-form-item(prop="name")
         template(slot="label")
@@ -14,7 +8,6 @@
       el-form-item(prop="description.label")
         template(slot="label")
           span.theme-color-C.inline-label(v-text="renderData.description", v-ellipsis-title="")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         b-input(:model.sync="copyPageInfo.description.label", :placeholder="renderData.pleaseInput")
     template(slot="footer")
       b-button(@click="visible.dialog=null") {{renderData.cancel}}

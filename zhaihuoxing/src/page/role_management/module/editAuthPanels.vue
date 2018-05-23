@@ -32,12 +32,6 @@
                         el-dropdown-item
                           b-checkbox.theme-color-C(:model.sync="secondPermit.enabled", :disabled="!secondPermit.checked || !editable") {{renderData.enableOperate}}
 
-<<<<<<< HEAD
-    //el-tab-pane(:label="renderData.resourceAuth", name="2")
-      el-collapse(v-model="editAuthPanels.activeResource")
-        el-collapse-item(:name="resource.name", v-for="resource in resourceList", :key="resource.name", :title="resource.label")
-          resource-item(:resource="resource", :render-data="generateRenderData(resource)")
-=======
     el-tab-pane(name="2")
       span.theme-color-A(slot="label") 资源访问权限
       el-collapse.ziyuan(v-model="activeName")
@@ -65,16 +59,12 @@
               el-radio(v-model="item.checkType" label="all") 查看全部资源
             .radio-box
               el-radio(v-model="item.checkType" label="one") 查看特定资源
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </template>
 
 <script>
   import Vue from 'vue'
-<<<<<<< HEAD
-=======
   import BSelect from 'components/BSelect'
   import BInput from 'components/BInput'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   import service from '../service'
   import ResourceItem from './ResourceItem'
   import BCheckbox from 'components/BCheckbox'
@@ -89,9 +79,6 @@
         editAuthPanels: {
           activeTab: '1',
           activeComponents: []
-<<<<<<< HEAD
-        }
-=======
         },
         activeName: 'role',
         ziyuanData: [
@@ -164,7 +151,6 @@
             label: '状态'
           }
         ]
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     props: {
@@ -348,10 +334,7 @@
         return service.getAllAuth(params).then(res => {
           console.log('res', res)
           this.componentsAuth = res
-<<<<<<< HEAD
-=======
           console.log('test init 1', this.componentsAuth.length)
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         })
       },
       getResourceList () {
@@ -362,17 +345,12 @@
         })
       },
       async init () {
-<<<<<<< HEAD
-        await this.getAllAuth()
-        this.editAuthPanels.activeComponents = this.componentsAuth.map(comp => comp.auth)
-=======
         console.log('test init 0')
         await this.getAllAuth()
         console.log('test init 2', this.componentsAuth.length)
         if (this.componentsAuth.length) {
           this.editAuthPanels.activeComponents = this.componentsAuth.map(comp => comp.auth)
         }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         // 生成 authMap 添加beDependentAuths
         this.authMap = new Map()
         this.componentsAuth.forEach(comp => {
@@ -398,11 +376,6 @@
         })
         this.renderByRoleInfo()
         // await this.getResourceList() // z todo 资源管理暂时不做
-<<<<<<< HEAD
-      }
-    },
-    components: {BCheckbox, ResourceItem},
-=======
       },
       addSearch (item) {
         let targetData = item.searchArr
@@ -424,7 +397,6 @@
       }
     },
     components: {BCheckbox, ResourceItem, BSelect, BInput},
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     mounted () {
 //      this.init()
     }
@@ -435,17 +407,12 @@
   .edit-auth-panel {
     .el-collapse-item__header {
       margin-left: 3px;
-<<<<<<< HEAD
-    }
-    .el-collapse-item__content {
-=======
       .el-checkbox {
         margin-top: 10px;
       }
     }
     .el-collapse-item__content {
       padding-bottom: 0px!important;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       .el-table {
         .permit-item {
           margin-bottom: 8px;
@@ -454,10 +421,6 @@
       }
     }
     .el-table--fit{
-<<<<<<< HEAD
-      border-bottom: 0 !important;
-      border-right: 0 !important;
-=======
       background-color: inherit;
       tr {
         background-color: inherit;
@@ -474,7 +437,6 @@
         width: 30%;
         border: 1px solid #ccc;
       }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
   }
 </style>

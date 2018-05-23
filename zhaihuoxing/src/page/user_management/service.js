@@ -428,8 +428,6 @@ export default {
     //     'last_name': '' // string LastName
     //   })
     // })
-<<<<<<< HEAD
-=======
   },
   toggleUserStatus (params = {}, url = '/api/rbac/user/toggle_user_status') {
     return fetch(url, params)
@@ -449,7 +447,6 @@ export default {
   },
   emailUnique (params = {}, url = '/api/public/check_unique') {
     return fetch(url, params)
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 }
 

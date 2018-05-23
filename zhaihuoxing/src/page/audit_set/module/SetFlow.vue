@@ -14,44 +14,12 @@
             .operate
               el-dropdown.theme-color-lightenC32.theme-color-lightenA10-hover.theme-color-darkenA10-active(@command="handleCommand" trigger='click')
                 span.el-dropdown-link
-<<<<<<< HEAD
-                  b-icon(iconName="operation")
-=======
                   b-icon.pointer(iconName="operation")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
                 el-dropdown-menu.ipt-class.theme-bg-H.theme-border-lightenD12(slot="dropdown")
                   el-dropdown-item.theme-bg-lightenD12-hover.theme-color-C-hover(command='StepInfoEdit') {{renderData.stepInfoEdit}}
                   el-dropdown-item.theme-bg-lightenD12-hover.theme-color-C-hover(command='auditPageEdit') {{renderData.auditPageEdit}}
                   el-dropdown-item.theme-bg-lightenD12-hover.theme-color-C-hover(command='DeleteStep') {{renderData.deleteStep}}
           .content
-<<<<<<< HEAD
-              .item
-                .label(v-ellipsis-title="") {{renderData.stepDad + renderData.colon}}
-                .info(v-ellipsis-title="")
-                  | {{(stepInfo.parent && stepInfo.parent.label) || '-'}}
-                  b-icon(iconName="info", :title="renderData.decisionWorkflow")
-              .item
-                .label(v-ellipsis-title="") {{renderData.description + renderData.colon}}
-                .info(v-ellipsis-title="") {{(stepInfo.description && stepInfo.description.label) || '-'}}
-              .item
-                .label(v-ellipsis-title="") {{renderData.auditCondition + renderData.colon}}
-                .info(v-ellipsis-title="")
-                  span.theme-color-A.theme-color-lightenA10-hover.theme-color-darkenA10-active.pointer(@click="auditConditionDetail(stepInfo)") {{renderData.seeMore}}
-              .item
-                .label(v-ellipsis-title="") {{renderData.auditContent + renderData.colon}}
-                .info(v-ellipsis-title="")
-                  span.theme-color-A.theme-color-lightenA10-hover.theme-color-darkenA10-active.pointer(@click="contentDetail(stepInfo)") {{renderData.seeMore}}
-              .item
-                .label(v-ellipsis-title="") {{renderData.auditPeople + renderData.colon}}
-                .info(v-ellipsis-title="")
-                  span.theme-color-A.theme-color-lightenA10-hover.theme-color-darkenA10-active.pointer(@click="auditPeopleDetail(stepInfo)") {{renderData.seeMore}}
-                  span.theme-color-A.theme-color-lightenA10-hover.theme-color-darkenA10-active.pointer(@click="auditPeopleAdd(stepInfo)" v-if="renderData.audit_set_list") {{renderData.add}}
-              .item
-                .label(v-ellipsis-title="") {{renderData.noticePeople + renderData.colon}}
-                .info(v-ellipsis-title="")
-                  span.theme-color-A.theme-color-lightenA10-hover.theme-color-darkenA10-active.pointer(@click="noticePeopleDetail(stepInfo)") {{renderData.seeMore}}
-                  span.theme-color-A.theme-color-lightenA10-hover.theme-color-darkenA10-active.pointer(@click="noticePeopleAdd(stepInfo)" v-if="renderData.audit_set_list") {{renderData.add}}
-=======
             .item
               .label(v-ellipsis-title="") {{renderData.stepDad + renderData.colon}}
               .info(v-ellipsis-title="")
@@ -78,7 +46,6 @@
               .info(v-ellipsis-title="")
                 span.theme-color-A.theme-color-lightenA10-hover.theme-color-darkenA10-active.pointer(@click="noticePeopleDetail(stepInfo)") {{renderData.seeMore}}
                 span.theme-color-A.theme-color-lightenA10-hover.theme-color-darkenA10-active.pointer(@click="noticePeopleAdd(stepInfo)" v-if="renderData.audit_set_list") {{renderData.add}}
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
       .step-item.blank-step.theme-border-D
         .icon-container(@click="addStep")
@@ -86,11 +53,7 @@
           .info.theme-color-A {{renderData.add}}
     .footer.theme-border-D
       b-button(@click="back") {{renderData.back}}
-<<<<<<< HEAD
-      //b-button(type="primary", @click="saveFlow") {{renderData.save}}
-=======
       b-button(type="primary", @click="saveFlow") {{renderData.save}}
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
 </template>
 
@@ -145,27 +108,21 @@
       }
     },
     methods: {
-<<<<<<< HEAD
-=======
       saveFlow () {
         var params = {
           uuid: this.currRow.uuid
         }
         service.sendWorkflowActiviti(params)
       },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       checkCurrStep (stepInfo) {
         console.log('stepInfo', stepInfo)
         this.currStep = stepInfo
         this.$set(this.currRow, 'currStep', this.currStep)
       },
-<<<<<<< HEAD
-=======
       getParentLabel (parent) {
         parent = parent || []
         return parent.map(item => item.label).join(this.renderData.comma)
       },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       addStep () {
         this.visible.page = 'NewStep'
         this.$set(this.currRow, 'currStep', null)
@@ -224,8 +181,6 @@
     async mounted () {
       await this.getStepList()
     },
-<<<<<<< HEAD
-=======
     watch: {
       'visible.dialog' (newVal) {
         if (!newVal) {
@@ -233,7 +188,6 @@
         }
       }
     },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     components: {
       BButton,
       BIcon,
@@ -288,11 +242,7 @@
       display: inline-block;
       height: 250px;
       margin-bottom: 20px;
-<<<<<<< HEAD
-      .content .item{
-=======
       .content .item {
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         .label {
           display: inline-block;
           vertical-align: top;

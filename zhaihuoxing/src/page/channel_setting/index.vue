@@ -3,16 +3,6 @@
     .kongdiv1
       b-title.amt-more-left-in(:title="renderData.channel_setting_auth.channelSetting")
     .amt-more-left-in
-<<<<<<< HEAD
-      el-tabs(v-model="whichTab" type="card", v-if="renderData.channel_setting_bank || renderData.channel_setting_trade || renderData.channel_setting_notification || renderData.channel_setting_talk")
-        el-tab-pane(v-if="renderData.channel_setting_bank", :label="renderData.channel_setting_bank.channelSettingBank" name="channelSettingBank")
-          blank-pass
-        el-tab-pane(v-if="renderData.channel_setting_trade", :label="renderData.channel_setting_trade.channelSettingTrade" name="channelSettingTrade")
-          trade-sys-pass
-        el-tab-pane(v-if="renderData.channel_setting_notification", :label="renderData.channel_setting_notification.channelSettingNotification" name="channelSettingNotification")
-          notify-pass
-        el-tab-pane(v-if="renderData.channel_setting_talk", :label="renderData.channel_setting_talk.channelSettingTalk" name="channelSettingTalk")
-=======
       el-tabs.theme-color-C(v-model="whichTab", type="card", v-if="renderData.channel_setting_bank || renderData.channel_setting_trade || renderData.channel_setting_notification || renderData.channel_setting_talk")
         el-tab-pane(v-if="renderData.channel_setting_bank", :label="renderData.channel_setting_bank.channelSettingBank", name="channelSettingBank")
           blank-pass
@@ -21,7 +11,6 @@
         el-tab-pane(v-if="renderData.channel_setting_notification", :label="renderData.channel_setting_notification.channelSettingNotification", name="channelSettingNotification")
           notify-pass
         el-tab-pane(v-if="renderData.channel_setting_talk", :label="renderData.channel_setting_talk.channelSettingTalk", name="channelSettingTalk")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           talk-pass
 </template>
 
@@ -39,14 +28,9 @@
     data () {
       var renderData = window.renderData.components.channel_setting
       return {
-<<<<<<< HEAD
-        whichTab: 'channelSettingTrade',
-        renderData: renderData
-=======
         whichTab: 'channelSettingBank',
         renderData: renderData,
         tabList: []
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     computed: {
@@ -54,8 +38,6 @@
       }
     },
     methods: {
-<<<<<<< HEAD
-=======
       computeTabList: function () {
         if (this.renderData.channel_setting_bank) {
           var bankItem = {
@@ -91,7 +73,6 @@
         }
         console.log('tablist', this.tabList)
       }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     },
     components: {
       BTitle,
@@ -101,10 +82,7 @@
       talkPass
     },
     mounted () {
-<<<<<<< HEAD
-=======
 //      this.computeTabList()
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
   }
 </script>
@@ -112,11 +90,8 @@
 <style lang="less">
   .channel_setting {
     position: relative;
-<<<<<<< HEAD
-=======
     .b-title{
       margin-bottom: 5px !important;
     }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 </style>

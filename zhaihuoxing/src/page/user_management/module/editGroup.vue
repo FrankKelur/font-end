@@ -1,16 +1,5 @@
 <template lang="pug">
   b-dialog.edit-group(:show.sync='dialogVisible', width="38%", :title="editGroupForm.status=='list'?renderData.editGroup:renderData.addToGroup", :show-close="true", :before-close="beforeClose")
-<<<<<<< HEAD
-    el-form(label-width="80px", :model="editGroupForm", :rules="rules", ref="editGroupForm")
-      template(v-if='editGroupForm.status=="list"')
-        el-form-item
-          template(slot="label")
-            span.theme-color-C(v-text="renderData.userName")
-          span.theme-color-C(v-text="currUser.user_name")
-        el-form-item
-          template(slot="label")
-            span.theme-color-C(v-text="renderData.userGroup")
-=======
     el-form(label-width="140px", :model="editGroupForm", :rules="rules", ref="editGroupForm", label-position="left")
       template(v-if='editGroupForm.status=="list"')
         el-form-item
@@ -20,7 +9,6 @@
         el-form-item
           template(slot="label")
             span.theme-color-C.inline-label(v-text="renderData.userGroup", v-ellipsis-title="")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           el-row.add-group-list(:gutter="10")
             el-col(:span="7" v-for="group in currUser.user_group", :key="group.gid", class="elCol1")
               b-button(size="small")
@@ -32,11 +20,7 @@
       template(v-if='editGroupForm.status=="add"')
         el-form-item(:label='renderData.userGroup', prop="userGroup")
           template(slot="label")
-<<<<<<< HEAD
-            span.theme-color-C(v-text="renderData.userGroup")
-=======
             span.theme-color-C.inline-label(v-text="renderData.userGroup", v-ellipsis-title="")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           b-select(:model.sync="editGroupForm.newGroupId")
             el-option(v-for="group in notSelectedGroups", :key="group.gid", :value="group.gid", :label="group.group_name")
     template(slot="footer")
@@ -149,10 +133,7 @@
           uid: this.currUser.uid
         }
         return service.getUserInfo(params).then(res => {
-<<<<<<< HEAD
-=======
           this.currUser = JSON.parse(JSON.stringify(this.currUser))
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           Object.assign(this.currUser, res)
         })
       },

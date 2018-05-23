@@ -1,28 +1,4 @@
 <template lang="pug">
-<<<<<<< HEAD
-  .blank-pass(v-loading="loading" element-loading-text="加载中")
-    | 银行通道
-</template>
-
-<script>
-  export default {
-    data () {
-      return {
-        loading: true
-      }
-    },
-    props: {
-    },
-    methods: {
-    },
-    mounted () {
-      var vm = this
-      setTimeout(function () {
-        vm.loading = false
-      }, 1500)
-    },
-    components: {
-=======
   .blank-pass.theme-color-C(:v-loading="loading", :element-loading-text="renderData.loading")
     el-collapse(v-model="activeName")
       el-collapse-item.theme-color-C(:title="renderData.unionPay", name="unionpay", v-if="unionpayPass")
@@ -358,7 +334,6 @@
       BInput,
       BButton,
       BIcon
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
   }
 </script>
@@ -366,8 +341,6 @@
 <style lang="less">
   @import '../../../common/styleSheet/common.less';
   .blank-pass{
-<<<<<<< HEAD
-=======
     .box-warp{
       float: left;
       width: 48%;
@@ -457,6 +430,5 @@
       display: inline-block;
       margin-left: 5px!important;
     }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 </style>

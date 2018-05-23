@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var MyDB = {
+        test:'test',
+        version:10,
+        db:null
+    }
+    var students = [
+        {
+            id:5,
+            name:'daniel'
+        },
+        {
+            id:6,
+            name:'linda'
+        },
+        {
+            id:7,
+            name:'pinter'
+        }
+    ];
+    function openDB(name,version){
+        var version = version||1
+        var request = window.indexedDB.open(name,version)
+        request.onerror = e=>{
+            console.log(e.target.error)
+        }
+        request.onsuccess = e=>{
+            MyDB.db = e.target.result
+
+        }
+        request.onupgradeneeded = e=>{
+            console.log('change')
+            MyDB.db = e.target.result
+            if(!MyDB.db.objectStoreNames.contains('students')){
+                MyDB.db.createObjectStore('students',{keyPath:'id'})
+            }
+        }
+    }
+    function closeDB(db){
+        db.close()
+    }
+    function deleteDB (name){
+        indexedDB.deleteDatabase(name)
+    }
+    function addData(db,storeName){
+        try{
+            var transaction = db.transaction([storeName],"readwrite");
+        }
+        catch(err){
+            console.log(rr)
+            var transaction = db.transaction([storeName],IDBTransaction.READ_WRITE);
+        }
+        var store = transaction.objectStore(storeName)
+        for(var i = 0;i<students.length;i++){
+            store.add(students[i])
+        }
+    }
+    openDB(MyDB.name,MyDB.version)
+    setTimeout(()=>{
+        // closeDB(MyDB.db)
+        // deleteDB(MyDB.name)
+        addData(MyDB.db,'students')
+    },500)
+
+</script>
+
+</html>

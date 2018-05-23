@@ -2,11 +2,7 @@
   .b-search-form.clear-float
     el-row(:gutter="10")
       el-col(:span="item.width", :offset='item.offset' v-for="item in computedFields", :key="item.field")
-<<<<<<< HEAD
-        b-form-item(:model.sync='searchData[item.field]', :item='item', @click.native='clickHandle(item)', :params="params", @keyup.enter.native="search(item)")
-=======
         b-form-item(:model.sync='searchData[item.field]', :item='item', @click.native='clickHandle(item)', :params="params", @keyup.enter.native="search(item)", :clearable="true")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </template>
 
 <script>

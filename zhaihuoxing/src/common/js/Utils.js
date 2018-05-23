@@ -48,14 +48,11 @@ var utils = {
       return false
     })
   },
-<<<<<<< HEAD
-=======
   // 检查出入金操作货币数值
   checkCurrencyValue: function (params) {
     var url = '/api/resource/funding/check_currency_value'
     return _fetch(url, params)
   },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   // 检查Mt4服务器名称是否重复
   checkMt4ServerName: function (params) {
     var url = '/api/resource/channel/check_mt4server_name'

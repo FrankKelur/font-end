@@ -2,22 +2,6 @@
   .resource-class
     .title.theme-color-darkenC15(v-text="classItem.title")
     template(v-for="(resourceItem, idx) in classItem.dataSource")
-<<<<<<< HEAD
-        //el-row(v-if="idx %2 === 0")
-        el-col.margin-other(:span="12" v-if="resourceItem.depth === 1")
-          b-checkbox.theme-color-darkenC15(:model.sync="resourceItem.checked", :title="resourceItem.label") {{resourceItem.label}}
-          el-switch(:class="[resourceItem.system ? 'switch-required' : 'switch-required2', resourceItem.required ? 'theme-color-H' : 'theme-color-lightenH32']", v-model="resourceItem.required", v-if="resourceItem.system", :width='45')
-          span.required1(v-if="resourceItem.system || resourceItem.required", :class="[resourceItem.system ? 'switch-required' : 'switch-required2', resourceItem.required ? 'theme-color-C' : 'theme-color-lightenC32']") {{renderData.required}}
-    el-row.margin-other(v-if="depthc1Len % 2")
-    template(v-for="(resourceItem, idx) in classItem.dataSource")
-      template(v-if="resourceItem.depth !== 1")
-        el-row.margin-other
-          b-checkbox.theme-color-darkenC15(:model.sync="resourceItem.checked") {{resourceItem.label}}
-          el-switch(:class="[resourceItem.system ? 'switch-required' : 'switch-required2', resourceItem.required ? 'theme-color-H' : 'theme-color-lightenH32']", v-model="resourceItem.required", v-if="resourceItem.system", :width='45')
-          span.required1(v-if="resourceItem.system || resourceItem.required", :class="[resourceItem.system ? 'switch-required' : 'switch-required2', resourceItem.required ? 'theme-color-C' : 'theme-color-lightenC32']") {{renderData.required}}
-        el-row
-          el-form-item(:label="renderData.option" v-if="resourceItem.depth === 2")
-=======
         el-row.margin-other
           b-checkbox.theme-color-darkenC15(:model.sync="resourceItem.checked", :title="resourceItem.label") {{resourceItem.label}}
           b-switch(:class="[resourceItem.system ? 'switch-required' : 'switch-required2']", :model.sync="resourceItem.required", :width='switchWidth', @change="updateRequired(idx)", v-if="resourceItem.system")
@@ -26,26 +10,10 @@
           span.switch-required(:class="[resourceItem.show_on_register ? 'theme-color-C' : 'theme-color-lightenC32']") {{renderData.showOnRegistration}}
         el-row(v-if="resourceItem.depth === 2")
           el-form-item(:label="renderData.option")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             b-button.tag-group(size="small" v-for="(childResource, idx) in resourceItem.dataSource", :key="childResource.key")
               span.tag-group-txt(v-ellipsis-title="") {{childResource.label}}
               b-icon(iconName="delete", size="12px", @click.native='deleteResource(childResource, "2", classItem, resourceItem)')
             b-button.add-btn(v-if="newResource!==resourceItem" size="small", type="primary", @click="addResourceMod('2', classItem, resourceItem)") {{renderData.add}}
-<<<<<<< HEAD
-          template(v-else)
-            el-collapse
-              el-collapse-item(v-for="(childResource, idx) in resourceItem.dataSource", :name="idx", :key="idx")
-                b-button.tag-group(size="small" slot="title")
-                  span.tag-group-txt(v-ellipsis-title="") {{childResource.label}}
-                  b-icon(iconName="delete", size="12px", @click.native='deleteResource(childResource, "2", classItem, resourceItem)')
-                b-button.tag-group(size="small" v-for="(endResource, idx) in childResource.dataSource", :key="idx")
-                  span.tag-group-txt(v-ellipsis-title="") {{endResource.label}}
-                  b-icon(iconName="delete", size="12px", @click.native='deleteResource(endResource, "3", classItem, resourceItem, childResource)')
-                b-button.add-btn(size="small", type="primary", @click="addResourceMod('3', classItem, resourceItem, childResource)") {{renderData.add}}
-              .el-collapse-item(:name="-1")
-                .el-collapse-item__header
-                  b-button.add-btn(slot="title", size="small", type="primary", @click="addResourceMod('2', classItem, resourceItem)") {{renderData.add}}
-=======
         template(v-if="resourceItem.depth === 3")
           el-collapse
             el-collapse-item(v-for="(childResource, idx) in resourceItem.dataSource", :name="idx", :key="idx")
@@ -59,7 +27,6 @@
             .el-collapse-item(:name="-1")
               .el-collapse-item__header
                 b-button.add-btn(slot="title", size="small", type="primary", @click="addResourceMod('2', classItem, resourceItem)") {{renderData.add}}
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </template>
 
 <script>
@@ -67,21 +34,14 @@
   import BButton from 'components/BButton'
   import BIcon from 'components/BIcon'
   import BCheckbox from 'components/BCheckbox'
-<<<<<<< HEAD
-=======
   import BSwitch from 'components/BSwitch'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
   export default {
     name: 'resource-item',
     data () {
       return {
         newResource: {},
-<<<<<<< HEAD
-        depthc1Len: 0
-=======
         switchWidth: 45
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     props: {
@@ -117,11 +77,6 @@
       }
     },
     mounted () {
-<<<<<<< HEAD
-      this.count()
-    },
-    methods: {
-=======
       console.log('profileInfo', this.profileInfo)
       console.log('classItem', this.classItem)
     },
@@ -129,7 +84,6 @@
       updateReg (idx) {
         this.classItem.dataSource[idx].show_on_register = !this.classItem.dataSource[idx].show_on_register
       },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       addResourceMod (level, cls, resource, parent) {
         this.visible.dialog = 'add_resource'
         if (level === '2') {
@@ -170,29 +124,16 @@
 //          this.$emit('refreshInfo')
         })
       },
-<<<<<<< HEAD
-      count () {
-        this.classItem.dataSource.forEach(item => {
-          if (item.depth === 1) {
-            this.depthc1Len = this.depthc1Len + 1
-          }
-        })
-=======
       updateRequired (idx) {
 //        console.log('change', idx)
         this.classItem.dataSource[idx].required = !this.classItem.dataSource[idx].required
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     },
     components: {
       BButton,
       BIcon,
-<<<<<<< HEAD
-      BCheckbox
-=======
       BCheckbox,
       BSwitch
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     }
   }
 </script>
@@ -201,21 +142,15 @@
   .resource-class {
     clear: both;
     .el-collapse-item__header {
-<<<<<<< HEAD
-=======
       padding-left: 16px;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       .b-button {
         top: 4px;
         position: relative;
       }
     }
-<<<<<<< HEAD
-=======
     .el-collapse-item__content {
       padding-left: 16px;
     }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     .margin-other .el-switch--wide .el-switch__label.el-switch__label--right {
       color:inherit!important;
       span{
@@ -234,12 +169,6 @@
     font-size: 16px;
     padding: 20px 0;
   }
-<<<<<<< HEAD
-  .el-switch {
-    margin-left: 10px;
-  }
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   .el-switch__label {
     font-size: 13px!important;
   }
@@ -272,17 +201,10 @@
     width: 16px;
     height: 16px;
   }
-<<<<<<< HEAD
-  .switch-required {
-    font-size: 12px;
-    vertical-align: text-top;
-  }
-=======
   //.switch-required {
  //   font-size: 12px;
   //  vertical-align: text-top;
  // }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   .resource-class .margin-other .el-switch--wide .el-switch__label.el-switch__label--left span {
     font-size: 12px;
     margin-left: -5px;
@@ -300,15 +222,8 @@
     margin-bottom: 40px !important;
   }
   .user_profile_setting_component .content .right .el-button--small {
-<<<<<<< HEAD
-    margin-left: 0px;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-top: 6px;
-=======
     margin: 4px 8px 6px 0 !important;
     padding: 7px 10px;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
   .el-switch.is-checked .el-switch__core {
     margin-top: 2px;
@@ -325,17 +240,11 @@
     display: inline-block;
   }
   .margin-other.title.clear.el-row {
-<<<<<<< HEAD
-    margin-top: 240px;
-    margin-bottom: -6px;
-  }
-=======
     //margin-top: 240px;
     margin-bottom: -6px;
   }
   .switch-required {
     z-index: 20;
   }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
 </style>

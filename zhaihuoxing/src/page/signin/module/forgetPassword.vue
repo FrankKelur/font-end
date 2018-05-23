@@ -2,22 +2,6 @@
   #forget-password.amt-right-in
     h1.theme-color-darkenC15 {{renderData.forgetPwd}}
     .split-line.theme-bg-D
-<<<<<<< HEAD
-    el-form(:model="form" label-width="96px", :rules="rules", ref="form").form
-      el-form-item.username-input
-        template(slot="label")
-          span.theme-color-C(v-text="renderData.usernameEmail")
-        b-input(:model.sync="form.user_name", :placeholder="renderData.usernameEmailPrompt")
-      el-form-item(prop="pwd").email-input
-        template(slot="label")
-          span.theme-color-C(v-text="renderData.pwd")
-        b-input(:model.sync="form.password", :placeholder="renderData.pwdPrompt")
-      el-form-item(prop="vcode").vcode-input-box
-        template(slot="label")
-          span.theme-color-C(v-text="renderData.vcode")
-        b-input(:model.sync="form.vcode", :placeholder="renderData.vcodePrompt").vcode-input
-        img.vcode-img(v-loading='vcodeLoading', :src="vcodeSrc")
-=======
     el-form(:model="form" label-width="140px", :rules="rules", ref="form", label-position="left").form
       el-form-item.username-input(prop="user_name")
         template(slot="label")
@@ -32,7 +16,6 @@
           span.theme-color-C(v-text="renderData.vcode")
         b-input(:model.sync="form.vcode", :placeholder="renderData.vcodePrompt", @keyup.enter.native="sendEmail").vcode-input
         img.vcode-img(v-loading='vcodeLoading', :src="vcodeSrc", @click="changeVcode")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       .change-vcode-box.clear-float
         .right-vcode-box.pointer(@click="changeVcode")
           span.theme-color-lightenA10 {{renderData.changeVcode}}
@@ -45,60 +28,11 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-  var comp = window.renderData.components.signin
-  let renderData = Object.assign({}, comp.signin_auth, comp.forget_password_auth)
-
-=======
   import Vue from 'vue'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   import vcodeMixin from 'common/js/vcodeMixin'
   import service from '../service'
   import BButton from 'components/BButton'
   import BInput from 'components/BInput'
-<<<<<<< HEAD
-  import { validator } from 'common/js/Utils'
-
-  export default {
-
-    name: 'forget_password',
-    mixins: [vcodeMixin],
-    data () {
-      return {
-        vcodeError: false,
-        renderData: renderData,
-        form: {
-          user_name: '',
-          password: '',
-          vcode: ''
-        },
-        rules: {
-          pwd: [{
-            validator: function (rule, val, callback) {
-              var params = {
-                vcode_key: this.vcode_key
-              }
-              Object.assign(params, this.form)
-              service.sendEmail(params).then(({re}) => {
-                this.vcodeError = false
-                if (re === '404' || re === '403') {
-                  callback(rule.message)
-                } else if (re === '402') {
-                  this.vcodeError = true
-                }
-              })
-            },
-            message: renderData.usernameEmailPwdNotMatch,
-            trigger: 'submit'
-          }],
-          vcode: [{
-            validator: validator.validate,
-            test: function (val) {
-              return !this.vcodeError
-            },
-            message: renderData.vcodeError,
-            trigger: 'submit'
-=======
   import utils from 'common/js/Utils'
   import { Loading } from 'element-ui'
 
@@ -224,7 +158,6 @@
             message: this.renderData.required,
             required: true,
             trigger: 'blur'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           }]
         }
       }
@@ -237,13 +170,6 @@
       toPage (page) {
         this.visible.page = page
       },
-<<<<<<< HEAD
-      sendEmail () {
-        console.log('sendEmail')
-        this.$refs['form'].validate(valid => {})
-      }
-    },
-=======
       async sendEmail () {
         this.form.vcode_key = this.vcode_key
         console.log('sendEmail')
@@ -302,13 +228,10 @@
     mounted () {
       this.initForm()
     },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     props: {
       visible: {
         type: Object,
         required: true
-<<<<<<< HEAD
-=======
       },
       renderData: {
         type: Object,
@@ -317,7 +240,6 @@
       form: {
         type: Object,
         required: true
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       }
     }
   }
@@ -330,21 +252,6 @@
       font-size: 36px;
     }
     .split-line {
-<<<<<<< HEAD
-      height: 2px;
-      width: 100%;
-      margin-top: 31px;
-    }
-    .form {
-      margin-top: 30px;
-      .username-input {
-        margin-bottom: 10px;
-      }
-      .email-input {
-        margin-bottom: 10px;
-      }
-      .prompt-box {
-=======
       height: 1px;
       width: 100%;
       margin-top: 30px;
@@ -356,59 +263,37 @@
       }
       .prompt-box {
         display: inline-block;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         font-size: 12px;
         margin-bottom: 18px;
       }
       .vcode-input-box {
-<<<<<<< HEAD
-        margin-bottom: 6px;
-=======
         margin-bottom: 0;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         .vcode-input {
           width: 72%;
         }
         .vcode-img {
           margin-left: 3%;
           width: 25%;
-<<<<<<< HEAD
-          height: 35px;
-=======
           height: 40px;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           vertical-align: top;
           border-radius: 4px;
         }
       }
       .change-vcode-box {
-<<<<<<< HEAD
-        margin-bottom: 22px;
-=======
         margin-bottom: 19px;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         .right-vcode-box {
           width: 100px;
           height: 30px;
           float: right;
-<<<<<<< HEAD
-          span {
-            margin-top: 8px;
-=======
           margin-top: 4px;
           span {
             /*margin-top: 8px;*/
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             float: right;
           }
         }
       }
       .button-box {
-<<<<<<< HEAD
-        padding-left: 100px;
-=======
         padding-left: 140px;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         .send-email-btn {
           width: 180px !important;
         }

@@ -11,8 +11,6 @@ export default {
     window.components[this.$options.name] = this
     console.log('reverseLoadingFlag', this.$options.name)
     window.$store.default.commit('reverseLoadingFlag', this.$options.name)
-<<<<<<< HEAD
-=======
     // 登录前 不做背景图变化计算 直接撑满
     if (window.renderData.page_info.layout === 'transverse_full') {
       if (window.renderData.page_info.img_1) {
@@ -27,20 +25,14 @@ export default {
     if (!window.renderData.page_info.img_1) {
       return
     }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     var _this = this
     var oC = document.getElementById('C')
     if (window.renderData.page_info.img_1) {
       oC.style.backgroundImage = 'url(' + window.renderData.page_info.img_1 + ')'
-<<<<<<< HEAD
-    }
-    function imgChange () {
-=======
       oC.style.backgroundRepeat = 'no-repeat'
     }
     function imgChange () {
       console.log('imgChange')
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       let cwidth = oC.offsetWidth
       let cheight = oC.offsetHeight
       if (cwidth < 600 || cheight < 250) {

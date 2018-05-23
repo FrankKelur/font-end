@@ -20,8 +20,6 @@ export default {
     //   })
     // })
   },
-<<<<<<< HEAD
-=======
   uploadCDN (params) {
     var url = '/upload-cdn'
     return fetch(url, params)
@@ -30,7 +28,6 @@ export default {
     var url = '/upload-cdn-batch'
     return fetch(url, params)
   },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   processTask (params) {
     var url = '/api/resource/audit_process/process_task'
     console.log('params', url, params)
@@ -168,12 +165,7 @@ export default {
     //   })
     // })
   },
-<<<<<<< HEAD
-  getPrioritySelect (params) {
-    var url = '/api/resource/audit_process/get_priority_select'
-=======
   getPrioritySelect (params, url) {
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     return fetch(url, params)
     // return new Promise((resolve, reject) => {
     //   resolve({
@@ -203,12 +195,7 @@ export default {
     //   })
     // })
   },
-<<<<<<< HEAD
-  sortAudit (params) {
-    var url = '/api/resource/audit_process/sort_audit'
-=======
   sortAudit (params, url) {
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     console.log('params', url, params)
     return fetch(url, params)
     // return new Promise((resolve, reject) => {
@@ -217,12 +204,7 @@ export default {
     //   })
     // })
   },
-<<<<<<< HEAD
-  setPriorityFun (params) {
-    var url = '/api/resource/audit_process/set_priority'
-=======
   setPriorityFun (params, url) {
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     console.log('params', url, params)
     return fetch(url, params)
     // return new Promise((resolve, reject) => {
@@ -339,179 +321,6 @@ export default {
   //     })
   //   })
   // },
-<<<<<<< HEAD
-  getAuditInfo (params) {
-    var url = '/api/resource/audit_process/get_audit_page_info'
-    console.log('params', url, params)
-    // return fetch(url, params)
-    return new Promise((resolve, reject) => {
-      resolve({
-        result: {
-          type: 'select',
-          name: '失败原因',
-          key: 'multiple-select',
-          label: '备注',
-          placeholder: '请输入',
-          rules: ['required'],
-          dataSource: [
-            {
-              key: 'error1',
-              label: '失败原因1'
-            },
-            {
-              key: 'error2',
-              label: '失败原因2'
-            }
-          ]
-        },
-        stepName: '初级审核',
-        formItemList: [
-          {
-            label: '用户姓名',
-            placeholder: '请填写',
-            type: 'input',
-            rules: ['required'],
-            field: '10001'
-          },
-          {
-            label: '实入金额',
-            placeholder: '请填写',
-            type: 'input',
-            rules: ['required', 'number'],
-            field: '10002'
-          },
-          {
-            label: '交易账号',
-            placeholder: '请填写',
-            type: 'input',
-            rules: [],
-            field: '10003'
-          },
-          {
-            type: 'select',
-            label: '电汇单',
-            placeholder: '请选择',
-            dataSource: [
-              {
-                key: '0',
-                val: '需要电汇单'
-              },
-              {
-                key: '1',
-                val: '不需要电汇单'
-              }
-            ],
-            rules: ['required'],
-            field: '10004'
-          },
-          {
-            label: '备注',
-            placeholder: '请填写',
-            type: 'textarea',
-            rules: [],
-            field: '10004'
-          },
-          {
-            type: 'select',
-            label: '文件类型',
-            placeholder: '请选择',
-            dataSource: [
-              {
-                key: '0',
-                val: '银行入金证明'
-              }
-            ],
-            rules: ['required'],
-            field: '10005'
-          },
-          {
-            type: 'upload',
-            placeholder: '将文件拖到此处，或点击上传',
-            tooltip: '只能上传jpg/png文件，且不能超过500kb',
-            label: '附件',
-            rules: ['required'],
-            field: '10006'
-          },
-          {
-            label: '用户名',
-            placeholder: '请填写',
-            type: 'input',
-            rules: ['required'],
-            field: '10007'
-          },
-          {
-            label: '邮箱',
-            placeholder: '请填写',
-            type: 'input',
-            rules: ['required'],
-            field: '10008'
-          },
-          {
-            label: '备注',
-            placeholder: '请填写',
-            type: 'textarea',
-            rules: ['longText'],
-            field: '10009'
-          }
-        ],
-        data: [
-          {
-            'key': 'deposit_detail',
-            'label': '用户信息',
-            'dataSource': [{'key': 'uid', 'label': '用户名', 'value': 'xxxx'}]
-          },
-          {
-            'key': 'deposit_detail',
-            'label': '会员信息',
-            'dataSource': [{'key': 'uid', 'label': '用户名', 'value': 'xxxx'}]
-          },
-          {
-            'key': 'deposit_detail',
-            'label': '账户信息',
-            'dataSource': [{'key': 'uid', 'label': '用户名', 'value': 'xxxx'}]
-          }
-        ]
-      })
-    })
-  },
-  saveCustomAudit (params) {
-    var url = '/api/resource/audit_process/saveCustomAudit'
-    console.log('params', url, params)
-    // return fetch(url, params)
-    return new Promise((resolve, reject) => {
-      resolve({
-        'target_components': {
-          'bubble': {
-            'action': 'show',
-            'params': {
-              'type': 'success',
-              'title': 'saveCustomAudit！'
-            }
-          }
-        },
-        'type': 'operateComponents'
-      })
-    })
-  },
-  submitCustomAudit (params) {
-    var url = '/api/resource/audit_process/submitCustomAudit'
-    console.log('params', url, params)
-    // return fetch(url, params)
-    return new Promise((resolve, reject) => {
-      resolve({
-        'target_components': {
-          'bubble': {
-            'action': 'show',
-            'params': {
-              'type': 'success',
-              'title': 'submitCustomAudit！'
-            }
-          }
-        },
-        'type': 'operateComponents'
-      })
-    })
-=======
   getAuditInfo (params, url = '/api/resource/audit_process/get_audit_page_info') {
     console.log('params', url, params)
     // return new Promise((resolve, reject) => {
@@ -857,7 +666,6 @@ export default {
     //     'type': 'operateComponents'
     //   })
     // })
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 }
 

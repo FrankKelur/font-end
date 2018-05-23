@@ -1,13 +1,8 @@
 import { fetch } from '../../common/js/Utils'
 
 export default {
-<<<<<<< HEAD
-  getMt4ChannelList (params) {
-    var url = '/api/resource/channel/get_mt4_channel_list'
-=======
   getTradeChannelList (params) {
     var url = '/api/resource/channel/get_trade_channel_list'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     return fetch(url, params)
   },
   addMt4Channel (params) {
@@ -21,8 +16,6 @@ export default {
   editMt4Channel (params) {
     var url = '/api/resource/channel/edit_mt4_channel'
     return fetch(url, params)
-<<<<<<< HEAD
-=======
   },
   switchMt4Channel (params) {
     var url = '/api/resource/channel/switch_mt4_channel'
@@ -87,6 +80,5 @@ export default {
   getBankList (params) {
     var url = '/api/resource/channel/get_bank_channel_list'
     return fetch(url, params)
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 }

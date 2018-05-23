@@ -1,11 +1,7 @@
 <template lang="pug">
   b-dialog.delete-profile(:show='true', :title="renderData.confirmDeleteProfile", width="38%", :show-close="true", :before-close="beforeClose")
     .left
-<<<<<<< HEAD
-      b-icon.theme-color-F(icon-name='attention', size="30px")
-=======
       b-icon.theme-color-G(icon-name='attention', size="30px")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     .right.theme-color-C
       .item(v-text="renderData.confirmDeleteProfileText")
     template(slot="footer")

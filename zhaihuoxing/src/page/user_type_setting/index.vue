@@ -3,14 +3,8 @@
     b-title(:title="renderData.userTypeSetting")
     .content
       .left
-<<<<<<< HEAD
-        .type-item.theme-bg-lightenC32-hover(v-for="(item, idx) in typeList", :key="item.uuid", :class="{'theme-bg-I': typeInfo.uuid===item.uuid}", @click="editTypeItem(item)")
-          span(v-ellipsis-title="") {{item.name}}
-          //b-icon.theme-color-darkenC15.theme-color-lightenA10-hover.theme-color-darkenA10-active(iconName="edit", @click.native="editTypeItem(item)")
-=======
         .type-item.theme-bg-lightenD18-hover(v-for="(item, idx) in typeList", :key="item.uuid", :class="{'theme-bg-I': typeInfo.uuid===item.uuid}", @click="editTypeItem(item)")
           span(v-ellipsis-title="") {{item.name}}
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           b-icon.theme-color-darkenC15.theme-color-lightenA10-hover.theme-color-darkenA10-active(iconName="delete1", @click.native="deleteTypeItem(item, idx)")
           b-icon.theme-color-darkenC15.theme-color-lightenA10-hover.theme-color-darkenA10-active(iconName="copy", @click.native="copyType(item)")
         .type-item
@@ -18,24 +12,6 @@
       .right.theme-bg-I
         .right-content(v-if="!typeInfo.empty")
           .body
-<<<<<<< HEAD
-            el-form(ref="typeInfo", :rules="typeInfoRules", :model="typeInfo" label-width="150px", labelPosition='left')
-              el-form-item(:label="renderData.userType", prop="name")
-                b-input(:model.sync="typeInfo.name", :placeholder="renderData.pleaseEnter", :disabled="isRoot")
-              .title {{renderData.basicSetting}}
-              el-form-item(:label="renderData.userGroup", prop="user_group")
-                b-select(:model.sync="typeInfo.user_group", :placeholder="renderData.pleaseSelect", :disabled="isRoot")
-                  el-option(:label="item.val" v-for="(item, idx) in groupList", :key="idx", :value="item.key")
-              el-form-item(:label="renderData.userProfile", prop="user_info")
-                b-select(:model.sync="typeInfo.user_info", :placeholder="renderData.pleaseSelect")
-                  el-option(:label="item.name" v-for="(item, idx) in profileList", :key="idx", :value="item.uuid")
-              el-form-item(:label="renderData.firstPageAfterLogin", prop="login_to_url")
-                b-select(:model.sync="typeInfo.login_to_url", :placeholder="renderData.pleaseSelect")
-                  el-option(:label="item.label" v-for="(item, idx) in pageList", :key="idx", :value="item.key")
-
-          .footer
-            b-button(type="primary", @click="saveUserType") {{renderData.save}}
-=======
             el-form(ref="type", :rules="userTypeRules", :model="typeInfo" label-width="140px", labelPosition='left')
               el-form-item(prop="name")
                 template(slot="label")
@@ -70,7 +46,6 @@
             channel-setting(:renderData="renderData", ref="accountNumber", :data="typeInfo")
         .footer
           b-button(type="primary", @click="saveUserType") {{renderData.save}}
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
     component(:is="visible.dialog", :render-data="renderData", :visible="visible", @refresh-type-list="getTypeList", :typeInfo="typeInfo")
 
@@ -78,10 +53,7 @@
 
 <script>
   import BTitle from 'components/BTitle'
-<<<<<<< HEAD
-=======
   import BCheckbox from 'components/BCheckbox'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   import BButton from 'components/BButton'
   import BIcon from 'components/BIcon'
   import BInput from 'components/BInput'
@@ -90,11 +62,8 @@
   import service from './service'
   import DeleteType from './module/DeleteType.vue'
   import CopyType from './module/CopyType.vue'
-<<<<<<< HEAD
-=======
   import FundSetting from './module/FundSetting.vue'
   import ChannelSetting from './module/ChannelSetting.vue'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   import { validator } from 'common/js/Utils'
 
   export default {
@@ -104,9 +73,6 @@
       var typeSet = window.renderData.components.user_type_setting
       var renderData = Object.assign({}, typeSet, typeSet.user_type_setting_auth)
       var _this = this
-<<<<<<< HEAD
-      return {
-=======
       var defaultTypeInfo = {
         uuid: '',
         empty: true,
@@ -119,17 +85,12 @@
       }
       return {
         dataBak: null,
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         isRoot: false,
         visible: {
           dialog: null,
           page: null
         },
-<<<<<<< HEAD
-        typeInfoRules: {
-=======
         userTypeRules: {
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           name: [
             {
               required: true,
@@ -142,11 +103,7 @@
                 return val.trim() === val
               },
               validator: validator.validate,
-<<<<<<< HEAD
-              trigger: 'blur'
-=======
               trigger: 'blur, change'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             },
             {
               test (val) {
@@ -160,60 +117,33 @@
               message: renderData.userTypeExist,
               trigger: 'blur'
             }
-<<<<<<< HEAD
-          ],
-=======
           ]
         },
         typeInfoRules: {
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           user_group: [
             {
               required: true,
               message: renderData.pleaseSelect,
-<<<<<<< HEAD
-              trigger: 'blur'
-=======
               trigger: 'blur,change'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             }
           ],
           login_to_url: [
             {
               required: true,
               message: renderData.pleaseSelect,
-<<<<<<< HEAD
-              trigger: 'blur'
-=======
               trigger: 'blur,change'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             }
           ],
           user_info: [
             {
               required: true,
               message: renderData.pleaseSelect,
-<<<<<<< HEAD
-              trigger: 'blur'
-            }
-          ]
-        },
-        typeInfo: {
-          uuid: '',
-          empty: true,
-          login_to_url: '',
-          user_info: '',
-          user_group: '',
-          name: ''
-        },
-=======
               trigger: 'blur,change'
             }
           ]
         },
         defaultTypeInfo: defaultTypeInfo,
         typeInfo: Object.assign({}, defaultTypeInfo),
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         old_login_to_url: '',
         old_user_info: '',
         old_user_group: '',
@@ -223,9 +153,6 @@
         pageList: [],
         groupList: [],
         profileList: [],
-<<<<<<< HEAD
-        renderData: renderData,
-=======
         initFundData: {},
         renderData: renderData,
         setting: {
@@ -233,55 +160,11 @@
           'withdraw': [],
           'currency': []
         },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         optIdx: -1
       }
     },
     computed: {},
     methods: {
-<<<<<<< HEAD
-      saveUserType () {
-        this.$refs['typeInfo'].validate(valid => {
-          if (!valid) {
-            return
-          }
-          // 获取新的label 和 老的label
-          for (let i = 0; i < this.groupList.length; i++) {
-            if (this.groupList[i].key === this.typeInfo.user_group) {
-              this.data_label.user_group_label = this.groupList[i].val
-            }
-            if (this.groupList[i].key === this.old_user_group) {
-              this.data_label.user_group_old_label = this.groupList[i].val
-            }
-          }
-          for (let i = 0; i < this.profileList.length; i++) {
-            if (this.profileList[i].uuid === this.typeInfo.user_info) {
-              this.data_label.user_info_label = this.profileList[i].name
-            }
-            if (this.profileList[i].uuid === this.old_user_info) {
-              this.data_label.user_info_old_label = this.profileList[i].name
-            }
-          }
-          for (let i = 0; i < this.pageList.length; i++) {
-            if (this.pageList[i].key === this.typeInfo.login_to_url) {
-              this.data_label.login_to_url_label = this.pageList[i].label
-            }
-            if (this.pageList[i].key === this.old_login_to_url) {
-              this.data_label.login_to_url_old_label = this.pageList[i].label
-            }
-          }
-          this.data_label.old_name = this.old_name
-          var params = {
-            uuid: this.typeInfo.uuid,
-            data: this.typeInfo,
-            data_label: this.data_label
-          }
-          service.saveType(params).then(resp => {
-            if (resp.re === '200') {
-              this.getTypeList(resp.data.uuid)
-            }
-          })
-=======
       // 去除层级，获得value为string的对象
       saveUserType () {
         var res = true
@@ -344,19 +227,11 @@
               this.getTypeList()
             }
           }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         })
       },
       async copyType (type) {
         this.typeInfo.empty = false
-<<<<<<< HEAD
-        await this.getTypeInfo(type)
-//        this.typeInfo.uuid = ''
-//        this.typeInfo.name = ''
-//        console.log('copyType', this.typeInfo)
-=======
         this.typeInfo.uuid = ''
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         this.visible.dialog = 'copy_type'
       },
       deleteTypeItem (type, idx) {
@@ -368,32 +243,14 @@
         this.visible.dialog = 'delete_type'
         Object.assign(this.typeInfo, type)
       },
-<<<<<<< HEAD
-      editTypeItem (type) {
-        this.typeInfo.empty = false
-        this.getTypeInfo(type)
-=======
       async editTypeItem (type) {
         await this.getTypeInfo(type)
         this.typeInfo.empty = false
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         if (type.name === 'SystemRoot') {
           this.isRoot = true
         } else {
           this.isRoot = false
         }
-<<<<<<< HEAD
-      },
-      newUserTypeMod () {
-        this.isRoot = false
-        this.typeInfo = {
-          login_to_url: '',
-          user_info: '',
-          user_group: '',
-          uuid: '',
-          name: ''
-        }
-=======
         this.clearValidate()
       },
       clearValidate () {
@@ -422,15 +279,11 @@
           res[key + '_old_label'] = dataBak[key]
           return res
         }, {})
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         this.old_login_to_url = ''
         this.old_user_info = ''
         this.old_user_group = ''
         this.old_name = ''
-<<<<<<< HEAD
-=======
         this.clearValidate()
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       },
       getTypeList (uuid) {
         var params = {}
@@ -439,12 +292,6 @@
           vm.typeList = data
           // uuid 复制用户类型的时候，子组件回传一个uuid过来，用于定位当前数据
           if (uuid) {
-<<<<<<< HEAD
-            for (let i = 0; i < vm.typeList.length; i++) {
-              if (vm.typeList[i].uuid === uuid) {
-                vm.editTypeItem(vm.typeList[i])
-                break
-=======
             // uuid 复制用户类型的时候，子组件回传"last"，用于定位到列表最后一项
             if (uuid === 'last') {
               var len = vm.typeList.length - 1
@@ -455,7 +302,6 @@
                   vm.editTypeItem(vm.typeList[i])
                   break
                 }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
               }
             }
           } else {
@@ -490,9 +336,6 @@
       getTypeInfo (type) {
         var params = type
         return service.getTypeInfo(params).then(({data}) => {
-<<<<<<< HEAD
-          Object.assign(this.typeInfo, data)
-=======
           for (var key in this.initFundData) {
             this.$set(this.typeInfo, key, this.initFundData[key])
           }
@@ -505,17 +348,11 @@
             res[key + '_old_label'] = dataBak[key]
             return res
           }, {})
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           this.old_login_to_url = data.login_to_url
           this.old_user_info = data.user_info
           this.old_user_group = data.user_group
           this.old_name = data.name
         })
-<<<<<<< HEAD
-      }
-    },
-    async mounted () {
-=======
       },
       getFundSetting () {
         return service.getFundSetting().then(res => {
@@ -538,7 +375,6 @@
     },
     async mounted () {
       await this.getFundSetting()
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       await this.getProfileList()
       await this.getGroupList()
       await this.getPageList()
@@ -547,14 +383,10 @@
     components: {
       'delete_type': DeleteType,
       'copy_type': CopyType,
-<<<<<<< HEAD
-      BTitle,
-=======
       FundSetting,
       ChannelSetting,
       BTitle,
       BCheckbox,
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       BInput,
       BSelect,
       BIcon,
@@ -579,11 +411,7 @@
       .left {
         overflow: auto;
         width: 32%;
-<<<<<<< HEAD
-        padding-top: 42px;
-=======
         padding-top: 30px;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         .type-item {
           padding-left: 12%;
           height: 40px;
@@ -606,22 +434,6 @@
         }
       }
       .right {
-<<<<<<< HEAD
-        /*padding-top: 40px;*/
-        vertical-align: top;
-        flex-grow: 1;
-        width: 68%;
-        padding-top: 42px;
-        padding-left: 4%;
-        padding-right: 4%;
-        padding-bottom: 42px;
-        .title {
-          font-size: 16px;
-          padding: 20px 0;
-        }
-        .el-form-item__content {
-          width: 45%;
-=======
         display: flex;
         flex-direction: column;
         overflow: auto;
@@ -645,7 +457,6 @@
           .el-form-item__error {
             position: relative !important;
           }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
       }
     }

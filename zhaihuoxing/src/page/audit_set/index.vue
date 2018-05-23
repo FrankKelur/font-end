@@ -1,20 +1,12 @@
 <template lang="pug">
-<<<<<<< HEAD
-  .audit_set.theme-border-lightenD12#audit_set
-=======
   .audit_set.theme-border-lightenD12.component#audit_set
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     b-title(:title="pageTitle")
     template(v-if="!visible.page")
       .oper-container.clear-float
         el-row(:gutter="10")
           el-col(:span="3", :offset='21', v-if="auditSet.audit_set_add_new_audit")
-<<<<<<< HEAD
-            b-button(@click='newAudit', :disabled="createRenderData.authStatus==='disabled'") {{createRenderData.auditSetAddNewAudit}}
-=======
             b-button(@click='newAudit', :disabled="createRenderData.authStatus==='disabled'")
               span.block-text(v-ellipsis-title="") {{createRenderData.auditSetAddNewAudit}}
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       b-search-table(:optHandler='optHandler', :render-data="tableRenderData", url="/api/resource/audit_setting/get_audit_setting_list", :opts-filter="optsFilter", ref="table")
 
     component(:is="visible.page", :render-data="modalRenderData", :currRow="currRow", :visible="visible")
@@ -38,10 +30,6 @@
   import AuditPeopleDetail from './module/AuditPeopleDetail'
   import ContentDetail from './module/ContentDetail'
   import DeleteStep from './module/DeleteStep'
-<<<<<<< HEAD
-  import DeletePage from './module/DeletePage'
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   import CopyPage from './module/CopyPage'
   import NoticePeopleDetail from './module/NoticePeopleDetail'
   import SetFlow from './module/SetFlow'
@@ -124,14 +112,6 @@
           return this.modalRenderData.auditFormSet
         } else if (this.visible.page === 'NewStep') {
           return this.modalRenderData.createStep
-<<<<<<< HEAD
-        } else if (this.visible.page === 'EditStep') {
-          return this.modalRenderData.stepInfoEdit
-        } else if (this.visible.page === 'addUser') {
-          return this.renderData.audit_set_list.addUser
-        } else if (this.visible.page === 'NewStep') {
-          return this.modalRenderData.editStep
-=======
         } else if (this.visible.page === 'StepInfoEdit') {
           return this.modalRenderData.editStep
         } else if (this.visible.page === 'addUser') {
@@ -140,7 +120,6 @@
           return this.renderData.addUser
         } else if (this.visible.page === 'AuditPeopleAdd') {
           return this.renderData.addUser
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         }
       }
     },
@@ -178,10 +157,6 @@
       'audit_set_form_set': SetPage,
       'editPageInfo': FormSet,
       'auditPageEdit': FormSet,
-<<<<<<< HEAD
-      'deletePage': DeletePage,
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       'copyPage': CopyPage,
       NoticePeopleAdd,
       AuditPeopleAdd,

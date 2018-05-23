@@ -147,8 +147,6 @@ export default {
     //     }
     //   })
     // })
-<<<<<<< HEAD
-=======
   },
   getFundSetting (params = {}, url = '/api/resource/config/get_amount_setting') {
     return fetch(url, params)
@@ -159,7 +157,6 @@ export default {
     //     'currency': ['aud', 'usd', 'eur']
     //   })
     // })
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 }
 

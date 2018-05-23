@@ -1,10 +1,6 @@
 <template lang="pug">
   b-dialog.change-password(:title="renderData.changePassword", :show.sync='dialogVisible', width="38%", :show-close="true", :before-close="beforeClose")
-<<<<<<< HEAD
-    el-form(:model="changePwdForm", label-width="80px", :rules="computedRules", ref="changePwdForm")
-=======
     el-form(:model="changePwdForm", label-width="80px", :rules="computedRules", ref="changePwdForm", label-position="left")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       el-form-item(:label-width="childLabelWidth")
         el-radio-group(v-model="changePwdForm.type")
           b-radio(label="auto").theme-color-C {{renderData.autoPassword}}
@@ -69,32 +65,20 @@
               {
                 required: true,
                 message: _this.renderData.pleaseEnter,
-<<<<<<< HEAD
-                trigger: ['blur', 'change']
-=======
                 trigger: 'blur, change'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
               },
               {
                 regex: '',
                 message: '',
                 validator: utils.validator.validate,
-<<<<<<< HEAD
-                trigger: ['blur', 'change']
-=======
                 trigger: 'blur, change'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
               }
             ],
             confirmPassword: [
               {
                 required: true,
                 message: _this.renderData.pleaseEnter,
-<<<<<<< HEAD
-                trigger: 'blur'
-=======
                 trigger: 'blur, change'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
               },
               {
                 test: function (value) {
@@ -103,9 +87,6 @@
                 },
                 validator: utils.validator.validate,
                 message: _this.renderData.confirmPasswordErrorRule,
-<<<<<<< HEAD
-                trigger: 'blur'
-=======
                 trigger: 'blur, change'
               },
               {
@@ -113,7 +94,6 @@
                 message: '',
                 validator: utils.validator.validate,
                 trigger: 'blur, change'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
               }
             ]
           }
@@ -151,28 +131,18 @@
           console.log(data)
           for (var dataKey in data.biaodanguize) {
             vm.changePwdForm.rules.newPassword[1].regex = new RegExp(data.biaodanguize[dataKey].slice(1, data.biaodanguize[dataKey].length - 1))
-<<<<<<< HEAD
-            console.log('表单使用的规则')
-            console.log(vm.changePwdForm.rules.newPassword[1].regex)
-=======
             vm.changePwdForm.rules.confirmPassword[2].regex = new RegExp(data.biaodanguize[dataKey].slice(1, data.biaodanguize[dataKey].length - 1))
             console.log('表单使用的规则')
             console.log(vm.changePwdForm.rules.newPassword[1].regex)
             console.log(vm.changePwdForm.rules.confirmPassword[2].regex)
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             console.log(vm.renderData)
             for (var key in vm.renderData) {
               if (dataKey === key) {
                 vm.changePwdForm.rules.newPassword[1].message = vm.renderData[key]
-<<<<<<< HEAD
-                console.log('该规则对应的错误提示')
-                console.log(vm.changePwdForm.rules.newPassword[1].message)
-=======
                 vm.changePwdForm.rules.confirmPassword[2].message = vm.renderData[key]
                 console.log('该规则对应的错误提示')
                 console.log(vm.changePwdForm.rules.newPassword[1].message)
                 console.log(vm.changePwdForm.rules.confirmPassword[2].message)
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
                 break
               }
             }

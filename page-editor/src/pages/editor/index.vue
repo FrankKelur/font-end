@@ -1,54 +1,59 @@
-<template lang="pug>
+<template lang="pug">
   .form-set
     .oper-container.clear-float.theme-border-D
-      el-col(:span=" 3", :offset='18')
-b-button(@click='back') {{renderData.back}}
-el-col(:span="3")
-b-button(@click='saveEnable') {{renderData.saveEnable}}
-.content
-.left.draggable-item-container.theme-bg-I
-.title.theme-color-A {{renderData.controlBase}}
-.item.theme-bg-H.theme-border-D.theme-border-A-hover.theme-color-C(v-for="(temp, $index) in templateList", :key="temp.icon", :idx="$index",  v-draggable="handler", origin='left')
-b-icon.template-icon(:iconName="temp.icon")
-span {{temp.label}}
-.middle
-el-form.middle-container(label-width="100px", :model="tempForm", ref="tempForm")
-.title {{auditInfo.name}}
-.item(v-for="(item, $index) in formItemList", :key="$index", :idx="$index",  v-dropable="handler", @click="currItem=item")
-.operate-menu
-.icon-conatainer(v-draggable="handler", :idx="$index", origin='middle')
-b-icon(iconName='move')
-.icon-conatainer
-b-icon(iconName='delete', @click.native="deleteFormItem($index)")
-el-form-item(:prop="item.key")
-span(slot="label", :class="{'theme-color-A': currItem===item}") {{item.label}}
-b-form-item(:model.sync='tempForm[item.key]', :item='item')
-.blank-item(v-dropable="handler", :idx="formItemList.length")
-.line
-b-icon(iconName='move1', size="50px")
-.line {{renderData.addControlCreatorAudit}}
-.right.theme-bg-I
-el-tabs(v-model='activePane', type="card")
-el-tab-pane(name="1", :label="renderData.workflowInfo")
-el-form(ref="auditInfoForm", :rules="rules", label-width="80px", :model="auditInfo")
-el-form-item(:label="renderData.workflowName", prop="name")
-b-input(:model.sync="auditInfo.name", :placeholder="renderData.pleaseInput")
-//el-form-item(:label="renderData.taskType", prop="taskType")
-b-input(:model.sync="auditInfo.task_type", :placeholder="renderData.pleaseInput")
-template(v-if="visible.page!=='auditPageEdit'")
-el-form-item(:label="renderData.description", prop="description.label")
-b-input(:model.sync="auditInfo.description.label", :placeholder="renderData.pleaseInput", :rows="3")
-el-form-item(:label="renderData.auditIcon")
-el-row(v-show="!auditInfo.icon.url")
-.icon-item(v-for="icon in iconList", :key="icon", :class="{'theme-border-A':auditInfo.icon.icon===icon, 'theme-border-C':auditInfo.icon.icon!==icon}")
-b-icon(:iconName='icon', @click.native="toggleIcon(icon)", size="26px")
-el-row(v-show="!auditInfo.icon.icon")
-b-upload(action="/upload", v-model="auditInfo.icon", @fileTypeNotRight="fileTypeNotRight")
-i.el-icon-upload
-.el-upload__text {{renderData.clickUpload}}
-.el-upload__tip(slot="tip") {{renderData.formatRestrictionsNarrow}}
-el-tab-pane(name="2", :label="renderData.controlSet")
-form-item-set(v-for="(item, $index) in formItemList",:key='$index', v-show="currItem==item", :item="item", :renderData="renderData", @rule-change="ruleChange", :allFormItems="formItemList", ref="formItemSet")
+      el-col(:span="3", :offset='18')
+        b-button(@click='saveEnable' v-ellipsis-title="") {{renderData.save}}
+    .content
+      .left.draggable-item-container.theme-bg-I
+        .title.theme-color-A {{renderData.controlBase}}
+        .item.theme-bg-H.theme-border-D.theme-border-A-hover.theme-color-C(v-for="(temp, $index) in templateList", :key="temp.icon", :idx="$index",  v-draggable="handler", origin='left')
+          b-icon.template-icon(:iconName="temp.icon")
+          span {{temp.label}}
+      .middle
+        el-form.middle-container(label-width="140px", :model="tempForm", ref="tempForm", label-position="left")
+          .title {{auditInfo.name}}
+          .item(v-for="(item, $index) in formItemList", :key="item.key", :idx="$index",  v-dropable="handler", @click="currItem=item")
+            .operate-menu
+              .icon-conatainer(v-draggable="handler", :idx="$index", origin='middle')
+                b-icon(iconName='move')
+              .icon-conatainer
+                b-icon(iconName='delete', @click.native="deleteFormItem($index)")
+            el-form-item(:prop="item.key")
+              template(slot="label")
+                span.theme-color-C.inline-label(v-text="item.label", v-ellipsis-title="", :class="{'theme-color-A': currItem===item}")
+              b-form-item(:model.sync='tempForm[item.key]', :item='item')
+          .blank-item(v-dropable="handler", :idx="formItemList.length")
+            .line
+              b-icon(iconName='move1', size="50px")
+            .line {{renderData.addControlCreatorAudit}}
+      .right.theme-bg-I
+        el-tabs(v-model='activePane', type="card")
+          el-tab-pane(name="1", :label="renderData.workflowInfo")
+            el-form(ref="auditInfoForm", :rules="rules", label-width="140px", :model="auditInfo", label-position="left")
+              el-form-item(prop="name")
+                template(slot="label")
+                  span.theme-color-C.inline-label(v-text="renderData.workflowName", v-ellipsis-title="")
+                b-input(:model.sync="auditInfo.name", :placeholder="renderData.pleaseInput")
+              //el-form-item(:label="renderData.taskType", prop="taskType")
+                b-input(:model.sync="auditInfo.task_type", :placeholder="renderData.pleaseInput")
+              template(v-if="visible.page!=='auditPageEdit'")
+                el-form-item(prop="description.label")
+                  template(slot="label")
+                    span.theme-color-C.inline-label(v-text="renderData.description", v-ellipsis-title="")
+                  b-input(:model.sync="auditInfo.description.label", :placeholder="renderData.pleaseInput", :rows="3")
+                el-form-item
+                  template(slot="label")
+                    span.theme-color-C.inline-label(v-text="renderData.auditIcon", v-ellipsis-title="")
+                  el-row(v-if="!auditInfo.icon.url")
+                    .icon-item(v-for="icon in iconList", :key="icon", :class="{'theme-border-A':auditInfo.icon.icon===icon, 'theme-border-C':auditInfo.icon.icon!==icon}")
+                      b-icon(:iconName='icon', @click.native="toggleIcon(icon)", size="26px")
+                  el-row(v-show="!auditInfo.icon.icon")
+                    b-upload(action="/upload", v-model="auditInfo.icon", @fileTypeNotRight="fileTypeNotRight")
+                      i.el-icon-upload
+                      .el-upload__text {{renderData.clickUpload}}
+                      .el-upload__tip(slot="tip") {{renderData.formatRestrictionsNarrow}}
+          el-tab-pane(name="2", :label="renderData.controlSet")
+            form-item-set(v-for="(item, $index) in formItemList",:key='$index', v-show="currItem==item", :item="item", :renderData="renderData", :allFormItems="formItemList", ref="formItemSet")
 
 </template>
 
@@ -71,6 +76,7 @@ form-item-set(v-for="(item, $index) in formItemList",:key='$index', v-show="curr
     data () {
       var _this = this
       return {
+        renderData: renderData,
         formSet: {},
         currItem: {},
         auditInfo: {
@@ -286,20 +292,6 @@ form-item-set(v-for="(item, $index) in formItemList",:key='$index', v-show="curr
         // 暂时预览这边儿不做验证了
 //        this.$refs['tempForm'].reset()
       },
-      back () {
-        // z todo 判断信息是否发生变化，然后弹框
-        this.$confirm(this.renderData.setNotSave, this.renderData.prompt, {
-          confirmButtonText: this.renderData.confirm,
-          cancelButtonText: this.renderData.cancel,
-          type: 'warning'
-        }).then(() => {
-          if (this.visible.page === 'auditPageEdit') {
-            this.visible.page = 'audit_set_flow_people_set'
-          } else {
-            this.visible.page = 'audit_set_form_set'
-          }
-        })
-      },
       fileTypeNotRight () {
         var params = {
           type: 'warning',
@@ -401,7 +393,15 @@ form-item-set(v-for="(item, $index) in formItemList",:key='$index', v-show="curr
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
+  .oper-container {
+    .el-col {
+      .el-button {
+        width: 100% !important;
+      }
+    }
+    padding-bottom: 12px;
+  }
   .form-set {
     min-width: 1153px;
     overflow-x: auto;

@@ -1,14 +1,5 @@
 <template lang="pug">
   b-dialog.new-audit-module(:show='true', :title="cTitle", width="38%", :show-close="true", :before-close="beforeClose")
-<<<<<<< HEAD
-    el-form(label-width="100px", :model="auditInfo", ref="auditInfo", :rules="rules", labelPosition='left')
-      el-form-item(prop="label", :label="renderData.auditName")
-        b-input(:placeholder="renderData.pleaseInput", :model.sync="auditInfo.label")
-      el-form-item.unique-name(prop="name", :label="renderData.uniqueName")
-        b-input(:placeholder="renderData.pleaseInput", :model.sync="auditInfo.name")
-        b-icon.tooltip-icon.theme-color-A-hover.theme-color-C(iconName='info', :title="renderData.systemKey")
-      el-form-item(prop="description.label", :label="renderData.description")
-=======
     el-form(label-width="140px", :model="auditInfo", ref="auditInfo", :rules="rules", labelPosition='left')
       el-form-item(prop="label")
         template(slot="label")
@@ -23,7 +14,6 @@
       el-form-item(prop="description.label")
         template(slot="label")
           span.theme-color-C.inline-label(v-text="renderData.description", v-ellipsis-title="")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         b-input(:placeholder="renderData.pleaseInput", :model.sync="auditInfo.description.label")
     template(slot="footer")
       b-button(@click="visible.dialog=null") {{renderData.cancel}}
@@ -134,11 +124,6 @@
           if (valid) {
             var params = this.auditInfo
             if (this.auditInfo.uuid) {
-<<<<<<< HEAD
-              service.editAudit(params)
-            } else {
-              service.addAudit(params)
-=======
               service.editAudit(params).then(res => {
                 if (res.re === '200') {
                   this.visible.dialog = null
@@ -150,7 +135,6 @@
                   this.visible.dialog = null
                 }
               })
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             }
           }
         })

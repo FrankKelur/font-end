@@ -2,10 +2,7 @@
   .b-title.theme-border-D
     div.color-block.theme-bg-A.theme-color-darken15-C
     .inline-text(v-text="this.title")
-<<<<<<< HEAD
-=======
     slot(name="icon")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 </template>
 
 <script>
@@ -53,12 +50,9 @@
       vertical-align: sub;
       vertical-align: top;
     }
-<<<<<<< HEAD
-=======
     .title-icon{
       margin-left: 10px;
       font-size: 14px;
     }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   }
 </style>

@@ -225,11 +225,7 @@ export default {
     // })
   },
   deleteStep (params) {
-<<<<<<< HEAD
-    var url = '/api/resource/audit_setting/delete_audit'
-=======
     var url = '/api/resource/audit_setting/delete_audit_step_setting'
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     console.log('params', url, params)
     return fetch(url, params)
     // return new Promise((resolve, reject) => {
@@ -266,12 +262,9 @@ export default {
     //   })
     // })
   },
-<<<<<<< HEAD
-=======
   sendWorkflowActiviti (params = {}, url = '/api/resource/audit_setting/send_workflow_activiti') {
     return fetch(url, params)
   },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   saveEnable (params) {
     var url = '/api/resource/audit_setting/add_custom_audit_start_page'
     console.log('params', url, params)

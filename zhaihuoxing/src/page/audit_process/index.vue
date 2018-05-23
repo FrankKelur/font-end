@@ -12,15 +12,9 @@
             .item.pointer(v-text="tab.label")
           b-search-table(:ref="tab.name + '_table'", :optHandler='optHandler', :render-data="getTableRenderData(tab)", :url="tableUrl", :params="getTableParams(tab)", v-if="activeTab===tab.name")
 
-<<<<<<< HEAD
-    component(:is="visible.page", :render-data="modalRenderData", :visible="visible", :curr-row="currRow", :auditType="activeTab")
-
-    component(:is="visible.dialog", :render-data="modalRenderData", :curr-row="currRow", :visible="visible", :audit-list="customizedAudits", :auditType="activeTab")
-=======
     component(:is="visible.page", :render-data="modalRenderData", :visible="visible", :curr-row="currRow", :auditType="activeTab", :activeTabLabel="activeTabLabel", @getAuditCount="getAuditCount")
 
     component(:is="visible.dialog", :render-data="modalRenderData", :curr-row="currRow", :visible="visible", :audit-list="customizedAudits", :auditType="activeTab", :activeTabLabel="activeTabLabel", @refresh-sort="appendCustomizedAudit")
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
 </template>
 
@@ -40,10 +34,6 @@
   import commonMixin from 'common/js/commonMixin'
   import componentMixin from 'common/js/componentMixin'
 
-<<<<<<< HEAD
-  // z todo 审核处理，添加入金金额字段，入金金额，搜索
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   export default {
     name: 'audit_process',
     mixins: [commonMixin, componentMixin],
@@ -133,13 +123,10 @@
       await this.appendCustomizedAudit()
     },
     computed: {
-<<<<<<< HEAD
-=======
       activeTabLabel () {
         var currTab = this.auditTabs.find(tab => tab.name === this.activeTab) || {}
         return currTab.label
       },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       pageTitle () {
         if (!this.visible.page) {
           return this.renderData.auditProcessAudit
@@ -204,19 +191,12 @@
           })
           headerCols.push({
             field: 'others',
-<<<<<<< HEAD
-=======
             isGroup: true,
             fieldTextMap: this.textMap,
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
             label: this.renderData.other,
             formatter (row, col, getLabel) {
               var obj = row[col.property]
               var keys = Object.keys(obj)
-<<<<<<< HEAD
-              console.log('keys others', keys, obj)
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
               return h(popover, {}, [
                 h(BIcon, {slot: 'reference', props: {iconName: 'more'}}, []),
                 keys.map(key => h('div', {class: ['el-popover-item-intable']}, [
@@ -228,44 +208,13 @@
           })
         }
         tableRenderData.listObj.headerCols = headerCols
-<<<<<<< HEAD
-        console.log('tableRenderData', tableRenderData, tableRenderData.listObj.headerCols.length)
         return tableRenderData
       },
-//      optsFilter (handlers, currRow) {
-//        console.log('optsFilter', ...arguments)
-//        var newHandlers = Object.assign([], handlers)
-//        if (currRow && currRow.audit_status && currRow.audit_result) {
-//          if (currRow.audit_status.val === 'pending' || currRow.audit_status.val === 'processing') { // 待处理, 处理中
-//            newHandlers = newHandlers.filter(item => {
-//              return item.auth !== 'audit_process_deposit_redo_task'
-//            })
-//          } else if (currRow.audit_status.val === 'done') { // 已完成
-//            newHandlers = newHandlers.filter(item => {
-//              return item.auth !== 'audit_process_deposit_audit_task'
-//            })
-//            if (currRow.audit_result.val !== 'failed') {
-//              newHandlers = newHandlers.filter(item => {
-//                return item.auth !== 'audit_process_deposit_redo_task'
-//              })
-//            }
-//          }
-//        }
-//        return newHandlers
-//      },
-=======
-        return tableRenderData
-      },
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
       appendCustomizedAudit () {
         var params = {}
         return service.getCustomizedAudit(params).then(res => {
           this.auditTabs = this.defaultAuditTabs.concat(res.data)
           this.customizedAudits = res.data
-<<<<<<< HEAD
-          console.log('appendCustomizedAudit', this.auditTabs)
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         })
       },
       getAuditCount () {
@@ -286,16 +235,6 @@
           audit_type: this.activeTab
         }
         service.processTask(params).then(res => {
-<<<<<<< HEAD
-          console.log('this.activeTab', this, this.activeTab, this.$refs[this.activeTab + '_table'].search)
-          // z todo 不知道为什么娶不到search function
-          this.$refs[this.activeTab + '_table'].search && this.$refs[this.activeTab + '_table'].search()
-          this.visible.page = 'CustomAuditPage'
-        })
-      },
-      toPage (params) {
-        // z todo 排序接口还没调
-=======
           if (res.re === '200') {
             this.$refs[this.activeTab + '_table'][0].search()
             this.visible.page = 'CustomAuditPage'
@@ -303,7 +242,6 @@
         })
       },
       toPage (params) {
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         this.visible.page = params.toPage // z todo 告诉彬哥，如果当前用户与当前审核人不一致且审核处于进行中过的时候，调用该接口，跳转
       },
       getDotStatus (tabName) {
@@ -311,10 +249,6 @@
         for (var sub in this.auditCount[tabName]) {
           count += parseInt(this.auditCount[tabName][sub])
         }
-<<<<<<< HEAD
-        console.log('count', count, arguments)
-=======
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         return !!count
       },
       getTableParams (tab) {
@@ -326,13 +260,8 @@
     watch: {
       visible: {
         handler: function (val, oldVal) {
-<<<<<<< HEAD
-          if (val.modal !== oldVal.modal && !val.modal) {
-            this.$refs[this.activeTab + '_table'].search()
-=======
           if (!val.dialog) {
             this.$refs[this.activeTab + '_table'][0].search()
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
           }
         },
         deep: true
@@ -377,11 +306,7 @@
     }
     .el-tabs__header {
       .el-badge__content.is-fixed {
-<<<<<<< HEAD
-        right: 0px;
-=======
         right: 15px;
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
         top: 10px;
       }
       .el-icon-arrow-left:before, .el-icon-arrow-right:before {

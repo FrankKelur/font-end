@@ -3,17 +3,6 @@ const request = require('request').defaults({jar: true})
 const express = require('express')
 const logger = require('../logger/')
 var multer = require('multer')
-<<<<<<< HEAD
-var fs = require('fs')
-var uploadDir = 'tmp/'
-var bodyParser = require('body-parser')
-const jsonParser = bodyParser.json()
-const upload = multer({'dest': uploadDir})
-let router = express.Router()
-
-function getPageConfig (originReq, cb) {
-  var url = originReq.url
-=======
 var storage = multer.diskStorage({
   destination (req, file, cb) {
     cb(null, 'tmp')
@@ -32,7 +21,6 @@ let router = express.Router()
 
 function getPageConfig (originReq, cb) {
   var url = originReq.url.split('?')[0]
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
   var config = originReq.app.get('config')
   var backendUrl = config['proxyTable']['/api']['target']
   // 根据url，token，获取页面配置
@@ -181,8 +169,6 @@ router.get('/pages/*', function (req, res) {
   })
 })
 
-<<<<<<< HEAD
-=======
 router.post('/upload-cdn-batch', jsonParser, function (req, res) {
   var filenames = req.body.originPath
   var config = req.app.get('config')
@@ -196,7 +182,6 @@ router.post('/upload-cdn-batch', jsonParser, function (req, res) {
   })
 })
 
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 router.post('/upload-cdn', jsonParser, function (req, res) {
   var filename = req.body.originPath
   var config = req.app.get('config')
@@ -214,10 +199,7 @@ router.post('/upload', upload.single('file'), function (req, res) {
   res.json({re: 200, filename: req.file.filename})
 })
 
-<<<<<<< HEAD
-=======
 // 上传到配置中心
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 function uploadCDN (fileName, config, cb) {
   var formData = {
     fileName: fileName,
@@ -248,16 +230,6 @@ function setFileExpired (filePath, time) {
 
 router.get('/preview/*', function (req, res, next) {
   var config = req.app.get('config')
-<<<<<<< HEAD
-  res.redirect(config.env.configCenterUrl + req.url)
-})
-
-router.get('/tmp-preview/*', function (req, res, next) {
-  var folder = 'tmp'
-  var path = req.url.substr('/tmp-preview'.length)
-  var options = {
-    root: path.join(__dirname, '..', folder),
-=======
   var urlObj = urlFormat(req.url)
   if (fs.existsSync(Path.resolve(__dirname, '../../tmp/', urlObj.filename))) {
     viewFile(urlObj.filename, res)
@@ -280,24 +252,12 @@ router.get('/tmp-preview/*', function (req, res, next) {
 function viewFile (filename, res) {
   var options = {
     root: Path.join(__dirname, '..', '..', 'tmp'),
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
     dotfiles: 'deny',
     headers: {
       'x-timestamp': Date.now(),
       'x-sent': true
     }
   }
-<<<<<<< HEAD
-  res.sendFile(path, options, function (err) {
-    if (err) {
-      // console.log(err);
-      res.status('500').end()
-    } else {
-      console.log('预览文件： ', path)
-    }
-  })
-})
-=======
   res.sendFile('/' + filename, options, function (err) {
     if (err) {
       res.json({re: 500, err: err})
@@ -323,6 +283,5 @@ function urlFormat (url) {
     search: search
   }
 }
->>>>>>> 8e42a9b0dd522263bff10263b5a0e871ede4b0fb
 
 module.exports = router
