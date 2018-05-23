@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import locale from 'element-ui/lib/locale'
-
+import './theme-color'
 import {
   Loading,
   MessageBox,

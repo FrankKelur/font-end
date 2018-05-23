@@ -14,6 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "raw-loader": "^0.5.1",
     "element-ui": "^2.3.9",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",

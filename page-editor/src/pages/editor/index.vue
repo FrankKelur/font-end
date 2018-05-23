@@ -1,7 +1,7 @@
 <template lang="pug">
   .form-set
     .oper-container.clear-float.theme-border-D
-      el-col(:span="3", :offset='18')
+      el-col(:span="3", :offset='21')
         b-button(@click='saveEnable' v-ellipsis-title="") {{renderData.save}}
     .content
       .left.draggable-item-container.theme-bg-I
@@ -10,7 +10,7 @@
           b-icon.template-icon(:iconName="temp.icon")
           span {{temp.label}}
       .middle
-        el-form.middle-container(label-width="140px", :model="tempForm", ref="tempForm", label-position="left")
+        el-form.middle-container(label-width="140px", :model="model", ref="tempForm", label-position="left")
           .title {{auditInfo.name}}
           .item(v-for="(item, $index) in formItemList", :key="item.key", :idx="$index",  v-dropable="handler", @click="currItem=item")
             .operate-menu
@@ -18,7 +18,10 @@
                 b-icon(iconName='move')
               .icon-conatainer
                 b-icon(iconName='delete', @click.native="deleteFormItem($index)")
-            el-form-item(:prop="item.key")
+            el-form-item(label-width="140px", :prop="item.key", :rules="getRules(item)" v-for="(item, idx) in formItemList", :key="idx")
+              span.inline-label(slot="label", v-ellipsis-title="", :class="{'theme-color-A': currItem===item}") {{item.type=='clause'?'':item.label}}
+              b-form-item(:model.sync='model[item.key]', :item='item', @change="itemChange", :renderData="renderData")
+            //el-form-item(:prop="item.key")
               template(slot="label")
                 span.theme-color-C.inline-label(v-text="item.label", v-ellipsis-title="", :class="{'theme-color-A': currItem===item}")
               b-form-item(:model.sync='tempForm[item.key]', :item='item')
@@ -29,29 +32,13 @@
       .right.theme-bg-I
         el-tabs(v-model='activePane', type="card")
           el-tab-pane(name="1", :label="renderData.workflowInfo")
-            el-form(ref="auditInfoForm", :rules="rules", label-width="140px", :model="auditInfo", label-position="left")
-              el-form-item(prop="name")
-                template(slot="label")
-                  span.theme-color-C.inline-label(v-text="renderData.workflowName", v-ellipsis-title="")
+            el-form(ref="auditInfoForm", :rules="rules", :model="auditInfo", label-position="left")
+              el-form-item(prop="name", :label="renderData.workflowName")
                 b-input(:model.sync="auditInfo.name", :placeholder="renderData.pleaseInput")
-              //el-form-item(:label="renderData.taskType", prop="taskType")
-                b-input(:model.sync="auditInfo.task_type", :placeholder="renderData.pleaseInput")
-              template(v-if="visible.page!=='auditPageEdit'")
-                el-form-item(prop="description.label")
-                  template(slot="label")
-                    span.theme-color-C.inline-label(v-text="renderData.description", v-ellipsis-title="")
-                  b-input(:model.sync="auditInfo.description.label", :placeholder="renderData.pleaseInput", :rows="3")
-                el-form-item
-                  template(slot="label")
-                    span.theme-color-C.inline-label(v-text="renderData.auditIcon", v-ellipsis-title="")
-                  el-row(v-if="!auditInfo.icon.url")
-                    .icon-item(v-for="icon in iconList", :key="icon", :class="{'theme-border-A':auditInfo.icon.icon===icon, 'theme-border-C':auditInfo.icon.icon!==icon}")
-                      b-icon(:iconName='icon', @click.native="toggleIcon(icon)", size="26px")
-                  el-row(v-show="!auditInfo.icon.icon")
-                    b-upload(action="/upload", v-model="auditInfo.icon", @fileTypeNotRight="fileTypeNotRight")
-                      i.el-icon-upload
-                      .el-upload__text {{renderData.clickUpload}}
-                      .el-upload__tip(slot="tip") {{renderData.formatRestrictionsNarrow}}
+              el-form-item(prop="description.label")
+                template(slot="label")
+                  span.theme-color-C.inline-label(v-text="renderData.description", v-ellipsis-title="")
+                b-input(:model.sync="auditInfo.description.label", :placeholder="renderData.pleaseInput", :rows="3")
           el-tab-pane(name="2", :label="renderData.controlSet")
             form-item-set(v-for="(item, $index) in formItemList",:key='$index', v-show="currItem==item", :item="item", :renderData="renderData", :allFormItems="formItemList", ref="formItemSet")
 
@@ -68,31 +55,29 @@
   import FormItemSet from './FormItemSet'
   import renderData from './lang.js'
 
-  // z todo 1 从左边拖放，位置不太对
-  // z todo 2 提示没有正常显示
-
   export default {
     name: 'form-set',
     data () {
       var _this = this
       return {
+        messageMap: {
+          number: renderData.numberMessage,
+          longText: renderData.longTextMessage,
+          required: renderData.requiredMessage
+        },
+        allFieldsMap: {},
         renderData: renderData,
         formSet: {},
         currItem: {},
         auditInfo: {
           name: '',
-//          task_type: '',
           description: {
             label: '',
             key: ''
-          },
-          icon: {url: '', name: '', icon: ''}
+          }
         },
-        tempForm: {},
         activePane: '1',
         formItemList: [],
-        fileList: [],
-        iconList: ['record', 'notebook', 'CloudIconCopy', 'usergroup_manage'],
         rules: {
           name: [
             {
@@ -254,59 +239,68 @@
               trigger: 'blur'
             }
           }
-        }
+        },
+        model: {}
       }
     },
-    props: {
-      currRow: {
-        type: Object,
-        default () {
-          return {}
-        }
-      },
-      visible: {
-        type: Object,
-        default () {
-          return {
-            dialog: '',
-            page: 'FormSet'
-          }
-        }
-      }
-    },
-//    computed: {
-//      cRules () {
-//        var cRules = {}
-//        this.formItemList.forEach(item => {
-//          this.$set(this.tempForm, item.key, '')
-//          if (item.type === 'upload') {
-//            this.$set(this.tempForm, item.key, {})
-//          }
-//          cRules[item.key] = item.rules.map(name => this.regexObj[name].rule)
-//        })
-//        return cRules
-//      }
-//    },
     methods: {
-      ruleChange () {
-        // 暂时预览这边儿不做验证了
-//        this.$refs['tempForm'].reset()
+      getRules (item) {
+        return (item.rules || []).reduce((res, ruleItem) => {
+          var rule = constants.ruleMap[ruleItem]
+          if (ruleItem === 'required' && item.type === 'clause') {
+            res.push({
+              name: 'required',
+              validator: validator.validate,
+              test (val) {
+                return !!val // 要求checkbox 必须为true
+              },
+              message: this.messageMap[ruleItem],
+              trigger: 'blur,change'
+            })
+          } else {
+            rule.message = this.messageMap[ruleItem]
+            res.push(rule)
+          }
+          if (ruleItem === 'required' && item.type === 'upload') {
+            res.push({
+              name: 'required',
+              validator: validator.validate,
+              test (val) {
+                return !!val.url // 要求upload 必须为有url
+              },
+              message: this.messageMap['required'],
+              trigger: 'blur,change'
+            })
+          }
+          if (ruleItem.includes('api')) {
+            res.push({
+              name: ruleItem,
+              trigger: 'blur,change',
+              test (val) {
+                var params = {key: val}
+                Object.assign(params, item.params)
+                return fetch(ruleItem, params)
+              },
+              validator: validator.validate
+            })
+          }
+          return res
+        }, [])
       },
-      fileTypeNotRight () {
-        var params = {
-          type: 'warning',
-          showClose: true,
-          message: this.renderData.fileTypeNotRight
-        }
-        this.$message(params)
+      itemChange (item, val) {
+        console.log('itemChange item, val', item, val)
+        var beDependentItems = item.beDependentItems || []
+        beDependentItems.forEach(elm => {
+          this.model[elm.key] = ''
+          this.itemChange(elm, '')
+          if (!elm.params) {
+            this.$set(elm, 'params', {[item.key]: this.model[item.key]})
+          } else {
+            elm.params[item.key] = this.model[item.key]
+          }
+        })
       },
-      uploadCDN (file) {
-        // 如果文件有改动，则上传至CDN， 然后把url，name让如file中
-        var uploadParams = {}
-        uploadParams = {originPath: file.url}
-        return service.uploadCDN(uploadParams)
-      },
-      async saveEnable () {
+      saveEnable () {
         var valid = false
         console.log('saveEnable')
         this.$refs['auditInfoForm'].validate(res => {
@@ -329,58 +323,40 @@
 
         if (valid) {
           var params = {
-            uuid: this.currRow.uuid,
             data: this.auditInfo
           }
           params.data.dataSource = this.formItemList
-          if (this.visible.page === 'auditPageEdit') {
-            service.editAuditForm(params)
-          } else {
-            if (this.auditInfo.icon.changed) {
-              var {url} = await this.uploadCDN(this.auditInfo.icon)
-              this.auditInfo.icon.url = url
-              delete this.auditInfo.icon.changed
-            }
-            if (this.auditInfo.key) {
-              service.editEnable(params)
-            } else {
-              service.saveEnable(params)
-            }
-          }
+          service.saveEnable(params)
         } else {
           this.activePane = '1'
         }
       },
-      toggleIcon (icon) {
-        if (this.auditInfo.icon.icon === icon) {
-          this.auditInfo.icon.icon = ''
-        } else {
-          this.auditInfo.icon.icon = icon
-        }
-      },
       deleteFormItem (idx) {
         this.formItemList.splice(idx, 1)
+      },
+      getFormItemList () {
+        var params = {}
+        return service.getFormItemList(params).then(res => {
+          this.formItemList = res.data
+          // 给每个formItem 加上value: '' (type == file 的时候 value: {})
+          this.formItemList.forEach(item => {
+            this.$set(item, 'value', '')
+            if (item.type === 'upload') {
+              this.$set(item, 'value', {})
+            }
+          })
+        })
+      },
+      getAuditInfo () {
+        var params = {}
+        return service.getAuditInfo(params).then(res => {
+          this.auditInfo = res
+          this.formItemList = res
+        })
       }
-//      getFormItemList () {
-//        var params = {}
-//        return service.getFormItemList(params).then(({data}) => {
-//          this.formItemList = data
-//        })
-//      },
-//      getAuditInfo () {
-//        var params = {}
-//        return service.getAuditInfo(params).then(res => {
-//          this.auditInfo = res
-//          this.formItemList = res.
-//        })
-//      }
     },
     async mounted () {
-      console.log('mounted formset')
-      Object.assign(this.auditInfo, this.currRow && this.currRow.currPage)
-      if (this.currRow && this.currRow.currPage) {
-        this.formItemList = this.currRow.currPage.dataSource
-      }
+//      this.getFormItemList()
     },
     components: {
       BButton,
@@ -389,6 +365,24 @@
       FormItemSet,
       BUpload,
       BInput
+    },
+    watch: {
+      formItemList (newVal, oldVal) {
+        console.log('watch formItemList newVal, oldVal', newVal, oldVal)
+        this.formItemList.forEach(item => {
+          this.allFieldsMap[item.key] = item
+          item.beDependentItems = []
+          // 给每个字段赋值
+          this.$set(this.model, item.key, item.value)
+        })
+        // 给每个被依赖的form-item 添加 beDependentItems 数组，存放哪些form-item依赖该 form-item
+        this.formItemList.forEach(item => {
+          (item.follow || []).forEach(elm => {
+            var target = this.allFieldsMap[elm.key]
+            target.beDependentItems.push(item)
+          })
+        })
+      }
     }
   }
 </script>
@@ -402,7 +396,9 @@
     }
     padding-bottom: 12px;
   }
+
   .form-set {
+    height: 100%;
     min-width: 1153px;
     overflow-x: auto;
     overflow-y: hidden;
@@ -415,6 +411,7 @@
       padding-bottom: 12px;
     }
     .content {
+      height: 100%;
       display: flex;
       align-items: stretch;
 
@@ -449,7 +446,7 @@
         overflow-y: auto;
         display: inline-block;
         vertical-align: top;
-        width: 45%;
+        width: 50%;
         .title {
           font-size: 16px;
           letter-spacing: 0;

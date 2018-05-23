@@ -50,7 +50,6 @@
 </template>
 
 <script>
-  // import service from './service'
   import { constants, validator } from 'common/js/Utils'
   import BButton from 'components/BButton'
   import BCheckbox from 'components/BCheckbox'
@@ -60,7 +59,6 @@
   import BUpload from 'components/BUpload'
   import BSelect from 'components/BSelect'
   import BFormItem from 'components/BFormItem'
-
   export default {
     name: 'form-item-set',
     data () {
@@ -290,6 +288,7 @@
     }
   }
 </script>
+
 <style lang="less">
   .form-item-set {
     .el-radio-group {

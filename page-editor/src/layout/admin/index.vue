@@ -31,7 +31,6 @@
       .content{
         position: relative;
         flex-grow:1;
-        padding: 0 1.9% 0 1.5%;
         overflow-y: auto;
         background-size: 0 0;
       }
