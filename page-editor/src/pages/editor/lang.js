@@ -3,6 +3,7 @@ var all = {
   'longTextMessage': '请输入小于10000个字符',
   'requiredMessage': '请输入',
   'save': '保存',
+  'validateForm': '验证表单',
   'pleaseInput': '请输入',
   'longTextRule': '长度限制',
   'numberRule': '数字',

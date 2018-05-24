@@ -1,8 +1,10 @@
 <template lang="pug">
   .form-set
-    .oper-container.clear-float.theme-border-D
-      el-col(:span="3", :offset='21')
-        b-button(@click='saveEnable' v-ellipsis-title="") {{renderData.save}}
+    el-row(:gutter="10").oper-container.clear-float.theme-border-D
+      el-col(:span="3", :offset='18')
+        b-button(@click='validateForm') {{renderData.validateForm}}
+      el-col(:span="3")
+        b-button(@click='saveEnable' v-ellipsis-title="" type="primary") {{renderData.save}}
     .content
       .left.draggable-item-container.theme-bg-I
         .title.theme-color-A {{renderData.controlBase}}
@@ -296,6 +298,9 @@
           }
         })
       },
+      validateForm () {
+        this.$refs['tempForm'].validate()
+      },
       saveEnable () {
         var valid = false
         console.log('saveEnable')
@@ -316,8 +321,6 @@
             }
           })
         })
-        this.$refs['tempForm'].validate()
-
         if (valid) {
           var params = {
             data: this.auditInfo
@@ -367,7 +370,7 @@
           this.allFieldsMap[item.key] = item
           item.beDependentItems = []
           // 给每个字段赋值
-          this.$set(this.model, item.key, item.value)
+          this.$set(this.model, item.key, item.value || '')
         })
         // 给每个被依赖的form-item 添加 beDependentItems 数组，存放哪些form-item依赖该 form-item
         this.formItemList.forEach(item => {
