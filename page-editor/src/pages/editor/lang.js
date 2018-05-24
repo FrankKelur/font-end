@@ -1,4 +1,7 @@
 var all = {
+  'numberMessage': '请输入数字',
+  'longTextMessage': '请输入小于10000个字符',
+  'requiredMessage': '请输入',
   'save': '保存',
   'pleaseInput': '请输入',
   'longTextRule': '长度限制',

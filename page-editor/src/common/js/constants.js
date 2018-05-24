@@ -1,6 +1,6 @@
 import validator from './validator'
 const numberRule = /^[1-9][0-9]*$/
-const longTextRule = /^[\s\S]{,10000}$/
+const longTextRule = /^[\s\S]{0,10000}$/
 
 const constants = {
   pages: [10, 15, 20, 50],
@@ -33,19 +33,19 @@ const constants = {
         return !!val
       },
      // required: true,
-     trigger: 'blur,change',
+     trigger: ['blur', 'change'],
      message: ''
     },
     number: {
       name: 'number',
-      trigger: 'blur,change',
+      trigger: ['blur', 'change'],
       regex: numberRule,
       validator: validator.validate,
       message: ''
     },
     longText: {
       name: 'longText',
-      trigger: 'blur,change',
+      trigger: ['blur', 'change'],
       regex: longTextRule,
       validator: validator.validate,
       message: ''

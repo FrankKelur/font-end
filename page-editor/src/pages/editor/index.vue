@@ -18,13 +18,9 @@
                 b-icon(iconName='move')
               .icon-conatainer
                 b-icon(iconName='delete', @click.native="deleteFormItem($index)")
-            el-form-item(label-width="140px", :prop="item.key", :rules="getRules(item)" v-for="(item, idx) in formItemList", :key="idx")
+            el-form-item(label-width="140px", :prop="item.key", :rules="getRules(item)", :key="$index")
               span.inline-label(slot="label", v-ellipsis-title="", :class="{'theme-color-A': currItem===item}") {{item.type=='clause'?'':item.label}}
               b-form-item(:model.sync='model[item.key]', :item='item', @change="itemChange", :renderData="renderData")
-            //el-form-item(:prop="item.key")
-              template(slot="label")
-                span.theme-color-C.inline-label(v-text="item.label", v-ellipsis-title="", :class="{'theme-color-A': currItem===item}")
-              b-form-item(:model.sync='tempForm[item.key]', :item='item')
           .blank-item(v-dropable="handler", :idx="formItemList.length")
             .line
               b-icon(iconName='move1', size="50px")
@@ -245,7 +241,7 @@
     },
     methods: {
       getRules (item) {
-        return (item.rules || []).reduce((res, ruleItem) => {
+        var res = (item.rules || []).reduce((res, ruleItem) => {
           var rule = constants.ruleMap[ruleItem]
           if (ruleItem === 'required' && item.type === 'clause') {
             res.push({
@@ -255,13 +251,9 @@
                 return !!val // 要求checkbox 必须为true
               },
               message: this.messageMap[ruleItem],
-              trigger: 'blur,change'
+              trigger: ['blur', 'change']
             })
-          } else {
-            rule.message = this.messageMap[ruleItem]
-            res.push(rule)
-          }
-          if (ruleItem === 'required' && item.type === 'upload') {
+          } else if (ruleItem === 'required' && item.type === 'upload') {
             res.push({
               name: 'required',
               validator: validator.validate,
@@ -269,13 +261,16 @@
                 return !!val.url // 要求upload 必须为有url
               },
               message: this.messageMap['required'],
-              trigger: 'blur,change'
+              trigger: ['blur', 'change']
             })
+          } else {
+            rule.message = this.messageMap[ruleItem]
+            res.push(rule)
           }
           if (ruleItem.includes('api')) {
             res.push({
               name: ruleItem,
-              trigger: 'blur,change',
+              trigger: ['blur', 'change'],
               test (val) {
                 var params = {key: val}
                 Object.assign(params, item.params)
@@ -286,9 +281,10 @@
           }
           return res
         }, [])
+        console.log('get rules', res)
+        return res
       },
       itemChange (item, val) {
-        console.log('itemChange item, val', item, val)
         var beDependentItems = item.beDependentItems || []
         beDependentItems.forEach(elm => {
           this.model[elm.key] = ''
@@ -320,6 +316,7 @@
             }
           })
         })
+        this.$refs['tempForm'].validate()
 
         if (valid) {
           var params = {
@@ -340,10 +337,7 @@
           this.formItemList = res.data
           // 给每个formItem 加上value: '' (type == file 的时候 value: {})
           this.formItemList.forEach(item => {
-            this.$set(item, 'value', '')
-            if (item.type === 'upload') {
-              this.$set(item, 'value', {})
-            }
+            this.$set(item, 'value', item.type === 'upload' ? {} : '')
           })
         })
       },
@@ -355,7 +349,7 @@
         })
       }
     },
-    async mounted () {
+    mounted () {
 //      this.getFormItemList()
     },
     components: {

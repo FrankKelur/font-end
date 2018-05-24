@@ -49,7 +49,7 @@
     },
     methods: {
       changeHandler (value) {
-        console.log('form item changeHandler')
+//        console.log('form item changeHandler')
         this.$emit('update:model', value || '')
         this.$emit('change', this.item, this.tmpModel)
       },
@@ -94,11 +94,9 @@
     },
     watch: {
       tmpModel () {
-        console.log('tmpModel watch')
         this.$emit('update:model', this.tmpModel)
       },
       model (newVal, oldVal) {
-        console.log('model change newVal, oldVal', newVal, oldVal)
         this.tmpModel = this.model
       },
       'item.params': {

@@ -43,8 +43,6 @@
     },
     methods: {
       changeHandle (value) {
-        console.log('input changeHandle')
-//        this.$emit('update:model', value || '')
         this.$emit('update:model', value)
         this.$emit('change', value)
       },
