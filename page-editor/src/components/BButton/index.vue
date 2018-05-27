@@ -8,12 +8,6 @@
     name: 'b-button',
     data () {
       return {
-//        btnCls: {
-//          'theme-bg-A  theme-bg-darkenA10-active theme-color-H': !this.disabled && this.type === 'primary',
-//          'theme-bg-B theme-bg-lightenB10-hover theme-bg-darkenB10-active theme-color-H': !this.disabled && this.type === 'secondary',
-//          'theme-bg-H theme-color-C theme-border-D theme-color-A-hover theme-border-A-hover theme-color-darken10-A-active theme-border-darken10-D-active': !this.disabled && this.type === 'default',
-//          'theme-bg-H theme-color-lightenC32 theme-border-lightenD12': this.disabled
-//        }
       }
     },
     props: {

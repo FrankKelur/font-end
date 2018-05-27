@@ -2,42 +2,35 @@
 
 export default {
   saveEnable (params) {
-    var url = '/api/resource/audit_setting/add_custom_audit_start_page'
-    console.log('params', url, params)
-    localStorage.setItem(params.data.name, JSON.stringify(params.data.dataSource))
+    localStorage.setItem(params._key, JSON.stringify(params.dataSource))
     var pages = JSON.parse(localStorage.getItem('pages')) || []
-    if (!pages.includes(params.data.name)) {
-      pages.push(params.data.name)
-      localStorage.setItem('pages', JSON.stringify(pages))
-    }
-    // return fetch(url, params)
-    return new Promise((resolve) => {
-      resolve({
-        'target_components': {
-          'bubble': {
-            'action': 'show',
-            'params': {
-              'type': 'failed',
-              'title': '网络错误！'
-            }
-          }
-        },
-        'type': 'operateComponents'
+    var target = pages.find(item => item._key === params._key)
+    if (!target) {
+      pages.push({
+        name: params.name,
+        _key: params._key
       })
+    } else {
+      Object.assign(target, {
+        name: params.name,
+        _key: params._key
+      })
+    }
+    localStorage.setItem('pages', JSON.stringify(pages))
+    return Promise.resolve({
+      re: 200
     })
   },
-  getAuditInfo (params) {
-    var url = '/api/resource/audit_setting/getAuditInfo'
-    console.log(url, params)
-    // return fetch(url, params)
-    // var formItemList = JSON.parse(localStorage.getItem(page)) || []
+  getAuditInfo (key) {
+    var pages = JSON.parse(localStorage.getItem('pages')) || []
+    var target = pages.find(item => item._key === key) || {}
+    var formItemList = JSON.parse(localStorage.getItem(key)) || []
     return new Promise((resolve) => {
       resolve({
         re: '200',
         data: {
-          name: '',
-          description: '',
-          formItemList: []
+          name: target.name || '',
+          formItemList: formItemList
         }
       })
     })

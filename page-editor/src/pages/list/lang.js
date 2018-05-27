@@ -1,5 +1,11 @@
 var all = {
+  'numberMessage': '请输入数字',
+  'longTextMessage': '请输入小于10000个字符',
+  'requiredMessage': '请输入',
+  'save': '保存',
+  'cancel': '取消',
   'add': '新增',
+  'editConfig': '编辑配置',
   'detail': '详情',
   'delete': '删除',
   'edit': '编辑',

@@ -224,8 +224,9 @@
         this.loading = true
         var params = Object.assign({
           pageSize: this.pagination.pageSize,
-          startNum: (this.pagination.currPage - 1) * this.pagination.pageSize
-        }, this.params, this.searchData)
+          startNum: (this.pagination.currPage - 1) * this.pagination.pageSize,
+          searchData: Object.assign({}, this.params, this.searchData)
+        })
         return service.getData(this.url, params).then(res => {
           this.tableData = res.detail
           this.pagination.total = res.total_num || 0
@@ -269,7 +270,7 @@
         return this.renderData.operateOpts || []
       },
       computedHeaderCols () {
-        var headerCols = JSON.parse(JSON.stringify(this.renderData.headerCols))
+        var headerCols = JSON.parse(JSON.stringify(this.renderData.headerCols)).filter(item => item.list)
         if (this.computedOpts.length && headerCols.length > 8) {
           headerCols.splice(7)
         }
@@ -280,7 +281,7 @@
         return headerCols
       },
       otherCols () {
-        var headerCols = JSON.parse(JSON.stringify(this.renderData.headerCols))
+        var headerCols = JSON.parse(JSON.stringify(this.renderData.headerCols)).filter(item => item.list)
         if (this.computedOpts.length && headerCols.length > 8) {
           return headerCols.splice(7)
         }

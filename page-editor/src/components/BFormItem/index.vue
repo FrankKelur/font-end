@@ -4,7 +4,7 @@
     b-input(v-if='item.type==="textarea"', :model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder', :rows="2")
     b-range(v-if='item.type==="range"', :model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder')
     b-select(v-if='item.type==="select"', :model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder', :multiple="item.multiple")
-      el-option(v-for="opt in opts", :key='opt.key', :label='opt.val||opt.label',  :value='opt.key', :class="optionCls")
+      el-option(v-for="(opt, idx) in opts", :key='idx', :label='opt.val||opt.label',  :value='opt.key', :class="optionCls")
     b-datepicker(v-if='item.type==="datetimerange"', :model.sync="tmpModel", @change='changeHandler', :placeholder='item.placeholder', :type="cType", :hasInterval="item.hasInterval")
     b-button(v-if='item.type==="button"', :type='item.styleType') {{item.value}}
     .b-text(v-if='item.type==="text"', :type='item.styleType') {{item.placeholder}}

@@ -1,4 +1,10 @@
 var all = {
+  'operateSuccess': '操作成功！',
+  'showAuth': '显示控制',
+  'list': '列表',
+  'detail': '详情',
+  'edit': '编辑',
+  'search': '搜索',
   'numberMessage': '请输入数字',
   'longTextMessage': '请输入小于10000个字符',
   'requiredMessage': '请输入',

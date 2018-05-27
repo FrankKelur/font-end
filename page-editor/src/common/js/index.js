@@ -81,3 +81,5 @@ Vue.directive('dropable', {
     el.addEventListener('drop', handler.drop)
   }
 })
+
+window._cache = {}

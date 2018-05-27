@@ -7,13 +7,17 @@
     el-form-item(:label="renderData.verification", label-width="80px", v-show="item.type!='text' && computedRegexList && computedRegexList.length")
       b-select(:model.sync="item.rules", :placeholder="renderData.inputPromptText", :multiple='true', @change="ruleChange")
         el-option(:label="item.label", :value="item.name", v-for="item in computedRegexList", :key="item.name")
-
+    el-form-item(:label="renderData.showAuth")
+      b-checkbox(:model.sync="item.list") {{renderData.list}}
+      b-checkbox(:model.sync="item.detail") {{renderData.detail}}
+      b-checkbox(:model.sync="item.edit") {{renderData.edit}}
+      b-checkbox(:model.sync="item.search") {{renderData.search}}
     template(v-if="item.type==='datetimerange'")
       el-form-item(:label="renderData.dateType", label-width="80px", prop="format")
         el-radio-group(v-model="item.format")
           b-radio(label="yyyy-MM-dd mm:ss") {{renderData.yMDTM}}
           b-radio(label="yyyy-MM-dd") {{renderData.yMD}}
-      el-form-item(:label="renderData.verification", label-width="80px")
+      //el-form-item(:label="renderData.verification", label-width="80px")
         b-checkbox(:model.sync="item.hasInterval") {{renderData.enable}}
 
     template(v-if="item.type==='select' || item.type==='multiple-select'")
@@ -89,7 +93,8 @@
           maxSize: 500000 // 500K
         },
         newOption: {
-          'label': ''
+          'label': '',
+          'key': ''
         },
         regexObj: {
           longText: {
@@ -249,7 +254,7 @@
         this.item.dataSource.splice(idx, 1)
       },
       addOption () {
-        this.newOption.newKey = Date.now()
+        this.newOption.key = this.newOption.label
         this.item.dataSource.push(this.newOption)
         this.addFlag = false
         this.initNewOption()
@@ -257,8 +262,7 @@
       initNewOption () {
         this.newOption = {
           label: '',
-          key: '',
-          newKey: ''
+          key: ''
         }
       }
     },

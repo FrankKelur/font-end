@@ -1,4 +1,5 @@
 import validator from './validator'
+
 const numberRule = /^[1-9][0-9]*$/
 const longTextRule = /^[\s\S]{0,10000}$/
 
@@ -26,15 +27,16 @@ const constants = {
   emailReg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   ruleMap: {
     required: {
-     name: 'required',
+      required: true,
+      name: 'required',
       validator: validator.validate,
       test (val) {
         console.log('验证表单 test called')
         return !!val
       },
-     // required: true,
-     trigger: ['blur', 'change'],
-     message: ''
+      // required: true,
+      trigger: ['blur', 'change'],
+      message: ''
     },
     number: {
       name: 'number',

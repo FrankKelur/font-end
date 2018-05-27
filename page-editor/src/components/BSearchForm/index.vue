@@ -32,7 +32,7 @@
     },
     computed: {
       computedFields () {
-        var searchFields = Object.assign([], this.searchFields)
+        var searchFields = Object.assign([], this.searchFields).filter(item => item.search)
         console.log('searchFields', searchFields)
         var count = 0
         var pointer = -1

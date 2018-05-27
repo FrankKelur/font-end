@@ -1,16 +1,17 @@
 <template lang="pug">
-  b-dialog(:show='true', :title="renderData.edit", :show-close="true", :before-close="close").edit
-    c-form(:model="tempForm", ref="tempForm", :formItemList="formItemList", :renderData="renderData", label-width="140px", label-position="left")
+  b-dialog(:show='true', :title="renderData.edit", :show-close="true", :before-close="close" width="40%").edit
+    c-form(:model="tempForm", ref="tempForm", :formItemList="formItemList", :renderData="renderData", label-width="140px", label-position="left", :visible="visible")
     template(slot="footer")
       b-button(@click="close") {{renderData.cancel}}
       b-button(@click="save", type="primary" v-if="!disabled") {{renderData.save}}
 </template>
 
 <script>
-  import cform from './cform'
+  import cForm from './cForm'
   import BIcon from 'components/BIcon'
   import BFormItem from 'components/BFormItem'
   import BButton from 'components/BButton'
+  import BDialog from 'components/BDialog'
   import service from '../service'
   import renderData from '../lang'
 
@@ -18,6 +19,7 @@
     name: 'edit',
     data () {
       return {
+        page: this.$router.currentRoute.query.page,
         renderData: renderData,
         tempForm: {}
       }
@@ -39,6 +41,13 @@
       }
     },
     methods: {
+      getDetail () {
+        service.getDetail(this.currRow, this.page).then(({data}) => {
+          Object.keys(data).forEach(key => {
+            this.$set(this.tempForm, key, data[key])
+          })
+        })
+      },
       close () {
         this.visible.dialog = null
       },
@@ -46,11 +55,17 @@
         this.$refs['tempForm'].validate(valid => {
           if (valid) {
             var params = {
-              audit_type: this.currRow.name,
-              start_page: this.currRow.start_page,
-              data: this.tempForm
+              page: this.page,
+              data: {
+                ...this.tempForm,
+                ...this.visible.dialog === 'add' ? {_key: '_key' + new Date().getTime()} : {_key: this.currRow._key}
+              }
             }
-            service.edit(params)
+            service.edit(params).then(res => {
+              this.$message({type: 'success', message: this.renderData.operateSuccess})
+              this.close()
+              this.$emit('refresh')
+            })
           }
         })
       }
@@ -60,11 +75,13 @@
       this.formItemList.forEach(item => {
         this.$set(item, 'value', item.type === 'upload' ? {} : '')
       })
+      this.getDetail()
     },
     components: {
       BIcon,
       BFormItem,
-      cform,
+      cForm,
+      BDialog,
       BButton
     }
   }
@@ -72,7 +89,6 @@
 
 <style lang="less">
   .custom-form {
-    width: 50%;
     .item {
       position: relative;
       .el-form-item {

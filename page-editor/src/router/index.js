@@ -27,7 +27,7 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'admin',
+      name: 'default',
       component: adminLayout,
       children: [
         {

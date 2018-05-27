@@ -1,25 +1,23 @@
 <template lang="pug">
-  el-form.custom-form(:model="model", ref="tempForm", :labelPosition='labelPosition')
-    el-form-item(:label-width="labelWidth", :prop="item.key", :rules="getRules(item)" v-for="(item, idx) in formItemList", :key="idx")
-      span.inline-label(slot="label", v-ellipsis-title="") {{item.type=='clause'?'':item.label}}
-      b-form-item(:model.sync='model[item.key]', :item='item', @change="itemChange", :disabled="disabled", :renderData="renderData", :uploadFileConfig="uploadFileConfig")
+  el-form.custom-form(:model="model", ref="tempForm", labelPosition='left')
+    el-form-item(:label-width="labelWidth", :prop="item.key", :rules="getRules(item)" v-for="(item, idx) in cFormItemList", :key="idx", :label="item.type=='clause'?'':item.label" v-if="show(item)")
+      b-form-item(:model.sync='model[item.key]', :item='item', @change="itemChange", :disabled="disabled", :renderData="renderData")
 </template>
 
 <script>
   import { constants, validator, fetch } from 'common/js/Utils'
   import BFormItem from 'components/BFormItem'
-  import service from '../service'
+  //  import service from '../service'
 
   export default {
-    name: 'cform',
+    name: 'c-form',
     data () {
-      var _this = this
       return {
         allFieldsMap: {},
         messageMap: {
-          number: _this.renderData.numberMessage,
-          longText: _this.renderData.longTextMessage,
-          required: _this.renderData.requiredMessage
+          number: this.renderData.numberMessage,
+          longText: this.renderData.longTextMessage,
+          required: this.renderData.requiredMessage
         }
       }
     },
@@ -29,6 +27,10 @@
         type: Object
       },
       renderData: {
+        required: true,
+        type: Object
+      },
+      visible: {
         required: true,
         type: Object
       },
@@ -43,22 +45,20 @@
       labelWidth: {
         default: '140px',
         type: String
-      },
-      labelPosition: {
-        default: 'left',
-        type: String
-      },
-      uploadFileConfig: {
-        type: Object,
-        default () {
-          return {
-            type: ['png', 'jpg', 'jpeg', 'doc', 'docx', 'pdf'],
-            maxSize: 500000 // 500K
-          }
-        }
+      }
+    },
+    computed: {
+      cFormItemList () {
+        return this.formItemList.filter(item => item.edit)
       }
     },
     methods: {
+      show (item) {
+        if (this.visible.dialog === 'add') {
+          return true
+        }
+        return item[this.visible.dialog]
+      },
       validate (callback) {
         this.$refs['tempForm'].validate(callback)
       },

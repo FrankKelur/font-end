@@ -58,6 +58,7 @@
     data () {
       var _this = this
       return {
+        page: this.$router.currentRoute.query.page,
         messageMap: {
           number: renderData.numberMessage,
           longText: renderData.longTextMessage,
@@ -159,37 +160,61 @@
           {
             type: 'input',
             icon: 'inputbox',
-            label: renderData.singleLineInputBox
+            label: renderData.singleLineInputBox,
+            list: true,
+            detail: true,
+            search: true,
+            edit: true
           },
           {
             type: 'textarea',
             icon: 'multilineinputbox',
-            label: renderData.multipleInputBox
+            label: renderData.multipleInputBox,
+            list: true,
+            detail: true,
+            search: true,
+            edit: true
           },
           {
             type: 'select',
             icon: 'radio',
             dataSource: [],
-            label: renderData.radio
+            label: renderData.radio,
+            list: true,
+            detail: true,
+            search: true,
+            edit: true
           },
           {
             type: 'select',
             icon: 'checkbox',
             multiple: true,
             dataSource: [],
-            label: renderData.checkbox
+            label: renderData.checkbox,
+            list: true,
+            detail: true,
+            search: true,
+            edit: true
           },
-          {
-            type: 'datetimerange',
-            icon: 'date',
-            label: renderData.dateRange,
-            format: 'yyyy-MM-dd mm:ss',
-            hasInterval: false
-          },
+//          {
+//            type: 'datetimerange',
+//            icon: 'date',
+//            label: renderData.dateRange,
+//            format: 'yyyy-MM-dd mm:ss',
+//            hasInterval: false,
+//            list: true,
+//            detail: true,
+//            search: true,
+//            edit: true
+//          },
           {
             type: 'text',
             icon: 'explanatorytext',
-            label: renderData.caption
+            label: renderData.caption,
+            list: false,
+            detail: true,
+            search: false,
+            edit: true
           }
           // {
           //   type: 'upload',
@@ -323,19 +348,22 @@
         })
         if (valid) {
           var params = {
-            data: this.auditInfo
+            ...this.auditInfo,
+            dataSource: this.formItemList,
+            _key: this.page ? this.page : '_p' + new Date().getTime()
           }
-          params.data.dataSource = this.formItemList
-          service.saveEnable(params)
+          service.saveEnable(params).then(res => {
+            this.$message({type: 'success', message: this.renderData.operateSuccess})
+            window.location.reload()
+          })
         }
       },
       deleteFormItem (idx) {
         this.formItemList.splice(idx, 1)
       },
-      getAuditInfo () {
-        var params = {}
-        return service.getAuditInfo(params).then(res => {
-          this.auditInfo = res.data
+      getAuditInfo (page) {
+        return service.getAuditInfo(page).then(res => {
+          Object.assign(this.auditInfo, res.data)
           this.formItemList = res.data.formItemList
           // 给每个formItem 加上value: '' (type == file 的时候 value: {})
           this.formItemList.forEach(item => {
@@ -345,7 +373,9 @@
       }
     },
     mounted () {
-      this.getAuditInfo()
+      if (this.page) {
+        this.getAuditInfo(this.page)
+      }
     },
     components: {
       BButton,
@@ -439,6 +469,10 @@
         display: inline-block;
         vertical-align: top;
         width: 50%;
+        .el-form-item.is-required .el-form-item__label:before {
+          position: relative;
+          top: -14px;
+        }
         .title {
           font-size: 16px;
           letter-spacing: 0;

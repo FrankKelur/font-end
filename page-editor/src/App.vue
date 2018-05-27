@@ -4,6 +4,7 @@
 </template>
 
 <script>
+  // z todo 导出配置功能
   export default {
     name: 'App'
   }
