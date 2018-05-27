@@ -30,15 +30,14 @@ export default {
     var url = '/api/resource/audit_setting/getAuditInfo'
     console.log(url, params)
     // return fetch(url, params)
-    var page = JSON.parse(localStorage.getItem('pages'))[0]
-    var formItemList = JSON.parse(localStorage.getItem(page)) || []
+    // var formItemList = JSON.parse(localStorage.getItem(page)) || []
     return new Promise((resolve) => {
       resolve({
         re: '200',
         data: {
-          name: page,
+          name: '',
           description: '',
-          formItemList: formItemList
+          formItemList: []
         }
       })
     })

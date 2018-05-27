@@ -13,6 +13,7 @@
   import BSearchTable from 'components/BSearchTable'
   import BButton from 'components/BButton'
   import renderData from './lang'
+  import cform from './modules/cform'
 
   export default {
     name: 'list',
@@ -27,15 +28,15 @@
         table: renderData,
         optHandler: {
           edit: {
-            label: '编辑',
+            label: renderData.edit,
             handler: this.edit
           },
           detail: {
-            label: '详情',
+            label: renderData.detail,
             handler: this.detail
           },
           delete: {
-            label: '删除',
+            label: renderData.delete,
             handler: this.delete
           }
         }
@@ -47,17 +48,25 @@
         this.visible.dialog = 'add'
       },
       edit (row) {
+        this.currRow = row
         this.visible.dialog = 'edit'
       },
       detail (row) {
+        this.currRow = row
         this.visible.dialog = 'detail'
       },
       delete (row) {
-        service.delete(row).then()
+        this.currRow = row
+        service.delete(row).then(res => {
+          this.$message({type: 'success', message: this.renderData.operateSuccess})
+        })
       }
     },
     components: {
       BButton,
+      'add': cform,
+      'detail': cform,
+      'edit': cform,
       BSearchTable
     },
     mounted () {
@@ -67,12 +76,17 @@
         this.table.listObj.headerCols = res.headerCols
         this.$refs['table'].search()
       })
-    },
+    }
+    ,
     watch: {
-      'visible.dialog': function (newVal) {
-        console.log('visible.dialog change')
-        !newVal && this.$refs['table'].search()
-      },
+      'visible.dialog':
+
+        function (newVal) {
+          console.log('visible.dialog change')
+          !newVal && this.$refs['table'].search()
+        }
+
+      ,
       'page' () {
         console.log('currentRoute.dialog change')
       }

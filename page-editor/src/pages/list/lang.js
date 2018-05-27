@@ -1,5 +1,9 @@
 var all = {
   'add': '新增',
+  'detail': '详情',
+  'delete': '删除',
+  'edit': '编辑',
+  'operateSuccess': '操作成功',
   'listObj': {
     'operation': '操作',
     'more': '更多',
