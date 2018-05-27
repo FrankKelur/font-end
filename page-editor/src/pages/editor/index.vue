@@ -422,8 +422,7 @@
   .form-set {
     height: 100%;
     min-width: 1153px;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
     .oper-container {
       border: solid;
       border-bottom-width: 1px;

@@ -51,6 +51,7 @@ export default {
       searchFields: formItemList.map(item => ({
         search: item.search,
         field: item.key,
+        dataSource: item.dataSource,
         type: item.type,
         label: item.label,
         width: 3,
