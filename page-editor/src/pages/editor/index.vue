@@ -2,9 +2,9 @@
   .form-set
     el-row(:gutter="10").oper-container.clear-float.theme-border-D
       el-col(:span="3", :offset='18')
-        b-button(@click='validateForm') {{renderData.validateForm}}
-      el-col(:span="3")
         b-button(@click='saveEnable' v-ellipsis-title="" type="primary") {{renderData.save}}
+      el-col(:span="3")
+        b-button(@click='validateForm') {{renderData.validateForm}}
     .content
       .left.draggable-item-container.theme-bg-I
         .title.theme-color-A {{renderData.controlBase}}
@@ -28,12 +28,12 @@
               b-icon(iconName='move1', size="50px")
             .line {{renderData.addControlCreatorAudit}}
       .right.theme-bg-I
-        el-tabs(v-model='activePane', type="card")
+        el-tabs(v-model='activePane')
           el-tab-pane(name="1", :label="renderData.workflowInfo")
             el-form(ref="auditInfoForm", :rules="rules", :model="auditInfo", label-position="left")
               el-form-item(prop="name", :label="renderData.workflowName")
                 b-input(:model.sync="auditInfo.name", :placeholder="renderData.pleaseInput")
-              el-form-item(prop="description.label")
+              //el-form-item(prop="description.label")
                 template(slot="label")
                   span.theme-color-C.inline-label(v-text="renderData.description", v-ellipsis-title="")
                 b-input(:model.sync="auditInfo.description.label", :placeholder="renderData.pleaseInput", :rows="3")
@@ -50,7 +50,7 @@
   import BInput from 'components/BInput'
   import BUpload from 'components/BUpload'
   import BFormItem from 'components/BFormItem'
-  import FormItemSet from './FormItemSet'
+  import FormItemSet from './modules/FormItemSet'
   import renderData from './lang.js'
 
   export default {
@@ -187,22 +187,22 @@
             hasInterval: false
           },
           {
-            type: 'upload',
-            icon: 'file',
-            label: renderData.enclosure
-          },
-          {
             type: 'text',
             icon: 'explanatorytext',
             label: renderData.caption
-          },
-          {
-            type: 'cascadeSelect',
-            icon: 'Group',
-            label: renderData.cascadeInquire,
-            follow: [],
-            dataSource: ''
           }
+          // {
+          //   type: 'upload',
+          //   icon: 'file',
+          //   label: renderData.enclosure
+          // },
+          // {
+          //   type: 'cascadeSelect',
+          //   icon: 'Group',
+          //   label: renderData.cascadeInquire,
+          //   follow: [],
+          //   dataSource: ''
+          // }
         ],
         regexObj: {
           longText: {
@@ -265,11 +265,7 @@
               message: this.messageMap['required'],
               trigger: ['blur', 'change']
             })
-          } else {
-            rule.message = this.messageMap[ruleItem]
-            res.push(rule)
-          }
-          if (ruleItem.includes('api')) {
+          } else if (ruleItem.includes('api')) {
             res.push({
               name: ruleItem,
               trigger: ['blur', 'change'],
@@ -280,7 +276,11 @@
               },
               validator: validator.validate
             })
+          } else {
+            rule.message = this.messageMap[ruleItem]
+            res.push(rule)
           }
+
           return res
         }, [])
         console.log('get rules', res)
@@ -302,10 +302,10 @@
         this.$refs['tempForm'].validate()
       },
       saveEnable () {
-        var valid = false
+        var valid = true
         console.log('saveEnable')
-        this.$refs['auditInfoForm'].validate(res => {
-          valid = res
+        this.$refs['auditInfoForm'].validate(re => {
+          valid = re && valid
           if (!valid) {
             this.activePane = '1'
           }
@@ -313,8 +313,8 @@
         this.$refs['formItemSet'].forEach((form, idx) => {
           console.log('formItemSet', form, form.validate)
           form.validate(res => {
-            valid = res
-            console.log('formItemSet res', res)
+            if (!valid) return
+            valid = valid && res
             if (!valid) {
               this.activePane = '2'
               this.currItem = this.formItemList[idx]
@@ -327,33 +327,25 @@
           }
           params.data.dataSource = this.formItemList
           service.saveEnable(params)
-        } else {
-          this.activePane = '1'
         }
       },
       deleteFormItem (idx) {
         this.formItemList.splice(idx, 1)
       },
-      getFormItemList () {
+      getAuditInfo () {
         var params = {}
-        return service.getFormItemList(params).then(res => {
-          this.formItemList = res.data
+        return service.getAuditInfo(params).then(res => {
+          this.auditInfo = res.data
+          this.formItemList = res.data.formItemList
           // 给每个formItem 加上value: '' (type == file 的时候 value: {})
           this.formItemList.forEach(item => {
             this.$set(item, 'value', item.type === 'upload' ? {} : '')
           })
         })
-      },
-      getAuditInfo () {
-        var params = {}
-        return service.getAuditInfo(params).then(res => {
-          this.auditInfo = res
-          this.formItemList = res
-        })
       }
     },
     mounted () {
-//      this.getFormItemList()
+      this.getAuditInfo()
     },
     components: {
       BButton,
@@ -365,6 +357,9 @@
     },
     watch: {
       formItemList (newVal, oldVal) {
+        if (this.formItemList.length === 1) {
+          this.currItem = this.formItemList[0]
+        }
         console.log('watch formItemList newVal, oldVal', newVal, oldVal)
         this.formItemList.forEach(item => {
           this.allFieldsMap[item.key] = item
@@ -451,9 +446,11 @@
           margin-bottom: 20px;
         }
         .middle-container {
-          height: 100%;
           display: flex;
           flex-direction: column;
+          .b-date-picker {
+            width: 100%;
+          }
           .item {
             position: relative;
             &:hover {
@@ -480,6 +477,7 @@
           .blank-item {
             padding: 55px 0;
             flex-grow: 1;
+            min-height: 250px;
             .line {
               text-align: center;
             }

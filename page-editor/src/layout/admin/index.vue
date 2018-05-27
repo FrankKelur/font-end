@@ -1,13 +1,20 @@
 <template lang="pug">
   .admin-layout
     .container.clear-float
+      admin-nav.left
+
       .content
         router-view
 </template>
 
 <script>
+  import adminNav from './modules/admin-nav'
+
   export default {
-    name: 'admin-layout'
+    name: 'admin-layout',
+    components: {
+      adminNav
+    }
   }
 </script>
 
@@ -28,7 +35,12 @@
       flex-grow:1;
       display: flex;
       height: 100%;
+      .left {
+        width: 200px;
+        padding: 50px 0;
+      }
       .content{
+        padding: 20px;
         position: relative;
         flex-grow:1;
         overflow-y: auto;
