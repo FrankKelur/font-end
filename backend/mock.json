@@ -1,0 +1,1 @@
+{"pages":[{"name":"test11","_key":"_p1527496664287"}],"form":{"_p1527496664287":[{"label":"单行输入框","placeholder":"test","key":"_1527496656464","rules":["required"],"type":"input","icon":"inputbox","list":true,"detail":true,"search":true,"edit":true,"beDependentItems":[]}]},"data":{"_p1527496664287":[{"_1527496656464":"test","_key":"_key1527499600645"}]}}

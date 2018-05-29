@@ -1,0 +1,1 @@
+{"pages":[{"name":"用户信息","_key":"userId"}],"form":{"userId":[{"label":"用户名称","placeholder":"请输入用户名称","key":"username","rules":["required"],"type":"input","icon":"inputbox","list":true,"detail":true,"search":true,"edit":true,"beDependentItems":[]}]},"data":{"userId":[]}}
