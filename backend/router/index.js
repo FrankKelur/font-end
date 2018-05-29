@@ -73,6 +73,7 @@ router.post('/config/get', function (req, res) {
     re: '200',
     data: {
       name: target.name,
+      _key: target._key,
       formItemList: formItemList
     }
   })
