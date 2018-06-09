@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -59,525 +59,521 @@
 	var SpaceStateSocket = __webpack_require__(9);
 	
 	window.Engine = function () {
-	    function Engine(config) {
-	        _classCallCheck(this, Engine);
+	  function Engine(config) {
+	    _classCallCheck(this, Engine);
 	
-	        var _this = this;
+	    var _this = this;
 	
-	        if (!config) {
-	            throw new Error();
-	        }
-	
-	        _this.config = config;
-	
-	        _this._initTools(config);
-	        _this._initOperation(config);
-	        _this._initChart(config);
-	        _this._initTradeInfo(config);
-	        _this._initDialouge();
-	        _this._createWebsocket();
-	        _this._cache = new Cache();
-	        _this._cache.initDB(config.userName);
-	        //增加更多历史数据标志位 发个只反复加载
-	        _this.addMoreFlag = false;
+	    if (!config) {
+	      throw new Error();
 	    }
 	
-	    _createClass(Engine, [{
-	        key: '_createWebsocket',
-	        value: function _createWebsocket() {
-	            var _this = this;
-	            //
-	            _this._socket = new SpaceStateSocket({
-	                serverLists: [
-	                // 'http://localhost:3600/',
-	                'https://nodese.chatecdn.com'
-	                // 'http://rsongbo.charterprime.com'
+	    _this.config = config;
 	
+	    _this._initTools(config);
+	    _this._initOperation(config);
+	    _this._initChart(config);
+	    _this._initTradeInfo(config);
+	    _this._initDialouge();
+	    _this._createWebsocket();
+	    _this._cache = new Cache();
+	    _this._cache.initDB(config.userName);
+	    //增加更多历史数据标志位 发个只反复加载
+	    _this.addMoreFlag = false;
+	  }
 	
-	                ]
-	            }, function (data) {
-	                console.log(data.connect_status);
-	            });
+	  _createClass(Engine, [{
+	    key: '_createWebsocket',
+	    value: function _createWebsocket() {
+	      var _this = this;
+	      //
+	      _this._socket = new SpaceStateSocket({
+	        serverLists: ['http://localhost:36001/']
+	      }, function (data) {
+	        console.log(data.connect_status);
+	      });
 	
-	            _this._socket.ready_realtimePrice({
-	                group: 'forexr'
-	            });
-	            _this._socket.connectedStatus(function () {
-	                _this._socket.ready_historyPrice({
-	                    server: 'charterprime-demo',
-	                    currency: _this.config.currency,
-	                    period: 1,
-	                    start: Date.now() - 10 * 60 * 60 * 1000,
-	                    end: Date.now(),
-	                    timesign: 0,
-	                    mode: 0,
-	                    uniqueid: 'new',
-	                    // type:'new',
-	                    group: 'forexr'
-	                });
-	            });
+	      _this._socket.ready_realtimePrice({
+	        group: 'forexr'
+	      });
+	      _this._socket.connectedStatus(function () {
+	        _this._socket.ready_historyPrice({
+	          server: 'charterprime-demo',
+	          currency: _this.config.currency,
+	          period: 1,
+	          start: Date.now() - 10 * 60 * 60 * 1000,
+	          end: Date.now(),
+	          timesign: 0,
+	          mode: 0,
+	          uniqueid: 'new',
+	          // type:'new',
+	          group: 'forexr'
+	        });
+	      });
 	
-	            //获取用户信息
-	            _this._socket.accountinfo(function (data) {
-	                _this._tradeInfo.vm.balance = data[600];
-	                _this._tradeInfo.vm.margin = data[602];
-	            });
-	            //获取到的数据
-	            _this._socket.realtimePrice(function (data) {
-	                _this.Tools.vm.changeNowPrice(data);
-	                _this._tradeInfo.vm.changeNowPrice(data);
-	                _this._cache.updatePrice(data);
-	                if (data[3] == _this.config.currency) {
-	                    _this._gotPrice(data);
-	                    _this._operation.vm.nowPrice = data;
-	                }
-	            });
-	            _this._socket.historyPrice(function (data) {
-	                if (data.uniqueid == 'new') {
-	                    _this._cache.AddHistoryPirce(data.data, data.symbol, data.period);
-	                    _this._gotHistoryPrice(data.data);
-	                    _this._chart._resizeCanvas();
-	                } else {
-	                    _this.addMoreHistoryPirce(data.data);
-	                    console.log('增加更多数据');
-	                }
-	                _this._chart.LoadingShow(false);
-	            });
-	            _this._socket.tradingHistory(function (data) {
-	                if (data && data.all == false) {
-	                    _this._tradeInfo.vm.waitData1 = false;
-	                    _this._tradeInfo.vm.tradingList = data.data;
-	                    _this._tradeInfo.vm.tradingOrderLen = data.totalnum;
-	                }
-	                if (data && data.all == true) {
-	                    _this._tradeInfo.vm.tradingAllList = data.data;
-	                }
-	            });
-	            _this._socket.tradedHistory(function (data) {
-	                if (data) {
-	                    _this._tradeInfo.vm.waitData2 = false;
-	                    _this._tradeInfo.vm.tradedList = data.data;
-	                    _this._tradeInfo.vm.tradedOrderLen = data.totalnum;
-	                }
-	            });
-	            _this._socket.serverStatus(function (data) {});
-	            _this._socket.openOrder(function (data) {
-	                console.log('前端收到开单请求：' + Date.now());
-	                if (data[11]) {
-	                    // _this._dialogue.vm.showDialogue(data[11],data[54],data[38],data[55],data[272],'success1');
-	                    if (_this._tradeInfo.vm.tradingList.length == 10) {
-	                        _this._tradeInfo.vm.tradingList.pop();
-	                    }
-	                    _this._tradeInfo.vm.tradingList.unshift(data);
-	                    _this._tradeInfo.vm.tradingOrderLen = parseInt(_this._tradeInfo.vm.tradingOrderLen) + 1;
-	                    //全部列表增加
+	      //获取用户信息
+	      _this._socket.accountinfo(function (data) {
+	        _this._tradeInfo.vm.balance = data[600];
+	        _this._tradeInfo.vm.margin = data[602];
+	      });
+	      //获取到的数据
+	      _this._socket.realtimePrice(function (data) {
+	        console.log('realtimePrice gotted');
+	        _this.Tools.vm.changeNowPrice(data);
+	        _this._tradeInfo.vm.changeNowPrice(data);
+	        _this._cache.updatePrice(data);
+	        if (data[3] == _this.config.currency) {
+	          _this._gotPrice(data);
+	          _this._operation.vm.nowPrice = data;
+	        }
+	      });
+	      _this._socket.historyPrice(function (data) {
+	        console.log('historyPrice gotted');
+	        if (data.uniqueid == 'new') {
+	          _this._cache.AddHistoryPirce(data.data, data.symbol, data.period);
+	          _this._gotHistoryPrice(data.data);
+	          _this._chart._resizeCanvas();
+	        } else {
+	          _this.addMoreHistoryPirce(data.data);
+	          console.log('增加更多数据');
+	        }
+	        _this._chart.LoadingShow(false);
+	      });
+	      _this._socket.tradingHistory(function (data) {
+	        if (data && data.all == false) {
+	          _this._tradeInfo.vm.waitData1 = false;
+	          _this._tradeInfo.vm.tradingList = data.data;
+	          _this._tradeInfo.vm.tradingOrderLen = data.totalnum;
+	        }
+	        if (data && data.all == true) {
+	          _this._tradeInfo.vm.tradingAllList = data.data;
+	        }
+	      });
+	      _this._socket.tradedHistory(function (data) {
+	        if (data) {
+	          _this._tradeInfo.vm.waitData2 = false;
+	          _this._tradeInfo.vm.tradedList = data.data;
+	          _this._tradeInfo.vm.tradedOrderLen = data.totalnum;
+	        }
+	      });
+	      _this._socket.serverStatus(function (data) {});
+	      _this._socket.openOrder(function (data) {
+	        console.log('前端收到开单请求：' + Date.now());
+	        if (data[11]) {
+	          // _this._dialogue.vm.showDialogue(data[11],data[54],data[38],data[55],data[272],'success1');
+	          if (_this._tradeInfo.vm.tradingList.length == 10) {
+	            _this._tradeInfo.vm.tradingList.pop();
+	          }
+	          _this._tradeInfo.vm.tradingList.unshift(data);
+	          _this._tradeInfo.vm.tradingOrderLen = parseInt(_this._tradeInfo.vm.tradingOrderLen) + 1;
+	          //全部列表增加
 	
-	                    _this._tradeInfo.vm.tradingAllList.unshift(data);
-	                    _this._socket.ready_accountinfo({
-	                        login: _this.config.userName,
-	                        token: _this.config.userToken
-	                    });
-	                } else {
-	                    // _this._dialogue.vm.showErrDia()
-	                }
-	            });
+	          _this._tradeInfo.vm.tradingAllList.unshift(data);
+	          _this._socket.ready_accountinfo({
+	            login: _this.config.userName,
+	            token: _this.config.userToken
+	          });
+	        } else {
+	          // _this._dialogue.vm.showErrDia()
+	        }
+	      });
 	
-	            // _this._socket.login(function(data){
-	            //     console.log(data);
-	            //     _this.config.userToken = data[101];
-	            //     _this.config.userName= data[50];
-	            //     _this._socket.ready_tradingHistory({
-	            //         login:_this.config.userName,
-	            //         token:_this.config.userToken ,
-	            //         start: 0,
-	            //         limit: 10
-	            //     });
-	            //
-	            //     _this._socket.ready_tradedHistory({
-	            //         login: _this.config.userName,
-	            //         token:_this.config.userToken ,
-	            //         start: 0,
-	            //         limit: 10
-	            //     });
-	            //     _this._socket.ready_accountinfo({
-	            //         login: _this.config.userName,
-	            //         token:_this.config.userToken ,
-	            //     });
-	            // });
-	            _this._socket.logout(function (data) {
-	                console.log('等出成果');
-	            });
-	            _this._socket.closeOrder(function (data) {
-	                if (data[11]) {
-	                    // _this._dialogue.vm.showDialogue(data[11],data[54],data[38],data[55],data[271],'success2');
-	                    _this._socket.ready_tradingHistory({
-	                        login: _this.config.userName,
-	                        token: _this.config.userToken,
-	                        start: (_this._tradeInfo.vm.nowTradingPage - 1) * 10,
-	                        limit: 10,
-	                        all: false
-	                    });
-	                    _this._socket.ready_tradedHistory({
-	                        login: _this.config.userName,
-	                        token: _this.config.userToken,
-	                        start: (_this._tradeInfo.vm.nowTradedPage - 1) * 10,
-	                        limit: 10
-	                    });
-	                    _this._socket.ready_tradingHistory({
-	                        login: _this.config.userName,
-	                        token: _this.config.userToken,
-	                        all: true
-	                    });
-	                    _this._socket.ready_accountinfo({
-	                        login: _this.config.userName,
-	                        token: _this.config.userToken
-	                    });
-	                } else {
-	                    // _this._dialogue.vm.showErrDia()
-	                }
-	            });
+	      // _this._socket.login(function(data){
+	      //     console.log(data);
+	      //     _this.config.userToken = data[101];
+	      //     _this.config.userName= data[50];
+	      //     _this._socket.ready_tradingHistory({
+	      //         login:_this.config.userName,
+	      //         token:_this.config.userToken ,
+	      //         start: 0,
+	      //         limit: 10
+	      //     });
+	      //
+	      //     _this._socket.ready_tradedHistory({
+	      //         login: _this.config.userName,
+	      //         token:_this.config.userToken ,
+	      //         start: 0,
+	      //         limit: 10
+	      //     });
+	      //     _this._socket.ready_accountinfo({
+	      //         login: _this.config.userName,
+	      //         token:_this.config.userToken ,
+	      //     });
+	      // });
+	      _this._socket.logout(function (data) {
+	        console.log('等出成果');
+	      });
+	      _this._socket.closeOrder(function (data) {
+	        if (data[11]) {
+	          // _this._dialogue.vm.showDialogue(data[11],data[54],data[38],data[55],data[271],'success2');
+	          _this._socket.ready_tradingHistory({
+	            login: _this.config.userName,
+	            token: _this.config.userToken,
+	            start: (_this._tradeInfo.vm.nowTradingPage - 1) * 10,
+	            limit: 10,
+	            all: false
+	          });
+	          _this._socket.ready_tradedHistory({
+	            login: _this.config.userName,
+	            token: _this.config.userToken,
+	            start: (_this._tradeInfo.vm.nowTradedPage - 1) * 10,
+	            limit: 10
+	          });
+	          _this._socket.ready_tradingHistory({
+	            login: _this.config.userName,
+	            token: _this.config.userToken,
+	            all: true
+	          });
+	          _this._socket.ready_accountinfo({
+	            login: _this.config.userName,
+	            token: _this.config.userToken
+	          });
+	        } else {
+	          // _this._dialogue.vm.showErrDia()
+	        }
+	      });
 	
-	            //初次需要数据
-	            _this._socket.ready_tradingHistory({
-	                login: _this.config.userName,
-	                token: _this.config.userToken,
-	                start: 0,
-	                limit: 10,
-	                all: false
-	            });
-	            //初次需要数据
-	            _this._socket.ready_tradingHistory({
-	                login: _this.config.userName,
-	                token: _this.config.userToken,
-	                all: true
-	            });
+	      //初次需要数据
+	      _this._socket.ready_tradingHistory({
+	        login: _this.config.userName,
+	        token: _this.config.userToken,
+	        start: 0,
+	        limit: 10,
+	        all: false
+	      });
+	      //初次需要数据
+	      _this._socket.ready_tradingHistory({
+	        login: _this.config.userName,
+	        token: _this.config.userToken,
+	        all: true
+	      });
 	
-	            _this._socket.ready_tradedHistory({
-	                login: _this.config.userName,
-	                token: _this.config.userToken,
-	                start: 0,
-	                limit: 10
-	            });
-	            _this._socket.ready_accountinfo({
-	                login: _this.config.userName,
-	                token: _this.config.userToken
-	            });
-	            _this._socket.tokenError(function () {
-	                _this.config.tokenErrorCb();
-	            });
-	        }
-	    }, {
-	        key: '_initChart',
-	        value: function _initChart(config) {
-	            var _this = this;
+	      _this._socket.ready_tradedHistory({
+	        login: _this.config.userName,
+	        token: _this.config.userToken,
+	        start: 0,
+	        limit: 10
+	      });
+	      _this._socket.ready_accountinfo({
+	        login: _this.config.userName,
+	        token: _this.config.userToken
+	      });
+	      _this._socket.tokenError(function () {
+	        _this.config.tokenErrorCb();
+	      });
+	    }
+	  }, {
+	    key: '_initChart',
+	    value: function _initChart(config) {
+	      var _this = this;
 	
-	            _this._chart = new Chart(config);
-	            _this._chart.parent = _this;
-	        }
-	    }, {
-	        key: '_initTradeInfo',
-	        value: function _initTradeInfo(config) {
-	            var _this = this;
-	            _this._tradeInfo = new TardeInfo(config, _this);
-	            _this._tradeInfo.vm.langType = _this.config.lang;
-	        }
-	    }, {
-	        key: '_initDialouge',
-	        value: function _initDialouge() {
-	            var _this = this;
-	            _this._dialogue = new Dialogue();
-	            _this._dialogue.vm.langType = _this.config.lang;
-	        }
-	    }, {
-	        key: '_initOperation',
-	        value: function _initOperation(config) {
-	            var _this = this;
+	      _this._chart = new Chart(config);
+	      _this._chart.parent = _this;
+	    }
+	  }, {
+	    key: '_initTradeInfo',
+	    value: function _initTradeInfo(config) {
+	      var _this = this;
+	      _this._tradeInfo = new TardeInfo(config, _this);
+	      _this._tradeInfo.vm.langType = _this.config.lang;
+	    }
+	  }, {
+	    key: '_initDialouge',
+	    value: function _initDialouge() {
+	      var _this = this;
+	      _this._dialogue = new Dialogue();
+	      _this._dialogue.vm.langType = _this.config.lang;
+	    }
+	  }, {
+	    key: '_initOperation',
+	    value: function _initOperation(config) {
+	      var _this = this;
 	
-	            _this._operation = new Operation(config, _this);
-	        }
-	    }, {
-	        key: '_initTools',
-	        value: function _initTools(config) {
-	            var _this = this;
+	      _this._operation = new Operation(config, _this);
+	    }
+	  }, {
+	    key: '_initTools',
+	    value: function _initTools(config) {
+	      var _this = this;
 	
-	            _this.Tools = new Tools(config, _this);
+	      _this.Tools = new Tools(config, _this);
+	    }
+	  }, {
+	    key: '_gotHistoryPrice',
+	    value: function _gotHistoryPrice(msg) {
+	      var _this = this;
+	      /* 对蜡烛图历史数据的处理 */
+	      var historyPrice = [];
+	      if (msg && msg.length > 0 && msg[0].length > 2) {
+	        /* 获得蜡烛图历史 */
+	        for (var i = 0; i < msg.length; i++) {
+	          historyPrice.push([msg[i][0], msg[i][4]]);
 	        }
-	    }, {
-	        key: '_gotHistoryPrice',
-	        value: function _gotHistoryPrice(msg) {
-	            var _this = this;
-	            /* 对蜡烛图历史数据的处理 */
-	            var historyPrice = [];
-	            if (msg && msg.length > 0 && msg[0].length > 2) {
-	                /* 获得蜡烛图历史 */
-	                for (var i = 0; i < msg.length; i++) {
-	                    historyPrice.push([msg[i][0], msg[i][4]]);
-	                }
-	            } else {
-	                historyPrice = msg;
-	            }
+	      } else {
+	        historyPrice = msg;
+	      }
 	
-	            _this._chart.SetCandleHistory(msg).SetHistoryPrice(historyPrice);
+	      _this._chart.SetCandleHistory(msg).SetHistoryPrice(historyPrice);
 	
-	            _this._startDraw();
-	        }
-	    }, {
-	        key: '_gotPrice',
-	        value: function _gotPrice(data) {
-	            var _this = this;
+	      _this._startDraw();
+	    }
+	  }, {
+	    key: '_gotPrice',
+	    value: function _gotPrice(data) {
+	      var _this = this;
 	
-	            /* 增加历史数据 */
-	            _this._chart.AddCandleHistoryPrice(data);
+	      /* 增加历史数据 */
+	      _this._chart.AddCandleHistoryPrice(data);
 	
-	            /* gen scale_left and scale_right */
-	            _this._chart.GenHorizentalScale(false, data);
+	      /* gen scale_left and scale_right */
+	      _this._chart.GenHorizentalScale(false, data);
 	
-	            /*增加即使图价格数组*/
-	            _this._chart.UpdateNowChart(data);
-	            /* 更新时间 */
-	            //this.realTime = data[0].toString();
-	        }
-	    }, {
-	        key: '_getAllAssetsResponse',
-	        value: function _getAllAssetsResponse(msg) {
-	            console.log(msg);
-	        }
-	    }, {
-	        key: '_errorHandler',
-	        value: function _errorHandler(err) {
-	            console.log(err);
-	        }
-	    }, {
-	        key: '_startDraw',
-	        value: function _startDraw() {
-	            var _this = this;
-	            _this._chart.StartDraw();
-	        }
+	      /*增加即使图价格数组*/
+	      _this._chart.UpdateNowChart(data);
+	      /* 更新时间 */
+	      //this.realTime = data[0].toString();
+	    }
+	  }, {
+	    key: '_getAllAssetsResponse',
+	    value: function _getAllAssetsResponse(msg) {
+	      console.log(msg);
+	    }
+	  }, {
+	    key: '_errorHandler',
+	    value: function _errorHandler(err) {
+	      console.log(err);
+	    }
+	  }, {
+	    key: '_startDraw',
+	    value: function _startDraw() {
+	      var _this = this;
+	      _this._chart.StartDraw();
+	    }
 	
-	        /* 改变资产 */
+	    /* 改变资产 */
 	
-	    }, {
-	        key: 'ChangeSymbol',
-	        value: function ChangeSymbol(symbol) {
-	            var _this = this;
+	  }, {
+	    key: 'ChangeSymbol',
+	    value: function ChangeSymbol(symbol) {
+	      var _this = this;
 	
-	            _this._chart.nowChartPrice = [];
-	            _this.config.currency = symbol;
-	            _this._chart.config.currency = symbol;
-	            _this._chart.StopDraw();
-	            var getPricePromise = _this._cache.getHistoryPrice(_this.config.currency + '-' + _this.config.candlePeriod.slice(1));
-	            getPricePromise.then(function (priceArray) {
-	                if (priceArray) {
-	                    _this._gotHistoryPrice(priceArray.data);
-	                } else {
-	                    _this._chart.LoadingShow(true);
-	                    _this._socket.ready_historyPrice({
-	                        server: 'charterprime-demo',
-	                        currency: _this.config.currency,
-	                        period: _this.config.candlePeriod.slice(1),
-	                        start: Date.now() - 1000 * 60 * 1000 * _this.config.candlePeriod.slice(1),
-	                        end: Date.now(),
-	                        timesign: 0,
-	                        mode: 0,
-	                        uniqueid: 'new',
-	                        // type:'new'
-	                        group: 'forexr'
-	                    });
-	                }
-	            });
+	      _this._chart.nowChartPrice = [];
+	      _this.config.currency = symbol;
+	      _this._chart.config.currency = symbol;
+	      _this._chart.StopDraw();
+	      var getPricePromise = _this._cache.getHistoryPrice(_this.config.currency + '-' + _this.config.candlePeriod.slice(1));
+	      getPricePromise.then(function (priceArray) {
+	        if (priceArray) {
+	          _this._gotHistoryPrice(priceArray.data);
+	        } else {
+	          _this._chart.LoadingShow(true);
+	          _this._socket.ready_historyPrice({
+	            server: 'charterprime-demo',
+	            currency: _this.config.currency,
+	            period: _this.config.candlePeriod.slice(1),
+	            start: Date.now() - 1000 * 60 * 1000 * _this.config.candlePeriod.slice(1),
+	            end: Date.now(),
+	            timesign: 0,
+	            mode: 0,
+	            uniqueid: 'new',
+	            // type:'new'
+	            group: 'forexr'
+	          });
 	        }
-	    }, {
-	        key: 'ChangeChartType',
-	        value: function ChangeChartType(type) {
-	            var _this = this;
-	            type = type.toLowerCase();
-	            if (type == 'line') {
-	                type = 'tick';
-	            }
-	            _this._chart.ChangeChartType(type);
-	        }
-	    }, {
-	        key: 'SwitchTimeInterval',
-	        value: function SwitchTimeInterval(m) {
-	            var _this = this;
-	            _this.config.candlePeriod = m;
+	      });
+	    }
+	  }, {
+	    key: 'ChangeChartType',
+	    value: function ChangeChartType(type) {
+	      var _this = this;
+	      type = type.toLowerCase();
+	      if (type == 'line') {
+	        type = 'tick';
+	      }
+	      _this._chart.ChangeChartType(type);
+	    }
+	  }, {
+	    key: 'SwitchTimeInterval',
+	    value: function SwitchTimeInterval(m) {
+	      var _this = this;
+	      _this.config.candlePeriod = m;
 	
-	            _this._chart.StopDraw();
-	            _this._chart.SwitchTimeInterval(m);
-	            var getPricePromise = _this._cache.getHistoryPrice(_this.config.currency + '-' + _this.config.candlePeriod.slice(1));
-	            getPricePromise.then(function (priceArray) {
-	                if (priceArray) {
-	                    _this._gotHistoryPrice(priceArray.data);
-	                } else {
-	                    _this._chart.LoadingShow(true);
-	                    _this._socket.ready_historyPrice({
-	                        server: 'charterprime-demo',
-	                        currency: _this.config.currency,
-	                        period: m.slice(1),
-	                        start: Date.now() - 1000 * 60 * 1000 * m.slice(1),
-	                        end: Date.now(),
-	                        timesign: 0,
-	                        mode: 0,
-	                        uniqueid: 'new',
-	                        // type:'new'
-	                        group: 'forexr'
-	                    });
-	                }
-	            });
+	      _this._chart.StopDraw();
+	      _this._chart.SwitchTimeInterval(m);
+	      var getPricePromise = _this._cache.getHistoryPrice(_this.config.currency + '-' + _this.config.candlePeriod.slice(1));
+	      getPricePromise.then(function (priceArray) {
+	        if (priceArray) {
+	          _this._gotHistoryPrice(priceArray.data);
+	        } else {
+	          _this._chart.LoadingShow(true);
+	          _this._socket.ready_historyPrice({
+	            server: 'charterprime-demo',
+	            currency: _this.config.currency,
+	            period: m.slice(1),
+	            start: Date.now() - 1000 * 60 * 1000 * m.slice(1),
+	            end: Date.now(),
+	            timesign: 0,
+	            mode: 0,
+	            uniqueid: 'new',
+	            // type:'new'
+	            group: 'forexr'
+	          });
 	        }
-	    }, {
-	        key: 'ToggleCross',
-	        value: function ToggleCross() {
-	            var _this = this;
+	      });
+	    }
+	  }, {
+	    key: 'ToggleCross',
+	    value: function ToggleCross() {
+	      var _this = this;
 	
-	            _this._chart.ToggleCross();
-	        }
-	    }, {
-	        key: 'ToggleHangMove',
-	        value: function ToggleHangMove(on) {
-	            var _this = this;
-	            if (on) {
-	                _this._chart.ListenMoveChart();
-	            } else {
-	                _this._chart.StopListenMoveChart();
-	            }
-	        }
-	    }, {
-	        key: 'Zoom',
-	        value: function Zoom(plus, val) {
-	            var _this = this;
-	            _this._chart.Zoom(plus, val);
-	        }
-	    }, {
-	        key: 'buy',
-	        value: function buy(value) {
-	            console.log('前端发送开单请求：' + Date.now());
+	      _this._chart.ToggleCross();
+	    }
+	  }, {
+	    key: 'ToggleHangMove',
+	    value: function ToggleHangMove(on) {
+	      var _this = this;
+	      if (on) {
+	        _this._chart.ListenMoveChart();
+	      } else {
+	        _this._chart.StopListenMoveChart();
+	      }
+	    }
+	  }, {
+	    key: 'Zoom',
+	    value: function Zoom(plus, val) {
+	      var _this = this;
+	      _this._chart.Zoom(plus, val);
+	    }
+	  }, {
+	    key: 'buy',
+	    value: function buy(value) {
+	      console.log('前端发送开单请求：' + Date.now());
 	
-	            var _this = this;
-	            // _this._dialogue.vm.showLoadingDia();
-	            _this._socket.ready_openOrder({
-	                login: _this.config.userName,
-	                token: _this.config.userToken,
-	                currency: _this.config.currency,
-	                type: 1,
-	                vol: value
-	            });
-	        }
-	    }, {
-	        key: 'sell',
-	        value: function sell(value) {
-	            var _this = this;
-	            // _this._dialogue.vm.showLoadingDia();
-	            _this._socket.ready_openOrder({
-	                login: _this.config.userName,
-	                token: _this.config.userToken,
-	                currency: _this.config.currency,
-	                type: 2,
-	                vol: value
-	            });
-	        }
-	    }, {
-	        key: 'login',
-	        value: function login(user, password) {
-	            var _this = this;
-	            _this._socket.ready_login({
-	                login: user,
-	                pwd: password
-	            });
-	        }
-	    }, {
-	        key: 'logout',
-	        value: function logout() {
-	            var _this = this;
-	            _this._socket.ready_logout({
-	                login: _this.config.userName,
-	                token: _this.config.userToken
-	            });
-	        }
-	    }, {
-	        key: 'close',
-	        value: function close(ordernum, type, vol) {
+	      var _this = this;
+	      // _this._dialogue.vm.showLoadingDia();
+	      _this._socket.ready_openOrder({
+	        login: _this.config.userName,
+	        token: _this.config.userToken,
+	        currency: _this.config.currency,
+	        type: 1,
+	        vol: value
+	      });
+	    }
+	  }, {
+	    key: 'sell',
+	    value: function sell(value) {
+	      var _this = this;
+	      // _this._dialogue.vm.showLoadingDia();
+	      _this._socket.ready_openOrder({
+	        login: _this.config.userName,
+	        token: _this.config.userToken,
+	        currency: _this.config.currency,
+	        type: 2,
+	        vol: value
+	      });
+	    }
+	  }, {
+	    key: 'login',
+	    value: function login(user, password) {
+	      var _this = this;
+	      _this._socket.ready_login({
+	        login: user,
+	        pwd: password
+	      });
+	    }
+	  }, {
+	    key: 'logout',
+	    value: function logout() {
+	      var _this = this;
+	      _this._socket.ready_logout({
+	        login: _this.config.userName,
+	        token: _this.config.userToken
+	      });
+	    }
+	  }, {
+	    key: 'close',
+	    value: function close(ordernum, type, vol) {
 	
-	            var _this = this;
-	            // _this._dialogue.vm.showLoadingDia();
-	            _this._socket.ready_closeOrder({
-	                login: _this.config.userName,
-	                ordernum: ordernum,
-	                token: _this.config.userToken,
-	                type: type,
-	                vol: vol
-	            });
-	        }
-	    }, {
-	        key: 'changeTradeInfoPage',
-	        value: function changeTradeInfoPage(type, page) {
-	            var _this = this;
+	      var _this = this;
+	      // _this._dialogue.vm.showLoadingDia();
+	      _this._socket.ready_closeOrder({
+	        login: _this.config.userName,
+	        ordernum: ordernum,
+	        token: _this.config.userToken,
+	        type: type,
+	        vol: vol
+	      });
+	    }
+	  }, {
+	    key: 'changeTradeInfoPage',
+	    value: function changeTradeInfoPage(type, page) {
+	      var _this = this;
 	
-	            if (type == 'trading') {
-	                _this._tradeInfo.vm.waitData1 = true;
-	                _this._socket.ready_tradingHistory({
-	                    login: _this.config.userName,
-	                    token: _this.config.userToken,
-	                    start: (page - 1) * 10,
-	                    limit: 10,
-	                    all: false
-	                });
-	            } else {
-	                _this._tradeInfo.vm.waitData2 = true;
-	                _this._socket.ready_tradedHistory({
-	                    login: _this.config.userName,
-	                    token: _this.config.userToken,
-	                    start: (page - 1) * 10,
-	                    limit: 10
-	                });
-	            }
+	      if (type == 'trading') {
+	        _this._tradeInfo.vm.waitData1 = true;
+	        _this._socket.ready_tradingHistory({
+	          login: _this.config.userName,
+	          token: _this.config.userToken,
+	          start: (page - 1) * 10,
+	          limit: 10,
+	          all: false
+	        });
+	      } else {
+	        _this._tradeInfo.vm.waitData2 = true;
+	        _this._socket.ready_tradedHistory({
+	          login: _this.config.userName,
+	          token: _this.config.userToken,
+	          start: (page - 1) * 10,
+	          limit: 10
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'askAddMoreHistoryPirce',
+	    value: function askAddMoreHistoryPirce(startTime) {
+	      var _this = this;
+	      _this._chart.LoadingShow(true);
+	      if (!_this.addMoreFlag) {
+	        _this._socket.ready_historyPrice({
+	          server: 'charterprime-demo',
+	          currency: _this.config.currency,
+	          period: _this.config.candlePeriod.slice(1),
+	          start: startTime - 60 * 60 * 1000 * _this.config.candlePeriod.slice(1),
+	          end: startTime,
+	          timesign: 0,
+	          mode: 0,
+	          uniqueid: 'more',
+	          // type:'new'
+	          group: 'forexr'
+	        });
+	        _this.addMoreFlag = true;
+	      }
+	    }
+	  }, {
+	    key: 'addMoreHistoryPirce',
+	    value: function addMoreHistoryPirce(data) {
+	      var _this = this;
+	      var historyPrice = [];
+	      if (data && data.length > 0 && data[0].length > 2) {
+	        /* 获得蜡烛图历史 */
+	        for (var i = 0; i < data.length; i++) {
+	          historyPrice.push([data[i][0], data[i][4]]);
 	        }
-	    }, {
-	        key: 'askAddMoreHistoryPirce',
-	        value: function askAddMoreHistoryPirce(startTime) {
-	            var _this = this;
-	            _this._chart.LoadingShow(true);
-	            if (!_this.addMoreFlag) {
-	                _this._socket.ready_historyPrice({
-	                    server: 'charterprime-demo',
-	                    currency: _this.config.currency,
-	                    period: _this.config.candlePeriod.slice(1),
-	                    start: startTime - 60 * 60 * 1000 * _this.config.candlePeriod.slice(1),
-	                    end: startTime,
-	                    timesign: 0,
-	                    mode: 0,
-	                    uniqueid: 'more',
-	                    // type:'new'
-	                    group: 'forexr'
-	                });
-	                _this.addMoreFlag = true;
-	            }
-	        }
-	    }, {
-	        key: 'addMoreHistoryPirce',
-	        value: function addMoreHistoryPirce(data) {
-	            var _this = this;
-	            var historyPrice = [];
-	            if (data && data.length > 0 && data[0].length > 2) {
-	                /* 获得蜡烛图历史 */
-	                for (var i = 0; i < data.length; i++) {
-	                    historyPrice.push([data[i][0], data[i][4]]);
-	                }
-	            } else {
-	                historyPrice = data;
-	            }
-	            _this._chart.AddCandleHistoryPirce(data);
-	            _this._chart.AddHistoryPirce(historyPrice);
-	            _this.addMoreFlag = false;
-	        }
-	    }]);
+	      } else {
+	        historyPrice = data;
+	      }
+	      _this._chart.AddCandleHistoryPirce(data);
+	      _this._chart.AddHistoryPirce(historyPrice);
+	      _this.addMoreFlag = false;
+	    }
+	  }]);
 	
-	    return Engine;
+	  return Engine;
 	}();
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -2056,9 +2052,9 @@
 	    _this.historyPrice = data.concat(_this.historyPrice);
 	}
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -2126,6 +2122,8 @@
 	                        'USDCAD': ['0.00000', '0.00000'],
 	                        'USDCHF': ['0.00000', '0.00000'],
 	                        'USDJPY': ['0.000', '0.000']
+	                        // 'XAGUSD':['0.00000','0.00000'],
+	                        // 'XAUUSD':['0.00000','0.00000'],
 	                    },
 	                    prePrice: {
 	                        'AUDCAD': ['0.00000', '0.00000'],
@@ -2154,6 +2152,8 @@
 	                        'USDCAD': ['0.00000', '0.00000'],
 	                        'USDCHF': ['0.00000', '0.00000'],
 	                        'USDJPY': ['0.000', '0.000']
+	                        // 'XAGUSD':['0.00000','0.00000'],
+	                        // 'XAUUSD':['0.00000','0.00000'],
 	                    },
 	                    nowChart: 'Candle',
 	                    chartListShow: false,
@@ -2270,9 +2270,9 @@
 	}
 	module.exports = Tools;
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -2313,9 +2313,9 @@
 	    document.body.appendChild(dialogueEle);
 	};
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -2329,9 +2329,9 @@
 	    return re;
 	};
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -2402,6 +2402,8 @@
 	                    'USDCAD': ['0.00000', '0.00000'],
 	                    'USDCHF': ['0.00000', '0.00000'],
 	                    'USDJPY': ['0.00000', '0.00000']
+	                    // 'XAGUSD':['0.00000','0.00000'],
+	                    // 'XAUUSD':['0.00000','0.00000'],
 	                }), _defineProperty(_data, 'tradedShowPrev', false), _defineProperty(_data, 'tradedShowNext', false), _defineProperty(_data, 'tradingShowPrev', false), _defineProperty(_data, 'tradingShowNext', false), _defineProperty(_data, 'colors', {
 	                    'sell': '#D0011B',
 	                    'buy': '#1A74DD'
@@ -2670,9 +2672,9 @@
 	
 	module.exports = tardeInfo;
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -2768,9 +2770,9 @@
 	
 	module.exports = operation;
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -2827,7 +2829,8 @@
 	                            'success2': 'Close Successful!'
 	                        }
 	                    },
-	                    timeOut: 2 },
+	                    timeOut: 2 //s
+	                },
 	
 	                methods: {
 	                    close: function close() {
@@ -2909,9 +2912,9 @@
 	
 	module.exports = traderDialogue;
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -3044,9 +3047,9 @@
 	
 	module.exports = Cache;
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -3058,521 +3061,528 @@
 	//SatelliteSocket
 	
 	function SatelliteSocket(config, mainCallback) {
-	    var _this = this;
+	  var _this = this;
 	
-	    initConfig();
+	  initConfig();
 	
-	    _this.bestServer(false);
+	  _this.bestServer(false);
 	
-	    function initConfig() {
-	        _this.config = {
-	            serverLists: config.serverLists, //配置的服务器
-	            pingOverTime: config.pingOverTime || 2000, //获取最优服务器的超时时间
-	            connectStatusIntervalTime: 6000, //获取服务器状态的间隔时间
-	            reConnectNum: 10, //重连次数
-	            dataOvertimeInterval: 7000 };
+	  function initConfig() {
+	    _this.config = {
+	      serverLists: config.serverLists, //配置的服务器
+	      pingOverTime: config.pingOverTime || 2000, //获取最优服务器的超时时间
+	      connectStatusIntervalTime: 6000, //获取服务器状态的间隔时间
+	      reConnectNum: 10, //重连次数
+	      dataOvertimeInterval: 7000 //每次获取数据的超时时间
+	    };
 	
-	        _this.connectServerStatus = { //所有node server信息
-	            server: [],
-	            browserTime: [],
-	            newrouteTime: [],
-	            time: [],
-	            socket: []
-	        };
+	    _this.connectServerStatus = { //所有node server信息
+	      server: [],
+	      browserTime: [],
+	      newrouteTime: [],
+	      time: [],
+	      socket: []
+	    };
 	
-	        _this.choosenSocket = {}; //已选择的node
-	        _this.isChoosenSocketDone = false; //是否选择完node
-	        _this.heartbeatFlag = true; //心跳方法开关
-	        _this.maxConnectTime = 1000000; //连接无效 将连接时间设为1000000
+	    _this.choosenSocket = {}; //已选择的node
+	    _this.isChoosenSocketDone = false; //是否选择完node
+	    _this.heartbeatFlag = true; //心跳方法开关
+	    _this.maxConnectTime = 1000000; //连接无效 将连接时间设为1000000
 	
-	        //连接状态列表[连接中，已连接，所有路线连接失败，收拾数据的这条路线每次接收数据间隔超时,node连接中,node所有模块已连接,node连接newroute已关闭，node每次接收newroute数据超时]
-	        _this.connectEnum = ['connecting', 'connected', 'connect_error', 'connect_overtime', 'node_connecting', 'node_connected', 'node_connected_close', 'node_connected_overtime'];
+	    //连接状态列表[连接中，已连接，所有路线连接失败，收拾数据的这条路线每次接收数据间隔超时,node连接中,node所有模块已连接,node连接newroute已关闭，node每次接收newroute数据超时]
+	    _this.connectEnum = ['connecting', 'connected', 'connect_error', 'connect_overtime', 'node_connecting', 'node_connected', 'node_connected_close', 'node_connected_overtime'];
 	
-	        _this.mainCallbackReturn = {}; //回调函数的返回
-	        _this.mainCallbackReturn.connect_status = _this.connectEnum[0]; //返回回调函数的连接状态
-	        _this.mainCallback = mainCallback ? mainCallback : function () {};
+	    _this.mainCallbackReturn = {}; //回调函数的返回
+	    _this.mainCallbackReturn.connect_status = _this.connectEnum[0]; //返回回调函数的连接状态
+	    _this.mainCallback = mainCallback ? mainCallback : function () {};
+	    _this.mainCallback(_this.mainCallbackReturn);
+	
+	    _this.sendEvent = function (eventname, obj) {
+	      //选择完服务器后发送
+	      _this.handleOnFunc(_this.isChoosenSocketDone, function () {
+	        _this.choosenSocket.send(eventname, obj);
+	      });
+	    };
+	    _this.receiveEvent = function (eventname, callback) {
+	      //选择完服务器后接收
+	      _this.handleOnFunc(_this.isChoosenSocketDone, function () {
+	        _this.choosenSocket.receive(eventname, function (data) {
+	          callback && callback(data);
+	        });
+	      });
+	    };
+	    _this.sendOnceEvent = function (eventname, obj, callback) {
+	      if (_this.isChoosenSocketDone) {
+	        _this.choosenSocket.send(eventname, obj);
+	      } else {
+	        //返回正在连接中 不进行提交
+	        callback && callback('connecting');
+	      }
+	    };
+	
+	    _this.handleOnFunc = function (isChoosenSocketDone, callback) {
+	      if (isChoosenSocketDone) {
+	        callback();
+	      } else {
+	        satelliteEvent.on('hasChoosenSocket', function () {
+	          callback();
+	        });
+	        // window.addEventListener('hasChoosenSocket', function(){
+	        //     callback();
+	        // })
+	      }
+	    };
+	    _this.dataOverTimeHandle = function (currenttime, lasttime, overtime) {
+	      //处理超时
+	      if (currenttime - lasttime > overtime) {
+	        //_this.heartbeatFlag = 'close';
+	        //连接异常，自动更换线路
+	        console.log('_this.connectEnum[3] 111');
+	        _this.mainCallbackReturn.connect_status = _this.connectEnum[3];
 	        _this.mainCallback(_this.mainCallbackReturn);
-	
-	        _this.sendEvent = function (eventname, obj) {
-	            //选择完服务器后发送
-	            _this.handleOnFunc(_this.isChoosenSocketDone, function () {
-	                _this.choosenSocket.send(eventname, obj);
-	            });
-	        };
-	        _this.receiveEvent = function (eventname, callback) {
-	            //选择完服务器后接收
-	            _this.handleOnFunc(_this.isChoosenSocketDone, function () {
-	                _this.choosenSocket.receive(eventname, function (data) {
-	                    callback && callback(data);
-	                });
-	            });
-	        };
-	        _this.sendOnceEvent = function (eventname, obj, callback) {
-	            if (_this.isChoosenSocketDone) {
-	                _this.choosenSocket.send(eventname, obj);
-	            } else {
-	                //返回正在连接中 不进行提交
-	                callback && callback('connecting');
-	            }
-	        };
-	
-	        _this.handleOnFunc = function (isChoosenSocketDone, callback) {
-	            if (isChoosenSocketDone) {
-	                callback();
-	            } else {
-	                satelliteEvent.on('hasChoosenSocket', function () {
-	                    callback();
-	                });
-	                // window.addEventListener('hasChoosenSocket', function(){
-	                //     callback();
-	                // })
-	            }
-	        };
-	        _this.dataOverTimeHandle = function (currenttime, lasttime, overtime) {
-	            //处理超时
-	            if (currenttime - lasttime > overtime) {
-	                //_this.heartbeatFlag = 'close';
-	                //连接异常，自动更换线路
-	                _this.mainCallbackReturn.connect_status = _this.connectEnum[3];
-	                _this.mainCallback(_this.mainCallbackReturn);
-	                _this.bestServer(false);
-	            }
-	        };
-	    }
+	        _this.bestServer(false);
+	      }
+	    };
+	  }
 	}
 	
 	var satelliteProto = SatelliteSocket.prototype;
 	
 	satelliteProto.connectWithAllServer = function (serverLists, callback) {
-	    var _this = this,
-	        _pingTimer = void 0,
-	        connectServerArr = void 0,
-	        isReturnArr = [],
-	        errorReturnArr = [];
+	  var _this = this,
+	      _pingTimer = void 0,
+	      connectServerArr = void 0,
+	      isReturnArr = [],
+	      errorReturnArr = [];
 	
-	    clearTimeout(_pingTimer);
+	  clearTimeout(_pingTimer);
 	
-	    var _loop = function _loop(index) {
-	        var _connectServer = _this.connectServerStatus,
-	            _value = serverLists[index];
+	  var _loop = function _loop(index) {
+	    var _connectServer = _this.connectServerStatus,
+	        _value = serverLists[index];
 	
-	        //base设置四个状态回调，页面显示三个状态回调：连接中，已连接，连接断开
-	        var opt = {
-	            server: _value,
-	            reConnectNum: _this.config.reConnectNum
-	        };
-	
-	        if (_connectServer.socket[index]) {
-	            _connectServer.socket[index].closeConnect();
-	        }
-	
-	        var _socket = new SpaceStateBase(opt);
-	        _connectServer.server[index] = _value;
-	        _connectServer.browserTime[index] = _this.maxConnectTime;
-	        _connectServer.newrouteTime[index] = _this.maxConnectTime;
-	        _connectServer.time[index] = _this.maxConnectTime;
-	        _connectServer.socket[index] = _socket;
-	
-	        _connectServer.socket[index].connectError(function () {
-	            _connectServer.browserTime[index] = _this.maxConnectTime;
-	            _connectServer.newrouteTime[index] = _this.maxConnectTime;
-	            _connectServer.time[index] = _this.maxConnectTime;
-	            //如果连接失败10次
-	            errorReturnArr.push(false);
-	            if (errorReturnArr.length == _this.config.serverLists.length) {
-	                clearTimeout(_pingTimer);
-	                callback(false);
-	            }
-	        });
-	
-	        _connectServer.socket[index].receive('setPingTime', function (data) {
-	
-	            _connectServer.browserTime[index] = timeSSUtc() - data.browserTime;
-	            _connectServer.newrouteTime[index] = parseInt(data.newrouteTime);
-	            _connectServer.time[index] = _connectServer.browserTime[index] + _connectServer.newrouteTime[index];
-	
-	            isReturnArr.push(true);
-	            /*如果第一个ping得到的服务器时间存在则启用定时器，到达定时时间后 关闭socket 获取存储的服务器列表取最优值。
-	              如果在定时时间内服务器列表都返回，清除定时器，关闭socket 取最优值*/
-	            if (isReturnArr.length === 1) {
-	                _pingTimer = setTimeout(function () {
-	                    callback(true);
-	                }, _this.config.pingOverTime);
-	            } else if (isReturnArr.length == _this.config.serverLists.length) {
-	                clearTimeout(_pingTimer);
-	                callback(true);
-	            }
-	        });
-	        _connectServer.socket[index].send('getPingTime', timeSSUtc());
-	        // setTimeout(function(){
-	
-	        // },6000)
+	    //base设置四个状态回调，页面显示三个状态回调：连接中，已连接，连接断开
+	    var opt = {
+	      server: _value,
+	      reConnectNum: _this.config.reConnectNum
 	    };
 	
-	    for (var index = 0; index < serverLists.length; index++) {
-	        _loop(index);
+	    if (_connectServer.socket[index]) {
+	      _connectServer.socket[index].closeConnect();
 	    }
+	
+	    var _socket = new SpaceStateBase(opt);
+	    _connectServer.server[index] = _value;
+	    _connectServer.browserTime[index] = _this.maxConnectTime;
+	    _connectServer.newrouteTime[index] = _this.maxConnectTime;
+	    _connectServer.time[index] = _this.maxConnectTime;
+	    _connectServer.socket[index] = _socket;
+	
+	    _connectServer.socket[index].connectError(function () {
+	      _connectServer.browserTime[index] = _this.maxConnectTime;
+	      _connectServer.newrouteTime[index] = _this.maxConnectTime;
+	      _connectServer.time[index] = _this.maxConnectTime;
+	      //如果连接失败10次
+	      errorReturnArr.push(false);
+	      if (errorReturnArr.length == _this.config.serverLists.length) {
+	        clearTimeout(_pingTimer);
+	        callback(false);
+	      }
+	    });
+	
+	    _connectServer.socket[index].receive('setPingTime', function (data) {
+	
+	      _connectServer.browserTime[index] = timeSSUtc() - data.browserTime;
+	      _connectServer.newrouteTime[index] = parseInt(data.newrouteTime);
+	      _connectServer.time[index] = _connectServer.browserTime[index] + _connectServer.newrouteTime[index];
+	
+	      isReturnArr.push(true);
+	      /*如果第一个ping得到的服务器时间存在则启用定时器，到达定时时间后 关闭socket 获取存储的服务器列表取最优值。
+	        如果在定时时间内服务器列表都返回，清除定时器，关闭socket 取最优值*/
+	      if (isReturnArr.length === 1) {
+	        _pingTimer = setTimeout(function () {
+	          callback(true);
+	        }, _this.config.pingOverTime);
+	      } else if (isReturnArr.length == _this.config.serverLists.length) {
+	        clearTimeout(_pingTimer);
+	        callback(true);
+	      }
+	    });
+	    _connectServer.socket[index].send('getPingTime', timeSSUtc());
+	    // setTimeout(function(){
+	
+	    // },6000)
+	  };
+	
+	  for (var index = 0; index < serverLists.length; index++) {
+	    _loop(index);
+	  }
 	};
 	
 	satelliteProto.bestServer = function (noNeedNewRouterTime) {
-	    var _this = this;
-	    //获取最优server
+	  var _this = this;
+	  //获取最优server
 	
-	    _this.connectWithAllServer(_this.config.serverLists, function (result) {
-	        // //取time最小的server 判断是否断开其他
-	        if (result) {
+	  _this.connectWithAllServer(_this.config.serverLists, function (result) {
+	    // //取time最小的server 判断是否断开其他
+	    if (result) {
 	
-	            var _resultTime = void 0,
-	                _resultServer = void 0,
-	                _handleTime = void 0,
-	                _handleServer = void 0;
+	      var _resultTime = void 0,
+	          _resultServer = void 0,
+	          _handleTime = void 0,
+	          _handleServer = void 0;
 	
-	            _handleTime = noNeedNewRouterTime ? _this.connectServerStatus.browserTime : _this.connectServerStatus.time;
-	            _handleServer = _this.connectServerStatus.server;
-	            _resultTime = Math.min.apply(Math, _handleTime);
-	            _resultServer = _handleServer[_handleTime.indexOf(_resultTime)];
+	      _handleTime = noNeedNewRouterTime ? _this.connectServerStatus.browserTime : _this.connectServerStatus.time;
+	      _handleServer = _this.connectServerStatus.server;
+	      _resultTime = Math.min.apply(Math, _handleTime);
+	      _resultServer = _handleServer[_handleTime.indexOf(_resultTime)];
 	
-	            _this.changeServer(_resultServer);
+	      _this.changeServer(_resultServer);
 	
-	            _this.mainCallbackReturn.connect_status = _this.connectEnum[1];
-	            _this.mainCallback(_this.mainCallbackReturn);
+	      _this.mainCallbackReturn.connect_status = _this.connectEnum[1];
+	      _this.mainCallback(_this.mainCallbackReturn);
 	
-	            _this.heartbeat();
-	        } else {
-	            _this.mainCallbackReturn.connect_status = _this.connectEnum[2];
-	            _this.mainCallback(_this.mainCallbackReturn);
-	        }
-	    });
+	      _this.heartbeat();
+	    } else {
+	      _this.mainCallbackReturn.connect_status = _this.connectEnum[2];
+	      _this.mainCallback(_this.mainCallbackReturn);
+	    }
+	  });
 	};
 	
 	satelliteProto.heartbeat = function () {
-	    var _this = this;
+	  var _this = this;
 	
-	    _this.handleOnFunc(_this.isChoosenSocketDone, function () {
-	        var _lastHeartTime = timeSSUtc();
-	        var socket = _this.choosenSocket;
-	        pingIntervalFunc();
+	  _this.handleOnFunc(_this.isChoosenSocketDone, function () {
+	    var _lastHeartTime = timeSSUtc();
+	    var socket = _this.choosenSocket;
+	    pingIntervalFunc();
 	
-	        socket.receive('hearbeatReturn', function (data) {
-	            _lastHeartTime = data;
-	        });
-	
-	        function pingIntervalFunc(flag) {
-	            if (_this.heartbeatFlag && _this.mainCallbackReturn.connect_status != _this.connectEnum[3]) {
-	                setTimeout(function () {
-	                    var _currentTime = timeSSUtc();
-	                    socket.send('hearbeatReady', _currentTime);
-	
-	                    _this.dataOverTimeHandle(_currentTime, _lastHeartTime, _this.config.dataOvertimeInterval);
-	
-	                    pingIntervalFunc();
-	                }, _this.config.connectStatusIntervalTime);
-	            }
-	        }
+	    socket.receive('hearbeatReturn', function (data) {
+	      _lastHeartTime = data;
 	    });
+	
+	    function pingIntervalFunc(flag) {
+	      '';
+	      if (_this.heartbeatFlag && _this.mainCallbackReturn.connect_status != _this.connectEnum[3]) {
+	        setTimeout(function () {
+	          var _currentTime = timeSSUtc();
+	          socket.send('hearbeatReady', _currentTime);
+	
+	          _this.dataOverTimeHandle(_currentTime, _lastHeartTime, _this.config.dataOvertimeInterval);
+	
+	          pingIntervalFunc();
+	        }, _this.config.connectStatusIntervalTime);
+	      }
+	    }
+	  });
 	};
 	satelliteProto.serverStatus = function (callback) {
-	    //等通知后再执行， 
-	    //所有sokcet断开后，停止循环定时
-	    var _this = this;
-	    var serverLists = _this.config.serverLists;
-	    var _connectServer = _this.connectServerStatus;
-	    callback(_connectServer);
-	    _this.handleOnFunc(_this.isChoosenSocketDone, function () {
-	        for (var index = 0; index < serverLists.length; index++) {
+	  //等通知后再执行，
+	  //所有sokcet断开后，停止循环定时
+	  var _this = this;
+	  var serverLists = _this.config.serverLists;
+	  var _connectServer = _this.connectServerStatus;
+	  callback(_connectServer);
+	  _this.handleOnFunc(_this.isChoosenSocketDone, function () {
+	    for (var index = 0; index < serverLists.length; index++) {
 	
-	            one(_connectServer.socket[index], index, function (data) {
-	                callback(_connectServer);
-	            });
-	        }
-	    });
-	    function one(socket, index, cb) {
-	        var _lastHeartTime = timeSSUtc(),
-	            statustimer = void 0;
-	
-	        pingIntervalFunc();
-	
-	        socket.receive('statusReturn', function (data) {
-	            //多条改状态
-	            console.log(data);
-	            clearTimeout(statustimer);
-	            if (socket == _this.choosenSocket) {
-	                _lastHeartTime = data;
-	            }
-	            //console.log(data.browserTime,timeSSUtc())
-	            _connectServer.browserTime[index] = timeSSUtc() - data.browserTime;
-	            _connectServer.newrouteTime[index] = parseInt(data.newrouteTime);
-	            _connectServer.time[index] = _connectServer.browserTime[index] + _connectServer.newrouteTime[index];
-	            //使用的这条做超时判断
-	            cb(data);
-	        });
-	        function pingIntervalFunc(flag) {
-	            if (_this.mainCallbackReturn.connect_status != _this.connectEnum[3]) {
-	                setTimeout(function () {
-	                    var _currentTime = timeSSUtc();
-	                    //console.log(_currentTime)
-	                    socket.send('statusReady', _currentTime);
-	
-	                    statustimer = setTimeout(function () {
-	                        _connectServer.browserTime[index] = _this.maxConnectTime;
-	                        _connectServer.newrouteTime[index] = _this.maxConnectTime;
-	                        _connectServer.time[index] = _this.maxConnectTime;
-	                    }, 2000);
-	
-	                    if (socket == _this.choosenSocket) {
-	                        _this.dataOverTimeHandle(_currentTime, _lastHeartTime, _this.config.dataOvertimeInterval);
-	                    }
-	
-	                    pingIntervalFunc();
-	                }, _this.config.connectStatusIntervalTime);
-	            }
-	        }
+	      one(_connectServer.socket[index], index, function (data) {
+	        callback(_connectServer);
+	      });
 	    }
-	    _this.heartbeatFlag = false;
+	  });
+	
+	  function one(socket, index, cb) {
+	    var _lastHeartTime = timeSSUtc(),
+	        statustimer = void 0;
+	
+	    pingIntervalFunc();
+	
+	    socket.receive('statusReturn', function (data) {
+	      //多条改状态
+	      console.log(data);
+	      clearTimeout(statustimer);
+	      if (socket == _this.choosenSocket) {
+	        _lastHeartTime = data;
+	      }
+	      //console.log(data.browserTime,timeSSUtc())
+	      _connectServer.browserTime[index] = timeSSUtc() - data.browserTime;
+	      _connectServer.newrouteTime[index] = parseInt(data.newrouteTime);
+	      _connectServer.time[index] = _connectServer.browserTime[index] + _connectServer.newrouteTime[index];
+	      //使用的这条做超时判断
+	      cb(data);
+	    });
+	
+	    function pingIntervalFunc(flag) {
+	      if (_this.mainCallbackReturn.connect_status != _this.connectEnum[3]) {
+	        setTimeout(function () {
+	          var _currentTime = timeSSUtc();
+	          //console.log(_currentTime)
+	          socket.send('statusReady', _currentTime);
+	
+	          statustimer = setTimeout(function () {
+	            _connectServer.browserTime[index] = _this.maxConnectTime;
+	            _connectServer.newrouteTime[index] = _this.maxConnectTime;
+	            _connectServer.time[index] = _this.maxConnectTime;
+	          }, 2000);
+	
+	          if (socket == _this.choosenSocket) {
+	            _this.dataOverTimeHandle(_currentTime, _lastHeartTime, _this.config.dataOvertimeInterval);
+	          }
+	
+	          pingIntervalFunc();
+	        }, _this.config.connectStatusIntervalTime);
+	      }
+	    }
+	  }
+	
+	  _this.heartbeatFlag = false;
 	};
 	satelliteProto.connectedStatus = function (callback) {
-	    var _this = this;
-	    _this.handleOnFunc(_this.isChoosenSocketDone, callback);
+	  var _this = this;
+	  _this.handleOnFunc(_this.isChoosenSocketDone, callback);
 	};
 	satelliteProto.changeServer = function (server) {
-	    //切换server
-	    var _this = this;
-	    _this.choosenSocket = _this.connectServerStatus.socket[_this.connectServerStatus['server'].indexOf(server)];
-	    //已经选好server ，通知其他应用可以继续进行，
+	  //切换server
+	  var _this = this;
+	  _this.choosenSocket = _this.connectServerStatus.socket[_this.connectServerStatus['server'].indexOf(server)];
+	  //已经选好server ，通知其他应用可以继续进行，
 	
-	    _this.isChoosenSocketDone = true;
+	  _this.isChoosenSocketDone = true;
 	
-	    console.log('ready');
-	    satelliteEvent.emit('hasChoosenSocket');
-	    //window.dispatchEvent(new Event('hasChoosenSocket'));
+	  console.log('ready');
+	  satelliteEvent.emit('hasChoosenSocket');
+	  //window.dispatchEvent(new Event('hasChoosenSocket'));
 	};
 	
 	//实时价格
 	satelliteProto.ready_realtimePrice = function (obj) {
-	    this.sendEvent('readyRealtimePrice', obj);
+	  this.sendEvent('readyRealtimePrice', obj);
 	};
 	satelliteProto.realtimePrice = function (callback) {
-	    this.receiveEvent('realtimePrice', callback);
+	  this.receiveEvent('realtimePrice', callback);
 	};
 	
 	//历史价格
 	satelliteProto.ready_historyPrice = function (obj) {
-	    var _this = this;
-	    if (_this.isChoosenSocketDone) _this.choosenSocket.send('readyHistoryPrice', obj);
-	    //this.sendEvent('readyHistoryPrice',obj);
+	  var _this = this;
+	  if (_this.isChoosenSocketDone) _this.choosenSocket.send('readyHistoryPrice', obj);
+	  //this.sendEvent('readyHistoryPrice',obj);
 	};
 	satelliteProto.historyPrice = function (callback) {
-	    this.receiveEvent('historyPrice', callback);
+	  this.receiveEvent('historyPrice', callback);
 	};
 	
 	satelliteProto.tokenError = function (callback) {
-	    var _this = this;
-	    _this.receiveEvent('tokenError', function (data) {
-	        callback(data);
-	    });
+	  var _this = this;
+	  _this.receiveEvent('tokenError', function (data) {
+	    callback(data);
+	  });
 	};
 	//登录
 	satelliteProto.ready_login = function (obj, callback) {
-	    this.sendOnceEvent('readyLogin', {
-	        login: obj.login,
-	        pwd: obj.pwd
-	    }, callback || function () {});
+	  this.sendOnceEvent('readyLogin', {
+	    login: obj.login,
+	    pwd: obj.pwd
+	  }, callback || function () {});
 	};
 	satelliteProto.login = function (callback) {
-	    var _this = this;
-	    _this.receiveEvent('login', function (data) {
-	        callback(data);
-	    });
+	  var _this = this;
+	  _this.receiveEvent('login', function (data) {
+	    callback(data);
+	  });
 	};
 	//登出
 	satelliteProto.ready_logout = function (obj, callback) {
-	    this.sendOnceEvent('readyLogout', {
-	        login: obj.login,
-	        token: obj.token
-	    }, callback || function () {});
+	  this.sendOnceEvent('readyLogout', {
+	    login: obj.login,
+	    token: obj.token
+	  }, callback || function () {});
 	};
 	satelliteProto.logout = function (callback) {
-	    var _this = this;
-	    _this.receiveEvent('logout', function (data) {
-	        callback(data);
-	        _this.sendOnceEvent('logoutRecieveSuccess', data[50]); //登出成功 返回成功信息，方便webchannel销毁这个账号的连接
-	    });
-	    //this.sendOnceEvent('logoutCallback' , 'OK');
+	  var _this = this;
+	  _this.receiveEvent('logout', function (data) {
+	    callback(data);
+	    _this.sendOnceEvent('logoutRecieveSuccess', data[50]); //登出成功 返回成功信息，方便webchannel销毁这个账号的连接
+	  });
+	  //this.sendOnceEvent('logoutCallback' , 'OK');
 	};
 	
 	//开单
 	satelliteProto.ready_openOrder = function (obj, callback) {
-	    this.sendOnceEvent('readyOpenOrder', {
-	        login: obj.login,
-	        token: obj.token,
-	        currency: obj.currency,
-	        type: obj.type,
-	        vol: obj.vol,
-	        time: obj.time
-	    }, callback || function () {});
+	  this.sendOnceEvent('readyOpenOrder', {
+	    login: obj.login,
+	    token: obj.token,
+	    currency: obj.currency,
+	    type: obj.type,
+	    vol: obj.vol,
+	    time: obj.time
+	  }, callback || function () {});
 	};
 	satelliteProto.openOrder = function (callback) {
-	    this.receiveEvent('openOrder', callback);
+	  this.receiveEvent('openOrder', callback);
 	};
 	//关单
 	satelliteProto.ready_closeOrder = function (obj, callback) {
-	    this.sendOnceEvent('readyCloseOrder', {
-	        login: obj.login,
-	        token: obj.token,
-	        ordernum: obj.ordernum,
-	        type: obj.type,
-	        vol: obj.vol,
-	        time: obj.time
-	    }, callback);
+	  this.sendOnceEvent('readyCloseOrder', {
+	    login: obj.login,
+	    token: obj.token,
+	    ordernum: obj.ordernum,
+	    type: obj.type,
+	    vol: obj.vol,
+	    time: obj.time
+	  }, callback);
 	};
 	satelliteProto.closeOrder = function (callback) {
-	    this.receiveEvent('closeOrder', callback);
+	  this.receiveEvent('closeOrder', callback);
 	};
 	//交易中记录
 	satelliteProto.ready_tradingHistory = function (obj) {
-	    this.sendEvent('readyTradingHistory', {
-	        login: obj.login,
-	        token: obj.token,
-	        start: obj.start,
-	        limit: obj.limit,
-	        all: obj.all ? obj.all : false
-	    });
+	  this.sendEvent('readyTradingHistory', {
+	    login: obj.login,
+	    token: obj.token,
+	    start: obj.start,
+	    limit: obj.limit,
+	    all: obj.all ? obj.all : false
+	  });
 	};
 	satelliteProto.tradingHistory = function (callback) {
-	    this.receiveEvent('tradingHistory', callback);
+	  this.receiveEvent('tradingHistory', callback);
 	};
 	satelliteProto.ready_tradedHistory = function (obj, callback) {
-	    this.sendEvent('readyTradedHistory', {
-	        login: obj.login,
-	        token: obj.token,
-	        start: obj.start,
-	        limit: obj.limit
-	    }, callback);
+	  this.sendEvent('readyTradedHistory', {
+	    login: obj.login,
+	    token: obj.token,
+	    start: obj.start,
+	    limit: obj.limit
+	  }, callback);
 	};
 	satelliteProto.tradedHistory = function (callback) {
-	    this.receiveEvent('tradedHistory', callback);
+	  this.receiveEvent('tradedHistory', callback);
 	};
 	
 	satelliteProto.ready_accountinfo = function (obj, callback) {
-	    this.sendEvent('readyAccountinfo', {
-	        login: obj.login,
-	        token: obj.token
-	    }, callback);
+	  this.sendEvent('readyAccountinfo', {
+	    login: obj.login,
+	    token: obj.token
+	  }, callback);
 	};
 	satelliteProto.accountinfo = function (callback) {
-	    this.receiveEvent('accountinfo', callback);
+	  this.receiveEvent('accountinfo', callback);
 	};
 	
 	satelliteProto.ready_notice = function (obj) {
-	    this.sendEvent('readyNotice', {
-	        token: obj.token
-	    });
+	  this.sendEvent('readyNotice', {
+	    token: obj.token
+	  });
 	};
 	satelliteProto.notice = function (callback) {
-	    this.receiveEvent('notice', callback);
+	  this.receiveEvent('notice', callback);
 	};
 	
 	function separate(str, gref) {
-	    return handleOneRow(str);
+	  return handleOneRow(str);
 	}
 	
 	function handleOneRow(row) {
-	    var result = {},
-	        col = row.split('|');
-	    for (var i = 0; i < col.length; i++) {
+	  var result = {},
+	      col = row.split('|');
+	  for (var i = 0; i < col.length; i++) {
 	
-	        var obj = col[i].split('=');
+	    var obj = col[i].split('=');
 	
-	        result[obj[0]] = obj[1];
-	    }
-	    return result;
+	    result[obj[0]] = obj[1];
+	  }
+	  return result;
 	}
 	
 	function timeSSUtc() {
-	    //将时间转成utc时间，返回毫秒时间戳
-	    return new Date().getTime();
-	    //return Date.parse( (date ? new Date(date) : new Date()).toUTCString() )
+	  //将时间转成utc时间，返回毫秒时间戳
+	  return new Date().getTime();
+	  //return Date.parse( (date ? new Date(date) : new Date()).toUTCString() )
 	}
+	
 	module.exports = SatelliteSocket;
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var io = __webpack_require__(11);
 	
 	function SatelliteBase(arg) {
-	    var _this = this;
-	    var server = arg.server; //连接的服务器
-	    _this.socket = io.connect(server);
-	    _this.connectCount = 0; //重新计数初始化
-	    _this.reConnectNum = arg.reConnectNum;
-	    connectHandle(_this.socket);
+	  var _this = this;
+	  var server = arg.server; //连接的服务器
+	  _this.socket = io.connect(server);
+	  _this.connectCount = 0; //重新计数初始化
+	  _this.reConnectNum = arg.reConnectNum;
+	  connectHandle(_this.socket);
 	}
 	
 	function connectHandle(socket) {
-	    socket.on('disconnect', function () {
-	        console.log(' disconnect');
-	    });
-	    socket.on('error', function () {
-	        console.log(' error', +new Date());
-	    });
-	    socket.on('reconnect', function () {
-	        //console.log(server + ' reconnect' ,+ new Date());
-	    });
+	  socket.on('disconnect', function () {
+	    console.log(' disconnect');
+	  });
+	  socket.on('error', function () {
+	    console.log(' error', +new Date());
+	  });
+	  socket.on('reconnect', function () {
+	    //console.log(server + ' reconnect' ,+ new Date());
+	  });
 	
-	    socket.on('reconnect_error', function () {
-	        //console.log(server + ' reconnect_error' ,+ new Date());
-	    });
-	    socket.on('reconnect_failed', function () {
-	        //console.log(server + ' reconnect_failed' ,+ new Date());
-	    });
-	    socket.on('reconnecting', function () {
-	        //console.log(server + ' reconnecting' ,+ new Date());
-	    });
-	    socket.on('connect_timeout', function () {
-	        console.log(' connect_timeout');
-	    });
+	  socket.on('reconnect_error', function () {
+	    //console.log(server + ' reconnect_error' ,+ new Date());
+	  });
+	  socket.on('reconnect_failed', function () {
+	    //console.log(server + ' reconnect_failed' ,+ new Date());
+	  });
+	  socket.on('reconnecting', function () {
+	    //console.log(server + ' reconnecting' ,+ new Date());
+	  });
+	  socket.on('connect_timeout', function () {
+	    console.log(' connect_timeout');
+	  });
 	}
 	
 	var socketBase = SatelliteBase.prototype;
 	
 	socketBase.openConnect = function (callback) {
-	    var _this = this;
-	    _this.socket.on('connect', function () {
-	        _this.connectCount = 0;
-	        callback();
-	    });
+	  var _this = this;
+	  _this.socket.on('connect', function () {
+	    _this.connectCount = 0;
+	    callback();
+	  });
 	};
 	
 	socketBase.closeConnect = function () {
-	    var _this = this;
-	    _this.socket.close();
+	  var _this = this;
+	  _this.socket.close();
 	};
 	socketBase.connectError = function (callback) {
-	    var _this = this;
-	    _this.socket.on('connect_error', function () {
-	        //连接失败多少次后关闭连接
-	        _this.connectCount++;
-	        if (_this.connectCount === _this.reConnectNum) {
-	            _this.socket.disconnect();
-	            callback && callback();
-	        }
-	    });
+	  var _this = this;
+	  _this.socket.on('connect_error', function () {
+	    //连接失败多少次后关闭连接
+	    _this.connectCount++;
+	    if (_this.connectCount === _this.reConnectNum) {
+	      _this.socket.disconnect();
+	      callback && callback();
+	    }
+	  });
 	};
 	
 	socketBase.send = function (event, obj) {
-	    var _this = this;
-	    console.log(event, obj);
-	    _this.socket.emit(event, obj);
+	  var _this = this;
+	  console.log(event, obj);
+	  _this.socket.emit(event, obj);
 	};
 	socketBase.receive = function (event, callback) {
-	    var _this = this;
-	    _this.socket.on(event, function (data) {
-	        callback(data);
-	    });
+	  var _this = this;
+	  _this.socket.on(event, function (data) {
+	    callback(data);
+	  });
 	};
 	
 	// //还需要修改成不同模块心跳方法不一样 
@@ -3582,9 +3592,9 @@
 	
 	module.exports = SatelliteBase;
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	/**
@@ -3694,12 +3704,12 @@
 	 */
 	
 	exports.Manager = __webpack_require__(29);
-	exports.Socket = __webpack_require__(58);
+	exports.Socket = __webpack_require__(59);
 
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
 	/**
@@ -3779,9 +3789,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Parses an URI
@@ -3824,9 +3834,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 14 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {
 	/**
@@ -4008,9 +4018,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
-/***/ },
+/***/ }),
 /* 15 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	// shim for using process in browser
 	var process = module.exports = {};
@@ -4182,6 +4192,10 @@
 	process.removeListener = noop;
 	process.removeAllListeners = noop;
 	process.emit = noop;
+	process.prependListener = noop;
+	process.prependOnceListener = noop;
+	
+	process.listeners = function (name) { return [] }
 	
 	process.binding = function (name) {
 	    throw new Error('process.binding is not supported');
@@ -4194,9 +4208,9 @@
 	process.umask = function() { return 0; };
 
 
-/***/ },
+/***/ }),
 /* 16 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	/**
@@ -4400,9 +4414,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 17 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Helpers.
@@ -4555,9 +4569,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 18 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	/**
@@ -4965,9 +4979,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 19 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	/**
@@ -5139,9 +5153,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 20 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	/**
@@ -5342,9 +5356,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 21 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Helpers.
@@ -5473,9 +5487,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 22 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! JSON v3.3.2 | http://bestiejs.github.io/json3 | Copyright 2012-2014, Kit Cambridge | http://kit.mit-license.org */
 	;(function () {
@@ -6382,9 +6396,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)(module), (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 23 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = function(module) {
 		if(!module.webpackPolyfill) {
@@ -6398,17 +6412,17 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 24 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
-/***/ },
+/***/ }),
 /* 25 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	
 	/**
@@ -6576,9 +6590,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 26 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*global Blob,File*/
 	
@@ -6724,18 +6738,18 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 27 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = Array.isArray || function (arr) {
 	  return Object.prototype.toString.call(arr) == '[object Array]';
 	};
 
 
-/***/ },
+/***/ }),
 /* 28 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
 	module.exports = isBuf;
@@ -6753,9 +6767,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 29 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	/**
@@ -6763,13 +6777,13 @@
 	 */
 	
 	var eio = __webpack_require__(30);
-	var Socket = __webpack_require__(58);
-	var Emitter = __webpack_require__(59);
+	var Socket = __webpack_require__(59);
+	var Emitter = __webpack_require__(47);
 	var parser = __webpack_require__(18);
 	var on = __webpack_require__(61);
 	var bind = __webpack_require__(62);
 	var debug = __webpack_require__(14)('socket.io-client:manager');
-	var indexOf = __webpack_require__(56);
+	var indexOf = __webpack_require__(57);
 	var Backoff = __webpack_require__(63);
 	
 	/**
@@ -7319,17 +7333,17 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 30 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	module.exports = __webpack_require__(31);
 
 
-/***/ },
+/***/ }),
 /* 31 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	module.exports = __webpack_require__(32);
@@ -7343,9 +7357,9 @@
 	module.exports.parser = __webpack_require__(39);
 
 
-/***/ },
+/***/ }),
 /* 32 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
@@ -7354,10 +7368,10 @@
 	var transports = __webpack_require__(33);
 	var Emitter = __webpack_require__(47);
 	var debug = __webpack_require__(51)('engine.io-client:socket');
-	var index = __webpack_require__(56);
+	var index = __webpack_require__(57);
 	var parser = __webpack_require__(39);
 	var parseuri = __webpack_require__(13);
-	var parsejson = __webpack_require__(57);
+	var parsejson = __webpack_require__(58);
 	var parseqs = __webpack_require__(48);
 	
 	/**
@@ -8088,9 +8102,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 33 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies
@@ -8098,8 +8112,8 @@
 	
 	var XMLHttpRequest = __webpack_require__(34);
 	var XHR = __webpack_require__(36);
-	var JSONP = __webpack_require__(53);
-	var websocket = __webpack_require__(54);
+	var JSONP = __webpack_require__(54);
+	var websocket = __webpack_require__(55);
 	
 	/**
 	 * Export transports.
@@ -8148,9 +8162,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 34 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {// browser shim for xmlhttprequest module
 	
@@ -8192,9 +8206,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 35 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	
 	/**
@@ -8215,9 +8229,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 36 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module requirements.
@@ -8646,9 +8660,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 37 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
@@ -8897,9 +8911,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 38 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
@@ -9060,9 +9074,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 39 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
@@ -9676,9 +9690,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 40 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	
 	/**
@@ -9701,9 +9715,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 41 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
 	/*
@@ -9767,9 +9781,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 42 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * An abstraction for slicing an arraybuffer even when
@@ -9802,9 +9816,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 43 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = after
 	
@@ -9836,9 +9850,9 @@
 	function noop() {}
 
 
-/***/ },
+/***/ }),
 /* 44 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! https://mths.be/wtf8 v1.0.0 by @mathias */
 	;(function(root) {
@@ -10075,9 +10089,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)(module), (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 45 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/*
 	 * base64-arraybuffer
@@ -10148,9 +10162,9 @@
 	})();
 
 
-/***/ },
+/***/ }),
 /* 46 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Create a blob builder even when vendor prefixes exist
@@ -10251,9 +10265,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 47 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	/**
@@ -10420,9 +10434,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 48 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Compiles a querystring
@@ -10463,9 +10477,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 49 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	
 	module.exports = function(a, b){
@@ -10475,9 +10489,9 @@
 	  a.prototype.constructor = a;
 	};
 
-/***/ },
+/***/ }),
 /* 50 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -10549,9 +10563,9 @@
 	module.exports = yeast;
 
 
-/***/ },
+/***/ }),
 /* 51 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {
 	/**
@@ -10733,9 +10747,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
-/***/ },
+/***/ }),
 /* 52 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	/**
@@ -10750,7 +10764,7 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(17);
+	exports.humanize = __webpack_require__(53);
 	
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -10939,9 +10953,164 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 53 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
+
+	/**
+	 * Helpers.
+	 */
+	
+	var s = 1000
+	var m = s * 60
+	var h = m * 60
+	var d = h * 24
+	var y = d * 365.25
+	
+	/**
+	 * Parse or format the given `val`.
+	 *
+	 * Options:
+	 *
+	 *  - `long` verbose formatting [false]
+	 *
+	 * @param {String|Number} val
+	 * @param {Object} options
+	 * @throws {Error} throw an error if val is not a non-empty string or a number
+	 * @return {String|Number}
+	 * @api public
+	 */
+	
+	module.exports = function (val, options) {
+	  options = options || {}
+	  var type = typeof val
+	  if (type === 'string' && val.length > 0) {
+	    return parse(val)
+	  } else if (type === 'number' && isNaN(val) === false) {
+	    return options.long ?
+				fmtLong(val) :
+				fmtShort(val)
+	  }
+	  throw new Error('val is not a non-empty string or a valid number. val=' + JSON.stringify(val))
+	}
+	
+	/**
+	 * Parse the given `str` and return milliseconds.
+	 *
+	 * @param {String} str
+	 * @return {Number}
+	 * @api private
+	 */
+	
+	function parse(str) {
+	  str = String(str)
+	  if (str.length > 10000) {
+	    return
+	  }
+	  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(str)
+	  if (!match) {
+	    return
+	  }
+	  var n = parseFloat(match[1])
+	  var type = (match[2] || 'ms').toLowerCase()
+	  switch (type) {
+	    case 'years':
+	    case 'year':
+	    case 'yrs':
+	    case 'yr':
+	    case 'y':
+	      return n * y
+	    case 'days':
+	    case 'day':
+	    case 'd':
+	      return n * d
+	    case 'hours':
+	    case 'hour':
+	    case 'hrs':
+	    case 'hr':
+	    case 'h':
+	      return n * h
+	    case 'minutes':
+	    case 'minute':
+	    case 'mins':
+	    case 'min':
+	    case 'm':
+	      return n * m
+	    case 'seconds':
+	    case 'second':
+	    case 'secs':
+	    case 'sec':
+	    case 's':
+	      return n * s
+	    case 'milliseconds':
+	    case 'millisecond':
+	    case 'msecs':
+	    case 'msec':
+	    case 'ms':
+	      return n
+	    default:
+	      return undefined
+	  }
+	}
+	
+	/**
+	 * Short format for `ms`.
+	 *
+	 * @param {Number} ms
+	 * @return {String}
+	 * @api private
+	 */
+	
+	function fmtShort(ms) {
+	  if (ms >= d) {
+	    return Math.round(ms / d) + 'd'
+	  }
+	  if (ms >= h) {
+	    return Math.round(ms / h) + 'h'
+	  }
+	  if (ms >= m) {
+	    return Math.round(ms / m) + 'm'
+	  }
+	  if (ms >= s) {
+	    return Math.round(ms / s) + 's'
+	  }
+	  return ms + 'ms'
+	}
+	
+	/**
+	 * Long format for `ms`.
+	 *
+	 * @param {Number} ms
+	 * @return {String}
+	 * @api private
+	 */
+	
+	function fmtLong(ms) {
+	  return plural(ms, d, 'day') ||
+	    plural(ms, h, 'hour') ||
+	    plural(ms, m, 'minute') ||
+	    plural(ms, s, 'second') ||
+	    ms + ' ms'
+	}
+	
+	/**
+	 * Pluralization helper.
+	 */
+	
+	function plural(ms, n, name) {
+	  if (ms < n) {
+	    return
+	  }
+	  if (ms < n * 1.5) {
+	    return Math.floor(ms / n) + ' ' + name
+	  }
+	  return Math.ceil(ms / n) + ' ' + name + 's'
+	}
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
 	/**
@@ -11177,9 +11346,9 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
-/* 54 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
@@ -11195,7 +11364,7 @@
 	var NodeWebSocket;
 	if (typeof window === 'undefined') {
 	  try {
-	    NodeWebSocket = __webpack_require__(55);
+	    NodeWebSocket = __webpack_require__(56);
 	  } catch (e) { }
 	}
 	
@@ -11469,15 +11638,15 @@
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
-/* 55 */
-/***/ function(module, exports) {
+/***/ }),
+/* 56 */
+/***/ (function(module, exports) {
 
 	/* (ignored) */
 
-/***/ },
-/* 56 */
-/***/ function(module, exports) {
+/***/ }),
+/* 57 */
+/***/ (function(module, exports) {
 
 	
 	var indexOf = [].indexOf;
@@ -11490,9 +11659,9 @@
 	  return -1;
 	};
 
-/***/ },
-/* 57 */
-/***/ function(module, exports) {
+/***/ }),
+/* 58 */
+/***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * JSON parse.
@@ -11528,9 +11697,9 @@
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
-/* 58 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	/**
@@ -11538,7 +11707,7 @@
 	 */
 	
 	var parser = __webpack_require__(18);
-	var Emitter = __webpack_require__(59);
+	var Emitter = __webpack_require__(47);
 	var toArray = __webpack_require__(60);
 	var on = __webpack_require__(61);
 	var bind = __webpack_require__(62);
@@ -11953,178 +12122,9 @@
 	};
 
 
-/***/ },
-/* 59 */
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	/**
-	 * Expose `Emitter`.
-	 */
-	
-	if (true) {
-	  module.exports = Emitter;
-	}
-	
-	/**
-	 * Initialize a new `Emitter`.
-	 *
-	 * @api public
-	 */
-	
-	function Emitter(obj) {
-	  if (obj) return mixin(obj);
-	};
-	
-	/**
-	 * Mixin the emitter properties.
-	 *
-	 * @param {Object} obj
-	 * @return {Object}
-	 * @api private
-	 */
-	
-	function mixin(obj) {
-	  for (var key in Emitter.prototype) {
-	    obj[key] = Emitter.prototype[key];
-	  }
-	  return obj;
-	}
-	
-	/**
-	 * Listen on the given `event` with `fn`.
-	 *
-	 * @param {String} event
-	 * @param {Function} fn
-	 * @return {Emitter}
-	 * @api public
-	 */
-	
-	Emitter.prototype.on =
-	Emitter.prototype.addEventListener = function(event, fn){
-	  this._callbacks = this._callbacks || {};
-	  (this._callbacks['$' + event] = this._callbacks['$' + event] || [])
-	    .push(fn);
-	  return this;
-	};
-	
-	/**
-	 * Adds an `event` listener that will be invoked a single
-	 * time then automatically removed.
-	 *
-	 * @param {String} event
-	 * @param {Function} fn
-	 * @return {Emitter}
-	 * @api public
-	 */
-	
-	Emitter.prototype.once = function(event, fn){
-	  function on() {
-	    this.off(event, on);
-	    fn.apply(this, arguments);
-	  }
-	
-	  on.fn = fn;
-	  this.on(event, on);
-	  return this;
-	};
-	
-	/**
-	 * Remove the given callback for `event` or all
-	 * registered callbacks.
-	 *
-	 * @param {String} event
-	 * @param {Function} fn
-	 * @return {Emitter}
-	 * @api public
-	 */
-	
-	Emitter.prototype.off =
-	Emitter.prototype.removeListener =
-	Emitter.prototype.removeAllListeners =
-	Emitter.prototype.removeEventListener = function(event, fn){
-	  this._callbacks = this._callbacks || {};
-	
-	  // all
-	  if (0 == arguments.length) {
-	    this._callbacks = {};
-	    return this;
-	  }
-	
-	  // specific event
-	  var callbacks = this._callbacks['$' + event];
-	  if (!callbacks) return this;
-	
-	  // remove all handlers
-	  if (1 == arguments.length) {
-	    delete this._callbacks['$' + event];
-	    return this;
-	  }
-	
-	  // remove specific handler
-	  var cb;
-	  for (var i = 0; i < callbacks.length; i++) {
-	    cb = callbacks[i];
-	    if (cb === fn || cb.fn === fn) {
-	      callbacks.splice(i, 1);
-	      break;
-	    }
-	  }
-	  return this;
-	};
-	
-	/**
-	 * Emit `event` with the given args.
-	 *
-	 * @param {String} event
-	 * @param {Mixed} ...
-	 * @return {Emitter}
-	 */
-	
-	Emitter.prototype.emit = function(event){
-	  this._callbacks = this._callbacks || {};
-	  var args = [].slice.call(arguments, 1)
-	    , callbacks = this._callbacks['$' + event];
-	
-	  if (callbacks) {
-	    callbacks = callbacks.slice(0);
-	    for (var i = 0, len = callbacks.length; i < len; ++i) {
-	      callbacks[i].apply(this, args);
-	    }
-	  }
-	
-	  return this;
-	};
-	
-	/**
-	 * Return array of callbacks for `event`.
-	 *
-	 * @param {String} event
-	 * @return {Array}
-	 * @api public
-	 */
-	
-	Emitter.prototype.listeners = function(event){
-	  this._callbacks = this._callbacks || {};
-	  return this._callbacks['$' + event] || [];
-	};
-	
-	/**
-	 * Check if this emitter has `event` handlers.
-	 *
-	 * @param {String} event
-	 * @return {Boolean}
-	 * @api public
-	 */
-	
-	Emitter.prototype.hasListeners = function(event){
-	  return !! this.listeners(event).length;
-	};
-
-
-/***/ },
+/***/ }),
 /* 60 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = toArray
 	
@@ -12141,9 +12141,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 61 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	
 	/**
@@ -12171,9 +12171,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 62 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Slice reference.
@@ -12200,9 +12200,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 63 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	
 	/**
@@ -12291,9 +12291,9 @@
 	
 
 
-/***/ },
+/***/ }),
 /* 64 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
 	//
@@ -12599,6 +12599,6 @@
 	}
 
 
-/***/ }
+/***/ })
 /******/ ]);
 //# sourceMappingURL=rocket-trader.js.map

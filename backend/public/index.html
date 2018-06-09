@@ -6,12 +6,22 @@
 </head>
 <body>
 <button onclick="getData()">click</button>
+<script src="../axios.min.js"></script>
 <script>
   function getData () {
     setCookie('first', 'zhai')
-    fetch('/set', {credentials: 'include'}).then(res => {
-      console.log('res', res)
-      fetch('/api/get?time' + new Date(), {credentials: 'include'})
+    axios.defaults.withCredentials = true
+    axios.defaults.crossDomain = true
+    var domain = 'http://www.zhai.com:3000'
+    // fetch(domain + '/set', {credentials: 'include'}).then(res => {
+    //   console.log('res', res)
+    //   fetch(domain + '/api/get?time' + new Date(), {credentials: 'include'})
+    // })
+    axios.get(domain + '/set').then(function (response) {
+      console.log('set', response)
+      axios.get(domain + '/api/get?time' + new Date()).then(function (response) {
+        console.log('get', response)
+      })
     })
   }
 
