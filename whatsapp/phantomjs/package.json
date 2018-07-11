@@ -1,0 +1,8 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "mitt": "^1.1.3",
+    "webpage": "^0.3.0"
+  }
+}

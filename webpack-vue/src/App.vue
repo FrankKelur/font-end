@@ -31,21 +31,21 @@
       console.log('app beforeMount')
     },
     mounted () {
-      this.message = window.localStorage.getItem('message')
-      var url = '/api/get'
-      var params = {}
-      window.fetch(url, params).then(res => {
-        console.log('res', ...arguments)
-      })
-      console.log('app.js mounted!')
-      function readonly (target, name, descriptor) {
-        descriptor.writable = false;
-        retrun descriptor
-      }
-      class example {
-        @readonly
-        a () {}
-      }
+      // this.message = window.localStorage.getItem('message')
+      // var url = '/api/get'
+      // var params = {}
+      // window.fetch(url, params).then(res => {
+      //   console.log('res', ...arguments)
+      // })
+      // console.log('app.js mounted!')
+      // function readonly (target, name, descriptor) {
+      //   descriptor.writable = false;
+      //   retrun descriptor
+      // }
+      // class example {
+      //   @readonly
+      //   a () {}
+      // }
     },
     beforeUpdate () {
       console.log('app beforeUpdate')

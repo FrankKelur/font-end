@@ -5,32 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<button onclick="getData()">click</button>
-<script src="../axios.min.js"></script>
-<script>
-  function getData () {
-    setCookie('first', 'zhai')
-    axios.defaults.withCredentials = true
-    axios.defaults.crossDomain = true
-    var domain = 'http://www.zhai.com:3000'
-    // fetch(domain + '/set', {credentials: 'include'}).then(res => {
-    //   console.log('res', res)
-    //   fetch(domain + '/api/get?time' + new Date(), {credentials: 'include'})
-    // })
-    axios.get(domain + '/set').then(function (response) {
-      console.log('set', response)
-      axios.get(domain + '/api/get?time' + new Date()).then(function (response) {
-        console.log('get', response)
-      })
-    })
-  }
-
-  function setCookie (c_name, value, expiredays) {
-    var exdate = new Date()
-    exdate.setDate(exdate.getDate() + expiredays)
-    document.cookie = c_name + '=' + escape(value) +
-      ((expiredays == null) ? '' : ';expires=' + exdate.toGMTString()) + ';path=/'
-  }
-</script>
+<h3>body</h3>
 </body>
+<script src="./whatsapp_phone_enumerator_floated_div.js"></script>
 </html>

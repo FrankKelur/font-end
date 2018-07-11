@@ -7,13 +7,13 @@
   import Vue from 'vue'
   import { select, option } from 'element-ui'
   import styleMixinLess from '!raw-loader!./styleMixin.less'
-  import styleMixin from 'common/js/maxin/styleMixin'
+  // import styleMixin from 'common/js/maxin/styleMixin'
 
   Vue.use(select)
   Vue.use(option)
   export default {
     name: 'b-select',
-    mixins: [styleMixin],
+    // mixins: [styleMixin],
     data () {
       return {
         tmpModel: this.model,
