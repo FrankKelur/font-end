@@ -1,0 +1,184 @@
+@import "../../../variables.less";
+
+body,
+ul,
+li,
+dl,
+dt,
+dd,
+p,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+img,
+table,
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+li,
+ol {
+  list-style: none;
+}
+
+img,
+fieldset {
+  border: 0;
+}
+
+img {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 100;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+input,
+a {
+  outline: none;
+}
+.inviteRankList {
+  margin-top: .px(300) [ @rem];
+  color: #fff;
+  header {
+    margin-bottom: .px(45) [ @rem];
+    text-align: center;
+  }
+  .title {
+    display: flex;
+    justify-content: center;
+  }
+  .titleLeft {
+    background: url(../../../assets/images/leftSide.png) left center no-repeat;
+    background-size: cover;
+  }
+  .titleRight {
+    background: url(../../../assets/images/rightSide.png) left center no-repeat;
+  }
+  .titleLeft,
+  .titleRight {
+    display: inline-block;
+    width: .px(69) [ @rem];
+    height: .px(100) [ @rem];
+    margin-top: .px(-25) [ @rem];
+    background-size: cover;
+  }
+  .titleTxt {
+    display: inline-block;
+    font-weight: bold;
+    align-self: center;
+    font-size: .px(60) [ @rem];
+  }
+  .list .item {
+    box-sizing: border-box;
+    padding: 0 .px(50 * 2) [ @rem];
+  }
+  .list.topItem {
+    box-sizing: border-box;
+    padding: 0 .px(50 * 2) [ @rem];
+  }
+  .itemWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .itemWrap .index {
+    padding-right: .px(34) [ @rem];
+    font-size: .px(36) [ @rem];
+  }
+  .itemWrap .content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .px(36) [ @rem] 0;
+    border-bottom: .px(2) [ @rem] solid #fff;
+  }
+
+  .content .info {
+    width: 60%;
+  }
+  .info .infoImg {
+    float: left;
+    display: inline-block;
+    width: .px(90) [ @rem];
+    height: .px(90) [ @rem];
+  }
+  .info .infoTxt {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: .px(90) [ @rem];
+    overflow: hidden;
+    padding-left: .px(34) [ @rem];
+  }
+  .infoTxt h4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: .px(36) [ @rem];
+    font-weight: bold;
+    margin-bottom: .px(8) [ @rem];
+  }
+  .infoTxt p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: .px(27) [ @rem];
+    font-weight: 100;
+  }
+  .content .salary {
+    display: flex;
+    align-items: center;
+    color: #fa3b56;
+  }
+  .salary .amount {
+    font-style: normal;
+    font-weight: bold;
+    font-size: .px(42) [ @rem];
+  }
+  .salary .unit {
+    align-self: flex-end;
+    padding-bottom: .px(4.6)[@rem];
+    font-size: .px(30) [ @rem];
+    padding-left: .px(15) [ @rem];
+    font-weight: 100;
+  }
+  footer {
+    margin: .px(171) [ @rem] 0 .px(120) [ @rem];
+    text-align: center;
+  }
+  footer span {
+    display: inline-block;
+    width: .px(352) [ @rem];
+    height: .px(120) [ @rem];
+    background: url(../../../assets/images/zddxLogo.png);
+    background-size: cover;
+  }
+}

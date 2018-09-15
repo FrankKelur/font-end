@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/echarts-en.common.js" type="text/javascript"></script>
+</head>
+<body>
+<style>
+    html, body {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tabs {
+        height: 40px;
+    }
+
+    .active {
+        color: blueviolet;
+    }
+
+    #main {
+        flex-grow: 1;
+    }
+</style>
+<script>
+</script>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div class="tabs" onclick="generateTable(event)">
+    <input type="checkbox" onclick="hotChange(event)" checked="true"> hot
+</div>
+<div id="main"></div>
+<script type="text/javascript">
+    var preDate = dateFormat(new Date())
+    var hot = true
+
+    function dateFormat(d) {
+        var {'2': day, '3': year} = d.toDateString().split(' ')
+        var month = d.getMonth() + ''
+        return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+    }
+
+    var fetchConf = {
+        method: 'POST',
+        cache: 'default',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    function hotChange(event) {
+        hot = event.target.checked
+        console.log('hot', hot)
+        event.stopPropagation()
+        generateTable(false)
+    }
+
+    function generateTable(event) {
+        console.log('generateTable')
+        if (event) {
+            var btns = Array.from(document.querySelectorAll('.tabs button'))
+            btns.forEach(btn => {
+                btn.classList.remove('active')
+            })
+            event.target.classList.add('active')
+            preDate = event.target.innerText
+        }
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                // text: 'Huobi - Cryptopia'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'line',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        var params = JSON.stringify({
+            date: preDate,
+            hot: hot
+        })
+        console.log(params)
+        fetch('http://localhost:3000/trade/report-table', {...fetchConf, body: params})
+            .then(response => response.json())
+            .then(({table}) => {
+                console.log('final res: ', table)
+                option.xAxis.data = table.x
+                option.legend.data = table.keys
+                option.series = table.keys.map(key => ({
+                    name: key,
+                    type: 'line',
+                    data: table.x.map(t => {
+                        var item = table.y[t] && table.y[t][key] || ''
+                        return {
+                            tooltip: {
+                                formatter: '{a0}: {c0}<br />' + item.label
+                            },
+                            value: item.val || 0
+                        }
+                    })
+                }))
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            })
+    }
+
+    (function getDateList() {
+        fetch('http://localhost:3000/trade/date-list', fetchConf)
+            .then(response => response.json())
+            .then(({data: list}) => {
+                var tabs = document.querySelector('.tabs')
+                list.forEach(item => {
+                    var btn = document.createElement('button')
+                    btn.innerText = item
+                    tabs.appendChild(btn)
+                })
+                tabs.children[1].click()
+            })
+    })()
+</script>
+</body>
+</html>
