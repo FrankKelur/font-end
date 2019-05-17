@@ -26,6 +26,10 @@ app.use('/trade', dataRouter)
 
 app.get('/set', function (req, res) {
     res.cookie('token', 'zhai', {httpOnly: true})
+    res.cookie('token2', 'pengchao', {})
+    console.log('======================\n\n\n');
+    console.log(req.cookies);
+    console.log('\n\n\n======================');
     res.json({'re': 200})
 })
 app.post('/redpacket/getInviterInfo', function (req, res) {

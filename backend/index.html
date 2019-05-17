@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <style>
+        .block, .player {
+            display: inline-block;
+            position: absolute;
+            border: 2px solid gray;
+            border-radius: 4px;
+            display: none;
+        }
+        #error {
+            text-align: center;
+            display: none;
+        }
+        .board {
+            margin: auto;
+            width: 500px;
+            height: 600px;
+            position: relative;
+            background: rgba(14, 11, 11, 0.05);
+        }
+        .operation {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="board" ondrop="onDrop(event)" ondragover='movePlayer(event)'>
+        <img class="block" src='block.png'/>
+        <img class="block" src='block.png'/>
+        <img class="block" src='block.png'/>
+        <img class="block" src='block.png'/>
+        <img class="player" src='player.png' ondragstart="onDragStart(event)" draggable="true"/>
+    </div>
+    <div class='operation'>
+        <Button onclick='run()'>Start</Button>
+    </div>
+    <div id="error">失败！成绩: <span id='grade'></span>(s)</div>
+</body>
+<script src='game.js'></script>
+
+</html>

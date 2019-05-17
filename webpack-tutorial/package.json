@@ -14,6 +14,7 @@
     "babel-runtime": "^6.26.0",
     "element-ui": "^2.0.4",
     "eslint": "^4.9.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "jquery": "^3.2.1",
     "json-loader": "^0.5.7",
     "path": "^0.12.7",
@@ -37,7 +38,8 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "postcss-loader": "^2.0.8",
-    "style-loader": "^0.19.0"
+    "style-loader": "^0.19.0",
+    "webpack-cli": "^3.1.2"
   },
   "scripts": {
     "test": "test"

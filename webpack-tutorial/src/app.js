@@ -1,7 +1,7 @@
 var cat = require('./cat')
-var dogs = require('./dog.json')
+// var dogs = require('./dog.json')
 console.log('cat', cat)
-console.log('dogs', dogs)
+// console.log('dogs', dogs)
 import './test.css'
 
 /*

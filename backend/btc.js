@@ -59,11 +59,11 @@ setInterval(() => {
             return res
         }, {})
         fetch('http://localhost:3000/trade/report', {
-            method: 'POST',
+            method: 'GET',
             mode: 'cors',
             cache: 'default',
-            body: JSON.stringify({"time": new Date().getTime(), "info": zbObj}),
             headers: {'content-type': 'application/json'}
+            body: JSON.stringify({"time": new Date().getTime(), "info": zbObj}),
         }).then(res => {
             console.log("res", res)
         })
