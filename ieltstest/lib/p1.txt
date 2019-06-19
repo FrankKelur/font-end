@@ -1,8 +1,0 @@
-course 课程
-student 学生
-information 信息
-room 房间
-animals 动物
-food 食物
-computer 电脑
-fee 费用

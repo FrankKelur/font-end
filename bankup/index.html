@@ -1,0 +1,64 @@
+<html>
+<header>
+  <link rel="stylesheet" type="text/css" href="/app.css">
+  <script src='./flexible.js'></script>
+  <script src='./app.js'></script>
+</header>
+<body>
+  <div class="container">
+    <div class="title">
+      将为您同步数据到对应的松果文档账号
+    </div>
+    <div class="phone">
+      <span>+86</span>
+      <span>18516560324</span>
+    </div>
+    <div class="des">
+      若该手机号已注册松果文档，将自动同步到您的松果账号，若尚未注册，将自动为您创建松果账号
+    </div>
+    <div class="attachment">
+      <input type="checkbox" id='attachment' onchange="toggleAttachment(this)">
+      <label for="attachment"></label>
+      <div class="right">
+        <div class="sub-title">
+          将聊天附件保存到松果文档
+        </div>
+        <div class="sub-des">
+          若不进行备份，聊天宝服务关闭后，您将无法查看和下载附件
+        </div>
+      </div>
+    </div>
+    <div class="agree">
+      <input type="checkbox" id="agree" onchange="toggleAgree(this)">
+      <label for="agree"></label>
+      <div class="right">
+        <div class="sub-title">
+          同意<a href="javascript:;" onclick="toggleModal(this)">聊天包数据备份协议</a>
+        </div>
+      </div>
+    </div>
+    <button class="submit" onclick='bankup(this)'>立即备份</button>
+    <div class="footer">
+      您可访问
+      <a href="https://www.sg.work">www.sg.work</a>
+      了解松果文档
+    </div>
+  </div>
+  <div class="modal">
+   <div class="inner">
+      <div class="title">
+          聊天宝数据备份协议
+        </div>
+        <div class="content">
+          聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，聊天宝数据备份协议，
+        </div>
+        <div class="footer">
+          <button>关闭</button>
+        </div>
+   </div>
+  </div>
+  <div class="toast">
+    请同意数据备份协议
+  </div>
+</body>
+</html>

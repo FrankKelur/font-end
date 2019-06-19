@@ -1,0 +1,4 @@
+const service = require('./service');
+var body = { "pageSize": 30, "pageNum": 1, "data": { "anger": "anger", "animal": "animal", "ankle": "ankle", "answer": "answer", "antarctica": "antactics", "ape": "ape", "appearance": "apperance", "architect": "archtect", "architectures": "archtecture", "area": "area", "argument": "argument", "aristocrat": "aristocrat", "army": "army", "art": "art", "article": "article", "aspirin": "aspirin", "assignment": "assignment", "atlas": "atlas", "audience": "audience", "auditorium": "auditorium", "author": "author", "authority": "authority", "average": "average", "award": "award", "bachelor": "bachelor", "background": "background", "bacteria": "bacteria", "badge": "bag", "badminton": "badminton", "backpack": "backpack" }, "type": "voice" }
+let { type, pageNum, data } = body;
+service.submit(type, data, pageNum);
