@@ -16,12 +16,12 @@ module.exports = {
       });
     });
   },
-  deleteWord(type, key) {
+  deleteWord(type, key, tag) {
     return new Promise((resolve) => {
       MongoClient.connect(url, async (err, client) => {
         db = client.db(dbName);
         let wordlist = db.collection('wordlist');
-        wordlist.remove({ type, key }, (err) => {
+        wordlist.remove({ type, key, tag: tag || undefined, }, (err) => {
           if (err) {
             console.log('delete error', err);
           }
@@ -30,10 +30,11 @@ module.exports = {
       })
     });
   },
-  getData(type, pageNum, pageSize, errorOnly, errorTime) {
+  getData(type, pageNum, pageSize, errorOnly, errorTime, tag) {
     const query = {
       type,
       errorTime,
+      tag: tag || undefined,
       correctTime: { $lt: errorOnly ? 1 : 100 },
     };
     return new Promise((resolve) => {
@@ -52,7 +53,7 @@ module.exports = {
             resolve({
               data: list.reduce((res, { key, val }) => ({
                 ...res,
-                [key]: type == 'pronounce' ? true : type == 'en' ? val : ''
+                [key]: type == 'pronounce' ? true : (type == 'en' || type == 'cn') ? val : ''
               }), {}), total
             });
             client.close();
@@ -60,9 +61,10 @@ module.exports = {
       });
     });
   },
-  setData(type, obj, pageSize, pageNum, errorOnly, errorTime) {
+  setData(type, obj, pageSize, pageNum, errorOnly, errorTime, tag) {
     const query = {
       type,
+      tag: tag || undefined,
       errorTime,
       correctTime: { $lt: errorOnly ? 1 : 100 },
     };
@@ -74,8 +76,13 @@ module.exports = {
         }
         db = client.db(dbName);
         let wordlist = db.collection('wordlist');
+        console.log('query, pageSize, pageNum', query, pageSize, pageNum);
         wordlist.find(query).limit(pageSize).skip((pageNum - 1) * pageSize)
           .toArray((err, list) => {
+            if (err) {
+              console.log('err, list', err, list);
+              return;
+            }
             let map = list.reduce((res, item) => {
               return {
                 ...res,
@@ -96,6 +103,7 @@ module.exports = {
                 correctTime++;
               } else {
                 errorTime++;
+                correctTime = 0;
                 result.push({
                   key,
                   val,

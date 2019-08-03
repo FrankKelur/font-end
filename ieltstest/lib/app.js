@@ -3,8 +3,8 @@ var fs = require('fs')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var say = require('say')
-let data = require('./res.json');
-let list = Object.keys(data).map(key => ({ key, val: data[key] }));
+// let data = require('./res.json');
+// let list = Object.keys(data).map(key => ({ key, val: data[key] }));
 var app = express()
 const _ = require('lodash');
 app.use(bodyParser.json());
@@ -15,9 +15,9 @@ app.use('/static', express.static('public', {
     etag: false
 }))
 
-const sayWord = (word) => {
+const sayWord = (word, speed = 1) => {
     return new Promise((resolve) => {
-        say.speak(word, 'Alex', 1, (error) => {
+        say.speak(word, 'Alex', speed, (error) => {
             if (error) {
                 console.log('error', error);
             }
@@ -36,8 +36,8 @@ var allowCrossDomain = function (req, res, next) {
 app.use(allowCrossDomain);
 
 app.post('/api/getData', function (req, res) {
-    let { pageSize, pageNum, type, errorOnly, errorTime } = req.body;
-    service.getData(type, pageNum, pageSize, errorOnly, errorTime).then(({ data, total }) => {
+    let { pageSize, pageNum, type, errorOnly, errorTime, tag } = req.body;
+    service.getData(type, pageNum, pageSize, errorOnly, errorTime, tag).then(({ data, total }) => {
         // 保存
         res.json({ 're': 200, data, total })
     });
@@ -50,8 +50,8 @@ app.post('/api/sayWord', async (req, res) => {
     //     return res.json({ 're': '501' });
     // }
     // requestKey = newRequestKey;
-    let { word } = req.body;
-    await sayWord(word);
+    let { word, speed } = req.body;
+    await sayWord(word, speed);
     // requestKey = '';
     res.json({ 're': 200 })
 })
@@ -59,16 +59,16 @@ app.post('/api/sayWord', async (req, res) => {
 
 app.post('/api/setData', function (req, res) {
     console.log('/api/setData', req.body)
-    let { data, type, pageNum, pageSize, errorOnly, errorTime } = req.body;
-    service.setData(type, data, pageSize, pageNum, errorOnly, errorTime).then((message) => {
+    let { data, type, pageNum, pageSize, errorOnly, errorTime, tag } = req.body;
+    service.setData(type, data, pageSize, pageNum, errorOnly, errorTime, tag).then((message) => {
         // 保存
         res.json({ 're': 200, message })
     });
 })
 
 app.post('/api/deleteWord', function (req, res) {
-    let { key, type } = req.body;
-    service.deleteWord(type, key).then(() => {
+    let { key, type, tag } = req.body;
+    service.deleteWord(type, key, tag).then(() => {
         // 保存
         res.json({ 're': 200 })
     });

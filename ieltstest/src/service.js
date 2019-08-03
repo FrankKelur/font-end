@@ -1,4 +1,3 @@
-import { resolve } from "dns";
 
 const opt = {
   method: 'POST',
@@ -8,10 +7,11 @@ const opt = {
 }
 const domain = 'http://localhost:3011'
 export default {
-  submit(type, data, pageNum, errorOnly, errorTime, pageSize) {
+  submit(type, data, pageNum, errorOnly, errorTime, pageSize, tag) {
     return fetch(domain + '/api/setData', {
       ...opt,
       body: JSON.stringify({
+        tag,
         pageSize,
         pageNum,
         errorOnly,
@@ -24,16 +24,17 @@ export default {
         console.log(e)
       })
   },
-  deleteWord(type, key) {
+  deleteWord(type, key, tag) {
     return fetch(domain + '/api/deleteWord', {
       ...opt,
       body: JSON.stringify({
         type,
-        key
+        key,
+        tag
       })
     });
   },
-  sayWord(word) {
+  sayWord(word, speed) {
     // return new Promise((resolve) => {
     //   window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
     //   resolve(true);
@@ -42,14 +43,16 @@ export default {
       ...opt,
       body: JSON.stringify({
         word,
+        speed
       })
     });
   },
-  getData(pageNum, type, errorOnly, errorTime, pageSize) {
+  getData(pageNum, type, errorOnly, errorTime, pageSize, tag) {
     return fetch(domain + '/api/getData', {
       ...opt,
       body: JSON.stringify({
         pageSize,
+        tag: tag || undefined,
         pageNum,
         errorOnly,
         errorTime,
@@ -58,7 +61,7 @@ export default {
     }).then(res => res.json())
       .catch(e => {
         console.log(e)
-        return { data: [], total: 0 }
+        return { data: {}, total: 0 }
       })
   }
 }

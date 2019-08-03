@@ -16,13 +16,14 @@ const syncWrite = (path, out) => {
 
 const syncWriteList = async (paths) => {
   // console.log(paths);
-  let out = path.join(__dirname, 'out807.txt');
+  let out = path.join(__dirname, 'frequency.txt');
   for (let fileName of paths) {
-    await syncWrite(path.join(__dirname, '807', fileName), out);
+    console.log('wrinting: ', fileName);
+    await syncWrite(path.join(__dirname, 'frequency', fileName), out);
   }
 }
 
-// let paths = fs.readdirSync(path.join(__dirname, '807'));
-// syncWriteList(paths)
-let path807 = path.join(__dirname, '807/2019.jpeg');
-syncWrite(path807, path.join(__dirname, 'out807.txt'));
+let paths = fs.readdirSync(path.join(__dirname, 'frequency'));
+syncWriteList(paths)
+// let path807 = path.join(__dirname, '807/2019.jpeg');
+// syncWrite(path807, path.join(__dirname, 'out807.txt'));
