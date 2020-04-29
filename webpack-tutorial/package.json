@@ -15,7 +15,7 @@
     "element-ui": "^2.0.4",
     "eslint": "^4.9.0",
     "extract-text-webpack-plugin": "^3.0.2",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "json-loader": "^0.5.7",
     "path": "^0.12.7",
     "webpack": "^3.6.0"
